@@ -23,7 +23,7 @@ import frc.robot.subsystems.*;
  */
 public class Robot extends TimedRobot {
   public static OI oi;
-  public static Hatch hatch;
+  public static Hatch hatch = new Hatch(RobotMap.HatchPiston);;
   //Command m_autonomousCommand;
   //SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -34,7 +34,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     oi = new OI();
-    hatch = new Hatch(RobotMap.HatchPiston);
     // chooser.addOption("My Auto", new MyAutoCommand());
     //SmartDashboard.putData("Auto mode", m_chooser);
   }

@@ -8,20 +8,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.subsystems.Hatch;
 
-public class releaseHatch extends Command {
-  public releaseHatch() {
+public class ElevatorDown extends Command {
+  public ElevatorDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.hatch);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
   }
 
   // Called repeatedly when this Command is scheduled to run

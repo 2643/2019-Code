@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -17,10 +19,6 @@ public class Elevator extends Subsystem {
   // here. Call these from Commands.
   private WPI_TalonSRX Elevator;
   private WPI_TalonSRX ElevatorSlave;
-
-  public Elevator(WPI_TalonSRX liftMotor, WPI_TalonSRX slaveMotor) {
-		this(liftMotor, slaveMotor);
-  }
 
   public Elevator(WPI_TalonSRX liftMotor, WPI_TalonSRX slaveMotor) {
     Elevator = liftMotor;
