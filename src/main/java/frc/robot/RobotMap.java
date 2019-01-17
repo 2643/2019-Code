@@ -23,8 +23,8 @@ public class RobotMap {
   // public static int rightMotor = 2;
 
   //update variables
-  static WPI_TalonSRX Elevator = new WPI_TalonSRX(0);
-  static WPI_TalonSRX ElevatorSlave = new WPI_TalonSRX(0);
+  static int Elevator = 0;
+  static int ElevatorSlave = 0;
   static int ElevatorLimitSwitch = 0;
 
   // If you are using multiple modules, make sure to define both the port
