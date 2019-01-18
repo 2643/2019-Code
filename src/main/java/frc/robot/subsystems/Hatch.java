@@ -38,4 +38,16 @@ public class Hatch extends Subsystem {
   public void pistonOut(){
     HatchSolenoid.set(DoubleSolenoid.Value.kForward);// This will push the piston out.
   }
+  /**
+   * This moves the grabber down to pick up the hatch panel.
+   */
+  public void moveDown(){
+
+  }
+  /**
+   * This moves the grabber back up.
+   */
+  public void moveUp(){
+
+  }
 }

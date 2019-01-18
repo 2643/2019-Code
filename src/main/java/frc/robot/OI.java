@@ -28,6 +28,10 @@ public class OI {
   Joystick operatorStick = new Joystick(0);
   Button elevatorButtonDown = new JoystickButton(operatorStick, 0);
   Button elevatorButtonUp = new JoystickButton(operatorStick, 1);
+  Button retractPistonButton = new JoystickButton(operatorStick, 2);
+  Button releaseHatchButton = new JoystickButton(operatorStick, 3);
+
+
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to

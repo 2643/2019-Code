@@ -26,6 +26,7 @@ public class RobotMap {
   static int Elevator = 0;
   static int ElevatorSlave = 0;
   static int ElevatorLimitSwitch = 0;
+  static int HatchMotor = 0;
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
@@ -35,6 +36,8 @@ public class RobotMap {
   static int SolenoidPort1 = 1; //TODO Change this port once you get it.
   static int SolenoidPort2 = 2; //TODO Change this port once you get it.
   static int CompressorPort = 0; //TODO Change this port once you get it.
+  static int HatchMotorPort = 3; //TODO Change this port once you get it.
   static DoubleSolenoid HatchPiston = new DoubleSolenoid(SolenoidPort1, SolenoidPort2);
   static Compressor Compressor = new Compressor(CompressorPort);
+  static Spark HatchSpark = new Spark(HatchMotorPort);
 }
