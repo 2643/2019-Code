@@ -26,8 +26,8 @@ public class RobotMap {
   //update variables
   static int elevator = 1;
   static int elevatorSlave = 1;
-  static int elevatorSpeed = 0;
-  static int ElevatorLimitSwitch = 0;
+  public static double elevatorSpeed = 0;
+  public static int ElevatorLimitSwitchPort = 0; //TODO change this later
   static int HatchMotor = 0;
   
 
@@ -44,9 +44,12 @@ public class RobotMap {
   static int rEncoderPort2 = 1; //TODO Change this port once you get it.
   static int lEncoderPort1 = 0; //TODO Change this port once you get it.
   static int lEncoderPort2 = 1; //TODO Change this port once you get it.
+
+
   static DoubleSolenoid HatchPiston = new DoubleSolenoid(SolenoidPort1, SolenoidPort2);
   static Compressor Compressor = new Compressor(CompressorPort);
-  static TalonSRX HatchTalon = new TalonSRX(HatchMotorPort);
+  static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
   public static Encoder rEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder lEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
+  public static DigitalInput ElevatorLimitSwitch = new DigitalInput(ElevatorLimitSwitchPort);
 }

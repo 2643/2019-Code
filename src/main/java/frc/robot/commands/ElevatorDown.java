@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.*;
 
 public class ElevatorDown extends Command {
   public ElevatorDown() {
@@ -24,11 +25,11 @@ public class ElevatorDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if ElevatorLimitSwitch.isSwitchSet(){
-      elevator.setZeroSpeed();
+    if(RobotMap.ElevatorLimitSwitch.get()){
+      Robot.elevator.setZeroSpeed();
     }
     else {
-    elevator.setNegativeSpeed(RobotMap.elevatorSpeed)
+      Robot.elevator.setNegativeSpeed(RobotMap.elevatorSpeed);
     }
   }
 

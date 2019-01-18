@@ -25,7 +25,7 @@ public class Elevator extends Subsystem {
     ElevatorSlave = slaveMotor;
   }
   
-  public void setPostiveSpeed(double speed) {
+  public void setPositiveSpeed(double speed) {
     Elevator.set(speed);
     ElevatorSlave.set(speed);
   }
