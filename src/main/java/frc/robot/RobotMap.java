@@ -23,9 +23,9 @@ public class RobotMap {
   // public static int rightMotor = 2;
 
   //update variables
-  static int elevator = 0;
-  static int elevatorSlave = 0;
-  int elevatorSpeed = 0;
+  static int elevator = 1;
+  static int elevatorSlave = 1;
+  static int elevatorSpeed = 0;
   static int ElevatorLimitSwitch = 0;
   static int HatchMotor = 0;
 
