@@ -26,7 +26,10 @@ public class ElevatorUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    elevator.moveUp(RobotMap.elevatorSpeed)
+
+    else {
+      elevator.setPositiveSpeed(RobotMap.elevatorSpeed)
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
