@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.*;
@@ -45,7 +46,7 @@ public class RobotMap {
   static int lEncoderPort2 = 1; //TODO Change this port once you get it.
   static DoubleSolenoid HatchPiston = new DoubleSolenoid(SolenoidPort1, SolenoidPort2);
   static Compressor Compressor = new Compressor(CompressorPort);
-  static Spark HatchSpark = new Spark(HatchMotorPort);
+  static TalonSRX HatchTalon = new TalonSRX(HatchMotorPort);
   public static Encoder rEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder lEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
 }
