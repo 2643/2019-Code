@@ -42,7 +42,7 @@ public class Hatch extends Subsystem {
    * This moves the grabber down to pick up the hatch panel.
    */
   public void moveDown(){
-
+  
   }
   /**
    * This moves the grabber back up.

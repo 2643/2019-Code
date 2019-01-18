@@ -34,6 +34,10 @@ public class Elevator extends Subsystem {
     Elevator.set(-speed);
     ElevatorSlave.set(-speed);
   }
+
+  public void setZeroSpeed() {
+    Elevator.set(0);
+  }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
