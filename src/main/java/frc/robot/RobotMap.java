@@ -23,8 +23,9 @@ public class RobotMap {
   // public static int rightMotor = 2;
 
   //update variables
-  static int Elevator = 0;
-  static int ElevatorSlave = 0;
+  static int elevator = 0;
+  static int elevatorSlave = 0;
+  int elevatorSpeed = 0;
   static int ElevatorLimitSwitch = 0;
 
   // If you are using multiple modules, make sure to define both the port
