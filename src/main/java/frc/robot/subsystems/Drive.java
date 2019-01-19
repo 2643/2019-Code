@@ -19,32 +19,23 @@ public class Drive extends Subsystem
         leftDriveMaster = l1;
         leftDriveSlave = l2;
 
-        leftDriveSlave.set(ControlMode.Follower, leftDriveMaster.getDeviceID());
+        leftDriveSlave.set(ControlMode.Follower, leftDriveMaster.getDeviceID());  
 
         rightDriveMaster = r1;
         rightDriveSlave = r2;
 
         rightDriveSlave.set(ControlMode.Follower, rightDriveMaster.getDeviceID());
-
-        //currentLimit(leftDriveMaster);
-        //currentLimit(rightDriveMaster);
-
-
     }
 
-    //you need to make a command called tank drive for it to be the default command for this subsystem
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        // setDefaultCommand(new MySpecialCommand());
         setDefaultCommand(new TankDrive());
-      }
+    }
 
     //we are not using an encoder that plugs into the TalonSRX
     public int getRightEncoder(){
         return RobotMap.rEncoder.get();
     }
 
-    //we are not using an encoder that plugs into the TalonSRX
     public int getLeftEncoder(){
         return RobotMap.lEncoder.get();
     }
@@ -76,7 +67,7 @@ public class Drive extends Subsystem
     }
 
     public void setLeftSpeed(double speed){
-        leftDriveMaster.set(-speed);
+        leftDriveMaster.set(-speed); 
     }
 
     public void setRightSpeed(double speed){
@@ -90,10 +81,5 @@ public class Drive extends Subsystem
 
     public void stopAllSpeed(){
         setAllSpeed(0);
-    }
-
-    public void driveWithJoystick(Joystick stick){
-        leftDriveMaster.set(-stick.getRawAxis(1));
-        rightDriveMaster.set(stick.getRawAxis(1));
     }
 }

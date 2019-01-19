@@ -89,6 +89,10 @@ public class RobotMap {
   public static Potentiometer carriagePot = new AnalogPotentiometer(carriagePotPort, 3600, carriagePotOffset);
 
   /* Variables */
+  //drive varibles
+  public static int rightDriverAxis = 1; //TODO Change Later
+  public static int leftDriverAxis = 5; //TODO Change Later
+
   //elevator variables
   static public double elevatorSpeed = 0.3; //Temporary elevator speed. TODO elevator PIDS will have to be implemented.
   static public int elevatorEncoderMaxLimit = 100; //this is the maximum encoder ticks allowed from the bottom upwards.

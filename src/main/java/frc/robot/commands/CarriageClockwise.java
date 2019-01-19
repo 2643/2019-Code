@@ -29,10 +29,10 @@ public class CarriageClockwise extends Command {
     
     //Checks if the pot is over the limit if no, continue, otherwise stop. TODO check direction of potentiometer.
     if (RobotMap.carriagePot.get() <= RobotMap.carriageClockwiseMax) {
-        Robot.carriage.carriageSetPositiveSpeed(RobotMap.carriageMotorSpeed);
+        Robot.carriage.setCarriageSpeed(RobotMap.carriageMotorSpeed);
     }
     else {
-      Robot.carriage.carriageSetZeroSpeed();
+      Robot.carriage.setCarriageSpeed(0);
     }
   }
 
@@ -52,6 +52,6 @@ public class CarriageClockwise extends Command {
   @Override
   protected void interrupted() {
     //Just in case
-    Robot.carriage.carriageSetZeroSpeed();
+    Robot.carriage.setCarriageSpeed(0);
   }
 }
