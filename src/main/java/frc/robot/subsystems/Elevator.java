@@ -33,7 +33,7 @@ public class Elevator extends Subsystem {
   }
 
   // Returns the postition of the encoder
-  // TODO check whether we need to divide it by 2 or not. Last your had a problem with it.
+  // TODO check whether we need to divide it by 2 or not. Last year had a problem with it.
   public int getEncoder() {
     return Elevator.getSensorCollection().getQuadraturePosition();
   }

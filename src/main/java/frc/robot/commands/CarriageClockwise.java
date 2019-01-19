@@ -28,7 +28,7 @@ public class CarriageClockwise extends Command {
   protected void execute() {
     
     //Checks if the pot is over the limit if no, continue, otherwise stop. TODO check direction of potentiometer.
-    if (RobotMap.carriagePot.get() <= RobotMap.carriageClockwiseMax) {
+    if (RobotMap.carriagePot.get() < RobotMap.carriageClockwiseMax) {
         Robot.carriage.setCarriageSpeed(RobotMap.carriageMotorSpeed);
     }
     else {
@@ -39,19 +39,30 @@ public class CarriageClockwise extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    /* Check for potentiometer position,
+    *  If at under maximum, continue
+    *  Else, stop immediately.
+    */
+    if (RobotMap.carriagePot.get() < RobotMap.carriageClockwiseMax) {
+      return false;
+    }
+    else {
+      Robot.carriage.setCarriageSpeed(0);
+      return true;
+    }
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    //Just in case
+    Robot.carriage.setCarriageSpeed(0);
   }
-
+  
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    //Just in case
-    Robot.carriage.setCarriageSpeed(0);
+
   }
 }

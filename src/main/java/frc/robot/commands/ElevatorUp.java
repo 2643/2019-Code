@@ -30,7 +30,7 @@ public class ElevatorUp extends Command {
   protected void execute() {
     
     // Checks if the elevator is under the encoder limit, if it is, continue. Else, stop.
-    if (Robot.elevator.getEncoder() <= RobotMap.elevatorEncoderMaxLimit) {
+    if (Robot.elevator.getEncoder() < RobotMap.elevatorEncoderMaxLimit) {
       Robot.elevator.setElevatorSpeed(RobotMap.elevatorSpeed);
     }
     else {
@@ -41,7 +41,17 @@ public class ElevatorUp extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    
+    /* Check if the encoder is still below the softlimit
+    *  If it is, continue, otherwise stop
+    */
+    if (Robot.elevator.getEncoder() < RobotMap.elevatorEncoderMaxLimit) {
+      return false;
+    }
+    else {
+      Robot.elevator.setElevatorSpeed(0);
+      return true;
+    }
   }
 
   // Called once after isFinished returns true

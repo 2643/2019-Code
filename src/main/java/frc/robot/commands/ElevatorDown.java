@@ -40,19 +40,30 @@ public class ElevatorDown extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    /* Check if the Bottom Limit has been tripped
+    *  if it has, stop, and reset encoder, else continue
+    */
+    if(RobotMap.elevatorBottomLimit.get()) {
+      Robot.elevator.setElevatorSpeed(0);
+      Robot.elevator.elevatorEncoderReset();
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    //Just in case
+    Robot.elevator.setElevatorSpeed(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    //Just in case
-    Robot.elevator.setElevatorSpeed(0);
+    
   }
 }
