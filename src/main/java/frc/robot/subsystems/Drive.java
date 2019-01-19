@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.Elevator;
 
@@ -73,11 +74,11 @@ public class Drive extends Subsystem
     }
 
     public void resetLeftEncoder(){
-        leftDriveMaster.getSensorCollection().setQuadraturePosition(0, 0);
+        RobotMap.lEncoder.reset();
     }
 
     public void resetRightEncoder(){
-        rightDriveMaster.getSensorCollection().setQuadraturePosition(0, 0);
+        RobotMap.rEncoder.reset();
     }
 
     public void resetAllEncoders(){
@@ -103,7 +104,7 @@ public class Drive extends Subsystem
     }
 
     public void driveWithJoystick(Joystick stick){
-        leftDriveMaster.set(-stick.getRawAxis(1));
-        rightDriveMaster.set(stick.getRawAxis(1));
+        leftDriveMaster.set(-Robot.oi.getDriverStick().getRawAxis(1));
+        rightDriveMaster.set(Robot.oi.getOperatorStick().getRawAxis(1));
     }
 }

@@ -25,7 +25,8 @@ public class OI {
   // Button button = new JoystickButton(stick, buttonNumber);
   
   //change variables, again.
-  Joystick operatorStick = new Joystick(0);
+  Joystick driverStick = new Joystick(0);
+  Joystick operatorStick = new Joystick(1);
   Button elevatorButtonDown = new JoystickButton(operatorStick, 0);
   Button elevatorButtonUp = new JoystickButton(operatorStick, 1);
   Button retractPistonButton = new JoystickButton(operatorStick, 2);
@@ -56,5 +57,13 @@ public class OI {
   public OI(){
     elevatorButtonDown.whenPressed(new ElevatorDown());
     elevatorButtonUp.whenPressed(new ElevatorUp());
+  }
+
+  public Joystick getDriverStick(){
+    return driverStick;
+  }
+
+  public Joystick getOperatorStick(){
+    return operatorStick;
   }
 }
