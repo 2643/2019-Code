@@ -25,8 +25,8 @@ import frc.robot.RobotMap;
 public class Robot extends TimedRobot {
   public static OI oi;
   public static Hatch hatch = new Hatch(RobotMap.HatchPiston);
-  public static Elevator elevator = new Elevator(RobotMap.elevator, RobotMap.elevatorSlave);
-  public static Drive drive = new Drive();
+  public static Elevator elevator = new Elevator(RobotMap.elevatorMotor, RobotMap.elevatorSlaveMotor);
+  public static Drive drive = new Drive(RobotMap.lFrontMotor, RobotMap.lBackMotor, RobotMap.rFrontMotor, RobotMap.rBackMotor);
   //Command m_autonomousCommand;
   //SendableChooser<Command> m_chooser = new SendableChooser<>();
 

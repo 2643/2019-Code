@@ -104,7 +104,7 @@ public class Drive extends Subsystem
     }
 
     public void driveWithJoystick(Joystick stick){
-        leftDriveMaster.set(-Robot.oi.getDriverStick().getRawAxis(1));
-        rightDriveMaster.set(Robot.oi.getOperatorStick().getRawAxis(1));
+        leftDriveMaster.set(-stick.getRawAxis(1));
+        rightDriveMaster.set(stick.getRawAxis(1));
     }
 }
