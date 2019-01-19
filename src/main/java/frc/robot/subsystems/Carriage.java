@@ -23,20 +23,10 @@ public class Carriage extends Subsystem {
     Carriage = carriageMotor;
   }
 
-  //the next three methods should be one method, not necessary to have three different methods 
-  public void carriageSetPositiveSpeed(double speed) {
+  public void setCarriageSpeed(double speed) {
     Carriage.set(speed);
   }
 
-  public void carriageSetNegativeSpeed(double speed) {
-    Carriage.set(-speed);
-  }
-
-  public void carriageSetZeroSpeed() {
-    Carriage.set(0);
-  }
-
-  //should have 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

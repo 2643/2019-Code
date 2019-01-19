@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -23,23 +24,12 @@ public class Elevator extends Subsystem {
   public Elevator(WPI_TalonSRX liftMotor, WPI_TalonSRX slaveMotor) {
     Elevator = liftMotor;
     ElevatorSlave = slaveMotor;
+    ElevatorSlave.set(ControlMode.Follower, Elevator.getDeviceID());
   }
-  
-  
-  //take the next three methods and combine them, not necessary to have three different methods
-  public void setPositiveSpeed(double speed) {
+
+  // Set elevator's speed
+  public void setElevatorSpeed(double speed) {
     Elevator.set(speed);
-    ElevatorSlave.set(-speed);
-  }
-  // Set to the negative preset
-  public void setNegativeSpeed(double speed) {
-    Elevator.set(-speed);
-    ElevatorSlave.set(speed); 
-  }
-  // Set the motor to stop
-  public void setZeroSpeed() {
-    Elevator.set(0);
-    ElevatorSlave.set(0);
   }
 
   // Returns the postition of the encoder

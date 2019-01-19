@@ -31,10 +31,10 @@ public class ElevatorUp extends Command {
     
     // Checks if the elevator is under the encoder limit, if it is, continue. Else, stop.
     if (Robot.elevator.getEncoder() <= RobotMap.elevatorEncoderMaxLimit) {
-      Robot.elevator.setPositiveSpeed(RobotMap.elevatorSpeed);
+      Robot.elevator.setElevatorSpeed(RobotMap.elevatorSpeed);
     }
     else {
-      Robot.elevator.setZeroSpeed();
+      Robot.elevator.setElevatorSpeed(0);
     }
   }
 
@@ -54,6 +54,6 @@ public class ElevatorUp extends Command {
   @Override
   protected void interrupted() {
     // Just in case
-    Robot.elevator.setZeroSpeed();
+    Robot.elevator.setElevatorSpeed(0);
   }
 }
