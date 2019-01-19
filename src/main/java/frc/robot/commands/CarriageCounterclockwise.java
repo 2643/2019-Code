@@ -31,10 +31,10 @@ public class CarriageCounterclockwise extends Command {
     //TODO check direction of potentiometer.
     //TODO Specifically in which way it increases/decreases.
     if (RobotMap.carriagePot.get() >= RobotMap.carriageCounterclockwiseMin) {
-      Robot.carriage.carriageSetNegativeSpeed(RobotMap.carriageMotorSpeed);
+      Robot.carriage.setCarriageSpeed(-RobotMap.carriageMotorSpeed);
   }
     else {
-      Robot.carriage.carriageSetZeroSpeed();
+      Robot.carriage.setCarriageSpeed(0);
   } 
   }
 
@@ -54,6 +54,6 @@ public class CarriageCounterclockwise extends Command {
   @Override
   protected void interrupted() {
     //Just in case
-    Robot.carriage.carriageSetZeroSpeed();
+    Robot.carriage.setCarriageSpeed(0);
   }
 }

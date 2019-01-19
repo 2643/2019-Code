@@ -23,16 +23,8 @@ public class Carriage extends Subsystem {
     Carriage = carriageMotor;
   }
 
-  public void carriageSetPositiveSpeed(double speed) {
+  public void setCarriageSpeed(double speed) {
     Carriage.set(speed);
-  }
-
-  public void carriageSetNegativeSpeed(double speed) {
-    Carriage.set(-speed);
-  }
-
-  public void carriageSetZeroSpeed() {
-    Carriage.set(0);
   }
 
   @Override
