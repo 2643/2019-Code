@@ -39,17 +39,6 @@ public class Drive extends Subsystem
         setDefaultCommand(new TankDrive());
       }
 
-    public void setToPositionMode(int encoderTicks){             //this is supposed to be an encoder value
-                                                 //supposed to change
-        leftDriveMaster.set(ControlMode.Position, encoderTicks);
-        rightDriveMaster.set(ControlMode.Position, encoderTicks);
-    }
-    public void setToPercentValue(double speed){
-                                                      //this is supposed to change 
-        leftDriveMaster.set(ControlMode.PercentOutput, speed);
-        rightDriveMaster.set(ControlMode.PercentOutput, speed);
-    }
-
     //we are not using an encoder that plugs into the TalonSRX
     public int getRightEncoder(){
         return RobotMap.rEncoder.get();
