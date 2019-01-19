@@ -28,7 +28,7 @@ public class RobotMap {
   static WPI_TalonSRX elevator = new WPI_TalonSRX(0);
   static WPI_TalonSRX elevatorSlave = new WPI_TalonSRX(0);
   static public double elevatorSpeed = 0.3;
-  public int elevatorEncoderLimit = 100;
+  static public int elevatorEncoderLimit = 100;
   static public DigitalInput elevatorBottomLimit = new DigitalInput(0);
 
   public static int HatchMotor = 0;

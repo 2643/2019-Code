@@ -26,7 +26,7 @@ public class Elevator extends Subsystem {
   }
   
   //Set to the positive preset
-  public void setPostiveSpeed(double speed) {
+  public void setPositiveSpeed(double speed) {
     Elevator.set(speed);
     ElevatorSlave.set(speed);
   }
@@ -40,6 +40,10 @@ public class Elevator extends Subsystem {
   public void setZeroSpeed() {
     Elevator.set(0);
     ElevatorSlave.set(0);
+  }
+
+  public int getEncoder() {
+    return Elevator.getSensorCollection().getQuadraturePosition();
   }
   @Override
   public void initDefaultCommand() {

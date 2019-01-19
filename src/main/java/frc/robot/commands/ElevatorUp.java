@@ -30,9 +30,12 @@ public class ElevatorUp extends Command {
   @Override
   protected void execute() {
 
-    //if {
+    if (Robot.elevator.getEncoder() <= RobotMap.elevatorEncoderLimit) {
       Robot.elevator.setPositiveSpeed(RobotMap.elevatorSpeed);
-    //}
+    }
+    else {
+      Robot.elevator.setZeroSpeed();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
