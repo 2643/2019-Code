@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.*;
 
 public class Drive extends Subsystem
 {
@@ -35,6 +36,7 @@ public class Drive extends Subsystem
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new TankDrive());
       }
 
     public void setToPositionMode(int encoderTicks){             //this is supposed to be an encoder value
