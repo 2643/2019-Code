@@ -8,6 +8,8 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.DigitalInput;
+
 
 import edu.wpi.first.wpilibj.*;
 /**
@@ -22,12 +24,14 @@ public class RobotMap {
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
 
-  //update variables
-  static int elevator = 0;
-  static int elevatorSlave = 0;
-  int elevatorSpeed = 0;
-  static int ElevatorLimitSwitch = 0;
-  static int HatchMotor = 0;
+  //update variables/input ports
+  static WPI_TalonSRX elevator = new WPI_TalonSRX(0);
+  static WPI_TalonSRX elevatorSlave = new WPI_TalonSRX(0);
+  static public int elevatorSpeed = 0;
+  public int elevatorEncoderLimit = 100;
+  static public DigitalInput elevatorBottomLimit = new DigitalInput(0);
+
+  static  HatchMotor = 0;
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:

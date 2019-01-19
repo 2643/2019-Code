@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.subsystems.Elevator;
+import frc.robot.RobotMap;
 
 public class ElevatorUp extends Command {
   public ElevatorUp() {
@@ -27,9 +28,9 @@ public class ElevatorUp extends Command {
   @Override
   protected void execute() {
 
-    else {
-      elevator.setPositiveSpeed(RobotMap.elevatorSpeed)
-    }
+    //if {
+      Elevator.setPositiveSpeed(RobotMap.elevatorSpeed);
+    //}
   }
 
   // Make this return true when this Command no longer needs to run execute()
