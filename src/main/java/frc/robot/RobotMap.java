@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 
@@ -25,7 +24,7 @@ public class RobotMap {
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
 
-  //update variables/input ports
+  //TODO update all variables/input ports
   static WPI_TalonSRX elevator = new WPI_TalonSRX(0);
   static WPI_TalonSRX elevatorSlave = new WPI_TalonSRX(0);
   static public double elevatorSpeed = 0.3;
@@ -42,15 +41,15 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
 
-  static int SolenoidPort1 = 1; //TODO Change this port once you get it.
-  static int SolenoidPort2 = 2; //TODO Change this port once you get it.
-  static int CompressorPort = 0; //TODO Change this port once you get it.
-  static int HatchMotorPort = 3; //TODO Change this port once you get it.
-  static int rEncoderPort1 = 0; //TODO Change this port once you get it.
-  static int rEncoderPort2 = 1; //TODO Change this port once you get it.
-  static int lEncoderPort1 = 0; //TODO Change this port once you get it.
-  static int lEncoderPort2 = 1; //TODO Change this port once you get it.
-
+  //TODO Change these ports once Electrical decides.
+  static int SolenoidPort1 = 1; 
+  static int SolenoidPort2 = 2; 
+  static int CompressorPort = 0;
+  static int HatchMotorPort = 3;
+  static int rEncoderPort1 = 0; 
+  static int rEncoderPort2 = 1; 
+  static int lEncoderPort1 = 0; 
+  static int lEncoderPort2 = 1;
 
   static DoubleSolenoid HatchPiston = new DoubleSolenoid(SolenoidPort1, SolenoidPort2);
   static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
