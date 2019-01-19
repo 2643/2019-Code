@@ -14,32 +14,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
  */
-public class Carriage extends Subsystem {
+public class CargoIntake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public WPI_TalonSRX Carriage;
+  public WPI_TalonSRX CargoIntake;
 
-  public Carriage(WPI_TalonSRX carriageMotor) {
-    Carriage = carriageMotor;
-  }
-
-  //the next three methods should be one method, not necessary to have three different methods 
-  public void carriageSetPositiveSpeed(double speed) {
-    Carriage.set(speed);
-  }
-
-  public void carriageSetNegativeSpeed(double speed) {
-    Carriage.set(-speed);
-  }
-
-  public void carriageSetZeroSpeed() {
-    Carriage.set(0);
-  }
-
-  //should have 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+  }
+
+  public void setSpeed(double speed){
+    CargoIntake.set(speed);
   }
 }

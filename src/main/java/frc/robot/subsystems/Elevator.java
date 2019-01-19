@@ -25,18 +25,17 @@ public class Elevator extends Subsystem {
     ElevatorSlave = slaveMotor;
   }
   
-  // Set to the positive preset
+  
+  //take the next three methods and combine them, not necessary to have three different methods
   public void setPositiveSpeed(double speed) {
     Elevator.set(speed);
     ElevatorSlave.set(-speed);
   }
-
   // Set to the negative preset
   public void setNegativeSpeed(double speed) {
     Elevator.set(-speed);
-    ElevatorSlave.set(speed);
+    ElevatorSlave.set(speed); 
   }
-
   // Set the motor to stop
   public void setZeroSpeed() {
     Elevator.set(0);
