@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.subsystems.Hatch;
+import frc.robot.*;
 
 public class ReleaseHatch extends Command {
   public ReleaseHatch() {
@@ -27,6 +28,10 @@ public class ReleaseHatch extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if (RobotMap.HatchLimitSwitch.get()){
+
+    }
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
