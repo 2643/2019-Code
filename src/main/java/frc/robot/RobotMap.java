@@ -99,5 +99,5 @@ public class RobotMap {
   //carriage variables
   public static double carriageMotorSpeed = 0.15; //Carriage motor speed preset should probably implement PIDS
   public static int carriageClockwiseMax = 2000; //TODO find out actual value of carriageClockwiseMax
-  public static int carriageCounterclockwiseMax = 500; //TODO find out actual value of carriageCounterclockwiseMax
+  public static int carriageCounterclockwiseMin = 500; //TODO find out actual value of carriageCounterclockwiseMax
 }
