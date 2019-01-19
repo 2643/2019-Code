@@ -52,5 +52,7 @@ public class ElevatorDown extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    //Just in case
+    Robot.elevator.setZeroSpeed();
   }
 }

@@ -25,11 +25,15 @@ public class CarriageCounterclockwise extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (RobotMap.carriagePot.get() >= RobotMap.carriageCounterclockwiseMax) {
+
+    //Check if pot is over the counterclockwise limit, if true, accel negatively, otherwise stop.
+    //TODO check direction of potentiometer.
+    //TODO Specifically in which way it increases/decreases.
+    if (RobotMap.carriagePot.get() >= RobotMap.carriageCounterclockwiseMin) {
       Robot.carriage.carriageSetNegativeSpeed(RobotMap.carriageMotorSpeed);
   }
-  else {
-    Robot.carriage.carriageSetZeroSpeed();
+    else {
+      Robot.carriage.carriageSetZeroSpeed();
   } 
   }
 
@@ -48,5 +52,7 @@ public class CarriageCounterclockwise extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    //Just in case
+    Robot.carriage.carriageSetZeroSpeed();
   }
 }

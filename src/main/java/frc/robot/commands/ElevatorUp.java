@@ -28,7 +28,8 @@ public class ElevatorUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
+    
+    // Checks if the elevator is under the encoder limit, if it is, continue. Else, stop.
     if (Robot.elevator.getEncoder() <= RobotMap.elevatorEncoderMaxLimit) {
       Robot.elevator.setPositiveSpeed(RobotMap.elevatorSpeed);
     }
@@ -52,5 +53,7 @@ public class ElevatorUp extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    // Just in case
+    Robot.elevator.setZeroSpeed();
   }
 }

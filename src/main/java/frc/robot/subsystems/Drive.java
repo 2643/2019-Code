@@ -6,10 +6,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-<<<<<<< HEAD
-=======
 import frc.robot.commands.*;
->>>>>>> 1c7ef01d0b3ea5ac096f1e5509dd2676fd680142
 
 public class Drive extends Subsystem
 {
