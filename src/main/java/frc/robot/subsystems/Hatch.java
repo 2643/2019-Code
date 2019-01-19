@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.*;
+import frc.robot.*;
 
 
 /**
@@ -42,7 +43,6 @@ public class Hatch extends Subsystem {
    * This moves the grabber down to pick up the hatch panel.
    */
   public void moveDown(){
-
   }
   /**
    * This moves the grabber back up.

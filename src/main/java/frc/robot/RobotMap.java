@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 
@@ -27,11 +28,14 @@ public class RobotMap {
   //update variables/input ports
   static WPI_TalonSRX elevator = new WPI_TalonSRX(0);
   static WPI_TalonSRX elevatorSlave = new WPI_TalonSRX(0);
-  static public int elevatorSpeed = 0;
+  static public double elevatorSpeed = 0.3;
   public int elevatorEncoderLimit = 100;
   static public DigitalInput elevatorBottomLimit = new DigitalInput(0);
 
-  static  HatchMotor = 0;
+  public static int HatchMotor = 0;
+  public static double HatchMotorSpeed = 0;
+  public static int HatchLimitSwitchPort = 0; //TODO change this later
+  
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
@@ -42,7 +46,16 @@ public class RobotMap {
   static int SolenoidPort2 = 2; //TODO Change this port once you get it.
   static int CompressorPort = 0; //TODO Change this port once you get it.
   static int HatchMotorPort = 3; //TODO Change this port once you get it.
+  static int rEncoderPort1 = 0; //TODO Change this port once you get it.
+  static int rEncoderPort2 = 1; //TODO Change this port once you get it.
+  static int lEncoderPort1 = 0; //TODO Change this port once you get it.
+  static int lEncoderPort2 = 1; //TODO Change this port once you get it.
+
+
   static DoubleSolenoid HatchPiston = new DoubleSolenoid(SolenoidPort1, SolenoidPort2);
-  static Compressor Compressor = new Compressor(CompressorPort);
-  static Spark HatchSpark = new Spark(HatchMotorPort);
+  static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
+  public static Encoder rEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
+  public static Encoder lEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
+  public static DigitalInput HatchLimitSwitch = new DigitalInput(HatchLimitSwitchPort);
+
 }

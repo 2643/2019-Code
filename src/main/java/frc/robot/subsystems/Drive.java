@@ -5,6 +5,8 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
+import frc.robot.subsystems.Elevator;
 
 public class Drive extends Subsystem
 {
@@ -27,32 +29,34 @@ public class Drive extends Subsystem
         //currentLimit(leftDriveMaster);
         //currentLimit(rightDriveMaster);
 
-        leftDriveMaster.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 0);
-        rightDriveMaster.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 0);
-        leftDriveMaster.setSensorPhase(false);
-        rightDriveMaster.setSensorPhase(false);
+
     }
 
+    //you need to make a command called tank drive for it to be the default command for this subsystem
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
       }
 
-    public void setToPositionMode(){
-        leftDriveMaster.set(ControlMode.Position, 0);
-        rightDriveMaster.set(ControlMode.Position, 0);
+    public void setToPositionMode(int encoderTicks){             //this is supposed to be an encoder value
+                                                 //supposed to change
+        leftDriveMaster.set(ControlMode.Position, encoderTicks);
+        rightDriveMaster.set(ControlMode.Position, encoderTicks);
     }
-    public void setToPercentValue(){
-        leftDriveMaster.set(ControlMode.PercentOutput, 1);
-        rightDriveMaster.set(ControlMode.PercentOutput, 1);
+    public void setToPercentValue(double speed){
+                                                      //this is supposed to change 
+        leftDriveMaster.set(ControlMode.PercentOutput, speed);
+        rightDriveMaster.set(ControlMode.PercentOutput, speed);
     }
 
+    //we are not using an encoder that plugs into the TalonSRX
     public int getRightEncoder(){
-        return rightDriveMaster.getSensorCollection().getQuadraturePosition() / 2;
+        return RobotMap.rEncoder.get();
     }
 
+    //we are not using an encoder that plugs into the TalonSRX
     public int getLeftEncoder(){
-        return rightDriveMaster.getSensorCollection().getQuadraturePosition() / 2;
+        return RobotMap.lEncoder.get();
     }
 
     public int getAverageEncoder(){
