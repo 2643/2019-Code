@@ -27,6 +27,7 @@ public class Robot extends TimedRobot {
   public static Hatch hatch = new Hatch(RobotMap.HatchPiston);
   public static Elevator elevator = new Elevator(RobotMap.elevatorMotor, RobotMap.elevatorSlaveMotor);
   public static Drive drive = new Drive(RobotMap.lFrontMotor, RobotMap.lBackMotor, RobotMap.rFrontMotor, RobotMap.rBackMotor);
+  public static Carriage carriage = new Carriage(RobotMap.carriageMotor);
   //Command m_autonomousCommand;
   //SendableChooser<Command> m_chooser = new SendableChooser<>();
 

@@ -26,8 +26,11 @@ public class ElevatorDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
+    //If the robot hits the bottom limit, then it'll stop and reset the encoder, otherwise accelerate in negative speed
     if(RobotMap.elevatorBottomLimit.get()) {
       Robot.elevator.setZeroSpeed();
+      Robot.elevator.elevatorEncoderReset();
     }
     else {
       Robot.elevator.setNegativeSpeed(RobotMap.elevatorSpeed);

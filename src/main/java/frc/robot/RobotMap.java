@@ -8,9 +8,8 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import edu.wpi.first.wpilibj.DigitalInput;
 
-
+import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.first.wpilibj.*;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -29,7 +28,7 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
   
-  /**Porst */
+  /* Ports */
   //drive ports
   static int lFrontMotorPort = 0;   //TODO
   static int lBackMotorPort = 0;    //TODO
@@ -52,7 +51,11 @@ public class RobotMap {
   static int HatchMotorPort = 3;    //TODO
   public static int HatchLimitSwitchPort = 0; //TODO
 
-  /**Motors */
+  //carriage ports
+  static int carriageMotorPort = 0;
+  public static int carriagePotPort = 0; 
+
+  /* Motors */
   //Drive motors
   static WPI_TalonSRX lFrontMotor = new WPI_TalonSRX(lFrontMotorPort);
   static WPI_TalonSRX lBackMotor = new WPI_TalonSRX(lBackMotorPort);
@@ -67,20 +70,34 @@ public class RobotMap {
   static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
   static DoubleSolenoid HatchPiston = new DoubleSolenoid(SolenoidPort1, SolenoidPort2);
 
-  /**Sensors */
+  //carriage
+  static WPI_TalonSRX carriageMotor = new WPI_TalonSRX(carriageMotorPort);
+
+  /* Sensors */
   //drive sensors
   public static Encoder rEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder lEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
   
   //elevator sensors
-  static public DigitalInput elevatorBottomLimit = new DigitalInput(0);
+  public static DigitalInput elevatorBottomLimit = new DigitalInput(0);
 
   //hatch sensors
   public static DigitalInput HatchLimitSwitch = new DigitalInput(HatchLimitSwitchPort);
 
-  //TODO update all variables/input ports
-  static public double elevatorSpeed = 0.3;
-  static public int elevatorEncoderLimit = 100; //these are encoder ticks
- 
+  //carriage sensors
+  public static int carriagePotOffset = 0; //Must be before the next line
+  public static Potentiometer carriagePot = new AnalogPotentiometer(carriagePotPort, 3600, carriagePotOffset);
+
+  /* Variables */
+  //elevator variables
+  static public double elevatorSpeed = 0.3; //Temporary elevator speed. TODO elevator PIDS will have to be implemented.
+  static public int elevatorEncoderMaxLimit = 100; //this is the maximum encoder ticks allowed from the bottom upwards.
+  
+  //hatch variables
   public static double HatchMotorSpeed = 0;
+
+  //carriage variables
+  public static double carriageMotorSpeed = 0.15; //Carriage motor speed preset should probably implement PIDS
+  public static int carriageClockwiseMax = 2000; //TODO find out actual value of carriageClockwiseMax
+  public static int carriageCounterclockwiseMax = 500; //TODO find out actual value of carriageCounterclockwiseMax
 }

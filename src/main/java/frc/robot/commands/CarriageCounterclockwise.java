@@ -8,33 +8,29 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.RobotMap;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-public class ElevatorUp extends Command {
-  public ElevatorUp() {
+public class CarriageCounterclockwise extends Command {
+  public CarriageCounterclockwise() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.elevator);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    // Make sure encoder is at a 0 position
-    Robot.elevator.elevatorEncoderReset();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    if (Robot.elevator.getEncoder() <= RobotMap.elevatorEncoderMaxLimit) {
-      Robot.elevator.setPositiveSpeed(RobotMap.elevatorSpeed);
-    }
-    else {
-      Robot.elevator.setZeroSpeed();
-    }
+    if (RobotMap.carriagePot.get() >= RobotMap.carriageCounterclockwiseMax) {
+      Robot.carriage.carriageSetNegativeSpeed(RobotMap.carriageMotorSpeed);
+  }
+  else {
+    Robot.carriage.carriageSetZeroSpeed();
+  } 
   }
 
   // Make this return true when this Command no longer needs to run execute()
