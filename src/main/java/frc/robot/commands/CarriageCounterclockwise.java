@@ -49,7 +49,6 @@ public class CarriageCounterclockwise extends Command {
       return false;
     }
     else {
-      Robot.carriage.setCarriageSpeed(0);
       return true;
     }
   }
@@ -57,6 +56,9 @@ public class CarriageCounterclockwise extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    if (isFinished()) {
+      Robot.carriage.setCarriageSpeed(0);
+    }
   }
 
   // Called when another command which requires one or more of the same

@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -42,8 +42,14 @@ public class Elevator extends Subsystem {
   public void elevatorEncoderReset() {
     Elevator.getSensorCollection().setQuadraturePosition(0, 10);
   }
+
+  public boolean getElevatorLimitSwitch(){
+    return RobotMap.elevatorBottomLimit.get();
+  }
+
   @Override
   public void initDefaultCommand() {
+    elevatorEncoderReset();
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
