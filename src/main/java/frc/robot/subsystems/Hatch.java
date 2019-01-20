@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 
 /**
@@ -16,11 +17,13 @@ import edu.wpi.first.wpilibj.*;
  */
 public class Hatch extends Subsystem {
   DoubleSolenoid HatchSolenoid;
+  DoubleSolenoid HatchSolenoid2;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
     public Hatch(DoubleSolenoid hatchPiston){
         HatchSolenoid = hatchPiston;
     }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -31,12 +34,14 @@ public class Hatch extends Subsystem {
    */
   public void pistonIn(){
     HatchSolenoid.set(DoubleSolenoid.Value.kReverse);// This will pull the piston in.
+    HatchSolenoid2.set(DoubleSolenoid.Value.kReverse);
   }
   /**
    * This function will push the hatch piston out.
    */
   public void pistonOut(){
     HatchSolenoid.set(DoubleSolenoid.Value.kForward);// This will push the piston out.
+    HatchSolenoid2.set(DoubleSolenoid.Value.kForward);
   }
   /**
    * This moves the grabber down to pick up the hatch panel.

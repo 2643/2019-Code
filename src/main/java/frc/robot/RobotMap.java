@@ -44,8 +44,10 @@ public class RobotMap {
   static int elevatorSlavePort = 0; //TODO
 
   //solenoid ports
-  static int SolenoidPort1 = 1;     //TODO
-  static int SolenoidPort2 = 2;     //TODO
+  static int Solenoid1Port1 = 1;     //TODO
+  static int Solenoid1Port2 = 2;     //TODO
+  static int Solenoid2Port1 = 3;     //TODO
+  static int Solenoid2Port2 = 4;     //TODO
 
   //hatch ports 
   static int HatchMotorPort = 3;    //TODO
@@ -68,7 +70,8 @@ public class RobotMap {
 
   //hatch motors/solenoids
   static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
-  static DoubleSolenoid HatchPiston = new DoubleSolenoid(SolenoidPort1, SolenoidPort2);
+  static DoubleSolenoid HatchPiston = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
+  static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
 
   //carriage
   static WPI_TalonSRX carriageMotor = new WPI_TalonSRX(carriageMotorPort);
