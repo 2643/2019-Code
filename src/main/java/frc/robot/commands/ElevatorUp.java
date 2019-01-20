@@ -21,21 +21,13 @@ public class ElevatorUp extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    // Make sure encoder is at a 0 position
-    Robot.elevator.elevatorEncoderReset();
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
-    // Checks if the elevator is under the encoder limit, if it is, continue. Else, stop.
-    if (Robot.elevator.getEncoder() < RobotMap.elevatorEncoderMaxLimit) {
       Robot.elevator.setElevatorSpeed(RobotMap.elevatorSpeed);
-    }
-    else {
-      Robot.elevator.setElevatorSpeed(0);
-    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -49,7 +41,6 @@ public class ElevatorUp extends Command {
       return false;
     }
     else {
-      Robot.elevator.setElevatorSpeed(0);
       return true;
     }
   }
@@ -57,13 +48,13 @@ public class ElevatorUp extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.elevator.setElevatorSpeed(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    // Just in case
-    Robot.elevator.setElevatorSpeed(0);
+    end();
   }
 }

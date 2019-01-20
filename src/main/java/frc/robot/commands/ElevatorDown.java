@@ -26,15 +26,7 @@ public class ElevatorDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    //If the robot hits the bottom limit, then it'll stop and reset the encoder, otherwise accelerate in negative speed
-    if(Robot.elevator.getElevatorLimitSwitch()) {
-      Robot.elevator.setElevatorSpeed(0);
-      Robot.elevator.elevatorEncoderReset();
-    }
-    else {
-      Robot.elevator.setElevatorSpeed(-RobotMap.elevatorSpeed);
-    }
+    Robot.elevator.setElevatorSpeed(-RobotMap.elevatorSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -56,15 +48,15 @@ public class ElevatorDown extends Command {
   protected void end() {
     //Just in case
     if (isFinished()) {
-      Robot.elevator.setElevatorSpeed(0);
       Robot.elevator.elevatorEncoderReset();
     }
+    Robot.elevator.setElevatorSpeed(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.elevator.setElevatorSpeed(0); 
+    end();
   }
 }
