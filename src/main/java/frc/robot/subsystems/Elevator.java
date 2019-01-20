@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * Add your docs here.
+ * Subsystem for elevator lifting the carriage subsystem.
  */
 public class Elevator extends Subsystem {
   // Put methods for controlling this subsystem
@@ -29,6 +29,9 @@ public class Elevator extends Subsystem {
 
   // Set elevator's speed
   public void setElevatorSpeed(double speed) {
+    /**
+     * Set the elevator's speed; Takes a double.
+     */
     Elevator.set(speed);
   }
 
