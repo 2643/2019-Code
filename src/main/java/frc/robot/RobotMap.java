@@ -54,8 +54,13 @@ public class RobotMap {
   public static int HatchLimitSwitchPort = 0; //TODO
 
   //carriage ports
-  static int carriageMotorPort = 0;
-  public static int carriagePotPort = 0; 
+  static int carriageMotorPort = 0; //TODO
+  public static int carriagePotPort = 0; //TODO
+  
+  //cargo ports
+  static int cargoIntakePort1 = 0; //TODO
+  static int cargoIntakePort2 = 0; //TODO
+  static int cargoRetractPort = 0; //TODO
 
   /* Motors */
   //Drive motors
@@ -75,6 +80,11 @@ public class RobotMap {
 
   //carriage
   static WPI_TalonSRX carriageMotor = new WPI_TalonSRX(carriageMotorPort);
+
+  //cargo
+  static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
+  static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
+  static WPI_TalonSRX cargoRetractMotor = new WPI_TalonSRX(cargoRetractPort);
 
   /* Sensors */
   //drive sensors
@@ -107,4 +117,7 @@ public class RobotMap {
   public static double carriageMotorSpeed = 0.15; //Carriage motor speed preset should probably implement PIDS
   public static int carriageClockwiseMax = 2000; //TODO find out actual value of carriageClockwiseMax
   public static int carriageCounterclockwiseMin = 500; //TODO find out actual value of carriageCounterclockwiseMax
+
+  //cargo variables
+  public static double cargoIntakeSpeed = 0.5; //TODO Check
 }

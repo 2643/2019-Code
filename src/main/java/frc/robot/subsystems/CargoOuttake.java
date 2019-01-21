@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class CargoOuttake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public WPI_TalonSRX CarriageOuttake;
+  public WPI_TalonSRX CargoOuttake;
 
   @Override
   public void initDefaultCommand() {
@@ -25,7 +25,11 @@ public class CargoOuttake extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
+  /**
+   * Sets the speed
+   * @param speed Speed
+   */
   public void setSpeed(double speed){
-    CarriageOuttake.set(speed);
+    CargoOuttake.set(speed);
   }
 }
