@@ -51,11 +51,28 @@ public class RobotMap {
 
   //hatch ports 
   static int HatchMotorPort = 3;    //TODO
-  public static int HatchLimitSwitchPort = 0; //TODO
+  public static int HatchTopPort = 0; //TODO
+  public static int HatchBottomPort = 0; //TODO
 
   //carriage ports
-  static int carriageMotorPort = 0;   //TODO
-  public static int carriagePotPort = 0;    //TODO
+  static int carriageMotorPort = 0;  //TODO
+  public static int carriagePotPort = 0; //TODO
+
+  // IR sensor ports
+  public static int irLeftPort1 = 1;  //TODO
+  public static int irLeftPort2 = 2;  //TODO
+  public static int irLeftPort3 = 3;  //TODO
+  public static int irLeftPort4 = 4;  //TODO
+  public static int irRightPort1 = 5; //TODO
+  public static int irRightPort2 = 6; //TODO
+  public static int irRightPort3 = 7; //tODO
+  public static int irRightPort4 = 8; //TODO
+
+  //cargo ports
+  static int cargoIntakePort1 = 0; //TODO
+  static int cargoIntakePort2 = 0; //TODO
+  static int cargoRetractPort = 0; //TODO
+  static int cargoIntakePotPort = 0; //TODO
 
   /* Motors */
   //Drive motors
@@ -76,6 +93,11 @@ public class RobotMap {
   //carriage
   static WPI_TalonSRX carriageMotor = new WPI_TalonSRX(carriageMotorPort);
 
+  //cargo
+  static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
+  static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
+  static WPI_TalonSRX cargoRetractMotor = new WPI_TalonSRX(cargoRetractPort);
+
   /* Sensors */
   //drive sensors
   public static Encoder rEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
@@ -85,11 +107,25 @@ public class RobotMap {
   public static DigitalInput elevatorBottomLimit = new DigitalInput(0);
 
   //hatch sensors
-  public static DigitalInput HatchLimitSwitch = new DigitalInput(HatchLimitSwitchPort);
+  public static DigitalInput HatchTopSwitch = new DigitalInput(HatchTopPort);
+  public static DigitalInput HatchBottomSwitch = new DigitalInput(HatchBottomPort);
 
   //carriage sensors
   public static int carriagePotOffset = 0; //Must be before the next line
   public static Potentiometer carriagePot = new AnalogPotentiometer(carriagePotPort, 3600, carriagePotOffset);
+
+  //cargo sensors
+  public static Potentiometer cargoIntakePot = new AnalogPotentiometer(cargoIntakePotPort, 3600, cargoIntakePotOffset);
+
+  //IR sensors
+  public static DigitalInput irLeft1 = new DigitalInput(irLeftPort1);
+  public static DigitalInput irLeft2 = new DigitalInput(irLeftPort2);
+  public static DigitalInput irLeft3 = new DigitalInput(irLeftPort3);
+  public static DigitalInput irLeft4 = new DigitalInput(irLeftPort4);
+  public static DigitalInput irRight1 = new DigitalInput(irRightPort1);
+  public static DigitalInput irRight2 = new DigitalInput(irRightPort2);
+  public static DigitalInput irRight3 = new DigitalInput(irRightPort3);
+  public static DigitalInput irRight4 = new DigitalInput(irRightPort4);
 
   /* Variables */
   //drive varibles
@@ -101,10 +137,20 @@ public class RobotMap {
   static public int elevatorEncoderMaxLimit = 100; //This is the maximum encoder ticks allowed from the bottom upwards.
   
   //hatch variables
-  public static double HatchMotorSpeed = 0;
+  public static double hatchDownSpeed = 0; //TODO
+  public static double hatchUpSpeed = 0; //TODO
+  public static Timer hatchPistonTimer = new Timer();
+  public static int hatchPistonOutTime = 3; //TODO Test this out 
 
   //carriage variables
   public static double carriageMotorSpeed = 0.15; //Carriage motor speed preset should probably implement PIDS
   public static int carriageClockwiseMax = 2000; //TODO find out actual value of carriageClockwiseMax
   public static int carriageCounterclockwiseMin = 500; //TODO find out actual value of carriageCounterclockwiseMax
+
+  //cargo variables
+  public static double cargoIntakeSpeed = 0.5; //TODO Check
+  public static double cargoReleaseSpeed = 0.5; //TODO 
+  public static double cargoRetractSpeed = 0.5; //TODO
+  public static double cargoIntakeDown = 30; //TODO Check this please with the real robot
+  static int cargoIntakePotOffset = 0; //TODO
 }

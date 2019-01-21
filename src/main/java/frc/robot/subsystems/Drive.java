@@ -15,7 +15,11 @@ public class Drive extends Subsystem
     private final WPI_TalonSRX rightDriveMaster;
     private final WPI_TalonSRX rightDriveSlave;
     /**
-     * Sets leftDriveSlave and rightDriveSlave as followers
+     * Drive constructor 
+     * @param l1 left front motor
+     * @param l2 left back motor
+     * @param r1 right front motor
+     * @param r2 right back motor 
      */
     public Drive(WPI_TalonSRX l1, WPI_TalonSRX l2, WPI_TalonSRX r1, WPI_TalonSRX r2){
         leftDriveMaster = l1;

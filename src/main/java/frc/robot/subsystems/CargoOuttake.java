@@ -10,6 +10,8 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.DigitalInput;
+import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
@@ -17,7 +19,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class CargoOuttake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public WPI_TalonSRX CarriageOuttake;
+  public WPI_TalonSRX CargoOuttake;
 
   @Override
   public void initDefaultCommand() {
@@ -25,7 +27,16 @@ public class CargoOuttake extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
+  public DigitalInput[][] getIrSensors() {
+    DigitalInput[][] SensorArray = 
+     {{RobotMap.irLeft1, RobotMap.irRight1},
+      {RobotMap.irLeft2, RobotMap.irRight1},
+      {RobotMap.irLeft3, RobotMap.irRight3},
+      {RobotMap.irLeft4, RobotMap.irRight4}};
+    return SensorArray;
+  }
+
   public void setSpeed(double speed){
-    CarriageOuttake.set(speed);
+    CargoOuttake.set(speed);
   }
 }

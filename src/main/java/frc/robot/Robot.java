@@ -21,10 +21,11 @@ import frc.robot.RobotMap;
  */
 public class Robot extends TimedRobot {
   public static OI oi;
-  public static Hatch hatch = new Hatch(RobotMap.HatchPiston);
+  public static Hatch hatch = new Hatch(RobotMap.HatchPiston, RobotMap.HatchPiston2, RobotMap.HatchTalon);
   public static Elevator elevator = new Elevator(RobotMap.elevatorMotor, RobotMap.elevatorSlaveMotor);
   public static Drive drive = new Drive(RobotMap.lFrontMotor, RobotMap.lBackMotor, RobotMap.rFrontMotor, RobotMap.rBackMotor);
   public static Carriage carriage = new Carriage(RobotMap.carriageMotor);
+  public static CargoIntake cargoIntake = new CargoIntake(RobotMap.cargoIntakeMotor1, RobotMap.cargoIntakeMotor2, RobotMap.cargoRetractMotor);
   //Command m_autonomousCommand;
   //SendableChooser<Command> m_chooser = new SendableChooser<>();
 

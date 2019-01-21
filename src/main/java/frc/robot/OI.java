@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
-import frc.robot.subsystems.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -38,6 +37,8 @@ public class OI {
   Button carriageClockwise = new JoystickButton(operatorStick, 4);
   Button carriageCounterclockwise = new JoystickButton(operatorStick, 5);
 
+  Button cargoOuttakeLeft = new JoystickButton(operatorStick, 6);
+  Button cargoOuttakeRight = new JoystickButton(operatorStick, 7);
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.
@@ -65,6 +66,9 @@ public class OI {
 
     carriageClockwise.whenPressed(new CarriageClockwise());
     carriageCounterclockwise.whenPressed(new CarriageCounterclockwise());
+
+    cargoOuttakeLeft.whenPressed(new CargoOuttakeLeft());
+    cargoOuttakeRight.whenPressed(new CargoOuttakeRight());
   }
 
   public Joystick getDriverStick(){
