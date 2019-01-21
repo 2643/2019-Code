@@ -59,6 +59,6 @@ public class CarriageCounterclockwise extends Command {
   @Override
   protected void interrupted() {
     //Just in case
-    end();
+    end(); 
   }
 }
