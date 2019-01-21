@@ -142,7 +142,7 @@ public class RobotMap {
 
   //elevator variables
   static public double elevatorSpeed = 0.3; //Temporary elevator speed. TODO elevator PIDS will have to be implemented.
-  static public int elevatorEncoderMaxLimit = 100; //this is the maximum encoder ticks allowed from the bottom upwards.
+  static public int elevatorEncoderMaxLimit = 100; //This is the maximum encoder ticks allowed from the bottom upwards.
   
   //hatch variables
   public static double hatchDownSpeed = 0; //TODO
