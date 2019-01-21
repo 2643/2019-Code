@@ -73,7 +73,6 @@ public class RobotMap {
   static int cargoIntakePort2 = 0; //TODO
   static int cargoRetractPort = 0; //TODO
   static int cargoIntakePotPort = 0; //TODO
-  static int cargoIntakePotOffset = 0; //TODO
 
   /* Motors */
   //Drive motors
@@ -153,4 +152,5 @@ public class RobotMap {
   public static double cargoReleaseSpeed = 0.5; //TODO 
   public static double cargoRetractSpeed = 0.5; //TODO
   public static double cargoIntakeDown = 30; //TODO Check this please with the real robot
+  static int cargoIntakePotOffset = 0; //TODO
 }
