@@ -54,8 +54,8 @@ public class RobotMap {
   public static int HatchLimitSwitchPort = 0; //TODO
 
   //carriage ports
-  static int carriageMotorPort = 0;
-  public static int carriagePotPort = 0; 
+  static int carriageMotorPort = 0;   //TODO
+  public static int carriagePotPort = 0;    //TODO
 
   /* Motors */
   //Drive motors
@@ -98,7 +98,7 @@ public class RobotMap {
 
   //elevator variables
   static public double elevatorSpeed = 0.3; //Temporary elevator speed. TODO elevator PIDS will have to be implemented.
-  static public int elevatorEncoderMaxLimit = 100; //this is the maximum encoder ticks allowed from the bottom upwards.
+  static public int elevatorEncoderMaxLimit = 100; //This is the maximum encoder ticks allowed from the bottom upwards.
   
   //hatch variables
   public static double HatchMotorSpeed = 0;
