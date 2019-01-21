@@ -72,6 +72,8 @@ public class RobotMap {
   static int cargoIntakePort1 = 0; //TODO
   static int cargoIntakePort2 = 0; //TODO
   static int cargoRetractPort = 0; //TODO
+  static int cargoIntakePotPort = 0; //TODO
+  static int cargoIntakePotOffset = 0; //TODO
 
   /* Motors */
   //Drive motors
@@ -113,6 +115,9 @@ public class RobotMap {
   public static int carriagePotOffset = 0; //Must be before the next line
   public static Potentiometer carriagePot = new AnalogPotentiometer(carriagePotPort, 3600, carriagePotOffset);
 
+  //cargo sensors
+  public static Potentiometer cargoIntakePot = new AnalogPotentiometer(cargoIntakePotPort, 3600, cargoIntakePotOffset);
+
   //IR sensors
   public static DigitalInput irLeft1 = new DigitalInput(irLeftPort1);
   public static DigitalInput irLeft2 = new DigitalInput(irLeftPort2);
@@ -143,4 +148,6 @@ public class RobotMap {
 
   //cargo variables
   public static double cargoIntakeSpeed = 0.5; //TODO Check
+  public static double cargoReleaseSpeed = 0.5; //TODO 
+  public static double cargoIntakeDown = 30; //TODO Check this please with the real robot
 }
