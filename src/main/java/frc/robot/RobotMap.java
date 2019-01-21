@@ -54,9 +54,19 @@ public class RobotMap {
   public static int HatchLimitSwitchPort = 0; //TODO
 
   //carriage ports
-  static int carriageMotorPort = 0; //TODO
-  public static int carriagePotPort = 0; //TODO
-  
+  static int carriageMotorPort = 0;
+  public static int carriagePotPort = 0;
+
+  // IR sensor ports
+  public static int irLeftPort1 = 1;
+  public static int irLeftPort2 = 2;
+  public static int irLeftPort3 = 3;
+  public static int irLeftPort4 = 4;
+  public static int irRightPort1 = 5;
+  public static int irRightPort2 = 6;
+  public static int irRightPort3 = 7;
+  public static int irRightPort4 = 8;
+
   //cargo ports
   static int cargoIntakePort1 = 0; //TODO
   static int cargoIntakePort2 = 0; //TODO
@@ -100,6 +110,16 @@ public class RobotMap {
   //carriage sensors
   public static int carriagePotOffset = 0; //Must be before the next line
   public static Potentiometer carriagePot = new AnalogPotentiometer(carriagePotPort, 3600, carriagePotOffset);
+
+  //IR sensors
+  public static DigitalInput irLeft1 = new DigitalInput(irLeftPort1);
+  public static DigitalInput irLeft2 = new DigitalInput(irLeftPort2);
+  public static DigitalInput irLeft3 = new DigitalInput(irLeftPort3);
+  public static DigitalInput irLeft4 = new DigitalInput(irLeftPort4);
+  public static DigitalInput irRight1 = new DigitalInput(irRightPort1);
+  public static DigitalInput irRight2 = new DigitalInput(irRightPort2);
+  public static DigitalInput irRight3 = new DigitalInput(irRightPort3);
+  public static DigitalInput irRight4 = new DigitalInput(irRightPort4);
 
   /* Variables */
   //drive varibles
