@@ -51,7 +51,7 @@ public class RobotMap {
 
   //hatch ports 
   static int HatchMotorPort = 3;    //TODO
-  public static int HatchLimitSwitchPort = 0; //TODO
+  public static int HatchIRSensorPort = 0; //TODO
 
   //carriage ports
   static int carriageMotorPort = 0;
@@ -105,7 +105,7 @@ public class RobotMap {
   public static DigitalInput elevatorBottomLimit = new DigitalInput(0);
 
   //hatch sensors
-  public static DigitalInput HatchLimitSwitch = new DigitalInput(HatchLimitSwitchPort);
+  public static DigitalInput HatchIRSwitch = new DigitalInput(HatchIRSensorPort);
 
   //carriage sensors
   public static int carriagePotOffset = 0; //Must be before the next line
@@ -131,7 +131,8 @@ public class RobotMap {
   static public int elevatorEncoderMaxLimit = 100; //this is the maximum encoder ticks allowed from the bottom upwards.
   
   //hatch variables
-  public static double HatchMotorSpeed = 0;
+  public static double hatchDownSpeed = 0; //TODO
+  public static double hatchUpSpeed = 0; //TODO
 
   //carriage variables
   public static double carriageMotorSpeed = 0.15; //Carriage motor speed preset should probably implement PIDS

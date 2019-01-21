@@ -8,8 +8,9 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.*;
-
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  * Add your docs here.
@@ -17,10 +18,13 @@ import edu.wpi.first.wpilibj.*;
 public class Hatch extends Subsystem {
   DoubleSolenoid HatchSolenoid;
   DoubleSolenoid HatchSolenoid2;
+  WPI_TalonSRX hatchMotor;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-    public Hatch(DoubleSolenoid hatchPiston){
-        HatchSolenoid = hatchPiston;
+    public Hatch(DoubleSolenoid hatchPiston1, DoubleSolenoid hatchPiston2, WPI_TalonSRX hatchM){
+        HatchSolenoid = hatchPiston1;
+        HatchSolenoid2 = hatchPiston2;
+        hatchMotor = hatchM;
     }
  
   @Override
@@ -46,11 +50,20 @@ public class Hatch extends Subsystem {
    * This moves the grabber down to pick up the hatch panel.
    */
   public void moveDown(){
+    hatchMotor.set(RobotMap.hatchDownSpeed);
   }
   /**
    * This moves the grabber back up.
    */
   public void moveUp(){
+    hatchMotor.set(RobotMap.hatchUpSpeed);
+  }
 
+  /**
+   * Checks if the IR sensor is activated or not
+   *  Will be activated when the hatch mechanism is fully up or fully down
+   */
+  public boolean limitTriggered(){
+    return RobotMap.HatchIRSwitch.get();
   }
 }
