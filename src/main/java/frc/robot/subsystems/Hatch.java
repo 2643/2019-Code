@@ -67,4 +67,11 @@ public class Hatch extends Subsystem {
   public boolean getBottomLimit(){
     return RobotMap.HatchBottomSwitch.get();
   }
+
+  /**
+   * Returns the value of the timer used to determine
+   */
+  public Timer getTimer(){
+    return RobotMap.hatchPistonTimer;
+  }
 }
