@@ -51,26 +51,29 @@ public class RobotMap {
 
   //hatch ports 
   static int HatchMotorPort = 3;    //TODO
-  public static int HatchIRSensorPort = 0; //TODO
+  public static int HatchTopPort = 0; //TODO
+  public static int HatchBottomPort = 0; //TODO
 
   //carriage ports
-  static int carriageMotorPort = 0;
-  public static int carriagePotPort = 0;
+  static int carriageMotorPort = 0;  //TODO
+  public static int carriagePotPort = 0; //TODO
 
   // IR sensor ports
-  public static int irLeftPort1 = 1;
-  public static int irLeftPort2 = 2;
-  public static int irLeftPort3 = 3;
-  public static int irLeftPort4 = 4;
-  public static int irRightPort1 = 5;
-  public static int irRightPort2 = 6;
-  public static int irRightPort3 = 7;
-  public static int irRightPort4 = 8;
+  public static int irLeftPort1 = 1;  //TODO
+  public static int irLeftPort2 = 2;  //TODO
+  public static int irLeftPort3 = 3;  //TODO
+  public static int irLeftPort4 = 4;  //TODO
+  public static int irRightPort1 = 5; //TODO
+  public static int irRightPort2 = 6; //TODO
+  public static int irRightPort3 = 7; //tODO
+  public static int irRightPort4 = 8; //TODO
 
   //cargo ports
   static int cargoIntakePort1 = 0; //TODO
   static int cargoIntakePort2 = 0; //TODO
   static int cargoRetractPort = 0; //TODO
+  static int cargoIntakePotPort = 0; //TODO
+  static int cargoIntakePotOffset = 0; //TODO
 
   /* Motors */
   //Drive motors
@@ -105,11 +108,15 @@ public class RobotMap {
   public static DigitalInput elevatorBottomLimit = new DigitalInput(0);
 
   //hatch sensors
-  public static DigitalInput HatchIRSwitch = new DigitalInput(HatchIRSensorPort);
+  public static DigitalInput HatchTopSwitch = new DigitalInput(HatchTopPort);
+  public static DigitalInput HatchBottomSwitch = new DigitalInput(HatchBottomPort);
 
   //carriage sensors
   public static int carriagePotOffset = 0; //Must be before the next line
   public static Potentiometer carriagePot = new AnalogPotentiometer(carriagePotPort, 3600, carriagePotOffset);
+
+  //cargo sensors
+  public static Potentiometer cargoIntakePot = new AnalogPotentiometer(cargoIntakePotPort, 3600, cargoIntakePotOffset);
 
   //IR sensors
   public static DigitalInput irLeft1 = new DigitalInput(irLeftPort1);
@@ -133,6 +140,8 @@ public class RobotMap {
   //hatch variables
   public static double hatchDownSpeed = 0; //TODO
   public static double hatchUpSpeed = 0; //TODO
+  public static Timer hatchPistonTimer = new Timer();
+  public static int hatchPistonOutTime = 3; //TODO Test this out 
 
   //carriage variables
   public static double carriageMotorSpeed = 0.15; //Carriage motor speed preset should probably implement PIDS
@@ -141,4 +150,6 @@ public class RobotMap {
 
   //cargo variables
   public static double cargoIntakeSpeed = 0.5; //TODO Check
+  public static double cargoReleaseSpeed = 0.5; //TODO 
+  public static double cargoIntakeDown = 30; //TODO Check this please with the real robot
 }

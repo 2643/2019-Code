@@ -7,13 +7,11 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 import frc.robot.*;
 
-public class ReleaseHatch extends Command {
-  public ReleaseHatch() {
+public class MoveHatchUp extends Command {
+  public MoveHatchUp() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.hatch);
@@ -27,14 +25,14 @@ public class ReleaseHatch extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {  
-    Robot.hatch.pistonOut();
+  protected void execute() {
+    Robot.hatch.setMotorSpeed(RobotMap.hatchUpSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.hatch.getTimer().get() == RobotMap.hatchPistonOutTime)
+    if(Robot.hatch.getTopLimit())
       return true;
     return false;
   }
@@ -42,7 +40,7 @@ public class ReleaseHatch extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.hatch.pistonIn();
+    Robot.hatch.setMotorSpeed(0);
   }
 
   // Called when another command which requires one or more of the same
