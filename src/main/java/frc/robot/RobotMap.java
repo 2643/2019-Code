@@ -77,8 +77,11 @@ public class RobotMap {
   static int cargoIntakePort2 = 0; //TODO
   static int cargoRetractPort = 0; //TODO
   static int cargoIntakePotPort = 0; //TODO
+<<<<<<< HEAD
   static int cargoIntakePotOffset = 0; //TODO
   public static int cargoOuttakePort  = 0; //TODO
+=======
+>>>>>>> cfb5cb1779584f12d8b903eb8d5e45dbd0382b6d
 
   /* Motors */
   //Drive motors
@@ -158,5 +161,9 @@ public class RobotMap {
   public static double cargoReleaseSpeed = 0.5; //TODO 
   public static double cargoRetractSpeed = 0.5; //TODO
   public static double cargoIntakeDown = 30; //TODO Check this please with the real robot
+<<<<<<< HEAD
   public static double cargoOuttakeSpeed = 0.3
+=======
+  static int cargoIntakePotOffset = 0; //TODO
+>>>>>>> cfb5cb1779584f12d8b903eb8d5e45dbd0382b6d
 }

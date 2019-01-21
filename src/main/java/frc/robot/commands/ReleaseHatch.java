@@ -34,9 +34,11 @@ public class ReleaseHatch extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.hatch.getTimer().get() == RobotMap.hatchPistonOutTime)
+    if(Robot.hatch.getTimer().get() == RobotMap.hatchPistonOutTime){
       return true;
-    return false;
+    } else{
+      return false;
+    }
   }
 
   // Called once after isFinished returns true
