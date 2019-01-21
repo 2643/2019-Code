@@ -105,7 +105,7 @@ public class RobotMap {
   static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
   static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
   static WPI_TalonSRX cargoRetractMotor = new WPI_TalonSRX(cargoRetractPort);
-  static WPI_TalonSRX cargoOuttake = new WPI_TalonSRX(cargoOuttakePort);
+  static WPI_TalonSRX cargoOuttakeMotor = new WPI_TalonSRX(cargoOuttakePort);
 
   /* Sensors */
   //drive sensors
