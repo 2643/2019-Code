@@ -32,9 +32,11 @@ public class ReleaseCargoIntake extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.cargoIntake.getPotentiometer() == RobotMap.cargoIntakeDown)
+    if(Robot.cargoIntake.getPotentiometer() == RobotMap.cargoIntakeDown){
       return true;
-    return false;
+    } else{
+      return false;
+    }
   }
 
   // Called once after isFinished returns true
