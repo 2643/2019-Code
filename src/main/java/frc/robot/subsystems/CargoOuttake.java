@@ -19,7 +19,11 @@ import frc.robot.RobotMap;
 public class CargoOuttake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public WPI_TalonSRX CargoOuttake;
+  public WPI_TalonSRX cargoOuttake;
+
+  public CargoOuttake(WPI_TalonSRX cargoMotor) {
+    cargoOuttake = cargoMotor;
+  }
 
   @Override
   public void initDefaultCommand() {
@@ -28,15 +32,15 @@ public class CargoOuttake extends Subsystem {
   }
 
   public DigitalInput[][] getIrSensors() {
-    DigitalInput[][] SensorArray = 
+    DigitalInput[][] sensorArray = 
      {{RobotMap.irLeft1, RobotMap.irRight1},
       {RobotMap.irLeft2, RobotMap.irRight1},
       {RobotMap.irLeft3, RobotMap.irRight3},
       {RobotMap.irLeft4, RobotMap.irRight4}};
-    return SensorArray;
+    return sensorArray;
   }
 
-  public void setSpeed(double speed){
-    CargoOuttake.set(speed);
+  public void setCargoSpeed(double speed){
+    cargoOuttake.set(speed);
   }
 }

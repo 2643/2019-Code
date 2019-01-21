@@ -27,6 +27,10 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
+
+  /* Pot Offsets */
+  //Carraige offset
+  public static int carriagePotOffset = 0; //Must be before the next line
   
   /* Ports */
   //drive ports
@@ -74,6 +78,7 @@ public class RobotMap {
   static int cargoRetractPort = 0; //TODO
   static int cargoIntakePotPort = 0; //TODO
   static int cargoIntakePotOffset = 0; //TODO
+  public static int cargoOuttakePort  = 0; //TODO
 
   /* Motors */
   //Drive motors
@@ -98,6 +103,7 @@ public class RobotMap {
   static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
   static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
   static WPI_TalonSRX cargoRetractMotor = new WPI_TalonSRX(cargoRetractPort);
+  static WPI_TalonSRX cargoOuttake = new WPI_TalonSRX(cargoOuttakePort);
 
   /* Sensors */
   //drive sensors
@@ -112,7 +118,6 @@ public class RobotMap {
   public static DigitalInput HatchBottomSwitch = new DigitalInput(HatchBottomPort);
 
   //carriage sensors
-  public static int carriagePotOffset = 0; //Must be before the next line
   public static Potentiometer carriagePot = new AnalogPotentiometer(carriagePotPort, 3600, carriagePotOffset);
 
   //cargo sensors
@@ -153,4 +158,5 @@ public class RobotMap {
   public static double cargoReleaseSpeed = 0.5; //TODO 
   public static double cargoRetractSpeed = 0.5; //TODO
   public static double cargoIntakeDown = 30; //TODO Check this please with the real robot
+  public static double cargoOuttakeSpeed = 0.3
 }
