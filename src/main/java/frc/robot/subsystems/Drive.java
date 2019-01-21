@@ -118,7 +118,4 @@ public class Drive extends Subsystem
     public void stopAllSpeed(){
         setAllSpeed(0);
     }
-    
-	public void driveWithJoystick(Joystick driverStick) {
-	}
 }
