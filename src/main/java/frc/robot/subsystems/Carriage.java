@@ -12,7 +12,9 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * Add your docs here.
+ * Moves the "carriage" system at the top of the elevator.
+ * 
+ * @return
  */
 public class Carriage extends Subsystem {
   // Put methods for controlling this subsystem
@@ -23,6 +25,10 @@ public class Carriage extends Subsystem {
     Carriage = carriageMotor;
   }
 
+  /**
+   * Sets the Carriage speed.
+   * @param speed
+   */
   public void setCarriageSpeed(double speed) {
     Carriage.set(speed);
   }
