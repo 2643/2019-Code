@@ -51,21 +51,22 @@ public class RobotMap {
 
   //hatch ports 
   static int HatchMotorPort = 3;    //TODO
-  public static int HatchIRSensorPort = 0; //TODO
+  public static int HatchTopPort = 0; //TODO
+  public static int HatchBottomPort = 0; //TODO
 
   //carriage ports
-  static int carriageMotorPort = 0;
-  public static int carriagePotPort = 0;
+  static int carriageMotorPort = 0;  //TODO
+  public static int carriagePotPort = 0; //TODO
 
   // IR sensor ports
-  public static int irLeftPort1 = 1;
-  public static int irLeftPort2 = 2;
-  public static int irLeftPort3 = 3;
-  public static int irLeftPort4 = 4;
-  public static int irRightPort1 = 5;
-  public static int irRightPort2 = 6;
-  public static int irRightPort3 = 7;
-  public static int irRightPort4 = 8;
+  public static int irLeftPort1 = 1;  //TODO
+  public static int irLeftPort2 = 2;  //TODO
+  public static int irLeftPort3 = 3;  //TODO
+  public static int irLeftPort4 = 4;  //TODO
+  public static int irRightPort1 = 5; //TODO
+  public static int irRightPort2 = 6; //TODO
+  public static int irRightPort3 = 7; //tODO
+  public static int irRightPort4 = 8; //TODO
 
   //cargo ports
   static int cargoIntakePort1 = 0; //TODO
@@ -105,7 +106,8 @@ public class RobotMap {
   public static DigitalInput elevatorBottomLimit = new DigitalInput(0);
 
   //hatch sensors
-  public static DigitalInput HatchIRSwitch = new DigitalInput(HatchIRSensorPort);
+  public static DigitalInput HatchTopSwitch = new DigitalInput(HatchTopPort);
+  public static DigitalInput HatchBottomSwitch = new DigitalInput(HatchBottomPort);
 
   //carriage sensors
   public static int carriagePotOffset = 0; //Must be before the next line

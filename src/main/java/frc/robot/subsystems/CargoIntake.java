@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+import frc.robot.*;
 /**
  * Add your docs here.
  */
@@ -53,5 +53,13 @@ public class CargoIntake extends Subsystem {
    */
   public void setRectractSpeed(double speed){
     RetractMotor.set(speed); //TODO Test this
+  }
+
+
+  /**
+   * 
+   */
+  public int getPotentiometer(){
+    return RobotMap.cargoIntakePot.get();
   }
 }

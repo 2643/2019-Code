@@ -47,23 +47,24 @@ public class Hatch extends Subsystem {
     HatchSolenoid2.set(DoubleSolenoid.Value.kForward);
   }
   /**
-   * This moves the grabber down to pick up the hatch panel.
+   * This sets the grabber to a speed
+   * @param speed the speed to set the motor from -1 to 1
    */
-  public void moveDown(){
-    hatchMotor.set(RobotMap.hatchDownSpeed);
-  }
-  /**
-   * This moves the grabber back up.
-   */
-  public void moveUp(){
-    hatchMotor.set(RobotMap.hatchUpSpeed);
+  public void setMotorSpeed(double speed){
+    hatchMotor.set(speed);
   }
 
   /**
-   * Checks if the IR sensor is activated or not
-   *  Will be activated when the hatch mechanism is fully up or fully down
+   * Sends the status of the top limit switch on the hatch mechanism
    */
-  public boolean limitTriggered(){
-    return RobotMap.HatchIRSwitch.get();
+  public boolean getTopLimit(){
+    return RobotMap.HatchTopSwitch.get();
+  }
+
+  /**
+   * Sends the status of the bottom limit switch on the hatch mechanism
+   */
+  public boolean getBottomLimit(){
+    return RobotMap.HatchBottomSwitch.get();
   }
 }
