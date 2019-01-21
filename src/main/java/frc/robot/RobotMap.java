@@ -151,5 +151,6 @@ public class RobotMap {
   //cargo variables
   public static double cargoIntakeSpeed = 0.5; //TODO Check
   public static double cargoReleaseSpeed = 0.5; //TODO 
+  public static double cargoRetractSpeed = 0.5; //TODO
   public static double cargoIntakeDown = 30; //TODO Check this please with the real robot
 }
