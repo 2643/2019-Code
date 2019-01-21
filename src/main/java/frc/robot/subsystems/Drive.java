@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
@@ -117,4 +118,7 @@ public class Drive extends Subsystem
     public void stopAllSpeed(){
         setAllSpeed(0);
     }
+    
+	public void driveWithJoystick(Joystick driverStick) {
+	}
 }
