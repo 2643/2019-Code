@@ -26,9 +26,7 @@ public class CarriageClockwise extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (RobotMap.carriagePot.get() < RobotMap.carriageClockwiseMax) {
-      Robot.carriage.setCarriageSpeed(RobotMap.carriageMotorSpeed);
-    }
+    Robot.carriage.setCarriageSpeed(RobotMap.carriageMotorSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -49,7 +47,7 @@ public class CarriageClockwise extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    //Stop carriage
+    //Just in case
     Robot.carriage.setCarriageSpeed(0);
   }
   
@@ -57,7 +55,6 @@ public class CarriageClockwise extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    //Stop carriage
     end();
   }
 }

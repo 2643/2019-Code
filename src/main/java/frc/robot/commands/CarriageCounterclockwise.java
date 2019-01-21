@@ -27,6 +27,7 @@ public class CarriageCounterclockwise extends Command {
   @Override
   protected void execute() {
 
+    //Check if pot is over the counterclockwise limit, if true, accel negatively, otherwise stop.
     //TODO check direction of potentiometer.
     //TODO Specifically in which way it increases/decreases.
     Robot.carriage.setCarriageSpeed(-RobotMap.carriageMotorSpeed);
@@ -50,7 +51,6 @@ public class CarriageCounterclockwise extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    //Stop carriage
     Robot.carriage.setCarriageSpeed(0);
   }
 
@@ -58,7 +58,7 @@ public class CarriageCounterclockwise extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    //Stop carriage
+    //Just in case
     end();
   }
 }

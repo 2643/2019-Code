@@ -23,7 +23,7 @@ public class Hatch extends Subsystem {
     public Hatch(DoubleSolenoid hatchPiston){
         HatchSolenoid = hatchPiston;
     }
-
+ 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
