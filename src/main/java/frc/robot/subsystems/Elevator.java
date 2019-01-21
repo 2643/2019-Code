@@ -28,24 +28,35 @@ public class Elevator extends Subsystem {
   }
 
   // Set elevator's speed
+  /**
+  * Set the elevator's speed
+  * @return
+  */
   public void setElevatorSpeed(double speed) {
-    /**
-     * Set the elevator's speed; Takes a double.
-     */
     Elevator.set(speed);
   }
 
   // Returns the postition of the encoder
   // TODO check whether we need to divide it by 2 or not. Last year had a problem with it.
-  public int getEncoder() {
+
+  /**
+   * Gets the elevator encoder value
+   */
+  public int getElevatorEncoder() {
     return Elevator.getSensorCollection().getQuadraturePosition();
   }
 
   // Resets the encoders to zero, and blocks for 0.01 second(s) for error checking
+  /**
+   * Resets the elevator's encoder.
+   */
   public void elevatorEncoderReset() {
     Elevator.getSensorCollection().setQuadraturePosition(0, 10);
   }
 
+  /** 
+   * Gets the Elevator limitswitch value
+  */
   public boolean getElevatorLimitSwitch(){
     return RobotMap.elevatorBottomLimit.get();
   }
