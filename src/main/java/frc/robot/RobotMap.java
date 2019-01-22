@@ -135,6 +135,9 @@ public class RobotMap {
   public static DigitalInput irRight3 = new DigitalInput(irRightPort3);
   public static DigitalInput irRight4 = new DigitalInput(irRightPort4);
 
+  //gyroscope 
+  public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+
   /* Variables */
   //drive varibles
   public static int rightDriverAxis = 1; //TODO Change Later
