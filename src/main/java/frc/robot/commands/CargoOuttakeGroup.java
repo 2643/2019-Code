@@ -9,11 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class CargoOuttake extends CommandGroup {
+public class CargoOuttakeGroup extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public CargoOuttake() {
+  public CargoOuttakeGroup() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
