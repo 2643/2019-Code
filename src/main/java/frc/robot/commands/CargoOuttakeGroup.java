@@ -23,7 +23,9 @@ public class CargoOuttakeGroup extends CommandGroup {
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-
+    while(Robot.cargoOuttake.getCargoLeftSensors()==0 && Robot.cargoOuttake.getCargoRightSensors()==0){
+      
+    }
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

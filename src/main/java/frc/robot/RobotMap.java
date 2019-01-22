@@ -82,6 +82,7 @@ public class RobotMap {
   public static int cargoIntakePort2 = 0; //TODO
   public static int cargoRetractPort = 0; //TODO
   public static int cargoIntakePotPort = 0; //TODO
+  public static int cargoOuttakePort = 0; //TODO
 
   /* Motors */
   //Drive motors
