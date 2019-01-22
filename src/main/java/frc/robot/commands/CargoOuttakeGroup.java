@@ -7,13 +7,18 @@
 
 package frc.robot.commands;
 
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class CargoOuttakeGroup extends CommandGroup {
   /**
-   * Add your docs here.
+   * Cargo group in order to automatically.
    */
   public CargoOuttakeGroup() {
+    requires(Robot.cargoOuttake);
+    requires(Robot.drive);
+    requires(Robot);
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

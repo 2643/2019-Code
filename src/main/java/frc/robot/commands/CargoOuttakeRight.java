@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
+/**
+ * Shoots the cargo out to the right
+ */
 public class CargoOuttakeRight extends Command {
   public CargoOuttakeRight() {
     // Use requires() here to declare subsystem dependencies

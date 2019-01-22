@@ -37,24 +37,24 @@ public class RobotMap {
   
   /* Ports */
   //drive ports
-  static int lFrontMotorPort = 0;   //TODO
-  static int lBackMotorPort = 0;    //TODO
-  static int rFrontMotorPort = 0;   //TODO
-  static int rBackMotorPort = 0;    //TODO
-  static int rEncoderPort1 = 0;     //TODO
-  static int rEncoderPort2 = 1;     //TODO
-  static int lEncoderPort1 = 0;     //TODO
-  static int lEncoderPort2 = 1;     //TODO
+  public static int lFrontMotorPort = 0;   //TODO
+  public static int lBackMotorPort = 0;    //TODO
+  public static int rFrontMotorPort = 0;   //TODO
+  public static int rBackMotorPort = 0;    //TODO
+  public static int rEncoderPort1 = 0;     //TODO
+  public static int rEncoderPort2 = 1;     //TODO
+  public static int lEncoderPort1 = 0;     //TODO
+  public static int lEncoderPort2 = 1;     //TODO
 
   //elevator ports
-  static int elevatorPort = 0;      //TODO
-  static int elevatorSlavePort = 0; //TODO
+  public static int elevatorPort = 0;      //TODO
+  public static int elevatorSlavePort = 0; //TODO
 
   //solenoid ports
-  static int Solenoid1Port1 = 1;     //TODO
-  static int Solenoid1Port2 = 2;     //TODO
-  static int Solenoid2Port1 = 3;     //TODO
-  static int Solenoid2Port2 = 4;     //TODO
+  public static int Solenoid1Port1 = 1;     //TODO
+  public static int Solenoid1Port2 = 2;     //TODO
+  public static int Solenoid2Port1 = 3;     //TODO
+  public static int Solenoid2Port2 = 4;     //TODO
 
   //hatch ports 
   static int HatchMotorPort = 3;    //TODO
@@ -62,7 +62,7 @@ public class RobotMap {
   public static int HatchBottomPort = 0; //TODO
 
   //carriage ports
-  static int carriageMotorPort = 0;  //TODO
+  public static int carriageMotorPort = 0;  //TODO
   public static int carriagePotPort = 0; //TODO
 
   // IR sensor ports
