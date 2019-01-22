@@ -28,6 +28,8 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
 
+  // Everything is public because vscode likes to complain a lot about it.
+
   /* Pot Offsets */
   //Carriage offset
   public static int carriagePotOffset = 0; //TODO
@@ -57,7 +59,7 @@ public class RobotMap {
   public static int Solenoid2Port2 = 4;     //TODO
 
   //hatch ports 
-  static int HatchMotorPort = 3;    //TODO
+  public static int HatchMotorPort = 3;    //TODO
   public static int HatchTopPort = 0; //TODO
   public static int HatchBottomPort = 0; //TODO
 
@@ -76,36 +78,35 @@ public class RobotMap {
   public static int irRightPort4 = 8; //TODO
 
   //cargo ports
-  static int cargoIntakePort1 = 0; //TODO
-  static int cargoIntakePort2 = 0; //TODO
-  static int cargoRetractPort = 0; //TODO
-  static int cargoIntakePotPort = 0; //TODO
-  public static int cargoOuttakePort  = 0; //TODO
+  public static int cargoIntakePort1 = 0; //TODO
+  public static int cargoIntakePort2 = 0; //TODO
+  public static int cargoRetractPort = 0; //TODO
+  public static int cargoIntakePotPort = 0; //TODO
 
   /* Motors */
   //Drive motors
-  static WPI_TalonSRX lFrontMotor = new WPI_TalonSRX(lFrontMotorPort);
-  static WPI_TalonSRX lBackMotor = new WPI_TalonSRX(lBackMotorPort);
-  static WPI_TalonSRX rFrontMotor = new WPI_TalonSRX(rFrontMotorPort);
-  static WPI_TalonSRX rBackMotor = new WPI_TalonSRX(rBackMotorPort);
+  public static WPI_TalonSRX lFrontMotor = new WPI_TalonSRX(lFrontMotorPort);
+  public static WPI_TalonSRX lBackMotor = new WPI_TalonSRX(lBackMotorPort);
+  public static WPI_TalonSRX rFrontMotor = new WPI_TalonSRX(rFrontMotorPort);
+  public static WPI_TalonSRX rBackMotor = new WPI_TalonSRX(rBackMotorPort);
 
   //elevator motors
-  static WPI_TalonSRX elevatorMotor = new WPI_TalonSRX(elevatorPort);
-  static WPI_TalonSRX elevatorSlaveMotor = new WPI_TalonSRX(elevatorSlavePort);
+  public static WPI_TalonSRX elevatorMotor = new WPI_TalonSRX(elevatorPort);
+  public static WPI_TalonSRX elevatorSlaveMotor = new WPI_TalonSRX(elevatorSlavePort);
 
   //hatch motors/solenoids
-  static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
-  static DoubleSolenoid HatchPiston = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
-  static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
+  public static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
+  public static DoubleSolenoid HatchPiston = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
+  public static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
 
   //carriage
-  static WPI_TalonSRX carriageMotor = new WPI_TalonSRX(carriageMotorPort);
+  public static WPI_TalonSRX carriageMotor = new WPI_TalonSRX(carriageMotorPort);
 
   //cargo
-  static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
-  static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
-  static WPI_TalonSRX cargoRetractMotor = new WPI_TalonSRX(cargoRetractPort);
-  static WPI_TalonSRX cargoOuttakeMotor = new WPI_TalonSRX(cargoOuttakePort);
+  public static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
+  public static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
+  public static WPI_TalonSRX cargoRetractMotor = new WPI_TalonSRX(cargoRetractPort);
+  public static WPI_TalonSRX cargoOuttakeMotor = new WPI_TalonSRX(cargoOuttakePort);
 
   /* Sensors */
   //drive sensors

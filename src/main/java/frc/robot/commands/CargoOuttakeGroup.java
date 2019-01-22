@@ -18,7 +18,7 @@ public class CargoOuttakeGroup extends CommandGroup {
   public CargoOuttakeGroup() {
     requires(Robot.cargoOuttake);
     requires(Robot.drive);
-    requires(Robot);
+    requires(Robot.gyroscope);
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
