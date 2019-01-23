@@ -51,6 +51,10 @@ public class GyroZeroAlign extends Command {
         Robot.drive.setAllSpeed(0.0);
         beta = 255;
       }
+
+      else {
+        System.out.println("AutoAlign code failure, switch to manual control.");
+      }
     }
   }
 
