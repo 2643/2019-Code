@@ -165,5 +165,8 @@ public class RobotMap {
   public static double cargoReleaseSpeed = 0.5; //TODO 
   public static double cargoRetractSpeed = 0.5; //TODO
   public static double cargoIntakeDown = 30; //TODO Check this please with the real robot
-  public static double cargoOuttakeSpeed = 0.3; 
+  public static double cargoOuttakeSpeed = 0.3;
+  
+  //Gyroscope autoalign speed
+  public static double autoAlignSpeed = 0.2;
 }

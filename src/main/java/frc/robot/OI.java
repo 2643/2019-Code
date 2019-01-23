@@ -66,7 +66,7 @@ public class OI {
     carriageClockwise.whenPressed(new CarriageClockwise());
     carriageCounterclockwise.whenPressed(new CarriageCounterclockwise());
     
-    cargoOuttakeAuto.whileHeld(new CargoOuttakeGroup());
+    
   }
 
   public Joystick getDriverStick(){
