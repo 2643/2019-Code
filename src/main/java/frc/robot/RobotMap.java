@@ -72,10 +72,12 @@ public class RobotMap {
   public static int irLeftPort2 = 2;  //TODO
   public static int irLeftPort3 = 3;  //TODO
   public static int irLeftPort4 = 4;  //TODO
+  public static int irLeftPort5 = 10;
   public static int irRightPort1 = 5; //TODO
   public static int irRightPort2 = 6; //TODO
   public static int irRightPort3 = 7; //tODO
   public static int irRightPort4 = 8; //TODO
+  public static int irRightPort5 = 9;
 
   //cargo ports
   public static int cargoIntakePort1 = 0; //TODO
@@ -132,10 +134,12 @@ public class RobotMap {
   public static DigitalInput irLeft2 = new DigitalInput(irLeftPort2);
   public static DigitalInput irLeft3 = new DigitalInput(irLeftPort3);
   public static DigitalInput irLeft4 = new DigitalInput(irLeftPort4);
+  public static DigitalInput irLeft5 = new DigitalInput(irLeftPort5);
   public static DigitalInput irRight1 = new DigitalInput(irRightPort1);
   public static DigitalInput irRight2 = new DigitalInput(irRightPort2);
   public static DigitalInput irRight3 = new DigitalInput(irRightPort3);
   public static DigitalInput irRight4 = new DigitalInput(irRightPort4);
+  public static DigitalInput irRight5 = new DigitalInput(irRightPort5);
 
   //gyroscope 
   public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
