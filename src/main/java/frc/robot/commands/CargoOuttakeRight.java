@@ -8,11 +8,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 
+/**
+ * Shoots the cargo out to the right
+ */
 public class CargoOuttakeRight extends Command {
   public CargoOuttakeRight() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.cargoOuttake);
   }
 
   // Called just before this Command runs the first time
@@ -23,6 +29,7 @@ public class CargoOuttakeRight extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.cargoOuttake.setCargoSpeed(-RobotMap.cargoOuttakeSpeed); //TODO change if needed
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -34,11 +41,13 @@ public class CargoOuttakeRight extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.cargoOuttake.setCargoSpeed(0.0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

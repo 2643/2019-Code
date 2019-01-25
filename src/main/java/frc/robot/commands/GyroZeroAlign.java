@@ -7,44 +7,73 @@
 
 package frc.robot.commands;
 
-
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.*;
+import frc.robot.RobotMap;
 
-public class ReleaseHatch extends Command {
-  public ReleaseHatch() {
+public class GyroZeroAlign extends Command {
+  public GyroZeroAlign() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.hatch);
+    requires(Robot.drive);
+    requires(Robot.gyroscope);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {  
-    Robot.hatch.pistonOut();
+  protected void execute() {
+    
+    double alpha = Robot.gyroscope.getGyroAngle();
+    int beta = 0;
+
+    while(beta<250 || alpha<5 && alpha>355) {
+    
+      alpha = Robot.gyroscope.getGyroAngle();
+
+      beta += 1;
+
+      if(alpha>5 && alpha<180) {
+        Robot.drive.setLeftSpeed(RobotMap.autoAlignSpeed);
+        Robot.drive.setRightSpeed(-RobotMap.autoAlignSpeed);
+      }
+
+      else if(alpha>180 && alpha<355) {
+        Robot.drive.setLeftSpeed(-RobotMap.autoAlignSpeed);
+        Robot.drive.setRightSpeed(RobotMap.autoAlignSpeed);
+      }
+
+      else if(alpha<5 && alpha>355) {
+        Robot.drive.setAllSpeed(0.0);
+        beta = 255;
+      }
+
+      else {
+        System.out.println("AutoAlign code failure, switch to manual control.");
+      }
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.hatch.getTimer().get() == RobotMap.hatchPistonOutTime){
-      return true;
-    } else{
-      return false;
+    double alpha = Robot.gyroscope.getGyroAngle();
+    if(alpha<5 && alpha>355) {
+      return(true);
+    }
+    else {
+      return(false);
     }
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.hatch.pistonIn();
+    Robot.drive.setAllSpeed(0.0);
   }
 
   // Called when another command which requires one or more of the same
