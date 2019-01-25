@@ -27,8 +27,6 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
-<<<<<<< HEAD
-=======
 
   // Everything is public because vscode likes to complain a lot about it.
 
@@ -38,7 +36,6 @@ public class RobotMap {
 
   //Cargo Offset
   public static int cargoIntakePotOffset = 0; //TODO
->>>>>>> 5f84873152a637f76ed24b2dfbdf737cc28c8c00
   
   /* Ports */
   //drive ports
@@ -83,18 +80,11 @@ public class RobotMap {
   public static int irRightPort5 = 9;
 
   //cargo ports
-<<<<<<< HEAD
-  static int cargoIntakePort1 = 0; //TODO
-  static int cargoIntakePort2 = 0; //TODO
-  static int cargoRetractPort = 0; //TODO
-  static int cargoIntakePotPort = 0; //TODO
-=======
   public static int cargoIntakePort1 = 0; //TODO
   public static int cargoIntakePort2 = 0; //TODO
   public static int cargoRetractPort = 0; //TODO
   public static int cargoIntakePotPort = 0; //TODO
   public static int cargoOuttakePort = 0; //TODO
->>>>>>> 5f84873152a637f76ed24b2dfbdf737cc28c8c00
 
   /* Motors */
   //Drive motors
@@ -116,16 +106,10 @@ public class RobotMap {
   public static WPI_TalonSRX carriageMotor = new WPI_TalonSRX(carriageMotorPort);
 
   //cargo
-<<<<<<< HEAD
-  static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
-  static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
-  static WPI_TalonSRX cargoRetractMotor = new WPI_TalonSRX(cargoRetractPort);
-=======
   public static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
   public static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
   public static WPI_TalonSRX cargoRetractMotor = new WPI_TalonSRX(cargoRetractPort);
   public static WPI_TalonSRX cargoOuttakeMotor = new WPI_TalonSRX(cargoOuttakePort);
->>>>>>> 5f84873152a637f76ed24b2dfbdf737cc28c8c00
 
   /* Sensors */
   //drive sensors
@@ -140,7 +124,6 @@ public class RobotMap {
   public static DigitalInput HatchBottomSwitch = new DigitalInput(HatchBottomPort);
 
   //carriage sensors
-  public static int carriagePotOffset = 0; //Must be before the next line
   public static Potentiometer carriagePot = new AnalogPotentiometer(carriagePotPort, 3600, carriagePotOffset);
 
   //cargo sensors
@@ -186,12 +169,8 @@ public class RobotMap {
   public static double cargoReleaseSpeed = 0.5; //TODO 
   public static double cargoRetractSpeed = 0.5; //TODO
   public static double cargoIntakeDown = 30; //TODO Check this please with the real robot
-<<<<<<< HEAD
-  static int cargoIntakePotOffset = 0; //TODO
-=======
   public static double cargoOuttakeSpeed = 0.3;
   
   //Gyroscope autoalign speed
   public static double autoAlignSpeed = 0.2;
->>>>>>> 5f84873152a637f76ed24b2dfbdf737cc28c8c00
 }
