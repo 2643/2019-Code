@@ -10,8 +10,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.DigitalInput;
-import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
@@ -31,27 +29,6 @@ public class CargoOuttake extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public DigitalInput[][] getIrSensors() {
-    DigitalInput[][] sensorArray = 
-     {{RobotMap.irLeft1, RobotMap.irRight1},
-      {RobotMap.irLeft2, RobotMap.irRight1},
-      {RobotMap.irLeft3, RobotMap.irRight3},
-      {RobotMap.irLeft4, RobotMap.irRight4}};
-    return sensorArray;
-  }
-  /**
-   * Tells when a sensor on the left side is tripped.
-   * @return left sensors added value
-   */
-  public int getCargoLeftSensors() {
-    int leftSensors = RobotMap.irLeftPort1+RobotMap.irLeftPort2+RobotMap.irLeftPort3+RobotMap.irLeftPort4;
-    return(leftSensors);
-  }
-
-  public int getCargoRightSensors() {
-    int rightSensors = RobotMap.irRightPort1+RobotMap.irRightPort2+RobotMap.irRightPort3+RobotMap.irLeftPort4;
-    return(rightSensors);
-  }
   public void setCargoSpeed(double speed){
     cargoOuttake.set(speed);
   }
