@@ -32,7 +32,7 @@ public class LineDetector extends Subsystem {
    * Tells when a sensor on the left side is tripped.
    * @return left sensor values in binary values
    */
-  public int getCargoLeftSensors() {
+  public int getLeftSensors() {
     int leftSensors = 0;
 
     //This puts the numbers in to binary form, outside-in, front-back.
@@ -63,7 +63,7 @@ public class LineDetector extends Subsystem {
    * Tells which sensors on Right side are tripped.
    * @return right sensor values
    */
-  public int getCargoRightSensors() {
+  public int getRightSensors() {
     int rightSensors = 0;
 
     //This puts the numbers in to binary form, outside-in, front-back.
