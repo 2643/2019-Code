@@ -33,29 +33,22 @@ public class LineDetector extends Subsystem {
    * @return left sensor values in binary values
    */
   public int getLeftSensors() {
-    int leftSensors = 0;
+    int leftSensors = 1;
 
-    //This puts the numbers in to binary form, outside-in, front-back.
+    //This puts the numbers in as primes, modulo to find the lit ones.
 
     if(RobotMap.irLeft1.get()) {
-      leftSensors += 16; // 1xxxx
+      leftSensors *= 5; // 1xx
     }
 
     if(RobotMap.irLeft2.get()) {
-      leftSensors += 4; // x1xxx
+      leftSensors *= 3; // x1x
     }
 
     if(RobotMap.irLeft3.get()) {
-      leftSensors += 1; // xx1xx
+      leftSensors *= 7; // xx1
     }
 
-    if(RobotMap.irLeft4.get()) {
-      leftSensors += 2; // xxx1x
-    }
-
-    if(RobotMap.irLeft5.get()){
-      leftSensors += 8; // xxxx1
-    }
     return(leftSensors);
   }
 
@@ -64,28 +57,20 @@ public class LineDetector extends Subsystem {
    * @return right sensor values
    */
   public int getRightSensors() {
-    int rightSensors = 0;
+    int rightSensors = 1;
 
-    //This puts the numbers in to binary form, outside-in, front-back.
+    //This puts the numbers in as primes, modulo to find the lit ones.
 
     if(RobotMap.irRight1.get()) {
-      rightSensors += 16; // 1xxxx
+      rightSensors *= 5; // 1xx
     }
 
     if(RobotMap.irRight2.get()) {
-      rightSensors += 4; // x1xxx
+      rightSensors *= 3; // x1x
     }
 
     if(RobotMap.irRight3.get()) {
-      rightSensors += 1; // xx1xx
-    }
-
-    if(RobotMap.irRight4.get()) {
-      rightSensors += 2; // xx1xx
-    }
-
-    if(RobotMap.irRight5.get()){
-      rightSensors += 8; // xx1xx
+      rightSensors *= 7; // xx1
     }
 
     return(rightSensors);

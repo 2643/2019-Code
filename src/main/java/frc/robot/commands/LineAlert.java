@@ -15,7 +15,7 @@ public class LineAlert extends Command {
   public LineAlert() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.linedetector);
+    requires(Robot.lineDetector);
     requires(Robot.cargoOuttake);
     requires(Robot.drive);
   }
@@ -29,23 +29,26 @@ public class LineAlert extends Command {
   @Override
   protected void execute() {
     int leftRight = 0;
+    int value = 0;
 
-    if(Robot.linedetector.getLeftSensors() > 0) {
+    if(Robot.lineDetector.getLeftSensors() > 1) {
       leftRight += 1;
+      value = Robot.lineDetector.getLeftSensors();
     }
 
-    if(Robot.linedetector.getRightSensors() > 0) {
+    if(Robot.lineDetector.getRightSensors() > 1) {
       leftRight += 2;
+      value = Robot.lineDetector.getLeftSensors();
     }
 
     switch(leftRight) {
       case 0:
-        System.out.println("No Lines detected; If expected, switch to manual mode");
+        System.out.println("No Lines detected; If lines expected, switch to manual mode");
+        //no lights
         break;
 
-      case 1:
+      case 1: /* Left Side line Detected. */
         
-
         break;
 
       case 2:
@@ -53,7 +56,9 @@ public class LineAlert extends Command {
         break;
 
       case 3:
+        //This should never happen. Ever.
         System.out.println("ERROR Switch to manual mode ERROR");
+        System.out.println("ERROR ERROR ERROR");
         break;
     }
 
