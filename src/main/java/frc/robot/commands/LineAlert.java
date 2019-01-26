@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
-import frc.robot.subsystems.LineDetector;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class LineAlert extends Command {
@@ -43,7 +42,7 @@ public class LineAlert extends Command {
 
     switch(leftRight) {
       case 0:
-        System.out.println("No Lines detected; If lines expected, switch to manual mode");
+        System.out.println("No Lines detected");
         //no lights
         break;
 
@@ -73,7 +72,8 @@ public class LineAlert extends Command {
 
       case 3:
         //This should never happen. Ever.
-        System.out.println("ERROR Switch to manual mode ERROR");
+        System.out.println("ERROR ERROR ERROR");
+        System.out.println("");
         System.out.println("ERROR ERROR ERROR");
         //Make all lights start flashing, to indicate errors.
         break;
