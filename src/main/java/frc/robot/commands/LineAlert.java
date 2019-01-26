@@ -10,7 +10,9 @@ package frc.robot.commands;
 import frc.robot.Robot;
 import frc.robot.subsystems.LineDetector;
 import edu.wpi.first.wpilibj.command.Command;
-
+/**
+ * Says when a line is detected
+ */
 public class LineAlert extends Command {
   public LineAlert() {
     // Use requires() here to declare subsystem dependencies

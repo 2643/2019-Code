@@ -10,7 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-
+/**
+ * Turns the chain on the carriage clockwise //TODO Check whether this makes it turn left or right
+ */
 public class CarriageClockwise extends Command {
   public CarriageClockwise() {
     // Use requires() here to declare subsystem dependencies

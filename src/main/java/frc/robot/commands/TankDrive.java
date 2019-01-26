@@ -10,7 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-
+/**
+ * Sets speeds to Drivestick axis
+ */
 public class TankDrive extends Command {
   public TankDrive() {
     // Use requires() here to declare subsystem dependencies

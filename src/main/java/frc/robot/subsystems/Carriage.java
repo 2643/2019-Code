@@ -21,7 +21,10 @@ public class Carriage extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   public WPI_TalonSRX Carriage;
-
+  /**
+   * Setting Motors
+   * @param carriageMotor Carriage Motor
+   */
   public Carriage(WPI_TalonSRX carriageMotor) {
     Carriage = carriageMotor;
   }
@@ -33,7 +36,9 @@ public class Carriage extends Subsystem {
   public void setCarriageSpeed(double speed) {
     Carriage.set(speed);
   }
-
+  /**\
+   * Gets Carriage Potentiometer
+   */
   public double getPotentiometer(){
     return RobotMap.carriagePot.get();
   }
