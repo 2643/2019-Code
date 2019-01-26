@@ -47,18 +47,35 @@ public class LineAlert extends Command {
         //no lights
         break;
 
-      case 1: /* Left Side line Detected. */
-        
+      case 1: /* Left Side Line Detected. */
+        if(value%3 == 0) {
+          //Make Left MIDDLE light shine
+        }
+        if(value%5 == 0) {
+          //Make Left FRONT light shine
+        }
+        if(value%7 == 0) {
+          //Make Left BACK light shine
+        }
         break;
 
-      case 2:
-
+      case 2: /* Right Side Line Detected */
+        if(value%3 == 0) {
+          //Make Right MIDDLE light shine
+        }
+        if(value%5 == 0) {
+          //Make Right FRONT light shine
+        }
+        if(value%7 == 0) {
+          //Make Right BACK light shine
+        }
         break;
 
       case 3:
         //This should never happen. Ever.
         System.out.println("ERROR Switch to manual mode ERROR");
         System.out.println("ERROR ERROR ERROR");
+        //Make all lights start flashing, to indicate errors.
         break;
     }
 
