@@ -18,7 +18,10 @@ public class CargoOuttake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   public WPI_TalonSRX cargoOuttake;
-
+/**
+ * Setting Motor
+ * @param cargoMotor Cargo Outtake Motor
+ */
   public CargoOuttake(WPI_TalonSRX cargoMotor) {
     cargoOuttake = cargoMotor;
   }
@@ -28,7 +31,10 @@ public class CargoOuttake extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-
+  /**
+   * Sets speed for Cargo Outtake
+   * @param speed Speed
+   */
   public void setCargoSpeed(double speed){
     cargoOuttake.set(speed);
   }

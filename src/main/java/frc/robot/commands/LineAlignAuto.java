@@ -8,7 +8,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-
+/**
+ * Automatically aligns with the lines on the field
+ */
 public class LineAlignAuto extends Command {
   public LineAlignAuto() {
     // Use requires() here to declare subsystem dependencies

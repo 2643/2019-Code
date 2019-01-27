@@ -10,7 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.RobotMap;
 import frc.robot.Robot;
-
+/**
+ * Moves Elevator Up
+ */
 public class ElevatorUp extends Command {
   public ElevatorUp() {
     // Use requires() here to declare subsystem dependencies

@@ -11,7 +11,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.*;
-
+/**
+ * Releases the hatch panel
+ */
 public class ReleaseHatch extends Command {
   public ReleaseHatch() {
     // Use requires() here to declare subsystem dependencies
