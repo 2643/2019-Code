@@ -29,8 +29,8 @@ public class LineDetector extends Subsystem {
     return sensorArray;
   } */
   /**
-   * Tells when a sensor on the left side is tripped.
-   * @return left sensor values in binary values
+   * Tells when a sensor is tripped.
+   * @return sensor values, as primes multiplied
    */
 
 
