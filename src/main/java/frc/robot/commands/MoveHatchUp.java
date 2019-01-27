@@ -9,7 +9,9 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.*;
-
+/**
+ * Moves the hatch up
+ */
 public class MoveHatchUp extends Command {
   public MoveHatchUp() {
     // Use requires() here to declare subsystem dependencies

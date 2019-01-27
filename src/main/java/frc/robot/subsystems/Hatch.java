@@ -21,6 +21,12 @@ public class Hatch extends Subsystem {
   WPI_TalonSRX hatchMotor;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+    /**
+     * Setting Motors
+     * @param hatchPiston1 First Hatch Piston
+     * @param hatchPiston2 Second Hatch Piston
+     * @param hatchM Hatch Motor
+     */
     public Hatch(DoubleSolenoid hatchPiston1, DoubleSolenoid hatchPiston2, WPI_TalonSRX hatchM){
         HatchSolenoid = hatchPiston1;
         HatchSolenoid2 = hatchPiston2;

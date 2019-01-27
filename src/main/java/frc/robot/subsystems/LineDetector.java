@@ -29,66 +29,40 @@ public class LineDetector extends Subsystem {
     return sensorArray;
   } */
   /**
-   * Tells when a sensor on the left side is tripped.
-   * @return left sensor values in binary values
+   * Tells when a sensor is tripped.
+   * @return sensor values, as primes multiplied
    */
-  public int getLeftSensors() {
-    int leftSensors = 0;
+  public int getIRSensors() {
+    int sensorArray = 1;
 
-    //This puts the numbers in to binary form, outside-in, front-back.
+    //This puts the numbers in as primes, modulo to find the lit ones.
+    //This allows a single output to determine the status of the IRs
 
     if(RobotMap.irLeft1.get()) {
-      leftSensors += 16; // 1xxxx
+      sensorArray *= 5; // 1xx
     }
 
     if(RobotMap.irLeft2.get()) {
-      leftSensors += 4; // x1xxx
+      sensorArray *= 3; // x1x
     }
 
     if(RobotMap.irLeft3.get()) {
-      leftSensors += 1; // xx1xx
+      sensorArray *= 7; // xx1
     }
-
-    if(RobotMap.irLeft4.get()) {
-      leftSensors += 2; // xxx1x
-    }
-
-    if(RobotMap.irLeft5.get()){
-      leftSensors += 8; // xxxx1
-    }
-    return(leftSensors);
-  }
-
-  /**
-   * Tells which sensors on Right side are tripped.
-   * @return right sensor values
-   */
-  public int getRightSensors() {
-    int rightSensors = 0;
-
-    //This puts the numbers in to binary form, outside-in, front-back.
 
     if(RobotMap.irRight1.get()) {
-      rightSensors += 16; // 1xxxx
+      sensorArray *= 13; // 1xx
     }
 
     if(RobotMap.irRight2.get()) {
-      rightSensors += 4; // x1xxx
+      sensorArray *= 11; // x1x
     }
 
     if(RobotMap.irRight3.get()) {
-      rightSensors += 1; // xx1xx
+      sensorArray *= 17; // xx1
     }
 
-    if(RobotMap.irRight4.get()) {
-      rightSensors += 2; // xx1xx
-    }
-
-    if(RobotMap.irRight5.get()){
-      rightSensors += 8; // xx1xx
-    }
-
-    return(rightSensors);
+    return(sensorArray);
   }
 
 

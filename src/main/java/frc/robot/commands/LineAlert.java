@@ -8,18 +8,17 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
-import frc.robot.subsystems.LineDetector;
 import edu.wpi.first.wpilibj.command.Command;
-
+/**
+ * Says when a line is detected
+ */
 public class LineAlert extends Command {
   public LineAlert() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.linedetector);
-    requires(Robot.cargoOuttake);
-    requires(Robot.drive);
+    requires(Robot.lineDetector);
   }
-
+;
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
@@ -28,37 +27,34 @@ public class LineAlert extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    int leftRight = 0;
+    int value = 0;
 
-    if(Robot.linedetector.getLeftSensors() > 0) {
-      leftRight += 1;
+    value = Robot.lineDetector.getIRSensors();
+
+        if(value%3 == 0) {
+          //Make Left MIDDLE light shine
+        }
+
+        if(value%5 == 0) {
+          //Make Left FRONT light shine
+        }
+
+        if(value%7 == 0) {
+          //Make Left BACK light shine
+        }
+
+        if(value%11 == 0) {
+          //Make Right MIDDLE light shine
+        }
+
+        if(value%13 == 0) {
+          //Make Right FRONT light shine
+        }
+
+        if(value%17 == 0) {
+          //Make Right BACK light shine
+        }
     }
-
-    if(Robot.linedetector.getRightSensors() > 0) {
-      leftRight += 2;
-    }
-
-    switch(leftRight) {
-      case 0:
-        System.out.println("No Lines detected; If expected, switch to manual mode");
-        break;
-
-      case 1:
-        
-
-        break;
-
-      case 2:
-
-        break;
-
-      case 3:
-        System.out.println("ERROR Switch to manual mode ERROR");
-        break;
-    }
-
-  
-  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override

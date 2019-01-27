@@ -32,59 +32,55 @@ public class RobotMap {
 
   /* Pot Offsets */
   //Carriage offset
-  public static int carriagePotOffset = 0; //TODO
+  public static int carriagePotOffset = 0; //TODO Check the potentiometer offset of the carriage potentiometer
 
   //Cargo Offset
-  public static int cargoIntakePotOffset = 0; //TODO
+  public static int cargoIntakePotOffset = 0; //TODO check the potentiometer offset of the cargo intake potentiometer
   
   /* Ports */
   //drive ports
-  public static int lFrontMotorPort = 0;   //TODO
-  public static int lBackMotorPort = 0;    //TODO
-  public static int rFrontMotorPort = 0;   //TODO
-  public static int rBackMotorPort = 0;    //TODO
-  public static int rEncoderPort1 = 0;     //TODO
-  public static int rEncoderPort2 = 1;     //TODO
-  public static int lEncoderPort1 = 0;     //TODO
-  public static int lEncoderPort2 = 1;     //TODO
+  public static int lFrontMotorPort = 0;   //TODO Check the device ID of the left front motor on the drive train on Phoenix Tuner
+  public static int lBackMotorPort = 0;    //TODO Check the device ID of the left back motor on the drive train 
+  public static int rFrontMotorPort = 0;   //TODO Check the device ID  of the right front motor on the drive train 
+  public static int rBackMotorPort = 0;    //TODO Check the device ID of the right back motor on the drive train 
+  public static int rEncoderPort1 = 0;     //TODO Check the first port of the right encoder 
+  public static int rEncoderPort2 = 1;     //TODO Check the second port of the right encoder
+  public static int lEncoderPort1 = 0;     //TODO Check the first port of the left encoder
+  public static int lEncoderPort2 = 1;     //TODO Check the second port of the left encoder
 
   //elevator ports
-  public static int elevatorPort = 0;      //TODO
-  public static int elevatorSlavePort = 0; //TODO
+  public static int elevatorPort = 0;      //TODO Check the device ID of the master motor 
+  public static int elevatorSlavePort = 0; //TODO Check the device ID of the slave motor
 
   //solenoid ports
-  public static int Solenoid1Port1 = 1;     //TODO
-  public static int Solenoid1Port2 = 2;     //TODO
-  public static int Solenoid2Port1 = 3;     //TODO
-  public static int Solenoid2Port2 = 4;     //TODO
+  public static int Solenoid1Port1 = 1;     //TODO Check the first port of the first solenoid
+  public static int Solenoid1Port2 = 2;     //TODO Check the second port of the first solenoid
+  public static int Solenoid2Port1 = 3;     //TODO Check the first port of the second solenoid
+  public static int Solenoid2Port2 = 4;     //TODO Check the second port of the second solenoid
 
   //hatch ports 
-  public static int HatchMotorPort = 3;    //TODO
-  public static int HatchTopPort = 0; //TODO
-  public static int HatchBottomPort = 0; //TODO
+  public static int HatchMotorPort = 3;    //TODO Check the device ID of the hatch motor
+  public static int HatchTopPort = 0; //TODO Check the port of the top limit switch
+  public static int HatchBottomPort = 0; //TODO CHeck the port of the bottom limit switch 
 
   //carriage ports
-  public static int carriageMotorPort = 0;  //TODO
-  public static int carriagePotPort = 0; //TODO
+  public static int carriageMotorPort = 0;  //TODO Check the device ID of the carriage motor
+  public static int carriagePotPort = 0; //TODO Check the port of the carriage potentiometer
 
   // IR sensor ports
-  public static int irLeftPort1 = 1;  //TODO
-  public static int irLeftPort2 = 2;  //TODO
-  public static int irLeftPort3 = 3;  //TODO
-  public static int irLeftPort4 = 4;  //TODO
-  public static int irLeftPort5 = 10;
-  public static int irRightPort1 = 5; //TODO
-  public static int irRightPort2 = 6; //TODO
-  public static int irRightPort3 = 7; //tODO
-  public static int irRightPort4 = 8; //TODO
-  public static int irRightPort5 = 9;
+  public static int irLeftPort1 = 1;  //TODO Check the port of this left side IR sensor
+  public static int irLeftPort2 = 2;  //TODO Check the port of this left side IR sensor
+  public static int irLeftPort3 = 3;  //TODO CHeck the port of this left side IR sensor
+  public static int irRightPort1 = 5; //TODO CHeck the port of this right side IR sensor
+  public static int irRightPort2 = 6; //TODO Check the port of this right side IR sensor
+  public static int irRightPort3 = 7; //tODO Check the port of this right side IR sensor
 
   //cargo ports
-  public static int cargoIntakePort1 = 0; //TODO
-  public static int cargoIntakePort2 = 0; //TODO
-  public static int cargoRetractPort = 0; //TODO
-  public static int cargoIntakePotPort = 0; //TODO
-  public static int cargoOuttakePort = 0; //TODO
+  public static int cargoIntakePort1 = 0; //TODO Check the device ID of the first cargo intake motor
+  public static int cargoIntakePort2 = 0; //TODO check the device iD of the second cargo intake motor
+  public static int cargoRetractPort = 0; //TODO Check the device iD of the retraction cargo intake motor
+  public static int cargoIntakePotPort = 0; //TODO Check the port of the potentiometer of the cargo intake 
+  public static int cargoOuttakePort = 0; //TODO Check the device ID of the cargo outtake motor
 
   /* Motors */
   //Drive motors
@@ -133,29 +129,26 @@ public class RobotMap {
   public static DigitalInput irLeft1 = new DigitalInput(irLeftPort1);
   public static DigitalInput irLeft2 = new DigitalInput(irLeftPort2);
   public static DigitalInput irLeft3 = new DigitalInput(irLeftPort3);
-  public static DigitalInput irLeft4 = new DigitalInput(irLeftPort4);
-  public static DigitalInput irLeft5 = new DigitalInput(irLeftPort5);
   public static DigitalInput irRight1 = new DigitalInput(irRightPort1);
   public static DigitalInput irRight2 = new DigitalInput(irRightPort2);
   public static DigitalInput irRight3 = new DigitalInput(irRightPort3);
-  public static DigitalInput irRight4 = new DigitalInput(irRightPort4);
-  public static DigitalInput irRight5 = new DigitalInput(irRightPort5);
 
   //gyroscope 
   public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 
   /* Variables */
   //drive varibles
-  public static int rightDriverAxis = 1; //TODO Change Later
-  public static int leftDriverAxis = 5; //TODO Change Later
+  public static int rightDriverAxis = 1; //TODO Check on the driver gamepad
+  public static int leftDriverAxis = 5; //TODO Check on the driver gamepad
 
   //elevator variables
   static public double elevatorSpeed = 0.3; //Temporary elevator speed. TODO elevator PIDS will have to be implemented.
-  static public int elevatorEncoderMaxLimit = 100; //This is the maximum encoder ticks allowed from the bottom upwards.
+  static public int elevatorEncoderMaxLimit = 100; //TODO check this upper limit on the real robot
+  //This is the maximum encoder ticks allowed from the bottom upwards.
   
   //hatch variables
-  public static double hatchDownSpeed = 0; //TODO
-  public static double hatchUpSpeed = 0; //TODO
+  public static double hatchDownSpeed = 0; //TODO Test to find a suitable speed
+  public static double hatchUpSpeed = 0; //TODO Test to find a suitable speed
   public static Timer hatchPistonTimer = new Timer();
   public static int hatchPistonOutTime = 3; //TODO Test this out 
 
@@ -166,11 +159,11 @@ public class RobotMap {
 
   //cargo variables
   public static double cargoIntakeSpeed = 0.5; //TODO Check
-  public static double cargoReleaseSpeed = 0.5; //TODO 
-  public static double cargoRetractSpeed = 0.5; //TODO
-  public static double cargoIntakeDown = 30; //TODO Check this please with the real robot
-  public static double cargoOuttakeSpeed = 0.3;
+  public static double cargoReleaseSpeed = 0.5; //TODO Test on the real robot
+  public static double cargoRetractSpeed = 0.5; //TODO Test on the real robot
+  public static double cargoIntakeDown = 30; //TODO Check this limit for the cargo intake potentiometer with the real robot
+  public static double cargoOuttakeSpeed = 0.3; //TODO check this speed with the real robot
   
   //Gyroscope autoalign speed
-  public static double autoAlignSpeed = 0.2;
+  public static double autoAlignSpeed = 0.2; //TODO check this with the real robot
 }

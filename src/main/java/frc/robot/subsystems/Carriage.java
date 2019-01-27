@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 /**
  * Moves the "carriage" system at the top of the elevator.
@@ -20,7 +21,10 @@ public class Carriage extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   public WPI_TalonSRX Carriage;
-
+  /**
+   * Setting Motors
+   * @param carriageMotor Carriage Motor
+   */
   public Carriage(WPI_TalonSRX carriageMotor) {
     Carriage = carriageMotor;
   }
@@ -31,6 +35,12 @@ public class Carriage extends Subsystem {
    */
   public void setCarriageSpeed(double speed) {
     Carriage.set(speed);
+  }
+  /**\
+   * Gets Carriage Potentiometer
+   */
+  public double getPotentiometer(){
+    return RobotMap.carriagePot.get();
   }
 
   @Override

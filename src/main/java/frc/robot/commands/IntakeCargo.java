@@ -10,7 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-
+/**
+ * Takes in the cargo
+ */
 public class IntakeCargo extends Command {
   public IntakeCargo() {
     // Use requires() here to declare subsystem dependencies

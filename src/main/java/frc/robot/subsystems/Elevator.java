@@ -20,7 +20,11 @@ public class Elevator extends Subsystem {
   // here. Call these from Commands.
   private WPI_TalonSRX Elevator;
   private WPI_TalonSRX ElevatorSlave;
-
+  /**
+   * Setting Motors
+   * @param liftMotor Lift Motor
+   * @param slaveMotor Follower Motor
+   */
   public Elevator(WPI_TalonSRX liftMotor, WPI_TalonSRX slaveMotor) {
     Elevator = liftMotor;
     ElevatorSlave = slaveMotor;
