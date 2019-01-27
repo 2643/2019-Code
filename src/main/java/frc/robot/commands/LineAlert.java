@@ -15,10 +15,8 @@ public class LineAlert extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.lineDetector);
-    requires(Robot.cargoOuttake);
-    requires(Robot.drive);
   }
-
+;
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
@@ -27,60 +25,34 @@ public class LineAlert extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    int leftRight = 0;
     int value = 0;
 
-    if(Robot.lineDetector.getLeftSensors() > 1) {
-      leftRight += 1;
-      value = Robot.lineDetector.getLeftSensors();
-    }
+    value = Robot.lineDetector.getIRSensors();
 
-    if(Robot.lineDetector.getRightSensors() > 1) {
-      leftRight += 2;
-      value = Robot.lineDetector.getLeftSensors();
-    }
-
-    switch(leftRight) {
-      case 0:
-        System.out.println("No Lines detected");
-        //no lights
-        break;
-
-      case 1: /* Left Side Line Detected. */
         if(value%3 == 0) {
           //Make Left MIDDLE light shine
         }
+
         if(value%5 == 0) {
           //Make Left FRONT light shine
         }
+
         if(value%7 == 0) {
           //Make Left BACK light shine
         }
-        break;
 
-      case 2: /* Right Side Line Detected */
-        if(value%3 == 0) {
+        if(value%11 == 0) {
           //Make Right MIDDLE light shine
         }
-        if(value%5 == 0) {
+
+        if(value%13 == 0) {
           //Make Right FRONT light shine
         }
-        if(value%7 == 0) {
+
+        if(value%17 == 0) {
           //Make Right BACK light shine
         }
-        break;
-
-      case 3:
-        //This should never happen. Ever.
-        System.out.println("ERROR ERROR ERROR");
-        System.out.println("");
-        System.out.println("ERROR ERROR ERROR");
-        //Make all lights start flashing, to indicate errors.
-        break;
     }
-
-  
-  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
