@@ -32,38 +32,50 @@ public class LineDetector extends Subsystem {
    * Tells when a sensor is tripped.
    * @return sensor values, as primes multiplied
    */
-  public int getIRSensors() {
-    int sensorArray = 1;
 
-    //This puts the numbers in as primes, modulo to find the lit ones.
-    //This allows a single output to determine the status of the IRs
 
-    if(RobotMap.irLeft1.get()) {
-      sensorArray *= 5; // 1xx
+
+  int SENSOR_L1 = 1 << 0;
+  int SENSOR_L2 = 1 << 1;
+  int SENSOR_L3 = 1 << 2;
+
+  int SENSOR_R1 = 1 << 3;
+  int SENSOR_R2 = 1 << 4;
+  int SENSOR_R3 = 1 << 5;
+
+  public int getIRSensors()
+  {
+    int sensorsOn = 0;
+    if(RobotMap.irLeft1.get())
+    {
+      sensorsOn |= SENSOR_L1;
     }
 
-    if(RobotMap.irLeft2.get()) {
-      sensorArray *= 3; // x1x
+    if(RobotMap.irLeft2.get())
+    {
+      sensorsOn |= SENSOR_L2;
     }
 
-    if(RobotMap.irLeft3.get()) {
-      sensorArray *= 7; // xx1
+    if(RobotMap.irLeft3.get())
+    {
+      sensorsOn |= SENSOR_L3;
     }
 
-    if(RobotMap.irRight1.get()) {
-      sensorArray *= 13; // 1xx
+    if(RobotMap.irRight1.get())
+    {
+      sensorsOn |= SENSOR_R1;
     }
-
-    if(RobotMap.irRight2.get()) {
-      sensorArray *= 11; // x1x
+    if(RobotMap.irRight2.get())
+    {
+      sensorsOn |= SENSOR_R2;
     }
-
-    if(RobotMap.irRight3.get()) {
-      sensorArray *= 17; // xx1
+    if(RobotMap.irRight3.get())
+    {
+      sensorsOn |= SENSOR_R3;
     }
-
-    return(sensorArray);
+    return(sensorsOn);
   }
+
 
 
   @Override
