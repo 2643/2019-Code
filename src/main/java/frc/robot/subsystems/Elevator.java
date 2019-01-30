@@ -65,6 +65,14 @@ public class Elevator extends Subsystem {
     return RobotMap.elevatorBottomLimit.get();
   }
 
+  /**
+   * Sets the elevator to a given height (in inches) above the ground 
+   * @param positionInInches height that you want the elevator to go to
+   */
+  public void setElevatorPosition(int positionInInches){
+    RobotMap.elevatorMotor.set(ControlMode.Position, positionInInches);
+  }
+  
   @Override
   public void initDefaultCommand() {
     elevatorEncoderReset();
