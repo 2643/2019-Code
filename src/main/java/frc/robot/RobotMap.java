@@ -103,8 +103,8 @@ public class RobotMap {
   public static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
   public static DoubleSolenoid HatchPiston = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
   public static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
-  public static DoubleSolenoid HatchPiston3 = new DoubleSolenoid(Solenoid3Port1, Solenoid3Port2);
-  public static DoubleSolenoid HatchPiston4 = new DoubleSolenoid(Solenoid4Port1, Solenoid4Port2);
+  public static DoubleSolenoid ReleaseHatchPiston1 = new DoubleSolenoid(Solenoid3Port1, Solenoid3Port2);
+  public static DoubleSolenoid ReleaseHatchPiston2 = new DoubleSolenoid(Solenoid4Port1, Solenoid4Port2);
 
   //carriage
   public static WPI_TalonSRX carriageMotor = new WPI_TalonSRX(carriageMotorPort);

@@ -27,13 +27,15 @@ public class Hatch extends Subsystem {
      * Setting Motors
      * @param hatchPiston1 First Hatch Piston
      * @param hatchPiston2 Second Hatch Piston
+     * @param releaseHatchPiston1 First Hatch Release Piston
+     * @param releaseHatchPiston2 Second Hatch Release Piston
      * @param hatchM Hatch Motor
      */
-    public Hatch(DoubleSolenoid hatchPiston1, DoubleSolenoid hatchPiston2, DoubleSolenoid hatchPiston3, DoubleSolenoid hatchPiston4, WPI_TalonSRX hatchM){
+    public Hatch(DoubleSolenoid hatchPiston1, DoubleSolenoid hatchPiston2, DoubleSolenoid releaseHatchPiston1, DoubleSolenoid releaseHatchPiston2, WPI_TalonSRX hatchM){
         HatchSolenoid = hatchPiston1;
         HatchSolenoid2 = hatchPiston2;
-        HatchSolenoid3 = hatchPiston3;
-        HatchSolenoid4 = hatchPiston4;
+        HatchSolenoid3 = releaseHatchPiston1;
+        HatchSolenoid4 = releaseHatchPiston2;
         hatchMotor = hatchM;
     }
  
@@ -49,6 +51,7 @@ public class Hatch extends Subsystem {
     HatchSolenoid.set(DoubleSolenoid.Value.kReverse);// This will pull the piston in.
     HatchSolenoid2.set(DoubleSolenoid.Value.kReverse);
     HatchSolenoid3.set(DoubleSolenoid.Value.kReverse);
+    HatchSolenoid4.set(DoubleSolenoid.Value.kReverse);
   }
   /**
    * This function will push the hatch piston out.
@@ -56,6 +59,7 @@ public class Hatch extends Subsystem {
   public void pistonOut(){
     HatchSolenoid.set(DoubleSolenoid.Value.kForward);// This will push the piston out.
     HatchSolenoid2.set(DoubleSolenoid.Value.kForward);
+    HatchSolenoid3.set(DoubleSolenoid.Value.kForward);
     HatchSolenoid3.set(DoubleSolenoid.Value.kForward);
   }
   /**
