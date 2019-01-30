@@ -174,4 +174,16 @@ public class RobotMap {
   
   //Gyroscope autoalign speed
   public static double autoAlignSpeed = 0.2; //TODO check this with the real robot
+
+  public static double inchesToEncoderTicks(double inches){
+    //TODO write the inchesToEncoderTicks later
+    double encoderTicks;
+    return 0;
+  }
+
+  public static double encoderTicksToInches(double encoder){
+    //TODO write the encoderTicksToInches later
+    double inches;
+    return 0;
+  }
 }
