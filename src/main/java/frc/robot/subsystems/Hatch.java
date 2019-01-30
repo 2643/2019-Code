@@ -18,6 +18,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class Hatch extends Subsystem {
   DoubleSolenoid HatchSolenoid;
   DoubleSolenoid HatchSolenoid2;
+  DoubleSolenoid HatchSolenoid3;
+  DoubleSolenoid HatchSolenoid4;
   WPI_TalonSRX hatchMotor;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
@@ -27,9 +29,11 @@ public class Hatch extends Subsystem {
      * @param hatchPiston2 Second Hatch Piston
      * @param hatchM Hatch Motor
      */
-    public Hatch(DoubleSolenoid hatchPiston1, DoubleSolenoid hatchPiston2, WPI_TalonSRX hatchM){
+    public Hatch(DoubleSolenoid hatchPiston1, DoubleSolenoid hatchPiston2, DoubleSolenoid hatchPiston3, DoubleSolenoid hatchPiston4, WPI_TalonSRX hatchM){
         HatchSolenoid = hatchPiston1;
         HatchSolenoid2 = hatchPiston2;
+        HatchSolenoid3 = hatchPiston3;
+        HatchSolenoid4 = hatchPiston4;
         hatchMotor = hatchM;
     }
  
@@ -44,6 +48,7 @@ public class Hatch extends Subsystem {
   public void pistonIn(){
     HatchSolenoid.set(DoubleSolenoid.Value.kReverse);// This will pull the piston in.
     HatchSolenoid2.set(DoubleSolenoid.Value.kReverse);
+    HatchSolenoid3.set(DoubleSolenoid.Value.kReverse);
   }
   /**
    * This function will push the hatch piston out.
@@ -51,6 +56,7 @@ public class Hatch extends Subsystem {
   public void pistonOut(){
     HatchSolenoid.set(DoubleSolenoid.Value.kForward);// This will push the piston out.
     HatchSolenoid2.set(DoubleSolenoid.Value.kForward);
+    HatchSolenoid3.set(DoubleSolenoid.Value.kForward);
   }
   /**
    * This sets the grabber to a speed
