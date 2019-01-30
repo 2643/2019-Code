@@ -58,6 +58,10 @@ public class RobotMap {
   public static int Solenoid1Port2 = 2;     //TODO Check the second port of the first solenoid
   public static int Solenoid2Port1 = 3;     //TODO Check the first port of the second solenoid
   public static int Solenoid2Port2 = 4;     //TODO Check the second port of the second solenoid
+  public static int Solenoid3Port1 = 5;     //TODO Check the first port of the third solenoid
+  public static int Solenoid3Port2 = 6;     //TODO Check the second port of the third solenoid
+  public static int Solenoid4Port1 = 7;     //TODO Check the first port of the fourth solenoid
+  public static int Solenoid4Port2 = 8;     //TODO Check the second port of the fourth solenoid
 
   //hatch ports 
   public static int HatchMotorPort = 3;    //TODO Check the device ID of the hatch motor
@@ -99,6 +103,8 @@ public class RobotMap {
   public static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
   public static DoubleSolenoid HatchPiston = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
   public static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
+  public static DoubleSolenoid HatchPiston3 = new DoubleSolenoid(Solenoid3Port1, Solenoid3Port2);
+  public static DoubleSolenoid HatchPiston4 = new DoubleSolenoid(Solenoid4Port1, Solenoid4Port2);
 
   //carriage
   public static WPI_TalonSRX carriageMotor = new WPI_TalonSRX(carriageMotorPort);
