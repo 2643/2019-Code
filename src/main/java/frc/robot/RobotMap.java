@@ -47,6 +47,7 @@ public class RobotMap {
   public static int rEncoderPort2 = 1;     //TODO Check the second port of the right encoder
   public static int lEncoderPort1 = 0;     //TODO Check the first port of the left encoder
   public static int lEncoderPort2 = 1;     //TODO Check the second port of the left encoder
+  public static int driverCameraServoPort = 0; //TODO Check the PWM port that this is plugged into
 
   //elevator ports
   public static int elevatorPort = 0;      //TODO Check the device ID of the master motor 
@@ -88,6 +89,7 @@ public class RobotMap {
   public static WPI_TalonSRX lBackMotor = new WPI_TalonSRX(lBackMotorPort);
   public static WPI_TalonSRX rFrontMotor = new WPI_TalonSRX(rFrontMotorPort);
   public static WPI_TalonSRX rBackMotor = new WPI_TalonSRX(rBackMotorPort);
+  public static Servo driverCameraServo = new Servo(driverCameraServoPort);
 
   //elevator motors
   public static WPI_TalonSRX elevatorMotor = new WPI_TalonSRX(elevatorPort);
