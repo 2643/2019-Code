@@ -16,22 +16,14 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  * Add your docs here.
  */
 public class Hatch extends Subsystem {
-  DoubleSolenoid HatchSolenoid;
-  DoubleSolenoid HatchSolenoid2;
-  DoubleSolenoid HatchSolenoid3;
-  DoubleSolenoid HatchSolenoid4;
-  WPI_TalonSRX hatchMotor;
+  DoubleSolenoid hatchPiston1;
+  DoubleSolenoid hatchPiston2;
+  DoubleSolenoid releaseHatchPiston1;
+  DoubleSolenoid releaseHatchPiston2;
+  WPI_TalonSRX hatchM;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-    /**
-     * Setting Motors
-     * @param hatchPiston1 First Hatch Piston
-     * @param hatchPiston2 Second Hatch Piston
-     * @param releaseHatchPiston1 First Hatch Release Piston
-     * @param releaseHatchPiston2 Second Hatch Release Piston
-     * @param hatchM Hatch Motor
-     */
-    public Hatch(DoubleSolenoid hatchPiston1, DoubleSolenoid hatchPiston2, DoubleSolenoid releaseHatchPiston1, DoubleSolenoid releaseHatchPiston2, WPI_TalonSRX hatchM){
+    public Hatch(DoubleSolenoid HatchSolenoid, DoubleSolenoid HatchSolenoid2, DoubleSolenoid HatchSolenoid3, DoubleSolenoid HatchSolenoid4, WPI_TalonSRX hatchMotor){
         HatchSolenoid = hatchPiston1;
         HatchSolenoid2 = hatchPiston2;
         HatchSolenoid3 = releaseHatchPiston1;
@@ -48,26 +40,26 @@ public class Hatch extends Subsystem {
    * This function will pull the hatch piston in.
    */
   public void pistonIn(){
-    HatchSolenoid.set(DoubleSolenoid.Value.kReverse);// This will pull the piston in.
-    HatchSolenoid2.set(DoubleSolenoid.Value.kReverse);
-    HatchSolenoid3.set(DoubleSolenoid.Value.kReverse);
-    HatchSolenoid4.set(DoubleSolenoid.Value.kReverse);
+    hatchPiston1.set(DoubleSolenoid.Value.kReverse);// This will pull the piston in.
+    hatchPiston2.set(DoubleSolenoid.Value.kReverse);
+    releaseHatchPiston1.set(DoubleSolenoid.Value.kReverse);
+    releaseHatchPiston2.set(DoubleSolenoid.Value.kReverse);
   }
   /**
    * This function will push the hatch piston out.
    */
   public void pistonOut(){
-    HatchSolenoid.set(DoubleSolenoid.Value.kForward);// This will push the piston out.
-    HatchSolenoid2.set(DoubleSolenoid.Value.kForward);
-    HatchSolenoid3.set(DoubleSolenoid.Value.kForward);
-    HatchSolenoid3.set(DoubleSolenoid.Value.kForward);
+    hatchPiston1.set(DoubleSolenoid.Value.kForward);// This will push the piston out.
+    hatchPiston2.set(DoubleSolenoid.Value.kForward);
+    releaseHatchPiston1.set(DoubleSolenoid.Value.kForward);
+    releaseHatchPiston2.set(DoubleSolenoid.Value.kForward);
   }
   /**
    * This sets the grabber to a speed
    * @param speed the speed to set the motor from -1 to 1
    */
   public void setMotorSpeed(double speed){
-    hatchMotor.set(speed);
+    hatchM.set(speed);
   }
 
   /**
