@@ -47,6 +47,7 @@ public class RobotMap {
   public static int rEncoderPort2 = 1;     //TODO Check the second port of the right encoder
   public static int lEncoderPort1 = 0;     //TODO Check the first port of the left encoder
   public static int lEncoderPort2 = 1;     //TODO Check the second port of the left encoder
+  public static int driverCameraServoPort = 0; //TODO Check the PWM port that this is plugged into
 
   //elevator ports
   public static int elevatorPort = 0;      //TODO Check the device ID of the master motor 
@@ -57,6 +58,10 @@ public class RobotMap {
   public static int Solenoid1Port2 = 2;     //TODO Check the second port of the first solenoid
   public static int Solenoid2Port1 = 3;     //TODO Check the first port of the second solenoid
   public static int Solenoid2Port2 = 4;     //TODO Check the second port of the second solenoid
+  public static int Solenoid3Port1 = 5;     //TODO Check the first port of the third solenoid
+  public static int Solenoid3Port2 = 6;     //TODO Check the second port of the third solenoid
+  public static int Solenoid4Port1 = 7;     //TODO Check the first port of the fourth solenoid
+  public static int Solenoid4Port2 = 8;     //TODO Check the second port of the fourth solenoid
 
   //hatch ports 
   public static int HatchMotorPort = 3;    //TODO Check the device ID of the hatch motor
@@ -88,6 +93,7 @@ public class RobotMap {
   public static WPI_TalonSRX lBackMotor = new WPI_TalonSRX(lBackMotorPort);
   public static WPI_TalonSRX rFrontMotor = new WPI_TalonSRX(rFrontMotorPort);
   public static WPI_TalonSRX rBackMotor = new WPI_TalonSRX(rBackMotorPort);
+  public static Servo driverCameraServo = new Servo(driverCameraServoPort);
 
   //elevator motors
   public static WPI_TalonSRX elevatorMotor = new WPI_TalonSRX(elevatorPort);
@@ -97,6 +103,8 @@ public class RobotMap {
   public static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
   public static DoubleSolenoid HatchPiston = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
   public static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
+  public static DoubleSolenoid ReleaseHatchPiston1 = new DoubleSolenoid(Solenoid3Port1, Solenoid3Port2);
+  public static DoubleSolenoid ReleaseHatchPiston2 = new DoubleSolenoid(Solenoid4Port1, Solenoid4Port2);
 
   //carriage
   public static WPI_TalonSRX carriageMotor = new WPI_TalonSRX(carriageMotorPort);
@@ -166,4 +174,16 @@ public class RobotMap {
   
   //Gyroscope autoalign speed
   public static double autoAlignSpeed = 0.2; //TODO check this with the real robot
+
+  public static double inchesToEncoderTicks(double inches){
+    //TODO write the inchesToEncoderTicks later
+    double encoderTicks;
+    return 0;
+  }
+
+  public static double encoderTicksToInches(double encoder){
+    //TODO write the encoderTicksToInches later
+    double inches;
+    return 0;
+  }
 }
