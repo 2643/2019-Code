@@ -28,17 +28,6 @@ public class OI {
   Joystick driverStick = new Joystick(0);
   Joystick operatorStick = new Joystick(1);
 
-  Button elevatorButtonDown = new JoystickButton(operatorStick, 0);
-  Button elevatorButtonUp = new JoystickButton(operatorStick, 1);
-
-  Button retractPistonButton = new JoystickButton(operatorStick, 2);
-  Button releaseHatchButton = new JoystickButton(operatorStick, 3);
-
-  Button carriageClockwise = new JoystickButton(operatorStick, 4);
-  Button carriageCounterclockwise = new JoystickButton(operatorStick, 5);
-
-  Button cargoOuttakeLeft = new JoystickButton(operatorStick, 6);
-  Button cargoOuttakeRight = new JoystickButton(operatorStick, 7);
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.
@@ -60,17 +49,7 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   public OI(){
-    // Activation buttons for commands
-    elevatorButtonDown.whenPressed(new ElevatorDown());
-    elevatorButtonUp.whenPressed(new ElevatorUp());
-
-    carriageClockwise.whenPressed(new CarriageClockwise());
-    carriageCounterclockwise.whenPressed(new CarriageCounterclockwise());
     
-    cargoOuttakeLeft.whenPressed(new CargoOuttakeLeft());
-    cargoOuttakeRight.whenPressed(new CargoOuttakeRight());
-    //TODO add gyro system buttons, (whileHeld)
-     
   }
 
   public Joystick getDriverStick(){
