@@ -15,8 +15,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class CargoOuttake extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
   public WPI_TalonSRX cargoOuttake;
 /**
  * Setting Motor

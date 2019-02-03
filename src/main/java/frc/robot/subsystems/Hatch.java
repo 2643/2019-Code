@@ -21,8 +21,7 @@ public class Hatch extends Subsystem {
   DoubleSolenoid releaseHatchPiston1;
   DoubleSolenoid releaseHatchPiston2;
   WPI_TalonSRX hatchM;
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+
     public Hatch(DoubleSolenoid HatchSolenoid, DoubleSolenoid HatchSolenoid2, DoubleSolenoid HatchSolenoid3, DoubleSolenoid HatchSolenoid4, WPI_TalonSRX hatchMotor){
         HatchSolenoid = hatchPiston1;
         HatchSolenoid2 = hatchPiston2;
@@ -40,7 +39,7 @@ public class Hatch extends Subsystem {
    * This function will pull the hatch piston in.
    */
   public void pistonIn(){
-    hatchPiston1.set(DoubleSolenoid.Value.kReverse);// This will pull the piston in.
+    hatchPiston1.set(DoubleSolenoid.Value.kReverse);
     hatchPiston2.set(DoubleSolenoid.Value.kReverse);
     releaseHatchPiston1.set(DoubleSolenoid.Value.kReverse);
     releaseHatchPiston2.set(DoubleSolenoid.Value.kReverse);
@@ -49,7 +48,7 @@ public class Hatch extends Subsystem {
    * This function will push the hatch piston out.
    */
   public void pistonOut(){
-    hatchPiston1.set(DoubleSolenoid.Value.kForward);// This will push the piston out.
+    hatchPiston1.set(DoubleSolenoid.Value.kForward);
     hatchPiston2.set(DoubleSolenoid.Value.kForward);
     releaseHatchPiston1.set(DoubleSolenoid.Value.kForward);
     releaseHatchPiston2.set(DoubleSolenoid.Value.kForward);

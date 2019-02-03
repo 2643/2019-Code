@@ -15,8 +15,6 @@ import frc.robot.*;
  * Add your docs here.
  */
 public class CargoIntake extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
   public WPI_TalonSRX CargoIntake1;
   public WPI_TalonSRX CargoIntake2;
   public WPI_TalonSRX RetractMotor;

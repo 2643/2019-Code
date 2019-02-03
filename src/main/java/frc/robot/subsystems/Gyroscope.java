@@ -15,8 +15,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class Gyroscope extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
   ADXRS450_Gyro gyro; 
 
   public Gyroscope(ADXRS450_Gyro g){

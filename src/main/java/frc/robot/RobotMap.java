@@ -9,9 +9,16 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
-import edu.wpi.first.wpilibj.*;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -19,16 +26,6 @@ import edu.wpi.first.wpilibj.*;
  * floating around.
  */
 public class RobotMap {
-  // For example to map the left and right motors, you could define the
-  // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
-  // public static int rightMotor = 2;
-    
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
-
   // Everything is public because vscode likes to complain a lot about it.
 
   /* Pot Offsets */
@@ -88,16 +85,6 @@ public class RobotMap {
   public static int cargoIntakePotPort = 0; //TODO Check the port of the potentiometer of the cargo intake 
   public static int cargoOuttakePort = 0; //TODO Check the device ID of the cargo outtake motor
 
-  //Ultrasonic ports
-  public static int ultrasonicLeftOneTrigger = 0;
-  public static int ultrasonicLeftOneEcho = 0;
-  public static int ultrasonicLeftTwoTrigger = 0;
-  public static int ultrasonicLeftTwoEcho = 0;
-  public static int ultrasonicRightOneTrigger = 0;
-  public static int ultrasonicRightOneEcho = 0;
-  public static int ultrasonicRightTwoTrigger = 0;
-  public static int ultrasonicRightTwoEcho = 0;
-
   /* Motors */
   //Drive motors
   public static WPI_TalonSRX lFrontMotor = new WPI_TalonSRX(lFrontMotorPort);
@@ -107,8 +94,8 @@ public class RobotMap {
   public static Servo driverCameraServo = new Servo(driverCameraServoPort);
 
   //elevator motors
-  public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort);
-  public static CANSparkMax elevatorSlaveMotor = new CANSparkMax(elevatorSlavePort);
+  public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
+  public static CANSparkMax elevatorSlaveMotor = new CANSparkMax(elevatorSlavePort, MotorType.kBrushless);
 
   //hatch motors/solenoids
   public static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
@@ -197,17 +184,4 @@ public class RobotMap {
     double inches;
     return 0;
   }
-  
- //Ultrasonic Initiation
-  public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(ultrasonicLeftOneTrigger, ultrasonicLeftOneEcho);
-  public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(ultrasonicLeftTwoTrigger, ultrasonicLeftTwoEcho);
-  public static Ultrasonic ultrasonicRightOne = new Ultrasonic(ultrasonicRightOneTrigger, ultrasonicRightOneEcho);
-  public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(ultrasonicRightTwoTrigger, ultrasonicRightTwoEcho);
-  public static boolean ultrasonicPingWhichLeft = true;
-  public static boolean ultrasonicPingWhichRight = true;
-  public static boolean ultrasonicPingWhichInit = true;
-  public static boolean ultrasonicLeftPing = true;
-  public static boolean ultrasonicRightPing = true;
-  public static int ultrasonicPingInit = 0;
-
 }
