@@ -58,41 +58,47 @@ public class Ultrasonic extends Subsystem {
     return(angle);
   }
 
-  
+  /**
+   * Gets the angle at the right side of the robot
+   * @return angle
+   */
   public double getRightAngle() {
     double angle = 0.0;
     double rightOne = 0.0;
     double rightTwo = 0.0;
-
-    if(RobotMap.ultrasonicPingWhichRight) {
-      if(RobotMap.ultrasonicRightPing) {
-        RobotMap.ultrasonicRightOne.ping();
-        RobotMap.ultrasonicRightPing = false;
+    
+    while(rightOne == 0.0 && rightTwo == 0.0) {
+      if(RobotMap.ultrasonicPingWhichRight) {
+        if(RobotMap.ultrasonicRightPing) {
+          RobotMap.ultrasonicRightOne.ping();
+          RobotMap.ultrasonicRightPing = false;
+        }
+        
+        else {
+          if(RobotMap.ultrasonicRightOne.isRangeValid()){
+            rightOne = Math.floor(RobotMap.ultrasonicRightOne.getRangeInches());
+            RobotMap.ultrasonicPingWhichRight = !RobotMap.ultrasonicPingWhichRight;
+            RobotMap.ultrasonicRightPing = true;
+          }
+        }
       }
-      
+
       else {
-        if(RobotMap.ultrasonicRightOne.isRangeValid()){
-          rightOne = Math.floor(RobotMap.ultrasonicRightOne.getRangeInches());
-          RobotMap.ultrasonicPingWhichRight = !RobotMap.ultrasonicPingWhichRight;
-          RobotMap.ultrasonicRightPing = true;
+        if(RobotMap.ultrasonicRightPing) {
+          RobotMap.ultrasonicRightTwo.ping();
+          RobotMap.ultrasonicRightPing = false;
+        }
+        if(RobotMap.ultrasonicRightTwo.isRangeValid()){
+        rightTwo = Math.floor(RobotMap.ultrasonicRightTwo.getRangeInches());
+        RobotMap.ultrasonicPingWhichRight = !RobotMap.ultrasonicPingWhichRight;
+        RobotMap.ultrasonicRightPing = true;
         }
       }
     }
-
-    else {
-      if(RobotMap.ultrasonicRightPing) {
-        RobotMap.ultrasonicRightTwo.ping();
-        RobotMap.ultrasonicRightPing = false;
-      }
-      if(RobotMap.ultrasonicRightTwo.isRangeValid()){
-      rightTwo = Math.floor(RobotMap.ultrasonicRightTwo.getRangeInches());
-      RobotMap.ultrasonicPingWhichRight = !RobotMap.ultrasonicPingWhichRight;
-      RobotMap.ultrasonicRightPing = true;
-      }
+      angle = Math.atan(rightOne - rightTwo);
+      return(angle);
     }
-    angle = Math.atan(rightOne - rightTwo);
-    return(angle);
-  }
+
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
