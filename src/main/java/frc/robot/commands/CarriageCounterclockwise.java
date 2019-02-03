@@ -15,27 +15,20 @@ import frc.robot.RobotMap;
  */
 public class CarriageCounterclockwise extends Command {
   public CarriageCounterclockwise() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.carriage);
   }
 
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
   }
 
-  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    //Check if pot is over the counterclockwise limit, if true, accel negatively, otherwise stop.
     //TODO check direction of potentiometer.
     //TODO Specifically in which way it increases/decreases.
     Robot.carriage.setCarriageSpeed(-RobotMap.carriageMotorSpeed);
   }
 
-  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     /* Check for potentiometer position,
@@ -50,14 +43,11 @@ public class CarriageCounterclockwise extends Command {
     }
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
     Robot.carriage.setCarriageSpeed(0);
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
     //Just in case
