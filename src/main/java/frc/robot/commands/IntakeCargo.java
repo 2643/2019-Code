@@ -15,36 +15,28 @@ import frc.robot.RobotMap;
  */
 public class IntakeCargo extends Command {
   public IntakeCargo() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.cargoIntake);
   }
 
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
   }
 
-  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     Robot.cargoIntake.setIntakeSpeed(RobotMap.cargoIntakeSpeed);
   }
 
-  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
     Robot.cargoIntake.setIntakeSpeed(0);
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
     end();

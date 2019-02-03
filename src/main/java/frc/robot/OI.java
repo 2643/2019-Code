@@ -7,9 +7,6 @@
 
 package frc.robot;
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -23,10 +20,6 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
-  
-  //change variables, again.
-  Joystick driverStick = new Joystick(0);
-  Joystick operatorStick = new Joystick(1);
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
@@ -48,6 +41,9 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
+  Joystick driverStick = new Joystick(0);
+  Joystick operatorBoard = new Joystick(1);
+
   public OI(){
     
   }
@@ -56,7 +52,7 @@ public class OI {
     return driverStick;
   }
 
-  public Joystick getOperatorStick(){
-    return operatorStick;
+  public Joystick getOperatorBoard(){
+    return operatorBoard;
   }
 }

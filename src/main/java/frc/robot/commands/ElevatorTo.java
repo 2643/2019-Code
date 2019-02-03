@@ -22,24 +22,19 @@ public class ElevatorTo extends Command {
    * @param elevatorLevelInInches height above the ground in inches that the elevator needs to go to
    */
   public ElevatorTo(int elevatorLevelInInches) {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires (Robot.elevator);
     levelToGoTo = (elevatorLevelInInches);
   }
 
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
   }
 
-  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     Robot.elevator.setElevatorPosition(levelToGoTo);
   }
 
-  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     if(RobotMap.encoderTicksToInches(Robot.elevator.getElevatorEncoder()) == levelToGoTo){
@@ -50,14 +45,11 @@ public class ElevatorTo extends Command {
     }
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
     Robot.elevator.setElevatorSpeed(0);
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
     end();
