@@ -87,6 +87,16 @@ public class RobotMap {
   public static int cargoIntakePotPort = 0; //TODO Check the port of the potentiometer of the cargo intake 
   public static int cargoOuttakePort = 0; //TODO Check the device ID of the cargo outtake motor
 
+  //Ultrasonic ports
+  public static int ultrasonicLeftOneTrigger = 0;
+  public static int ultrasonicLeftOneEcho = 0;
+  public static int ultrasonicLeftTwoTrigger = 0;
+  public static int ultrasonicLeftTwoEcho = 0;
+  public static int ultrasonicRightOneTrigger = 0;
+  public static int ultrasonicRightOneEcho = 0;
+  public static int ultrasonicRightTwoTrigger = 0;
+  public static int ultrasonicRightTwoEcho = 0;
+
   /* Motors */
   //Drive motors
   public static WPI_TalonSRX lFrontMotor = new WPI_TalonSRX(lFrontMotorPort);
@@ -186,4 +196,17 @@ public class RobotMap {
     double inches;
     return 0;
   }
+  
+ //Ultrasonic Initiation
+  public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(ultrasonicLeftOneTrigger, ultrasonicLeftOneEcho);
+  public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(ultrasonicLeftTwoTrigger, ultrasonicLeftTwoEcho);
+  public static Ultrasonic ultrasonicRightOne = new Ultrasonic(ultrasonicRightOneTrigger, ultrasonicRightOneEcho);
+  public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(ultrasonicRightTwoTrigger, ultrasonicRightTwoEcho);
+  public static boolean ultrasonicPingWhichLeft = true;
+  public static boolean ultrasonicPingWhichRight = true;
+  public static boolean ultrasonicPingWhichInit = true;
+  public static boolean ultrasonicLeftPing = true;
+  public static boolean ultrasonicRightPing = true;
+  public static int ultrasonicPingInit = 0;
+
 }
