@@ -209,5 +209,6 @@ public class RobotMap {
   public static boolean ultrasonicLeftPing = true;
   public static boolean ultrasonicRightPing = true;
   public static int ultrasonicPingInit = 0;
+  
 
 }
