@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.*;
 
 public class RetractHatch extends Command {
   public RetractHatch() {
@@ -22,21 +21,17 @@ public class RetractHatch extends Command {
 
   @Override
   protected void execute() {
-    Robot.hatch.pistonOut();
+    Robot.hatch.mechanismPistonIn();
   }
 
   @Override
   protected boolean isFinished() {
-    if(Robot.hatch.getTimer().get() == RobotMap.hatchPistonOutTime){
-      return true;
-    } else{
-      return false;
-    }
+    return false;
   }
 
   @Override
   protected void end() {
-    Robot.hatch.pistonIn();
+   
   }
 
   @Override

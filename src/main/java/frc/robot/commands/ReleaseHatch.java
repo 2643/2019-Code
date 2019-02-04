@@ -26,7 +26,7 @@ public class ReleaseHatch extends Command {
 
   @Override
   protected void execute() {  
-    Robot.hatch.pistonOut();
+    Robot.hatch.hatchPistonOut();
   }
 
   @Override
@@ -40,7 +40,7 @@ public class ReleaseHatch extends Command {
 
   @Override
   protected void end() {
-    Robot.hatch.pistonIn();
+    Robot.hatch.hatchPistonIn();
   }
 
   @Override
