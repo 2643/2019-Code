@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.*;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  * Add your docs here.
@@ -20,14 +19,12 @@ public class Hatch extends Subsystem {
   DoubleSolenoid hatchPiston2;
   DoubleSolenoid releaseHatchPiston1;
   DoubleSolenoid releaseHatchPiston2;
-  WPI_TalonSRX hatchM;
 
-    public Hatch(DoubleSolenoid HatchSolenoid, DoubleSolenoid HatchSolenoid2, DoubleSolenoid HatchSolenoid3, DoubleSolenoid HatchSolenoid4, WPI_TalonSRX hatchMotor){
+    public Hatch(DoubleSolenoid HatchSolenoid, DoubleSolenoid HatchSolenoid2, DoubleSolenoid HatchSolenoid3, DoubleSolenoid HatchSolenoid4){
         HatchSolenoid = hatchPiston1;
         HatchSolenoid2 = hatchPiston2;
         HatchSolenoid3 = releaseHatchPiston1;
         HatchSolenoid4 = releaseHatchPiston2;
-        hatchMotor = hatchM;
     }
  
   @Override
@@ -36,49 +33,35 @@ public class Hatch extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
   /**
-   * This function will pull the hatch piston in.
+   * This function will pull the hatch mechanism in.
    */
-  public void pistonIn(){
+  public void mechanismPistonIn(){
     hatchPiston1.set(DoubleSolenoid.Value.kReverse);
     hatchPiston2.set(DoubleSolenoid.Value.kReverse);
+  }
+  /**
+   * This function will push the hatch mechanism out.
+   */
+  public void mechanismPistonOut(){
+    hatchPiston1.set(DoubleSolenoid.Value.kForward);
+    hatchPiston2.set(DoubleSolenoid.Value.kForward);
+  }
+  /**
+   * Moves hatch pistons in
+   */
+  public void hatchPistonIn(){
     releaseHatchPiston1.set(DoubleSolenoid.Value.kReverse);
     releaseHatchPiston2.set(DoubleSolenoid.Value.kReverse);
   }
   /**
-   * This function will push the hatch piston out.
+   * Moves hatch pistons out
    */
-  public void pistonOut(){
-    hatchPiston1.set(DoubleSolenoid.Value.kForward);
-    hatchPiston2.set(DoubleSolenoid.Value.kForward);
+  public void hatchPistonOut(){
     releaseHatchPiston1.set(DoubleSolenoid.Value.kForward);
     releaseHatchPiston2.set(DoubleSolenoid.Value.kForward);
   }
-  /**
-   * This sets the grabber to a speed
-   * @param speed the speed to set the motor from -1 to 1
-   */
-  public void setMotorSpeed(double speed){
-    hatchM.set(speed);
-  }
 
-  /**
-   * Sends the status of the top limit switch on the hatch mechanism
-   */
-  public boolean getTopLimit(){
-    return RobotMap.HatchTopSwitch.get();
-  }
-
-  /**
-   * Sends the status of the bottom limit switch on the hatch mechanism
-   */
-  public boolean getBottomLimit(){
-    return RobotMap.HatchBottomSwitch.get();
-  }
-
-  /**
-   * Returns the value of the timer used to determine
-   */
-  public Timer getTimer(){
-    return RobotMap.hatchPistonTimer;
+  public Timer getTimer() {
+  	return RobotMap.hatchPistonTimer;
   }
 }

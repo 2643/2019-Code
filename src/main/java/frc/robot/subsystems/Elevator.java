@@ -7,8 +7,9 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANSparkMax;
+
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -18,17 +19,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Elevator extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private WPI_TalonSRX Elevator;
-  private WPI_TalonSRX ElevatorSlave;
+  private CANSparkMax Elevator;
+  private CANEncoder ElevatorEncoder;
   /**
    * Setting Motors
    * @param liftMotor Lift Motor
    * @param slaveMotor Follower Motor
    */
-  public Elevator(WPI_TalonSRX liftMotor, WPI_TalonSRX slaveMotor) {
+  public Elevator(CANSparkMax liftMotor, CANEncoder encoder) {
     Elevator = liftMotor;
-    ElevatorSlave = slaveMotor;
-    ElevatorSlave.set(ControlMode.Follower, Elevator.getDeviceID());
+    ElevatorEncoder = encoder;
   }
 
   // Set elevator's speed
@@ -46,17 +46,10 @@ public class Elevator extends Subsystem {
   /**
    * Gets the elevator encoder value
    */
-  public int getElevatorEncoder() {
-    return Elevator.getSensorCollection().getQuadraturePosition();
+  public double getElevatorEncoder() {
+    return ElevatorEncoder.getPosition();
   }
 
-  // Resets the encoders to zero, and blocks for 0.01 second(s) for error checking
-  /**
-   * Resets the elevator's encoder.
-   */
-  public void elevatorEncoderReset() {
-    Elevator.getSensorCollection().setQuadraturePosition(0, 10);
-  }
 
   /** 
    * Gets the Elevator limitswitch value
@@ -66,8 +59,7 @@ public class Elevator extends Subsystem {
   }
 
   /**
-   * Sets the elevator to a given height (in inches) above the ground 
-   * @param positionInInches height that you want the elevator to go to
+   * TODO for SparkMax
    */
   public void setElevatorPosition(int positionInInches){
     RobotMap.elevatorMotor.set(ControlMode.Position, positionInInches);
@@ -75,7 +67,6 @@ public class Elevator extends Subsystem {
   
   @Override
   public void initDefaultCommand() {
-    elevatorEncoderReset();
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }

@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.*;
 
 /**
  * Extends hatch mechanism
@@ -25,21 +24,17 @@ public class ExtendHatch extends Command {
 
   @Override
   protected void execute() {
-    Robot.hatch.pistonOut();
+    Robot.hatch.mechanismPistonOut();
   }
 
   @Override
   protected boolean isFinished() {
-    if(Robot.hatch.getTimer().get() == RobotMap.hatchPistonOutTime){
-      return true;
-    } else{
-      return false;
-    }
+    return false;
   }
 
   @Override
   protected void end() {
-    Robot.hatch.pistonIn();
+
   }
 
   @Override

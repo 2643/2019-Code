@@ -21,7 +21,7 @@ import frc.robot.RobotMap;
  */
 public class Robot extends TimedRobot {
   public static OI oi;
-  public static Hatch hatch = new Hatch(RobotMap.HatchPiston, RobotMap.HatchPiston2, RobotMap.HatchTalon);
+  public static Hatch hatch = new Hatch(RobotMap.HatchPiston, RobotMap.HatchPiston2, RobotMap.ReleaseHatchPiston1, RobotMap.ReleaseHatchPiston2);
   public static Elevator elevator = new Elevator(RobotMap.elevatorMotor, RobotMap.elevatorSlaveMotor);
   public static Drive drive = new Drive(RobotMap.lFrontMotor, RobotMap.lBackMotor, RobotMap.rFrontMotor, RobotMap.rBackMotor);
   public static Carriage carriage = new Carriage(RobotMap.carriageMotor);
