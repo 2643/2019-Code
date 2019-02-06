@@ -198,18 +198,9 @@ public class RobotMap {
     double inches;
     return 0;
   }
-  
- //Ultrasonic Initiation
+  //Ultrasonic Initiation
   public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(ultrasonicLeftOneTrigger, ultrasonicLeftOneEcho);
   public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(ultrasonicLeftTwoTrigger, ultrasonicLeftTwoEcho);
   public static Ultrasonic ultrasonicRightOne = new Ultrasonic(ultrasonicRightOneTrigger, ultrasonicRightOneEcho);
   public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(ultrasonicRightTwoTrigger, ultrasonicRightTwoEcho);
-  public static boolean ultrasonicPingWhichLeft = true;
-  public static boolean ultrasonicPingWhichRight = true;
-  public static boolean ultrasonicPingWhichInit = true;
-  public static boolean ultrasonicLeftPing = true;
-  public static boolean ultrasonicRightPing = true;
-  public static int ultrasonicPingInit = 0;
-  
-
 }

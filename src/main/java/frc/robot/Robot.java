@@ -40,6 +40,12 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     oi = new OI();
+
+    RobotMap.ultrasonicLeftOne.setAutomaticMode(false);
+
+    boolean ultrasonicPingWhichInit = true;
+    int ultrasonicPingInit = 0;
+
     // chooser.addOption("My Auto", new MyAutoCommand());
     //SmartDashboard.putData("Auto mode", m_chooser);
   }
