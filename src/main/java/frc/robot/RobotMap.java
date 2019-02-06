@@ -11,8 +11,19 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoSink;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -49,7 +60,8 @@ public class RobotMap {
   public static int rEncoderPort2 = 1;     //TODO Check the second port of the right encoder
   public static int lEncoderPort1 = 0;     //TODO Check the first port of the left encoder
   public static int lEncoderPort2 = 1;     //TODO Check the second port of the left encoder
-  public static int driverCameraServoPort = 0; //TODO Check the PWM port that this is plugged into
+  public static int driverCameraServoPort1 = 0; //TODO Check the PWM port that this is plugged into
+  public static int driverCameraServoPort2 = 1; //TODO Check the PWN port that this is plugged into 
 
   //elevator ports
   public static int elevatorPort = 0;      //TODO Check the device ID of the master motor 
@@ -105,7 +117,8 @@ public class RobotMap {
   public static WPI_TalonSRX lBackMotor = new WPI_TalonSRX(lBackMotorPort);
   public static WPI_TalonSRX rFrontMotor = new WPI_TalonSRX(rFrontMotorPort);
   public static WPI_TalonSRX rBackMotor = new WPI_TalonSRX(rBackMotorPort);
-  public static Servo driverCameraServo = new Servo(driverCameraServoPort);
+  public static Servo driverCameraServo1 = new Servo(driverCameraServoPort1);
+  public static Servo driverCameraServo2 = new Servo(driverCameraServoPort2);
 
   //elevator motors
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
@@ -131,6 +144,9 @@ public class RobotMap {
   //drive sensors
   public static Encoder rEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder lEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
+  public static UsbCamera camera1;
+  public static UsbCamera camera2;
+  public static VideoSink server;
   
   //elevator sensors
   public static DigitalInput elevatorBottomLimit = new DigitalInput(0);

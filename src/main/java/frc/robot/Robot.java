@@ -7,10 +7,12 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.*;
 import frc.robot.RobotMap;
+import edu.wpi.cscore.VideoSource;d
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -42,6 +44,13 @@ public class Robot extends TimedRobot {
     oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
     //SmartDashboard.putData("Auto mode", m_chooser);
+
+    RobotMap.camera1 = CameraServer.getInstance().startAutomaticCapture(0);
+    RobotMap.camera2 = CameraServer.getInstance().startAutomaticCapture(1);
+    RobotMap.server = CameraServer.getInstance().getServer();
+
+    RobotMap.camera1.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+    RobotMap.camera2.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
   }
 
   /**
