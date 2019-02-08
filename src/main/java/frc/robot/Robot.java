@@ -146,14 +146,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    drive.setAllSpeed(0.3);
-    if(oi.getDriverStick().getRawButton(1) == true)
-      drive.setLeftSpeed(0.3);
-    else if(oi.getDriverStick().getRawButton(2) == true)
-      drive.setRightSpeed(0.3);
-    else if(oi.getDriverStick().getRawButton(3) == true)
-      drive.setAllSpeed(0.3);
-    else
-      drive.setAllSpeed(0);
+    
   }
 }
