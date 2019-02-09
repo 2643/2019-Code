@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.*;
 import frc.robot.RobotMap;
-import edu.wpi.cscore.VideoSource;d
+import edu.wpi.cscore.VideoSource;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,7 +24,7 @@ import edu.wpi.cscore.VideoSource;d
 public class Robot extends TimedRobot {
   public static OI oi;
   public static Hatch hatch = new Hatch(RobotMap.HatchPiston, RobotMap.HatchPiston2, RobotMap.ReleaseHatchPiston1, RobotMap.ReleaseHatchPiston2);
-  public static Elevator elevator = new Elevator(RobotMap.elevatorMotor, RobotMap.elevatorSlaveMotor);
+  public static Elevator elevator = new Elevator(RobotMap.elevatorMotor);
   public static Drive drive = new Drive(RobotMap.lFrontMotor, RobotMap.lBackMotor, RobotMap.rFrontMotor, RobotMap.rBackMotor);
   public static Carriage carriage = new Carriage(RobotMap.carriageMotor);
   public static CargoIntake cargoIntake = new CargoIntake(RobotMap.cargoIntakeMotor1, RobotMap.cargoIntakeMotor2, RobotMap.cargoRetractMotor);
@@ -43,6 +43,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     oi = new OI();
 
+    elevator.resetElevatorEncoder();
     RobotMap.ultrasonicLeftOne.setAutomaticMode(false);
 
     boolean ultrasonicPingWhichInit = true;

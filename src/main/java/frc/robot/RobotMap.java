@@ -8,6 +8,8 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -122,7 +124,6 @@ public class RobotMap {
 
   //elevator motors
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
-  public static CANSparkMax elevatorSlaveMotor = new CANSparkMax(elevatorSlavePort, MotorType.kBrushless);
 
   //hatch motors/solenoids
   public static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
@@ -150,6 +151,8 @@ public class RobotMap {
   
   //elevator sensors
   public static DigitalInput elevatorBottomLimit = new DigitalInput(0);
+  public static CANEncoder elevatorEncoder = new CANEncoder(elevatorMotor);
+  public static CANPIDController elevatorController = new CANPIDController(elevatorMotor);
 
   //hatch sensors
   public static DigitalInput HatchTopSwitch = new DigitalInput(HatchTopPort);
