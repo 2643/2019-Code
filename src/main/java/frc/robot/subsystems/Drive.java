@@ -32,6 +32,26 @@ public class Drive extends Subsystem
         rightDriveSlave = r2;
 
         rightDriveSlave.set(ControlMode.Follower, rightDriveMaster.getDeviceID());
+
+        leftDriveMaster.configContinuousCurrentLimit(32, 0);
+		leftDriveMaster.configPeakCurrentLimit(35, 0);
+		leftDriveMaster.configPeakCurrentDuration(80, 0);
+        leftDriveMaster.enableCurrentLimit(true);
+        
+        leftDriveSlave.configContinuousCurrentLimit(32, 0);
+		leftDriveSlave.configPeakCurrentLimit(35, 0);
+		leftDriveSlave.configPeakCurrentDuration(80, 0);
+        leftDriveSlave.enableCurrentLimit(true);
+        
+        rightDriveMaster.configContinuousCurrentLimit(32, 0);
+		rightDriveMaster.configPeakCurrentLimit(35, 0);
+		rightDriveMaster.configPeakCurrentDuration(80, 0);
+        rightDriveMaster.enableCurrentLimit(true);
+        
+        rightDriveSlave.configContinuousCurrentLimit(32, 0);
+		rightDriveSlave.configPeakCurrentLimit(35, 0);
+		rightDriveSlave.configPeakCurrentDuration(80, 0);
+		rightDriveSlave.enableCurrentLimit(true);
     }
     /**
      * Sets TankDrive to default command
