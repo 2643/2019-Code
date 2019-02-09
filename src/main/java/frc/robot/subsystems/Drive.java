@@ -138,4 +138,28 @@ public class Drive extends Subsystem
     public void stopAllSpeed(){
         setAllSpeed(0);
     }
+
+    /**
+     * Sets the position of the left side of the robot in encoder ticks
+     * @param ticks int the desired position of the left side of the robot in encoder ticks
+     */
+    public void setLeftPosition(int ticks){
+        //TODO
+    }
+
+    /**
+     * Sets the position of the right side of the robot in encoder ticks 
+     * @param ticks int the desired position of the right side of the robot in encoder ticks
+     */
+    public void setRightPosition(int ticks){
+        //TODO
+    }
+
+    /**
+     * Sets the position of the robot in encoder ticks
+     * @param ticks int the desired position of the robot in encoder ticks
+     */
+    public void setPosition(int ticks){
+        //TODO 
+    }
 }
