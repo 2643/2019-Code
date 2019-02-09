@@ -13,7 +13,7 @@ import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.cameraserver.CameraServer;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -208,13 +208,13 @@ public class RobotMap {
 
   public static double inchesToEncoderTicks(double inches){
     //TODO write the inchesToEncoderTicks later
-    double encoderTicks;
+    
     return 0;
   }
 
   public static double encoderTicksToInches(double encoder){
     //TODO write the encoderTicksToInches later
-    double inches;
+   
     return 0;
   }
   //Ultrasonic Initiation
