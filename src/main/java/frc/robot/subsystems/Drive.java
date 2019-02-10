@@ -144,7 +144,7 @@ public class Drive extends Subsystem
      * @param ticks int the desired position of the left side of the robot in encoder ticks
      */
     public void setLeftPosition(int ticks){
-        //TODO
+        //TODO finish writing the setLeftPosition method
     }
 
     /**
@@ -152,7 +152,7 @@ public class Drive extends Subsystem
      * @param ticks int the desired position of the right side of the robot in encoder ticks
      */
     public void setRightPosition(int ticks){
-        //TODO
+        //TODO finish writing the setRightPosition method
     }
 
     /**
@@ -160,6 +160,6 @@ public class Drive extends Subsystem
      * @param ticks int the desired position of the robot in encoder ticks
      */
     public void setPosition(int ticks){
-        //TODO 
+        //TODO finish writing the setPosition method
     }
 }

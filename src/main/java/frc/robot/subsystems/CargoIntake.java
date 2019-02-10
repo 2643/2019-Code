@@ -56,6 +56,7 @@ public class CargoIntake extends Subsystem {
 
   /**
    * Returns the value of the cargo intake potentiometer
+   * @return double the value of the potentiometer on the cargo intake
    */
   public double getPotentiometer(){
     return RobotMap.cargoIntakePot.get();
