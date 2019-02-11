@@ -39,7 +39,7 @@ public class CargoIntake extends Subsystem {
   }
   /**
    * Sets the speed for Intake Motors
-   * @param speed Speed
+   * @param speed double from -1 to 1 
    */
   public void setIntakeSpeed(double speed){
     CargoIntake1.set(speed); //TODO Test this
@@ -47,7 +47,7 @@ public class CargoIntake extends Subsystem {
   }
   /**
    * Sets the speed for the Retract Motor
-   * @param speed
+   * @param speed double from -1 to 1
    */
   public void setRectractSpeed(double speed){
     RetractMotor.set(speed); //TODO Test this

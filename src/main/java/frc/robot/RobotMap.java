@@ -222,4 +222,25 @@ public class RobotMap {
   public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(ultrasonicLeftTwoTrigger, ultrasonicLeftTwoEcho);
   public static Ultrasonic ultrasonicRightOne = new Ultrasonic(ultrasonicRightOneTrigger, ultrasonicRightOneEcho);
   public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(ultrasonicRightTwoTrigger, ultrasonicRightTwoEcho);
+
+  //driver joystick button numbers
+
+  public static int retractCargoIntakeButtonNumber = 2;
+  public static int releaseCargoIntakeButtonNumber = 3;
+
+  //operator board button numbers
+
+  public static int cancelAutoSafetyButtonNumber = 0; //TODO Chech Button Number
+  public static int carriageCenterButtonNumber = 0; //TODO Chech Button Number
+  public static int elevatorDownButtonNumber = 0; //TODO Chech Button Number
+  public static int cargoOuttakeLeftButtonNumber = 0; //TODO Chech Button Number
+  public static int carriageLeftButtonNumber = 0; //TODO Chech Button Number
+  public static int cargoOuttakeRightButtonNumber = 0; //TODO Chech Button Number
+  public static int carriageRightButtonNumber = 0; //TODO Chech Button Number
+  public static int elevatorPresetButtonNumber = 0; //TODO Chech Button Number
+  public static int elevatorUpButtonNumber = 0; //TODO Chech Button Number
+  public static int intakeButtonNumber = 0; //TODO Chech Button Number
+  public static int hatchReleaseButtonNumber = 0; //TODO Chech Button Number
+  public static int hatchMechanismSwitchNumber = 0; //TODO Chech Button Number
+
 }
