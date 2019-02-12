@@ -7,15 +7,15 @@
 
 package frc.robot.commands;
 
-
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
 import frc.robot.*;
 /**
  * Releases the hatch panel
  */
-public class ReleaseHatch extends Command {
+public class ReleaseHatch extends TimedCommand {
   public ReleaseHatch() {
+    super(RobotMap.hatchReleaseTimeout);
     requires(Robot.hatch);
   }
 

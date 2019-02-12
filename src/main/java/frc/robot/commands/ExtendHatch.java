@@ -7,14 +7,16 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 /**
  * Extends hatch mechanism
  */
-public class ExtendHatch extends Command {
+public class ExtendHatch extends TimedCommand {
   public ExtendHatch() {
+    super(RobotMap.hatchReleaseTimeout);
     requires(Robot.hatch);
   }
 

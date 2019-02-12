@@ -190,6 +190,7 @@ public class RobotMap {
   public static double hatchUpSpeed = 0; //TODO Test to find a suitable speed
   public static Timer hatchPistonTimer = new Timer();
   public static int hatchPistonOutTime = 3; //TODO Test this out 
+  public static int hatchReleaseTimeout = 0; //TODO Change this
 
   //carriage variables
   public static double carriageMotorSpeed = 0.15; //Carriage motor speed preset should probably implement PIDS
