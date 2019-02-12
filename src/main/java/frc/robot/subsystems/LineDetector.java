@@ -30,7 +30,7 @@ public class LineDetector extends Subsystem {
   } */
   /**
    * Tells when a sensor is tripped.
-   * @return sensor values, as primes multiplied
+   * @return sensor values
    */
 
 

@@ -6,7 +6,11 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.*;
+import frc.robot.subsystems.CargoIntake;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -41,11 +45,63 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-  Joystick driverStick = new Joystick(0);
-  Joystick operatorBoard = new Joystick(1);
 
+  //driver joystick and buttons
+  Joystick driverStick = new Joystick(0);
+  JoystickButton retractCargoIntake = new JoystickButton(driverStick, RobotMap.retractCargoIntakeButtonNumber);
+  JoystickButton releaseCargoIntake = new JoystickButton(driverStick, RobotMap.releaseCargoIntakeButtonNumber);
+
+  //operator board and buttons 
+  Joystick operatorBoard = new Joystick(1);
+  JoystickButton cancelAutoSafety = new JoystickButton(operatorBoard, RobotMap.cancelAutoSafetyButtonNumber);
+  JoystickButton carriageCenter = new JoystickButton(operatorBoard, RobotMap.carriageCenterButtonNumber);
+  JoystickButton elevatorDown = new JoystickButton(operatorBoard, RobotMap.elevatorDownButtonNumber);
+  JoystickButton cargoOuttakeLeft = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeLeftButtonNumber);
+  JoystickButton carriageLeft = new JoystickButton(operatorBoard, RobotMap.carriageLeftButtonNumber);
+  JoystickButton cargoOuttakeRight = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeRightButtonNumber);
+  JoystickButton carriageRight = new JoystickButton(operatorBoard, RobotMap.carriageRightButtonNumber);
+  JoystickButton elevatorPreset = new JoystickButton(operatorBoard, RobotMap.elevatorPresetButtonNumber);
+  JoystickButton elevatorUp = new JoystickButton(operatorBoard, RobotMap.elevatorUpButtonNumber);
+  JoystickButton intake = new JoystickButton(operatorBoard, RobotMap.intakeButtonNumber);
+  JoystickButton hatchRelease = new JoystickButton(operatorBoard, RobotMap.hatchReleaseButtonNumber);
+  JoystickButton hatchMechanismSwitch = new JoystickButton(operatorBoard, RobotMap.hatchMechanismSwitchNumber);
   public OI(){
+    //driver stick
+    retractCargoIntake.whenPressed(new RetractCargoIntake());
+    releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
+
+    //operator board
+
+    //safety button
+    cancelAutoSafety.cancelWhenPressed(); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
+    cancelAutoSafety.cancelWhenPressed();  //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
+   
+    //elevator buttons
+    elevatorDown.whenPressed(new ElevatorDown());
+    elevatorUp.whenPressed(new ElevatorUp());
+    elevatorPreset.whenPressed(new ElevatorTo()); //TODO Finish when things are sautered
+
+    //carriage buttons
+    carriageCenter.whenPressed(new CarriageCenter()); //TODO create CarriageCenter command
+    carriageLeft.whenPressed(new CarriageClockwise()); //TODO check this
+    carriageRight.whenPressed(new CarriageCounterclockwise()); //TODO Check this
     
+    //cargo outtake buttons
+    //cargoOUttakeAuto
+    cargoOuttakeRight.whenPressed(new CargoOuttakeRight());
+    cargoOuttakeLeft.whenPressed(new CargoOuttakeLeft());
+
+    //cargo intake button
+    intake.whenPressed(new IntakeCargo());
+
+    //hatch buttons
+    //hatchAuto
+    if(hatchRelease.get() == true){
+      hatchRelease.whenPressed(new ReleaseHatch());
+    }else{
+      hatchMechanismSwitch.whileHeld(new ExtendHatch());
+      hatchMechanismSwitch.whenReleased(new RetractHatch());
+    }
   }
 
   public Joystick getDriverStick(){

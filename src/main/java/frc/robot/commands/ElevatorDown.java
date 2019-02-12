@@ -44,7 +44,7 @@ public class ElevatorDown extends Command {
   protected void end() {
     //Just in case
     if (isFinished()) {
-      Robot.elevator.elevatorEncoderReset();
+      Robot.elevator.resetElevatorEncoder();
     }
     Robot.elevator.setElevatorSpeed(0);
   }

@@ -8,10 +8,12 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.cameraserver.CameraServer;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -127,7 +129,6 @@ public class RobotMap {
 
   //elevator motors
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
-  public static CANSparkMax elevatorSlaveMotor = new CANSparkMax(elevatorSlavePort, MotorType.kBrushless);
 
   //hatch motors/solenoids
   public static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
@@ -155,6 +156,8 @@ public class RobotMap {
   
   //elevator sensors
   public static DigitalInput elevatorBottomLimit = new DigitalInput(0);
+  public static CANEncoder elevatorEncoder = new CANEncoder(elevatorMotor);
+  public static CANPIDController elevatorController = new CANPIDController(elevatorMotor);
 
   //hatch sensors
   public static DigitalInput HatchTopSwitch = new DigitalInput(HatchTopPort);
@@ -192,6 +195,9 @@ public class RobotMap {
   public static double hatchUpSpeed = 0; //TODO Test to find a suitable speed
   public static Timer hatchPistonTimer = new Timer();
   public static int hatchPistonOutTime = 3; //TODO Test this out 
+  public static int hatchReleaseTimeout = 0; //TODO Change this
+  public static int hatchRetractTimeout = 0; //TODO Change this
+  public static int hatchExtendTimeout = 0; //TODO Change this
 
   //carriage variables
   public static double carriageMotorSpeed = 0.15; //Carriage motor speed preset should probably implement PIDS
@@ -210,13 +216,13 @@ public class RobotMap {
 
   public static double inchesToEncoderTicks(double inches){
     //TODO write the inchesToEncoderTicks later
-    double encoderTicks;
+    
     return 0;
   }
 
   public static double encoderTicksToInches(double encoder){
     //TODO write the encoderTicksToInches later
-    double inches;
+   
     return 0;
   }
   //Ultrasonic Initiation
@@ -224,4 +230,25 @@ public class RobotMap {
   public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(ultrasonicLeftTwoTrigger, ultrasonicLeftTwoEcho);
   public static Ultrasonic ultrasonicRightOne = new Ultrasonic(ultrasonicRightOneTrigger, ultrasonicRightOneEcho);
   public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(ultrasonicRightTwoTrigger, ultrasonicRightTwoEcho);
+
+  //driver joystick button numbers
+
+  public static int retractCargoIntakeButtonNumber = 2;
+  public static int releaseCargoIntakeButtonNumber = 3;
+
+  //operator board button numbers
+
+  public static int cancelAutoSafetyButtonNumber = 0; //TODO Chech Button Number
+  public static int carriageCenterButtonNumber = 0; //TODO Chech Button Number
+  public static int elevatorDownButtonNumber = 0; //TODO Chech Button Number
+  public static int cargoOuttakeLeftButtonNumber = 0; //TODO Chech Button Number
+  public static int carriageLeftButtonNumber = 0; //TODO Chech Button Number
+  public static int cargoOuttakeRightButtonNumber = 0; //TODO Chech Button Number
+  public static int carriageRightButtonNumber = 0; //TODO Chech Button Number
+  public static int elevatorPresetButtonNumber = 0; //TODO Chech Button Number
+  public static int elevatorUpButtonNumber = 0; //TODO Chech Button Number
+  public static int intakeButtonNumber = 0; //TODO Chech Button Number
+  public static int hatchReleaseButtonNumber = 0; //TODO Chech Button Number
+  public static int hatchMechanismSwitchNumber = 0; //TODO Chech Button Number
+
 }

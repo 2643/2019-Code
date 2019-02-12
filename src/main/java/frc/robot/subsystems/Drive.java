@@ -32,6 +32,26 @@ public class Drive extends Subsystem
         rightDriveSlave = r2;
 
         rightDriveSlave.set(ControlMode.Follower, rightDriveMaster.getDeviceID());
+
+        leftDriveMaster.configContinuousCurrentLimit(32, 0);
+		leftDriveMaster.configPeakCurrentLimit(35, 0);
+		leftDriveMaster.configPeakCurrentDuration(80, 0);
+        leftDriveMaster.enableCurrentLimit(true);
+        
+        leftDriveSlave.configContinuousCurrentLimit(32, 0);
+		leftDriveSlave.configPeakCurrentLimit(35, 0);
+		leftDriveSlave.configPeakCurrentDuration(80, 0);
+        leftDriveSlave.enableCurrentLimit(true);
+        
+        rightDriveMaster.configContinuousCurrentLimit(32, 0);
+		rightDriveMaster.configPeakCurrentLimit(35, 0);
+		rightDriveMaster.configPeakCurrentDuration(80, 0);
+        rightDriveMaster.enableCurrentLimit(true);
+        
+        rightDriveSlave.configContinuousCurrentLimit(32, 0);
+		rightDriveSlave.configPeakCurrentLimit(35, 0);
+		rightDriveSlave.configPeakCurrentDuration(80, 0);
+		rightDriveSlave.enableCurrentLimit(true);
     }
     /**
      * Sets TankDrive to default command
@@ -117,5 +137,29 @@ public class Drive extends Subsystem
      */
     public void stopAllSpeed(){
         setAllSpeed(0);
+    }
+
+    /**
+     * Sets the position of the left side of the robot in encoder ticks
+     * @param ticks int the desired position of the left side of the robot in encoder ticks
+     */
+    public void setLeftPosition(int ticks){
+        //TODO finish writing the setLeftPosition method
+    }
+
+    /**
+     * Sets the position of the right side of the robot in encoder ticks 
+     * @param ticks int the desired position of the right side of the robot in encoder ticks
+     */
+    public void setRightPosition(int ticks){
+        //TODO finish writing the setRightPosition method
+    }
+
+    /**
+     * Sets the position of the robot in encoder ticks
+     * @param ticks int the desired position of the robot in encoder ticks
+     */
+    public void setPosition(int ticks){
+        //TODO finish writing the setPosition method
     }
 }

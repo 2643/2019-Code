@@ -32,14 +32,26 @@ public class DriverCamera extends Subsystem {
     driverCamera2 = camera2;
   }
 
-  public void setServo1Angle(double degrees){
+  /**
+   * Sets the angle of servo1
+   * @param degrees int angle from 0-360 to make the servo to turn to 
+   */
+  public void setServo1Angle(int degrees){
     RobotMap.driverCameraServo1.setAngle(degrees);
   }
 
-  public void setServo2Angle(double degrees){
+  /**
+   * Sets the angle of servo2
+   * @param degrees int angle from 0
+   */
+  public void setServo2Angle(int degrees){
     RobotMap.driverCameraServo2.setAngle(degrees);
   }
 
+  /**
+   * Changes the view to the camera given 
+   * @param camera Camera that you want to change the view to 
+   */
   public void setCameraSource(UsbCamera camera){
     RobotMap.server.setSource(camera);
   }
