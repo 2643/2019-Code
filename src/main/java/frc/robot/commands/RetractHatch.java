@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 
 public class RetractHatch extends TimedCommand {
   public RetractHatch() {
-    super(RobotMap.hatchReleaseTimeout);
+    super(RobotMap.hatchRetractTimeout);
     requires(Robot.hatch);
   }
 

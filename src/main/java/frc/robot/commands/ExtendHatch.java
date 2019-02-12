@@ -16,7 +16,7 @@ import frc.robot.RobotMap;
  */
 public class ExtendHatch extends TimedCommand {
   public ExtendHatch() {
-    super(RobotMap.hatchReleaseTimeout);
+    super(RobotMap.hatchExtendTimeout);
     requires(Robot.hatch);
   }
 
