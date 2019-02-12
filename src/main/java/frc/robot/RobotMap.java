@@ -111,12 +111,17 @@ public class RobotMap {
   public static int ultrasonicRightTwoTrigger = 0;
   public static int ultrasonicRightTwoEcho = 0;
 
+  //DriveTrainPIDTarget
+  public static double RightEncoderTarget = 0;
+  public static double LeftEncoderTarget = 0;
+  
+
   /* Motors */
   //Drive motors
-  public static WPI_TalonSRX lFrontMotor = new WPI_TalonSRX(lFrontMotorPort);
-  public static WPI_TalonSRX lBackMotor = new WPI_TalonSRX(lBackMotorPort);
-  public static WPI_TalonSRX rFrontMotor = new WPI_TalonSRX(rFrontMotorPort);
-  public static WPI_TalonSRX rBackMotor = new WPI_TalonSRX(rBackMotorPort);
+  public static WPI_TalonSRX LeftFrontMotor = new WPI_TalonSRX(lFrontMotorPort);
+  public static WPI_TalonSRX LeftBackMotor = new WPI_TalonSRX(lBackMotorPort);
+  public static WPI_TalonSRX RightFrontMotor = new WPI_TalonSRX(rFrontMotorPort);
+  public static WPI_TalonSRX RightBackMotor = new WPI_TalonSRX(rBackMotorPort);
   public static Servo driverCameraServo1 = new Servo(driverCameraServoPort1);
   public static Servo driverCameraServo2 = new Servo(driverCameraServoPort2);
 
@@ -142,8 +147,8 @@ public class RobotMap {
 
   /* Sensors */
   //drive sensors
-  public static Encoder rEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
-  public static Encoder lEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
+  public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
+  public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
   public static UsbCamera camera1;
   public static UsbCamera camera2;
   public static VideoSink server;

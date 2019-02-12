@@ -44,13 +44,13 @@ public class Drive extends Subsystem
      * Gets Right Encoder
      */
     public int getRightEncoder(){
-        return RobotMap.rEncoder.get();
+        return RobotMap.RightEncoder.get();
     }
     /**
      * Gets Left Encoder
      */
     public int getLeftEncoder(){
-        return RobotMap.lEncoder.get();
+        return RobotMap.LeftEncoder.get();
     }
     /**
      * Gets the average value of the right and left encoders
@@ -76,13 +76,13 @@ public class Drive extends Subsystem
      * Resets left encoder
      */
     public void resetLeftEncoder(){
-        RobotMap.lEncoder.reset();
+        RobotMap.LeftEncoder.reset();
     }
     /**
      * Resets right Encoder
      */
     public void resetRightEncoder(){
-        RobotMap.rEncoder.reset();
+        RobotMap.RightEncoder.reset();
     }
     /**
      * Resets all encoders
