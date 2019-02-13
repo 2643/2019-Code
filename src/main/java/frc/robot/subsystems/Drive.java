@@ -99,7 +99,7 @@ public class Drive extends Subsystem
         rightDriveSlave.configContinuousCurrentLimit(32, 0);
 		rightDriveSlave.configPeakCurrentLimit(35, 0);
 		rightDriveSlave.configPeakCurrentDuration(80, 0);
-		rightDriveSlave.enableCurrentLimit(true);
+        rightDriveSlave.enableCurrentLimit(true);
     }
     /**
      * Sets TankDrive to default command
@@ -112,13 +112,13 @@ public class Drive extends Subsystem
      * Gets Right Encoder
      */
     public int getRightEncoder(){
-        return RobotMap.RightEncoder.get();
+        return RobotMap.RightEncoder.getRaw();
     }
     /**
      * Gets Left Encoder
      */
     public int getLeftEncoder(){
-        return RobotMap.LeftEncoder.get();
+        return RobotMap.LeftEncoder.getRaw();
     }
     /**
      * Gets the average value of the right and left encoders
@@ -185,22 +185,6 @@ public class Drive extends Subsystem
      */
     public void stopAllSpeed(){
         setAllSpeed(0);
-    }
-
-    /**
-     * Sets the position of the left side of the robot in encoder ticks
-     * @param ticks int the desired position of the left side of the robot in encoder ticks
-     */
-    public void setLeftPosition(int ticks){
-        //TODO finish writing the setLeftPosition method
-    }
-
-    /**
-     * Sets the position of the right side of the robot in encoder ticks 
-     * @param ticks int the desired position of the right side of the robot in encoder ticks
-     */
-    public void setRightPosition(int ticks){
-        //TODO finish writing the setRightPosition method
     }
 
     /**
