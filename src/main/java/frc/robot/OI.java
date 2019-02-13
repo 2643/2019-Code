@@ -96,12 +96,35 @@ public class OI {
 
     //hatch buttons
     //hatchAuto
+    /*
     if(hatchRelease.get() == true){
       hatchRelease.whenPressed(new ReleaseHatch());
+      if(hatchMechanismSwitch.get() == true)
+        hatchMechanismSwitch.whileHeld(new ExtendHatch());
     }else{
-      hatchMechanismSwitch.whileHeld(new ExtendHatch());
       hatchMechanismSwitch.whenReleased(new RetractHatch());
     }
+    int hatchThing = 0;
+
+    if(hatchMechanismSwitch.get() == false){
+      hatchThing = 0;
+    } else if(hatchMechanismSwitch.get() == true){
+      hatchThing = 1;
+    }
+
+    switch(hatchThing){
+      case 0:
+        Robot.hatch.mechanismPistonOut();
+        Robot.hatch.hatchPistonOut();
+        Robot.hatch.hatchPistonIn();
+        Robot.hatch.mechanismPistonIn();
+        break;
+      case 1:
+        Robot.hatch.hatchPistonOut();
+        Robot.hatch.hatchPistonIn();
+        Robot.hatch.mechanismPistonIn();
+        break;
+    } */
   }
 
   public Joystick getDriverStick(){
