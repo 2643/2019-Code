@@ -7,8 +7,11 @@
 
 package frc.robot.subsystems;
 
+<<<<<<< HEAD
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.revrobotics.CANEncoder;
+=======
+>>>>>>> 4150a44cdfe3ecba7ed9b952f559f71ee3ad4d8d
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 
