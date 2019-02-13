@@ -9,6 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
+import frc.robot.subsystems.LineDetector;
 
 public class UpToLine extends Command {
   public UpToLine() {
@@ -26,7 +28,31 @@ public class UpToLine extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
+    int leftEncoder = RobotMap.LeftEncoder.getRaw();
+    int rightEncoder = RobotMap.RightEncoder.getRaw();
+
+    int curLeftTarget = RobotMap.currentLeftEncoderTarget;
+    int curRightTarget = RobotMap.currentRightEncoderTarget;
+
+    int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
+
+    int curLeftError = leftEncoder - curLeftTarget;
+    int curRightError = rightEncoder - curRightTarget;
+
+    if(Robot.lineDetector.getIRSensors() > 0 && Robot.lineDetector.getIRSensors() <= 7){
+      
+    }
+
+    if(Math.abs(curLeftError) >= encoderErrorTolerance){
+      if(Robot.lineDetector.getIRSensors() == 0){
+        Robot.drive.setLeftPosition(leftEncoder + 2);
+      }
+    }
+    if(Math.abs(curRightError) >= encoderErrorTolerance){
+      if(Robot.lineDetector.getIRSensors() == 0){
+        Robot.drive.setRightPosition(rightEncoder + 2);
+      }
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
