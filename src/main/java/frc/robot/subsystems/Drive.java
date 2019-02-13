@@ -16,6 +16,54 @@ public class Drive extends Subsystem
     private final WPI_TalonSRX leftDriveSlave;
     private final WPI_TalonSRX rightDriveMaster;
     private final WPI_TalonSRX rightDriveSlave;
+    //PID Numbers
+    double LeftCurrentEncoderInput = 0;
+    double RightCurrentEncoderInput = 0;
+    double RightEncoderTarget = 0;
+    double LeftEncoderTarget = 0;
+    //Right PID
+    double RightP = 0.05;
+    double RightI = 0.0;
+    double RightD = 0.0;
+    //Left PID
+    double LeftP = 0.05;
+    double LeftI = 0.0;
+    double LeftD = 0.0;
+  
+    double RightIntgorSum = 0;
+    double LeftIntgorSum = 0;
+  
+    double RightPreviousEncoderInput = 0;
+    double LeftPreviousEncoderInput = 0;
+  
+    double LeftError = 0;
+    double RightError = 0;
+  
+    double RightDelta = 0;
+    double LeftDelta = 0;
+  
+    double LeftOutput = 0;
+    double RightOutput = 0;
+  
+    double RightOldVel = 0;
+    double RightOldPos = 0;
+  
+    double RightCurrentVel = 0;
+    double RightCurrentAccel = 0;
+  
+    double LeftOldVel = 0;
+    double LeftOldPos = 0;
+  
+    double LeftCurrentVel = 0;
+    double LeftCurrentAccel = 0;
+  
+    double AGain = 0;
+    double ALimit = 18;
+  
+    double unlimitedAccel = 0;
+  
+    double MaxOutput = 0.5;
+    double IntgorSumLimit = 25;
     /**
      * Drive constructor 
      * @param l1 left front motor
@@ -160,68 +208,9 @@ public class Drive extends Subsystem
      * Sets the position of the robot in encoder ticks
      * @param ticks int the desired position of the robot in encoder ticks
      */
-    double LeftCurrentEncoderInput = 0;
-    double RightCurrentEncoderInput = 0;
-    double RightEncoderTarget = 0;
-    double LeftEncoderTarget = 0;
-  
-    double RightD = SmartDashboard.getNumber("Set D", 0.0);
-    double RightP = SmartDashboard.getNumber("Set P", 0.05);
-  
-    double LeftD = SmartDashboard.getNumber("Set D", 0.0);
-    double LeftP = SmartDashboard.getNumber("Set P", 0.05);
-  
-    double RightIntgorSum = 0;
-    double RightI = SmartDashboard.getNumber("Set I", 0.0);
-  
-    double LeftIntgorSum = 0;
-    double LeftI = SmartDashboard.getNumber("Set I", 0.0);
-  
-    double RightPreviousEncoderInput = 0;
-    double LeftPreviousEncoderInput = 0;
-  
-    double LeftError = 0;
-    double RightError = 0;
-  
-    double RightDelta = 0;
-    double LeftDelta = 0;
-  
-    double LeftOutput = 0;
-    double RightOutput = 0;
-  
-    double RightOldVel = 0;
-    double RightOldPos = 0;
-  
-    double RightCurrentVel = 0;
-    double RightCurrentAccel = 0;
-  
-    double LeftOldVel = 0;
-    double LeftOldPos = 0;
-  
-    double LeftCurrentVel = 0;
-    double LeftCurrentAccel = 0;
-  
-    double AGain = 0;
-    double ALimit = 18;
-  
-    double unlimitedAccel = 0;
-  
-    double MaxOutput = 0;
+
     public void setPosition(int ticks){
         //TODO finish writing the setPosition method
-                /*
-      RobotMap.RightFrontMotor.set(oi.getDriverStick().getRawAxis(5));
-      RobotMap.RightBackMotor.set(oi.getDriverStick().getRawAxis(5));
-  
-      RobotMap.LeftBackMotor.set(-oi.getDriverStick().getRawAxis(1));
-      RobotMap.LeftFrontMotor.set(-oi.getDriverStick().getRawAxis(1));
-    */
-    System.out.println("Left Encoder " + RobotMap.LeftEncoder.getRaw());
-    System.out.println("Right Encoder " + RobotMap.RightEncoder.getRaw());
-    
-
-    //System.out.println("Right Accel" + RightCurrentAccel);
-    //System.out.println("Left Vel" + LeftCurrentAccel);
     /**Encoder Target */
 
     LeftCurrentEncoderInput = RobotMap.LeftEncoder.getRaw();
@@ -230,89 +219,46 @@ public class Drive extends Subsystem
     RightEncoderTarget = RobotMap.RightEncoderTarget;
     LeftEncoderTarget = RobotMap.LeftEncoderTarget;
 
-    //RightEncoderTarget = RightEncoderTarget + (OI.getDriverStick().getRawAxis(5) * 5);
-    //LeftEncoderTarget = LeftEncoderTarget + (OI.getDriverStick().getRawAxis(1) * 5);
-    
-    RightD = SmartDashboard.getNumber("Set D", 0.0);
-    RightP = SmartDashboard.getNumber("Set P", 0.05);
-    RightI = SmartDashboard.getNumber("Set I", 0.0);
-  
-    LeftD = SmartDashboard.getNumber("Set D", 0.0);
-    LeftP = SmartDashboard.getNumber("Set P", 0.05);
-    LeftI = SmartDashboard.getNumber("Set I", 0.0);
-
     RightCurrentVel = RightCurrentEncoderInput - RightPreviousEncoderInput;
     LeftCurrentVel = LeftCurrentEncoderInput - LeftPreviousEncoderInput;
 
     RightCurrentAccel = RightCurrentVel - RightOldVel;
     LeftCurrentAccel = LeftCurrentVel - LeftOldVel;
 
-    unlimitedAccel = RightCurrentAccel;
-    //System.out.println(unlimitedAccel);
-
     RightError = RightEncoderTarget - RightCurrentEncoderInput;
     LeftError = LeftEncoderTarget - LeftCurrentEncoderInput;
 
     RightIntgorSum = RightIntgorSum + RightError;
     LeftIntgorSum = LeftIntgorSum + LeftError;
-    
-    ALimit = SmartDashboard.getNumber("Alimit", 18);
-
-    /*if(RightCurrentAccel > SmartDashboard.getNumber("ALimit", 18)){
-      RightCurrentAccel = SmartDashboard.getNumber("Alimit", 18);
-    }
-    if(RightCurrentAccel < -SmartDashboard.getNumber("Alimit", 18)){
-      RightCurrentAccel = -SmartDashboard.getNumber("ALimit", 18);
-    }
-    if(LeftCurrentAccel > SmartDashboard.getNumber("ALimit", 18)){
-      LeftCurrentAccel = SmartDashboard.getNumber("Alimit", 18);
-    }
-    if(LeftCurrentAccel < -SmartDashboard.getNumber("Alimit", 18)){
-      LeftCurrentAccel = -SmartDashboard.getNumber("ALimit", 18);
-    }
-    if(-ALimit < RightCurrentAccel && RightCurrentAccel < ALimit){
-      RightCurrentAccel = 0;
-    }
-    if(-ALimit < LeftCurrentAccel && LeftCurrentAccel < ALimit){
-      LeftCurrentAccel = 0;
-    }
-    */
-
-    //System.out.println("Right Accel" + RightCurrentAccel);
-
-    if(RightIntgorSum > SmartDashboard.getNumber("RightIntgorSumLimit", 25)){
-      RightIntgorSum = SmartDashboard.getNumber("RightIntgorSumLimit", 25);
-    }
-    if(RightIntgorSum < -SmartDashboard.getNumber("RightIntgorSumLimit", 25)){
-      RightIntgorSum = -SmartDashboard.getNumber("RightIntgorSumLimit", 25);
-    }
-
-    if(LeftIntgorSum > SmartDashboard.getNumber("LeftIntgorSumLimit", 25)){
-      LeftIntgorSum = SmartDashboard.getNumber("LeftIntgorSumLimit", 25);
-    }
-    if(LeftIntgorSum < -SmartDashboard.getNumber("LeftIntgorSumLimit", 25)){
-      LeftIntgorSum = -SmartDashboard.getNumber("LeftIntgorSumLimit", 25);
-    }
-
-    AGain = SmartDashboard.getNumber("AGain", 0);
 
 
-    
+    if(RightIntgorSum > IntgorSumLimit){
+      RightIntgorSum = IntgorSumLimit;
+    }
+    if(RightIntgorSum < -IntgorSumLimit){
+      RightIntgorSum = -IntgorSumLimit;
+    }
+
+    if(LeftIntgorSum > IntgorSumLimit){
+      LeftIntgorSum = IntgorSumLimit;
+    }
+    if(LeftIntgorSum < -IntgorSumLimit){
+      LeftIntgorSum = -IntgorSumLimit;
+    }
+
     /**PID Output Workout Stuff*/
     LeftOutput = (-LeftP * LeftError)+(LeftIntgorSum * LeftI)+(LeftD * LeftDelta)+(LeftCurrentAccel * AGain);
 
     RightOutput = (-RightP * RightError)+(RightIntgorSum * RightI)+(RightD * RightDelta)+(RightCurrentAccel * AGain);
 
-    MaxOutput = SmartDashboard.getNumber("Set Max Output", .5);
-
     /**Left Output Limiter*/
-    
     if(LeftOutput > MaxOutput){
       LeftOutput = MaxOutput;
     }
     if(LeftOutput < -MaxOutput){
       LeftOutput = -MaxOutput;
     }
+
     /**Right Output Limiter*/
     
     if(RightOutput > MaxOutput){
