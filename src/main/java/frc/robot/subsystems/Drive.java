@@ -97,13 +97,8 @@ public class Drive extends Subsystem {
         rightDriveMaster.enableCurrentLimit(true);
 
         rightDriveSlave.configContinuousCurrentLimit(32, 0);
-<<<<<<< HEAD
-        rightDriveSlave.configPeakCurrentLimit(35, 0);
-        rightDriveSlave.configPeakCurrentDuration(80, 0);
-=======
 		rightDriveSlave.configPeakCurrentLimit(35, 0);
 		rightDriveSlave.configPeakCurrentDuration(80, 0);
->>>>>>> e682dc69959d832e59677ec0099025afd7739e9b
         rightDriveSlave.enableCurrentLimit(true);
     }
 
@@ -117,25 +112,15 @@ public class Drive extends Subsystem {
     /**
      * Gets Right Encoder
      */
-<<<<<<< HEAD
-    public int getRightEncoder() {
-        return RobotMap.RightEncoder.get();
-=======
     public int getRightEncoder(){
         return RobotMap.RightEncoder.getRaw();
->>>>>>> e682dc69959d832e59677ec0099025afd7739e9b
     }
 
     /**
      * Gets Left Encoder
      */
-<<<<<<< HEAD
-    public int getLeftEncoder() {
-        return RobotMap.LeftEncoder.get();
-=======
     public int getLeftEncoder(){
         return RobotMap.LeftEncoder.getRaw();
->>>>>>> e682dc69959d832e59677ec0099025afd7739e9b
     }
 
     /**
