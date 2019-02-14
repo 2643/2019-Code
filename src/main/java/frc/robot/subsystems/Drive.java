@@ -219,101 +219,6 @@ public class Drive extends Subsystem {
     }
 
     /**
-<<<<<<< HEAD
-     * Sets the position of the left side of the robot in encoder ticks
-     * 
-     * @param ticks int the desired position of the left side of the robot in
-     *              encoder ticks
-     */
-    public void setLeftPosition(int ticks) {
-        // TODO finish writing the setLeftPosition method
-    }
-
-    /**
-     * Sets the position of the right side of the robot in encoder ticks
-     * 
-     * @param ticks int the desired position of the right side of the robot in
-     *              encoder ticks
-     */
-    public void setRightPosition(int ticks) {
-        // TODO finish writing the setRightPosition method
-    }
-
-    /**
-     * Sets the position of the robot in encoder ticks
-     * 
-     * @param ticks int the desired position of the robot in encoder ticks
-     */
-
-    public void setPosition(int ticks) {
-        // TODO finish writing the setPosition method
-        /** Encoder Target */
-
-        LeftCurrentEncoderInput = RobotMap.LeftEncoder.getRaw();
-        RightCurrentEncoderInput = RobotMap.RightEncoder.getRaw();
-
-        RightEncoderTarget = RobotMap.RightEncoderTarget;
-        LeftEncoderTarget = RobotMap.LeftEncoderTarget;
-
-        RightCurrentVel = RightCurrentEncoderInput - RightPreviousEncoderInput;
-        LeftCurrentVel = LeftCurrentEncoderInput - LeftPreviousEncoderInput;
-
-        RightCurrentAccel = RightCurrentVel - RightOldVel;
-        LeftCurrentAccel = LeftCurrentVel - LeftOldVel;
-
-        RightError = RightEncoderTarget - RightCurrentEncoderInput;
-        LeftError = LeftEncoderTarget - LeftCurrentEncoderInput;
-
-        RightIntgorSum = RightIntgorSum + RightError;
-        LeftIntgorSum = LeftIntgorSum + LeftError;
-
-        if (RightIntgorSum > IntgorSumLimit) {
-            RightIntgorSum = IntgorSumLimit;
-        }
-        if (RightIntgorSum < -IntgorSumLimit) {
-            RightIntgorSum = -IntgorSumLimit;
-        }
-
-        if (LeftIntgorSum > IntgorSumLimit) {
-            LeftIntgorSum = IntgorSumLimit;
-        }
-        if (LeftIntgorSum < -IntgorSumLimit) {
-            LeftIntgorSum = -IntgorSumLimit;
-        }
-
-        /** PID Output Workout Stuff */
-        LeftOutput = (-LeftP * LeftError) + (LeftIntgorSum * LeftI) + (LeftD * LeftDelta) + (LeftCurrentAccel * AGain);
-
-        RightOutput = (-RightP * RightError) + (RightIntgorSum * RightI) + (RightD * RightDelta)
-                + (RightCurrentAccel * AGain);
-
-        /** Left Output Limiter */
-        if (LeftOutput > MaxOutput) {
-            LeftOutput = MaxOutput;
-        }
-        if (LeftOutput < -MaxOutput) {
-            LeftOutput = -MaxOutput;
-        }
-
-        /** Right Output Limiter */
-
-        if (RightOutput > MaxOutput) {
-            RightOutput = MaxOutput;
-        }
-        if (RightOutput < -MaxOutput) {
-            RightOutput = -MaxOutput;
-        }
-        RobotMap.LeftFrontMotor.set(-LeftOutput);
-        RobotMap.LeftBackMotor.set(-LeftOutput);
-        RobotMap.RightFrontMotor.set(RightOutput);
-        RobotMap.RightBackMotor.set(RightOutput);
-
-        RightPreviousEncoderInput = RightCurrentEncoderInput;
-        LeftPreviousEncoderInput = LeftCurrentEncoderInput;
-
-        RightOldVel = RightCurrentVel;
-        LeftOldVel = LeftCurrentVel;
-=======
      * Sets the position of the robot in encoder ticks
      * @param ticks int the desired position of the robot in encoder ticks
      */
@@ -374,7 +279,6 @@ public class Drive extends Subsystem {
     
     
    
->>>>>>> e682dc69959d832e59677ec0099025afd7739e9b
 
         // send help
     }
