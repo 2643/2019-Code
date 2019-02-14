@@ -97,8 +97,13 @@ public class Drive extends Subsystem {
         rightDriveMaster.enableCurrentLimit(true);
 
         rightDriveSlave.configContinuousCurrentLimit(32, 0);
+<<<<<<< HEAD
         rightDriveSlave.configPeakCurrentLimit(35, 0);
         rightDriveSlave.configPeakCurrentDuration(80, 0);
+=======
+		rightDriveSlave.configPeakCurrentLimit(35, 0);
+		rightDriveSlave.configPeakCurrentDuration(80, 0);
+>>>>>>> e682dc69959d832e59677ec0099025afd7739e9b
         rightDriveSlave.enableCurrentLimit(true);
     }
 
@@ -112,15 +117,25 @@ public class Drive extends Subsystem {
     /**
      * Gets Right Encoder
      */
+<<<<<<< HEAD
     public int getRightEncoder() {
         return RobotMap.RightEncoder.get();
+=======
+    public int getRightEncoder(){
+        return RobotMap.RightEncoder.getRaw();
+>>>>>>> e682dc69959d832e59677ec0099025afd7739e9b
     }
 
     /**
      * Gets Left Encoder
      */
+<<<<<<< HEAD
     public int getLeftEncoder() {
         return RobotMap.LeftEncoder.get();
+=======
+    public int getLeftEncoder(){
+        return RobotMap.LeftEncoder.getRaw();
+>>>>>>> e682dc69959d832e59677ec0099025afd7739e9b
     }
 
     /**
@@ -204,6 +219,7 @@ public class Drive extends Subsystem {
     }
 
     /**
+<<<<<<< HEAD
      * Sets the position of the left side of the robot in encoder ticks
      * 
      * @param ticks int the desired position of the left side of the robot in
@@ -297,6 +313,68 @@ public class Drive extends Subsystem {
 
         RightOldVel = RightCurrentVel;
         LeftOldVel = LeftCurrentVel;
+=======
+     * Sets the position of the robot in encoder ticks
+     * @param ticks int the desired position of the robot in encoder ticks
+     */
+    public void setLeftPosition(int ticks){
+        LeftCurrentEncoderInput = RobotMap.LeftEncoder.getRaw();
+        LeftEncoderTarget = RobotMap.LeftEncoderTarget;
+        LeftCurrentVel = LeftCurrentEncoderInput - LeftPreviousEncoderInput;
+        LeftCurrentAccel = LeftCurrentVel - LeftOldVel;
+        LeftError = LeftEncoderTarget - LeftCurrentEncoderInput;
+        LeftIntgorSum = LeftIntgorSum + LeftError;
+        if(LeftIntgorSum > IntgorSumLimit){
+            LeftIntgorSum = IntgorSumLimit;
+          }
+        if(LeftIntgorSum < -IntgorSumLimit){
+            LeftIntgorSum = -IntgorSumLimit;
+          }
+        LeftOutput = (-LeftP * LeftError)+(LeftIntgorSum * LeftI)+(LeftD * LeftDelta)+(LeftCurrentAccel * AGain);
+        if(LeftOutput > MaxOutput){
+            LeftOutput = MaxOutput;
+          }
+          if(LeftOutput < -MaxOutput){
+            LeftOutput = -MaxOutput;
+          }
+        RobotMap.LeftFrontMotor.set(-LeftOutput);
+        RobotMap.LeftBackMotor.set(-LeftOutput);
+        LeftPreviousEncoderInput = LeftCurrentEncoderInput;
+        LeftOldVel = LeftCurrentVel;
+    }
+    public void setRightPosition(int ticks){
+        RightCurrentEncoderInput = RobotMap.RightEncoder.getRaw();
+        RightEncoderTarget = RobotMap.RightEncoderTarget;
+        RightCurrentVel = RightCurrentEncoderInput - RightPreviousEncoderInput;
+        RightCurrentAccel = RightCurrentVel - RightOldVel;
+        RightError = RightEncoderTarget - RightCurrentEncoderInput;
+        RightIntgorSum = RightIntgorSum + RightError;
+        if(RightIntgorSum > IntgorSumLimit){
+            RightIntgorSum = IntgorSumLimit;
+            }
+        if(RightIntgorSum < -IntgorSumLimit){
+            RightIntgorSum = -IntgorSumLimit;
+            }
+        RightOutput = (-RightP * RightError)+(RightIntgorSum * RightI)+(RightD * RightDelta)+(RightCurrentAccel * AGain);
+            if(RightOutput > MaxOutput){
+            RightOutput = MaxOutput;
+            }
+        if(RightOutput < -MaxOutput){
+            RightOutput = -MaxOutput;
+            }
+        RobotMap.RightFrontMotor.set(RightOutput);
+        RobotMap.RightBackMotor.set(RightOutput);
+        RightPreviousEncoderInput = RightCurrentEncoderInput;
+        RightOldVel = RightCurrentVel;
+    }
+    public void setPosition(int ticks){
+        //TODO finish writing the setPosition method
+    /**Encoder Target */
+
+    
+    
+   
+>>>>>>> e682dc69959d832e59677ec0099025afd7739e9b
 
         // send help
     }
