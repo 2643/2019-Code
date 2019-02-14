@@ -31,7 +31,7 @@ public class Robot extends TimedRobot {
   public static CargoOuttake cargoOuttake = new CargoOuttake(RobotMap.cargoOuttakeMotor);
   public static Gyroscope gyroscope = new Gyroscope(RobotMap.gyro);
   public static LineDetector lineDetector = new LineDetector();
-  
+  public static UltrasonicSystem ultrasonicSystem = new UltrasonicSystem();
   //Command m_autonomousCommand;
   //SendableChooser<Command> m_chooser = new SendableChooser<>();
 

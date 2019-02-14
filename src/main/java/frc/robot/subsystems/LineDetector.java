@@ -19,7 +19,7 @@ public class LineDetector extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  //Obsolete, better method implemented.
+  //Obsolete
 /*   public DigitalInput[][] getIrSensors() {
     DigitalInput[][] sensorArray = 
      {{RobotMap.irLeft1, RobotMap.irRight1},
@@ -35,14 +35,13 @@ public class LineDetector extends Subsystem {
 
 
 
-  int SENSOR_L1 = 1 << 0;
-  int SENSOR_L2 = 1 << 1;
-  int SENSOR_L3 = 1 << 2;
-
-  int SENSOR_R1 = 1 << 3;
-  int SENSOR_R2 = 1 << 4;
-  int SENSOR_R3 = 1 << 5;
-
+  public static int SENSOR_L1 = 1 << 0;
+  public static int SENSOR_L2 = 1 << 1;
+  public static int SENSOR_L3 = 1 << 2;
+  public static int SENSOR_R1 = 1 << 3;
+  public static int SENSOR_R2 = 1 << 4;
+  public static int SENSOR_R3 = 1 << 5;
+  
   public int getIRSensors()
   {
     int sensorsOn = 0;

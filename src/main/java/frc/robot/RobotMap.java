@@ -236,6 +236,9 @@ public class RobotMap {
   public static int currentLeftEncoderTarget = 0;
   public static int currentRightEncoderTarget = 0;
   public static int encoderErrorTolerance = 3; //TODO this.
+  public static boolean currentAutoSide = false;
+  public static int curSide = 0;
+  public static boolean isOffLine = true;
 
   //driver joystick button numbers
 
