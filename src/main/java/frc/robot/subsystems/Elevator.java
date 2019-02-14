@@ -70,7 +70,7 @@ public class Elevator extends Subsystem {
 
   /**
    * Sets the elevator position 
-   * @param position //TODO don't know whether to make this in inches, encoder ticks, or RPM
+   * @param position //TODO don't know whether to make this in encoder ticks, or RPM
    */
   public void setElevatorPosition(int value){
     Elevator.getPIDController().setReference(value, ControlType.kPosition);

@@ -35,7 +35,7 @@ public class CargoOuttakeLeft extends Command {
 
   @Override
   protected void end() {
-    Robot.cargoOuttake.setCargoSpeed(0.0);
+    Robot.cargoOuttake.setCargoSpeed(0);
   }
 
   @Override

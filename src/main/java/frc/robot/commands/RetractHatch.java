@@ -33,9 +33,9 @@ public class RetractHatch extends TimedCommand {
 
   @Override
   protected void end() {
-   
+    Robot.hatch.mechanismPistonOff();
   }
-
+  
   @Override
   protected void interrupted() {
     end();
