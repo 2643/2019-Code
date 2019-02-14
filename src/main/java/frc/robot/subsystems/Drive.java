@@ -191,75 +191,62 @@ public class Drive extends Subsystem
      * Sets the position of the robot in encoder ticks
      * @param ticks int the desired position of the robot in encoder ticks
      */
-
+    public void setLeftPosition(int ticks){
+        LeftCurrentEncoderInput = RobotMap.LeftEncoder.getRaw();
+        LeftEncoderTarget = RobotMap.LeftEncoderTarget;
+        LeftCurrentVel = LeftCurrentEncoderInput - LeftPreviousEncoderInput;
+        LeftCurrentAccel = LeftCurrentVel - LeftOldVel;
+        LeftError = LeftEncoderTarget - LeftCurrentEncoderInput;
+        LeftIntgorSum = LeftIntgorSum + LeftError;
+        if(LeftIntgorSum > IntgorSumLimit){
+            LeftIntgorSum = IntgorSumLimit;
+          }
+        if(LeftIntgorSum < -IntgorSumLimit){
+            LeftIntgorSum = -IntgorSumLimit;
+          }
+        LeftOutput = (-LeftP * LeftError)+(LeftIntgorSum * LeftI)+(LeftD * LeftDelta)+(LeftCurrentAccel * AGain);
+        if(LeftOutput > MaxOutput){
+            LeftOutput = MaxOutput;
+          }
+          if(LeftOutput < -MaxOutput){
+            LeftOutput = -MaxOutput;
+          }
+        RobotMap.LeftFrontMotor.set(-LeftOutput);
+        RobotMap.LeftBackMotor.set(-LeftOutput);
+        LeftPreviousEncoderInput = LeftCurrentEncoderInput;
+        LeftOldVel = LeftCurrentVel;
+    }
+    public void setRightPosition(int ticks){
+        RightCurrentEncoderInput = RobotMap.RightEncoder.getRaw();
+        RightEncoderTarget = RobotMap.RightEncoderTarget;
+        RightCurrentVel = RightCurrentEncoderInput - RightPreviousEncoderInput;
+        RightCurrentAccel = RightCurrentVel - RightOldVel;
+        RightError = RightEncoderTarget - RightCurrentEncoderInput;
+        RightIntgorSum = RightIntgorSum + RightError;
+        if(RightIntgorSum > IntgorSumLimit){
+            RightIntgorSum = IntgorSumLimit;
+            }
+        if(RightIntgorSum < -IntgorSumLimit){
+            RightIntgorSum = -IntgorSumLimit;
+            }
+        RightOutput = (-RightP * RightError)+(RightIntgorSum * RightI)+(RightD * RightDelta)+(RightCurrentAccel * AGain);
+            if(RightOutput > MaxOutput){
+            RightOutput = MaxOutput;
+            }
+        if(RightOutput < -MaxOutput){
+            RightOutput = -MaxOutput;
+            }
+        RobotMap.RightFrontMotor.set(RightOutput);
+        RobotMap.RightBackMotor.set(RightOutput);
+        RightPreviousEncoderInput = RightCurrentEncoderInput;
+        RightOldVel = RightCurrentVel;
+    }
     public void setPosition(int ticks){
         //TODO finish writing the setPosition method
     /**Encoder Target */
 
-    LeftCurrentEncoderInput = RobotMap.LeftEncoder.getRaw();
-    RightCurrentEncoderInput = RobotMap.RightEncoder.getRaw();
-
-    RightEncoderTarget = RobotMap.RightEncoderTarget;
-    LeftEncoderTarget = RobotMap.LeftEncoderTarget;
-
-    RightCurrentVel = RightCurrentEncoderInput - RightPreviousEncoderInput;
-    LeftCurrentVel = LeftCurrentEncoderInput - LeftPreviousEncoderInput;
-
-    RightCurrentAccel = RightCurrentVel - RightOldVel;
-    LeftCurrentAccel = LeftCurrentVel - LeftOldVel;
-
-    RightError = RightEncoderTarget - RightCurrentEncoderInput;
-    LeftError = LeftEncoderTarget - LeftCurrentEncoderInput;
-
-    RightIntgorSum = RightIntgorSum + RightError;
-    LeftIntgorSum = LeftIntgorSum + LeftError;
-
-
-    if(RightIntgorSum > IntgorSumLimit){
-      RightIntgorSum = IntgorSumLimit;
-    }
-    if(RightIntgorSum < -IntgorSumLimit){
-      RightIntgorSum = -IntgorSumLimit;
-    }
-
-    if(LeftIntgorSum > IntgorSumLimit){
-      LeftIntgorSum = IntgorSumLimit;
-    }
-    if(LeftIntgorSum < -IntgorSumLimit){
-      LeftIntgorSum = -IntgorSumLimit;
-    }
-
-    /**PID Output Workout Stuff*/
-    LeftOutput = (-LeftP * LeftError)+(LeftIntgorSum * LeftI)+(LeftD * LeftDelta)+(LeftCurrentAccel * AGain);
-
-    RightOutput = (-RightP * RightError)+(RightIntgorSum * RightI)+(RightD * RightDelta)+(RightCurrentAccel * AGain);
-
-    /**Left Output Limiter*/
-    if(LeftOutput > MaxOutput){
-      LeftOutput = MaxOutput;
-    }
-    if(LeftOutput < -MaxOutput){
-      LeftOutput = -MaxOutput;
-    }
-
-    /**Right Output Limiter*/
     
-    if(RightOutput > MaxOutput){
-      RightOutput = MaxOutput;
-    }
-    if(RightOutput < -MaxOutput){
-      RightOutput = -MaxOutput;
-    }
-   RobotMap.LeftFrontMotor.set(-LeftOutput);
-   RobotMap.LeftBackMotor.set(-LeftOutput);
-   RobotMap.RightFrontMotor.set(RightOutput);
-   RobotMap.RightBackMotor.set(RightOutput);
-
-   RightPreviousEncoderInput = RightCurrentEncoderInput;
-   LeftPreviousEncoderInput = LeftCurrentEncoderInput;
-
-   RightOldVel = RightCurrentVel;
-   LeftOldVel = LeftCurrentVel;
+    
    
 
   //send help
