@@ -19,10 +19,10 @@ public class UltrasonicSystem extends Subsystem {
    * Gets the angle at the left side of the robot in relation to the wall beside it.
    * @return left angle
    */
-  public double[] getLeftValues() {
-    double leftOne = -1.0;
-    double leftTwo = -1.0;
-    double[] array = new double[2];
+  public int[] getLeftValues() {
+    int leftOne = -1;
+    int leftTwo = -1;
+    int[] array = new int[2];
     boolean ultrasonicPingWhichLeft = true;
     boolean ultrasonicLeftPing = true;
 
@@ -34,7 +34,7 @@ public class UltrasonicSystem extends Subsystem {
       
       else {
         if(RobotMap.ultrasonicLeftOne.isRangeValid()){
-          leftOne = Math.floor(RobotMap.ultrasonicLeftOne.getRangeInches());
+          leftOne = (int)RobotMap.ultrasonicLeftOne.getRangeMM();
           ultrasonicPingWhichLeft = !ultrasonicPingWhichLeft;
           ultrasonicLeftPing = true;
         }
@@ -47,7 +47,7 @@ public class UltrasonicSystem extends Subsystem {
         ultrasonicLeftPing = false;
       }
       if(RobotMap.ultrasonicLeftTwo.isRangeValid()){
-      leftTwo = Math.floor(RobotMap.ultrasonicLeftTwo.getRangeInches());
+      leftTwo = (int)RobotMap.ultrasonicLeftTwo.getRangeMM();
       ultrasonicPingWhichLeft = !ultrasonicPingWhichLeft;
       ultrasonicLeftPing = true;
       }
@@ -57,10 +57,10 @@ public class UltrasonicSystem extends Subsystem {
     return(array);
   }
   
-  public double[] getRightValues() {
-    double[] array = new double[1];
-    double rightOne = -1.0;
-    double rightTwo = -1.0;
+  public int[] getRightValues() {
+    int[] array = new int[1];
+    int rightOne = -1;
+    int rightTwo = -1;
     boolean ultrasonicPingWhichRight = true;
     boolean ultrasonicRightPing = true;
 
@@ -72,7 +72,7 @@ public class UltrasonicSystem extends Subsystem {
       
       else {
         if(RobotMap.ultrasonicRightOne.isRangeValid()){
-          rightOne = Math.floor(RobotMap.ultrasonicRightOne.getRangeInches());
+          rightOne = (int)RobotMap.ultrasonicRightOne.getRangeMM();
           ultrasonicPingWhichRight = !ultrasonicPingWhichRight;
           ultrasonicRightPing = true;
         }
@@ -85,7 +85,7 @@ public class UltrasonicSystem extends Subsystem {
         ultrasonicRightPing = false;
       }
       if(RobotMap.ultrasonicRightTwo.isRangeValid()){
-      rightTwo = Math.floor(RobotMap.ultrasonicRightTwo.getRangeInches());
+      rightTwo = (int)RobotMap.ultrasonicRightTwo.getRangeMM();
       ultrasonicPingWhichRight = !ultrasonicPingWhichRight;
       ultrasonicRightPing = true;
       }

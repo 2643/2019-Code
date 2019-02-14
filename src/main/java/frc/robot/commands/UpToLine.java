@@ -30,14 +30,12 @@ public class UpToLine extends Command {
   @Override
   protected void execute() {
     int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
-
-
     
     if(Robot.lineDetector.getIRSensors() == 0){
       if(Math.abs(Robot.drive.LeftError) <= encoderErrorTolerance &&
          Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 0 ||
-           (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 0) {
+        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) != 0 ||
+           (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) != 0) {
           Robot.drive.setLeftPosition(RobotMap.LeftEncoder.getRaw() + 4);
           Robot.drive.setRightPosition(RobotMap.RightEncoder.getRaw() + 4);
           }
@@ -48,15 +46,15 @@ public class UpToLine extends Command {
       }
     }
     if(Robot.lineDetector.getIRSensors() != 0) {
-      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) != 0 ||
-         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) != 0 ||
-         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) != 0) {
-        Robot.ultrasonicSystem.getLeftValues();
+      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 &&
+         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
+         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0) {
+        Robot.ultrasonicSystem.getLeftValues()[0]
 
       }
-      else if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) != 0 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) != 0 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) != 0) {
+      else if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 &&
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0) {
 
       }
     }
