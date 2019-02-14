@@ -35,8 +35,8 @@ public class Drive extends Subsystem
     double RightPreviousEncoderInput = 0;
     double LeftPreviousEncoderInput = 0;
   
-    double LeftError = 0;
-    double RightError = 0;
+    public double LeftError = 0;
+    public double RightError = 0;
   
     double RightDelta = 0;
     double LeftDelta = 0;
@@ -196,7 +196,7 @@ public class Drive extends Subsystem
         LeftEncoderTarget = RobotMap.LeftEncoderTarget;
         LeftCurrentVel = LeftCurrentEncoderInput - LeftPreviousEncoderInput;
         LeftCurrentAccel = LeftCurrentVel - LeftOldVel;
-        LeftError = LeftEncoderTarget - LeftCurrentEncoderInput;
+        double LeftError = LeftEncoderTarget - LeftCurrentEncoderInput;
         LeftIntgorSum = LeftIntgorSum + LeftError;
         if(LeftIntgorSum > IntgorSumLimit){
             LeftIntgorSum = IntgorSumLimit;
@@ -221,7 +221,7 @@ public class Drive extends Subsystem
         RightEncoderTarget = RobotMap.RightEncoderTarget;
         RightCurrentVel = RightCurrentEncoderInput - RightPreviousEncoderInput;
         RightCurrentAccel = RightCurrentVel - RightOldVel;
-        RightError = RightEncoderTarget - RightCurrentEncoderInput;
+        double RightError = RightEncoderTarget - RightCurrentEncoderInput;
         RightIntgorSum = RightIntgorSum + RightError;
         if(RightIntgorSum > IntgorSumLimit){
             RightIntgorSum = IntgorSumLimit;
