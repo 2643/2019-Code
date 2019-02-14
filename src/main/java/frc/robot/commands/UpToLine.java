@@ -29,24 +29,17 @@ public class UpToLine extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    int curLeftTarget = RobotMap.currentLeftEncoderTarget;
-    int curRightTarget = RobotMap.currentRightEncoderTarget;
-
     int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
 
-    int validLinePosition = -2;
 
-    int curLeftError = RobotMap.LeftEncoder.getRaw() - curLeftTarget;
-    int curRightError = RobotMap.RightEncoder.getRaw() - curRightTarget;
     
     if(Robot.lineDetector.getIRSensors() == 0){
-      if(Math.abs(curLeftError) >= encoderErrorTolerance &&
-         Math.abs(curRightError) >= encoderErrorTolerance) {
+      if(Math.abs(Robot.drive.LeftError) <= encoderErrorTolerance &&
+         Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 0 ||
            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 0) {
-          Robot.drive.setLeftPosition(RobotMap.LeftEncoder.getRaw() + 2);
-          Robot.drive.setRightPosition(RobotMap.RightEncoder.getRaw() + 2);
+          Robot.drive.setLeftPosition(RobotMap.LeftEncoder.getRaw() + 4);
+          Robot.drive.setRightPosition(RobotMap.RightEncoder.getRaw() + 4);
           }
         else {
           Robot.drive.setLeftPosition(RobotMap.LeftEncoder.getRaw());
@@ -54,7 +47,19 @@ public class UpToLine extends Command {
         }
       }
     }
+    if(Robot.lineDetector.getIRSensors() != 0) {
+      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) != 0 ||
+         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) != 0 ||
+         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) != 0) {
+        Robot.ultrasonicSystem.getLeftValues();
 
+      }
+      else if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) != 0 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) != 0 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) != 0) {
+
+      }
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
