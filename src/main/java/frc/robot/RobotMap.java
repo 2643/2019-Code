@@ -233,10 +233,8 @@ public class RobotMap {
   public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(ultrasonicRightTwoTrigger, ultrasonicRightTwoEcho);
 
   //Line targets
-  public static int currentLeftEncoderTarget = 0;
-  public static int currentRightEncoderTarget = 0;
-  public static int encoderErrorTolerance = 3; //TODO this.
-
+  public static int encoderErrorTolerance = 3; //TODO change this.
+  
   //driver joystick button numbers
 
   public static int retractCargoIntakeButtonNumber = 2;
