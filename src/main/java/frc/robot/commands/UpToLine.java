@@ -46,19 +46,74 @@ public class UpToLine extends Command {
       }
     }
     if(Robot.lineDetector.getIRSensors() != 0) {
-      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 &&
-         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
-         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0) {
-        Robot.ultrasonicSystem.getLeftValues()[0]
+      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 && 
+      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
+      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0) {
+        if((Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
 
-      }
-      else if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 &&
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0) {
+          //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
+          int alpha = Robot.ultrasonicSystem.getLeftValues()[0]-Robot.ultrasonicSystem.getLeftValues()[1];
+          int beta = alpha/-7;
+          int gamma = beta + RobotMap.LeftEncoder.getRaw();
+          int gammab = -beta + RobotMap.RightEncoder.getRaw();
 
+          Robot.drive.setLeftPosition(gamma);
+          Robot.drive.setRightPosition(gammab);
+        }
+        else {
+          Robot.drive.setLeftPosition(RobotMap.LeftEncoder.getRaw());
+        }
       }
-    }
+      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 0 &&
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 &&
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0) 
+
+        //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
+        if((Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
+          int alpha = Robot.ultrasonicSystem.getRightValues()[0]-Robot.ultrasonicSystem.getRightValues()[1];
+          int beta = alpha/-7;
+          int gamma = beta + RobotMap.LeftEncoder.getRaw();
+          int gammab = -beta + RobotMap.RightEncoder.getRaw();
+
+          Robot.drive.setRightPosition(gamma);
+          Robot.drive.setLeftPosition(gammab);
+        }
+      }
+      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
+      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
+        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
+          int precalcL = RobotMap.RightEncoder.getRaw() + 4;
+          int precalcR = RobotMap.LeftEncoder.getRaw() + 4;
+
+          Robot.drive.setLeftPosition(precalcL);
+          Robot.drive.setRightPosition(precalcR);
+        }
+      }
+      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
+      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
+        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
+          int precalcL = RobotMap.RightEncoder.getRaw() - 4;
+          int precalcR = RobotMap.LeftEncoder.getRaw() - 4;
+
+          Robot.drive.setLeftPosition(precalcL);
+          Robot.drive.setRightPosition(precalcR);
+        }
+      }
+    if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 &&
+    (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
+    (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0 &&
+    (Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1]) <= RobotMap.ultrasonicErrorTolerance) {
+      Robot.cargoOuttake.setCargoSpeed(0.5);
   }
+    if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 0 &&
+      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 &&
+      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0 &&
+      (Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) <= RobotMap.ultrasonicErrorTolerance) {
+        Robot.cargoOuttake.setCargoSpeed(-0.5);
+    }
+}
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
