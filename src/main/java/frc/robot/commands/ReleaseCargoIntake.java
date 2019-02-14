@@ -45,6 +45,6 @@ public class ReleaseCargoIntake extends Command {
 
   @Override
   protected void interrupted() {
-    
+    end();
   }
 }

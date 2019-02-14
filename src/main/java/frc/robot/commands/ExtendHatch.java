@@ -31,12 +31,16 @@ public class ExtendHatch extends TimedCommand {
 
   @Override
   protected boolean isFinished() {
-    return false;
+    if(Robot.hatch.getTimer().get() == RobotMap.hatchExtendTimeout){
+      return true;
+    } else{
+      return false;
+    }
   }
 
   @Override
   protected void end() {
-
+    Robot.hatch.mechanismPistonOff();
   }
 
   @Override

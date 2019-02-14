@@ -7,19 +7,15 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.TimedCommand;
+import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-/**
- * Add your docs here.
- */
-public class Test extends TimedCommand {
-  /**
-   * Add your docs here.
-   */
-  public Test(double timeout) {
-    super(timeout);
+public class CarriageCenter extends Command {
+  public CarriageCenter() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.carriage);
   }
 
   // Called just before this Command runs the first time
@@ -30,16 +26,37 @@ public class Test extends TimedCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
+    //TODO check to make sure this works 
+    if(RobotMap.carriagePot.get() < RobotMap.carriageCenterValue){
+      RobotMap.carriageMotor.set(RobotMap.carriageMotorSpeed);
+    }
+    //TODO check to make sure this works 
+    else if(RobotMap.carriagePot.get() > RobotMap.carriageCenterValue){
+      RobotMap.carriageMotor.set(RobotMap.carriageMotorSpeed);
+    }
   }
 
-  // Called once after timeout
+  // Make this return true when this Command no longer needs to run execute()
+  @Override
+  protected boolean isFinished() {
+    if(RobotMap.carriagePot.get() == RobotMap.carriageCenterValue){
+      return true;
+    } else{
+      return false;
+    }
+  }
+
+  // Called once after isFinished returns true
   @Override
   protected void end() {
+    RobotMap.carriageMotor.set(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

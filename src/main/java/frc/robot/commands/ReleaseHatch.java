@@ -21,7 +21,7 @@ public class ReleaseHatch extends TimedCommand {
 
   @Override
   protected void initialize() {
-    
+    Robot.hatch.getTimer().start();
   }
 
   @Override
@@ -41,6 +41,7 @@ public class ReleaseHatch extends TimedCommand {
   @Override
   protected void end() {
     Robot.hatch.hatchPistonIn();
+    Robot.hatch.getTimer().stop();
   }
 
   @Override

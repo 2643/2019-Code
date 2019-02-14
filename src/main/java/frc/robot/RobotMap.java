@@ -203,6 +203,7 @@ public class RobotMap {
   public static double carriageMotorSpeed = 0.15; //Carriage motor speed preset should probably implement PIDS
   public static int carriageClockwiseMax = 2000; //TODO find out actual value of carriageClockwiseMax
   public static int carriageCounterclockwiseMin = 500; //TODO find out actual value of carriageCounterclockwiseMax
+  public static int carriageCenterValue = 26; //TODO Change this
 
   //cargo variables
   public static double cargoIntakeSpeed = 0.5; //TODO Check

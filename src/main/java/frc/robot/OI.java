@@ -66,12 +66,11 @@ public class OI {
   JoystickButton hatchRelease = new JoystickButton(operatorBoard, RobotMap.hatchReleaseButtonNumber);
   JoystickButton hatchMechanismSwitch = new JoystickButton(operatorBoard, RobotMap.hatchMechanismSwitchNumber);
   public OI(){
-    //driver stick
+    //DRIVER STICK 
     retractCargoIntake.whenPressed(new RetractCargoIntake());
     releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
 
-    //operator board
-
+    //OPERATOR BOARD
     //safety button
     cancelAutoSafety.cancelWhenPressed(); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
     cancelAutoSafety.cancelWhenPressed();  //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
@@ -93,7 +92,7 @@ public class OI {
 
     //cargo intake button
     intake.whenPressed(new IntakeCargo());
-
+    
     //hatch buttons
     //hatchAuto
     /*

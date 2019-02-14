@@ -46,6 +46,14 @@ public class Hatch extends Subsystem {
     hatchPiston1.set(DoubleSolenoid.Value.kForward);
     hatchPiston2.set(DoubleSolenoid.Value.kForward);
   }
+
+  /**
+   * This function turn the hatch mechanism off
+   */
+  public void mechanismPistonOff(){
+    hatchPiston1.set(DoubleSolenoid.Value.kOff);
+  }
+
   /**
    * Moves hatch pistons in
    */
@@ -59,6 +67,14 @@ public class Hatch extends Subsystem {
   public void hatchPistonOut(){
     releaseHatchPiston1.set(DoubleSolenoid.Value.kForward);
     releaseHatchPiston2.set(DoubleSolenoid.Value.kForward);
+  }
+
+  /**
+   * Turns the hatch pistons out
+   */
+  public void hatchPistonOff(){
+    releaseHatchPiston1.set(DoubleSolenoid.Value.kOff);
+    releaseHatchPiston2.set(DoubleSolenoid.Value.kOff);
   }
 
   public Timer getTimer() {
