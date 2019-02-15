@@ -78,7 +78,7 @@ public class OI {
     //elevator buttons
     elevatorDown.whenPressed(new ElevatorDown());
     elevatorUp.whenPressed(new ElevatorUp());
-    elevatorPreset.whenPressed(new ElevatorTo()); //TODO Finish when things are sautered
+    elevatorPreset.whenPressed(new ElevatorTo()); //TODO Finish when things are soldered
 
     //carriage buttons
     carriageCenter.whenPressed(new CarriageCenter()); //TODO create CarriageCenter command
