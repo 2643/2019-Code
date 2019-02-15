@@ -32,17 +32,10 @@ public class Drive extends Subsystem {
 
     double RightPreviousEncoderInput = 0;
     double LeftPreviousEncoderInput = 0;
-<<<<<<< HEAD
   
     public double LeftError = 0;
     public double RightError = 0;
   
-=======
-
-    double LeftError = 0;
-    double RightError = 0;
-
->>>>>>> 0268e44688dff9f079810f19c90efcaca879badf
     double RightDelta = 0;
     double LeftDelta = 0;
 
