@@ -236,7 +236,7 @@ public class RobotMap {
 
   //Line targets
   public static int encoderErrorTolerance = 4; //in encoder ticks //TODO change this.
-  public static int ultrasonicErrorTolerance = 20; // in millimeters. //TODO change this.
+  public static int ultrasonicErrorTolerance = 33; // in millimeters. //TODO change this.
 
   //driver joystick button numbers
 

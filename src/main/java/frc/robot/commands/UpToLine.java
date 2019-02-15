@@ -105,13 +105,13 @@ public class UpToLine extends Command {
     (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
     (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0 &&
     (Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1]) <= RobotMap.ultrasonicErrorTolerance) {
-      isFinished();
+      end();
   }
     if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 0 &&
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 &&
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0 &&
       (Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) <= RobotMap.ultrasonicErrorTolerance) {
-        isFinished();
+      end();
     }
 }
 
@@ -124,11 +124,14 @@ public class UpToLine extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.drive.setLeftPosition(RobotMap.LeftEncoder.get());
+    Robot.drive.setRightPosition(RobotMap.RightEncoder.get());
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end(); 
   }
 }
