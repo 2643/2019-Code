@@ -36,12 +36,12 @@ public class UpToLine extends Command {
          Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) != 0 ||
            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) != 0) {
-          Robot.drive.setLeftPosition(RobotMap.LeftEncoder.getRaw() + 4);
-          Robot.drive.setRightPosition(RobotMap.RightEncoder.getRaw() + 4);
+          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + 4);
+          Robot.drive.setRightPosition(Robot.drive.getRightEncoder() + 4);
           }
         else {
-          Robot.drive.setLeftPosition(RobotMap.LeftEncoder.getRaw());
-          Robot.drive.setRightPosition(RobotMap.RightEncoder.getRaw());
+          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
+          Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
         }
       }
     }
@@ -54,14 +54,14 @@ public class UpToLine extends Command {
           //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
           int alpha = Robot.ultrasonicSystem.getLeftValues()[0]-Robot.ultrasonicSystem.getLeftValues()[1];
           int beta = alpha/-7;
-          int gamma = beta + RobotMap.LeftEncoder.getRaw();
-          int gammab = -beta + RobotMap.RightEncoder.getRaw();
+          int gamma = beta + Robot.drive.getLeftEncoder();
+          int gammab = -beta + Robot.drive.getRightEncoder();
 
           Robot.drive.setLeftPosition(gamma);
           Robot.drive.setRightPosition(gammab);
         }
         else {
-          Robot.drive.setLeftPosition(RobotMap.LeftEncoder.getRaw());
+          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
         }
       }
       if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 0 &&
@@ -72,8 +72,8 @@ public class UpToLine extends Command {
         if((Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
           int alpha = Robot.ultrasonicSystem.getRightValues()[0]-Robot.ultrasonicSystem.getRightValues()[1];
           int beta = alpha/-7;
-          int gamma = beta + RobotMap.LeftEncoder.getRaw();
-          int gammab = -beta + RobotMap.RightEncoder.getRaw();
+          int gamma = beta + Robot.drive.getLeftEncoder();
+          int gammab = -beta + Robot.drive.getRightEncoder();
 
           Robot.drive.setRightPosition(gamma);
           Robot.drive.setLeftPosition(gammab);
@@ -83,8 +83,8 @@ public class UpToLine extends Command {
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
-          int precalcL = RobotMap.RightEncoder.getRaw() + 4;
-          int precalcR = RobotMap.LeftEncoder.getRaw() + 4;
+          int precalcL = Robot.drive.getRightEncoder() + 4;
+          int precalcR = Robot.drive.getLeftEncoder() + 4;
 
           Robot.drive.setLeftPosition(precalcL);
           Robot.drive.setRightPosition(precalcR);
@@ -94,8 +94,8 @@ public class UpToLine extends Command {
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
-          int precalcL = RobotMap.RightEncoder.getRaw() - 4;
-          int precalcR = RobotMap.LeftEncoder.getRaw() - 4;
+          int precalcL = Robot.drive.getRightEncoder() - 4;
+          int precalcR = Robot.drive.getLeftEncoder() - 4;
 
           Robot.drive.setLeftPosition(precalcL);
           Robot.drive.setRightPosition(precalcR);
@@ -124,8 +124,8 @@ public class UpToLine extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.drive.setLeftPosition(RobotMap.LeftEncoder.get());
-    Robot.drive.setRightPosition(RobotMap.RightEncoder.get());
+    Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
+    Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
   }
 
   // Called when another command which requires one or more of the same

@@ -68,7 +68,7 @@ public class RobotMap {
 
   //elevator ports
   public static int elevatorPort = 0;      //TODO Check the device ID of the master motor 
-  public static int elevatorSlavePort = 0; //TODO Check the device ID of the slave motor
+  public static int elevatorBottomLimitPort = 0; //TODO Check the port of the bottom limit switch 
 
   //solenoid ports
   public static int Solenoid1Port1 = 1;     //TODO Check the first port of the first solenoid
@@ -79,11 +79,6 @@ public class RobotMap {
   public static int Solenoid3Port2 = 6;     //TODO Check the second port of the third solenoid
   public static int Solenoid4Port1 = 7;     //TODO Check the first port of the fourth solenoid
   public static int Solenoid4Port2 = 8;     //TODO Check the second port of the fourth solenoid
-
-  //hatch ports 
-  public static int HatchMotorPort = 3;    //TODO Check the device ID of the hatch motor
-  public static int HatchTopPort = 0; //TODO Check the port of the top limit switch
-  public static int HatchBottomPort = 0; //TODO CHeck the port of the bottom limit switch 
 
   //carriage ports
   public static int carriageMotorPort = 0;  //TODO Check the device ID of the carriage motor
@@ -131,8 +126,7 @@ public class RobotMap {
   //elevator motors
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
 
-  //hatch motors/solenoids
-  public static WPI_TalonSRX HatchTalon = new WPI_TalonSRX(HatchMotorPort);
+  //hatch solenoids
   public static DoubleSolenoid HatchPiston = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
   public static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
   public static DoubleSolenoid ReleaseHatchPiston1 = new DoubleSolenoid(Solenoid3Port1, Solenoid3Port2);
@@ -156,13 +150,9 @@ public class RobotMap {
   public static VideoSink server;
   
   //elevator sensors
-  public static DigitalInput elevatorBottomLimit = new DigitalInput(0);
+  public static DigitalInput elevatorBottomLimit = new DigitalInput(elevatorBottomLimitPort);
   public static CANEncoder elevatorEncoder = new CANEncoder(elevatorMotor);
   public static CANPIDController elevatorController = new CANPIDController(elevatorMotor);
-
-  //hatch sensors
-  public static DigitalInput HatchTopSwitch = new DigitalInput(HatchTopPort);
-  public static DigitalInput HatchBottomSwitch = new DigitalInput(HatchBottomPort);
 
   //carriage sensors
   public static Potentiometer carriagePot = new AnalogPotentiometer(carriagePotPort, 3600, carriagePotOffset);
@@ -183,8 +173,8 @@ public class RobotMap {
 
   /* Variables */
   //drive varibles
-  public static int rightDriverAxis = 1; //TODO Check on the driver gamepad
-  public static int leftDriverAxis = 5; //TODO Check on the driver gamepad
+  public static int rightDriverAxis = 5; 
+  public static int leftDriverAxis = 1; 
 
   //elevator variables
   static public double elevatorSpeed = 0.3; //Temporary elevator speed. TODO elevator PIDS will have to be implemented.
