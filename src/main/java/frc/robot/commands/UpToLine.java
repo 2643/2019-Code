@@ -105,13 +105,13 @@ public class UpToLine extends Command {
     (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
     (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0 &&
     (Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1]) <= RobotMap.ultrasonicErrorTolerance) {
-      Robot.cargoOuttake.setCargoSpeed(0.5);
+      isFinished();
   }
     if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 0 &&
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 &&
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0 &&
       (Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) <= RobotMap.ultrasonicErrorTolerance) {
-        Robot.cargoOuttake.setCargoSpeed(-0.5);
+        isFinished();
     }
 }
 
