@@ -13,7 +13,8 @@ import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -244,17 +245,19 @@ public class RobotMap {
 
   //operator board button numbers
 
-  public static int cancelAutoSafetyButtonNumber = 0; //TODO Chech Button Number
-  public static int carriageCenterButtonNumber = 0; //TODO Chech Button Number
-  public static int elevatorDownButtonNumber = 0; //TODO Chech Button Number
-  public static int cargoOuttakeLeftButtonNumber = 0; //TODO Chech Button Number
-  public static int carriageLeftButtonNumber = 0; //TODO Chech Button Number
-  public static int cargoOuttakeRightButtonNumber = 0; //TODO Chech Button Number
-  public static int carriageRightButtonNumber = 0; //TODO Chech Button Number
-  public static int elevatorPresetButtonNumber = 0; //TODO Chech Button Number
-  public static int elevatorUpButtonNumber = 0; //TODO Chech Button Number
-  public static int intakeButtonNumber = 0; //TODO Chech Button Number
-  public static int hatchReleaseButtonNumber = 0; //TODO Chech Button Number
-  public static int hatchMechanismSwitchNumber = 0; //TODO Chech Button Number
+  public static int cancelAutoSafetyButtonNumber = 0; //TODO Check Button Number
+  public static int carriageCenterButtonNumber = 0; //TODO Check Button Number
+  public static int elevatorDownButtonNumber = 0; //TODO Check Button Number
+  public static int cargoOuttakeLeftButtonNumber = 0; //TODO Check Button Number
+  public static int carriageLeftButtonNumber = 0; //TODO Check Button Number
+  public static int cargoOuttakeRightButtonNumber = 0; //TODO Check Button Number
+  public static int carriageRightButtonNumber = 0; //TODO Check Button Number
+  public static int elevatorPresetButtonNumber = 0; //TODO Check Button Number
+  public static int elevatorUpButtonNumber = 0; //TODO Check Button Number
+  public static int intakeButtonNumber = 0; //TODO Check Button Number
+  public static int hatchReleaseButtonNumber = 0; //TODO Check Button Number
+  public static int hatchMechanismSwitchNumber = 0; //TODO Check Button Number
 
+  //Networktables for vision
+  public static NetworkTable visionTable = NetworkTableInstance.getDefault().getTable("vision");
 }

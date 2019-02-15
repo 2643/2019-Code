@@ -26,49 +26,33 @@ public class Drive extends Subsystem {
     double LeftP = 0.05;
     double LeftI = 0.0;
     double LeftD = 0.0;
-
+    //PID Variables
     double RightIntgorSum = 0;
     double LeftIntgorSum = 0;
-
     double RightPreviousEncoderInput = 0;
     double LeftPreviousEncoderInput = 0;
-<<<<<<< HEAD
+
   
     public double LeftError = 0;
     public double RightError = 0;
-  
-=======
-
-    double LeftError = 0;
-    double RightError = 0;
-
->>>>>>> 0268e44688dff9f079810f19c90efcaca879badf
+ 
     double RightDelta = 0;
     double LeftDelta = 0;
-
     double LeftOutput = 0;
     double RightOutput = 0;
-
     double RightOldVel = 0;
     double RightOldPos = 0;
-
     double RightCurrentVel = 0;
     double RightCurrentAccel = 0;
-
     double LeftOldVel = 0;
     double LeftOldPos = 0;
-
     double LeftCurrentVel = 0;
     double LeftCurrentAccel = 0;
-
     double AGain = 0;
     double ALimit = 18;
-
     double unlimitedAccel = 0;
-
     double MaxOutput = 0.5;
     double IntgorSumLimit = 25;
-
     /**
      * Drive constructor
      * 
@@ -198,16 +182,18 @@ public class Drive extends Subsystem {
     /**
      * Sets speed for both sides
      */
-    public void setAllSpeed(double speed) {
-        setLeftSpeed(speed);
-        setRightSpeed(speed);
+    public void setAllSpeed(double leftSpeed, double rightSpeed) {
+        setLeftSpeed(leftSpeed);
+        setRightSpeed(rightSpeed);
     }
+
+    
 
     /**
      * Stops all the speed
      */
     public void stopAllSpeed() {
-        setAllSpeed(0);
+        setAllSpeed(0,0);
     }
 
     /**
@@ -215,36 +201,46 @@ public class Drive extends Subsystem {
      * @param ticks int the desired position of the robot in encoder ticks
      */
     public void setLeftPosition(int ticks){
+        //Gets the current Left encoder ticks.
         LeftCurrentEncoderInput = RobotMap.LeftEncoder.getRaw();
         LeftEncoderTarget = RobotMap.LeftEncoderTarget;
+        //Resign all the left variables.
         LeftCurrentVel = LeftCurrentEncoderInput - LeftPreviousEncoderInput;
         LeftCurrentAccel = LeftCurrentVel - LeftOldVel;
         LeftError = LeftEncoderTarget - LeftCurrentEncoderInput;
         LeftIntgorSum = LeftIntgorSum + LeftError;
+        //IntgotSum limiter sum.
         if(LeftIntgorSum > IntgorSumLimit){
             LeftIntgorSum = IntgorSumLimit;
           }
         if(LeftIntgorSum < -IntgorSumLimit){
             LeftIntgorSum = -IntgorSumLimit;
           }
+        //PID equations.
         LeftOutput = (-LeftP * LeftError)+(LeftIntgorSum * LeftI)+(LeftD * LeftDelta)+(LeftCurrentAccel * AGain);
+        //Left motor speed limiter.
         if(LeftOutput > MaxOutput){
             LeftOutput = MaxOutput;
           }
           if(LeftOutput < -MaxOutput){
             LeftOutput = -MaxOutput;
           }
+        //Set the motor speed.
         RobotMap.LeftFrontMotor.set(-LeftOutput);
         RobotMap.LeftBackMotor.set(-LeftOutput);
+        //Resign some more left variables.
         LeftPreviousEncoderInput = LeftCurrentEncoderInput;
         LeftOldVel = LeftCurrentVel;
     }
     public void setRightPosition(int ticks){
+        //Gets the currnet Right encoder ticks.
         RightCurrentEncoderInput = RobotMap.RightEncoder.getRaw();
         RightEncoderTarget = RobotMap.RightEncoderTarget;
+        //Resign all the right variables.
         RightCurrentVel = RightCurrentEncoderInput - RightPreviousEncoderInput;
         RightCurrentAccel = RightCurrentVel - RightOldVel;
         RightError = RightEncoderTarget - RightCurrentEncoderInput;
+        //IntgorSum limiter sum.
         RightIntgorSum = RightIntgorSum + RightError;
         if(RightIntgorSum > IntgorSumLimit){
             RightIntgorSum = IntgorSumLimit;
@@ -252,26 +248,23 @@ public class Drive extends Subsystem {
         if(RightIntgorSum < -IntgorSumLimit){
             RightIntgorSum = -IntgorSumLimit;
             }
+        //PID equations.
         RightOutput = (-RightP * RightError)+(RightIntgorSum * RightI)+(RightD * RightDelta)+(RightCurrentAccel * AGain);
+        //Right motor speed limiter.
             if(RightOutput > MaxOutput){
             RightOutput = MaxOutput;
             }
         if(RightOutput < -MaxOutput){
             RightOutput = -MaxOutput;
             }
+        //Set the motor speed.
         RobotMap.RightFrontMotor.set(RightOutput);
         RobotMap.RightBackMotor.set(RightOutput);
+        //Resign some more right variables.
         RightPreviousEncoderInput = RightCurrentEncoderInput;
         RightOldVel = RightCurrentVel;
     }
     public void setPosition(int ticks){
-        //TODO finish writing the setPosition method
-    /**Encoder Target */
-
-    
-    
-   
-
-        // send help
+        //send help
     }
 }
