@@ -232,6 +232,11 @@ public class Drive extends Subsystem {
         LeftPreviousEncoderInput = LeftCurrentEncoderInput;
         LeftOldVel = LeftCurrentVel;
     }
+
+    /**
+     * Sets the position fo the right side of the robot
+     * @param ticks int the position that you want to set the right side of the robot to 
+     */
     public void setRightPosition(int ticks){
         //Gets the currnet Right encoder ticks.
         RightCurrentEncoderInput = RobotMap.RightEncoder.getRaw();
@@ -264,7 +269,14 @@ public class Drive extends Subsystem {
         RightPreviousEncoderInput = RightCurrentEncoderInput;
         RightOldVel = RightCurrentVel;
     }
-    public void setPosition(int ticks){
-        //send help
+
+    /**
+     * Sets the position of both sides of the robo
+     * @param leftTicks int the position that you want to set the left side of the robot to
+     * @param rightTicks int the position that you want to set the right side of the robot to 
+     */
+    public void setPosition(int leftTicks, int rightTicks){
+        setLeftPosition(leftTicks);
+        setRightPosition(rightTicks);
     }
 }
