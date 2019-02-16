@@ -230,11 +230,9 @@ public class RobotMap {
 
   //DO NOT CHANGE WHTHOUT ASKING | They are impossibly high/low for a reason
   public static int[] lastLeftOne = new int[1];
-  public static int[] lastLeftTwo = new int[1];
   public static int[] lastLeftThree = new int[1];
 
   public static int[] lastRightOne = new int[1];
-  public static int[] lastRightTwo = new int[1];
   public static int[] lastRightThree = new int[1];
 
   public static int maxReliableEncoder = 20; //currently around 5 inches
