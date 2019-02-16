@@ -37,6 +37,7 @@ public class ElevatorTo extends Command {
 
   @Override
   protected boolean isFinished() {
+    //Checks to see whether the height above the ground is equal to the encoder ticks for the elevator encoder
     if(RobotMap.encoderTicksToInches(Robot.elevator.getElevatorEncoder()) == levelToGoTo){
       return true;
     }

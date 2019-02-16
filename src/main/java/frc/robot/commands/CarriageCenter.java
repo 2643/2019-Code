@@ -26,20 +26,23 @@ public class CarriageCenter extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
+    /* Checks for potentiometer position
+    *  If carriage is not centered, moves the motor until it is centered
+    */
     //TODO check to make sure this works 
     if(RobotMap.carriagePot.get() < RobotMap.carriageCenterValue){
       RobotMap.carriageMotor.set(RobotMap.carriageMotorSpeed);
     }
     //TODO check to make sure this works 
     else if(RobotMap.carriagePot.get() > RobotMap.carriageCenterValue){
-      RobotMap.carriageMotor.set(RobotMap.carriageMotorSpeed);
+      RobotMap.carriageMotor.set(-RobotMap.carriageMotorSpeed);
     }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    //Checks whether carriage is centered or not
     if(RobotMap.carriagePot.get() == RobotMap.carriageCenterValue){
       return true;
     } else{
