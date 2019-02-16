@@ -76,7 +76,9 @@ public class Hatch extends Subsystem {
     releaseHatchPiston1.set(DoubleSolenoid.Value.kOff);
     releaseHatchPiston2.set(DoubleSolenoid.Value.kOff);
   }
-
+  /**
+   * Gets the hatch timer
+   */
   public Timer getTimer() {
   	return RobotMap.hatchPistonTimer;
   }

@@ -126,10 +126,12 @@ public class OI {
     } */
   }
 
+  //Creating the joystick
   public Joystick getDriverStick(){
     return driverStick;
   }
 
+  //Creating the Operator Board
   public Joystick getOperatorBoard(){
     return operatorBoard;
   }
