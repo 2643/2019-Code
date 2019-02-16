@@ -31,82 +31,142 @@ public class UpToLine extends Command {
   protected void execute() {
     int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
     
+    // Checks if there isn't a line.
     if(Robot.lineDetector.getIRSensors() == 0){
+      //Robot has driven to be below the PID tolerance.
       if(Math.abs(Robot.drive.LeftError) <= encoderErrorTolerance &&
          Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
+          //If the middle sensor isn't activated, continue driving fowards.
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) != 0 ||
            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) != 0) {
           Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + 4);
           Robot.drive.setRightPosition(Robot.drive.getRightEncoder() + 4);
           }
+        //If the middle sensor is activated, stop where it is.
         else {
           Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
           Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
         }
       }
     }
+    
+    //Checks if there is an IR that's been activated.
     if(Robot.lineDetector.getIRSensors() != 0) {
+      //Only Left middle is activated.
       if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 && 
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0) {
+        //Checks if it's angled too far.
         if((Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
 
           //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
           int alpha = Robot.ultrasonicSystem.getLeftValues()[0]-Robot.ultrasonicSystem.getLeftValues()[1];
-          int beta = alpha/-7;
+          int beta = alpha/-7;//TODO verify my math.
           int gamma = beta + Robot.drive.getLeftEncoder();
           int gammab = -beta + Robot.drive.getRightEncoder();
 
+          //Turns it the proper amount of ticks
           Robot.drive.setLeftPosition(gamma);
           Robot.drive.setRightPosition(gammab);
         }
+        //If it isn't too far, stop the movement.
         else {
           Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
+          Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
         }
       }
+      //Only if Right middle is activated.
       if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 0 &&
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 &&
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0) 
-
-        //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0){
+        //Checks that the ultrasonic is over the tolerance threshold
         if((Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
+
+          //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
+          //Alpha is the error off in MMs
           int alpha = Robot.ultrasonicSystem.getRightValues()[0]-Robot.ultrasonicSystem.getRightValues()[1];
-          int beta = alpha/-7;
+          //Divide by 7 to get tick distance
+          int beta = alpha/-7;//TODO verify my math.
+          //Drive in the direction
           int gamma = beta + Robot.drive.getLeftEncoder();
+          //Also drive in the right direction
           int gammab = -beta + Robot.drive.getRightEncoder();
 
+          //Drive to the proper position
           Robot.drive.setRightPosition(gamma);
           Robot.drive.setLeftPosition(gammab);
         }
       }
+      //Checks if any of the middle sensor has been tripped.
       if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
+
+        //Checks if the front sensor has been tripped
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
+
+          //Add to make the robot move 1 inch fowards.
           int precalcL = Robot.drive.getRightEncoder() + 4;
           int precalcR = Robot.drive.getLeftEncoder() + 4;
 
+          //Make the robot move 1 inch fowards.
           Robot.drive.setLeftPosition(precalcL);
           Robot.drive.setRightPosition(precalcR);
         }
-      }
-      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
-      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
+
+        //Checks if the back sensor has been tripped
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
+          
+          //Subtract to make the robot move 1 inch backwards.
           int precalcL = Robot.drive.getRightEncoder() - 4;
           int precalcR = Robot.drive.getLeftEncoder() - 4;
 
+          //Make the robot move 1 inch backwards
           Robot.drive.setLeftPosition(precalcL);
           Robot.drive.setRightPosition(precalcR);
         }
       }
+
+      //Checks that the middle sensor is NOT tripped
+      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 0 ||
+      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 0) {
+
+        //Checks that the back sensor IS tripped
+        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
+
+          //Subtract to make the robot move 1.8 inches backwards
+          int precalcL = Robot.drive.getRightEncoder() - 7;
+          int precalcR = Robot.drive.getLeftEncoder() - 7;
+          
+          //Move the robot
+          Robot.drive.setLeftPosition(precalcL);
+          Robot.drive.setRightPosition(precalcR);
+        }
+
+        //Checks that the front sensor IS tripped
+        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
+
+          //Add to make the robot move 1.8 inches backwards
+          int precalcL = Robot.drive.getRightEncoder() + 7;
+          int precalcR = Robot.drive.getLeftEncoder() + 7;
+          
+          //Move the robot
+          Robot.drive.setLeftPosition(precalcL);
+          Robot.drive.setRightPosition(precalcR);
+        }
+      }
+    }
+    //Checks if all of the positions have been met, if they have, end().
     if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 &&
     (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
     (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0 &&
     (Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1]) <= RobotMap.ultrasonicErrorTolerance) {
       end();
-  }
+    }
+
     if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 0 &&
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 &&
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0 &&
