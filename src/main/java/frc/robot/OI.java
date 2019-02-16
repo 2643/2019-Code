@@ -72,8 +72,7 @@ public class OI {
 
     //OPERATOR BOARD
     //safety button
-    cancelAutoSafety.cancelWhenPressed(); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
-    cancelAutoSafety.cancelWhenPressed();  //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
+    cancelAutoSafety.cancelWhenPressed(new HatchAuto()); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
    
     //elevator buttons
     elevatorDown.whenPressed(new ElevatorDown());

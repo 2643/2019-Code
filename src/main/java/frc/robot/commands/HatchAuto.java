@@ -1,39 +1,40 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
-import frc.robot.subsystems.Drive;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class HatchAuto extends Command {
+public class HatchAuto extends CommandGroup {
+  /**
+   * Add your docs here.
+   */
+  public HatchAuto() {
 
-    public HatchAuto() {
-        requires(Robot.drive);
-        requires(Robot.hatch);
-    }
+    addSequential(new ElevatorDown());
+    addSequential(new HatchAutoAlign());
+    addSequential(new ExtendHatch());
+    addSequential(new ReleaseHatch());
 
-    @Override
-    protected void execute() {
-        double centerLocation = (RobotMap.visionTable.getEntry("centroid-left-x").getDouble(0)
-                + RobotMap.visionTable.getEntry("centroid-right-x").getDouble(0)) / 2;
-        boolean valid = RobotMap.visionTable.getEntry("valid").getBoolean(false);
-        System.out.println("valid: " + valid + "center: " + centerLocation);
-        if (valid) {
-            if (centerLocation > 0.1) {
-                Robot.drive.setAllSpeed(0.3, -0.3);
-            } else if (centerLocation < -0.1) {
-                Robot.drive.setAllSpeed(-0.3, 0.3);
-            } else {
-                Robot.drive.setAllSpeed(0.3, 0.3);
-            }
-        } else {
-            Robot.drive.setAllSpeed(0, 0);
-        }
-    }
+    // Add Commands here:
+    // e.g. addSequential(new Command1());
+    // addSequential(new Command2());
+    // these will run in order.
 
-    @Override
-    protected boolean isFinished() {
-        return false;
-    }
+    // To run multiple commands at the same time,
+    // use addParallel()
+    // e.g. addParallel(new Command1());
+    // addSequential(new Command2());
+    // Command1 and Command2 will run in parallel.
 
+    // A command group will require all of the subsystems that each member
+    // would require.
+    // e.g. if Command1 requires chassis, and Command2 requires arm,
+    // a CommandGroup containing them would require both the chassis and the
+    // arm.
+  }
 }
