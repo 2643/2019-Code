@@ -25,6 +25,7 @@ public class TankDrive extends Command {
 
   @Override
   protected void execute() {
+    //Setting joystick axis
     Robot.drive.setLeftSpeed(Robot.oi.getDriverStick().getRawAxis(RobotMap.leftDriverAxis));
     Robot.drive.setRightSpeed(Robot.oi.getDriverStick().getRawAxis(RobotMap.rightDriverAxis));
   }
