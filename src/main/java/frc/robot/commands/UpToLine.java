@@ -38,9 +38,15 @@ public class UpToLine extends Command {
          Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
           //If the middle sensor isn't activated, continue driving fowards.
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) != 0 ||
-           (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) != 0) {
-          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + 4);
-          Robot.drive.setRightPosition(Robot.drive.getRightEncoder() + 4);
+          (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) != 0) {
+
+          //Add 1 inch to current value
+          int precalcL = Robot.drive.getLeftEncoder() + 4;
+          int precalcR = Robot.drive.getRightEncoder() + 4;
+
+          //Move the one inch fowards
+          Robot.drive.setLeftPosition(precalcL);
+          Robot.drive.setRightPosition(precalcR);
           }
         //If the middle sensor is activated, stop where it is.
         else {
@@ -88,13 +94,13 @@ public class UpToLine extends Command {
           //Divide by 7 to get tick distance
           int beta = alpha/-7;//TODO verify my math.
           //Drive in the direction
-          int gamma = beta + Robot.drive.getLeftEncoder();
+          int gamma = -beta + Robot.drive.getLeftEncoder();
           //Also drive in the right direction
-          int gammab = -beta + Robot.drive.getRightEncoder();
+          int gammab = beta + Robot.drive.getRightEncoder();
 
           //Drive to the proper position
-          Robot.drive.setRightPosition(gamma);
-          Robot.drive.setLeftPosition(gammab);
+          Robot.drive.setLeftPosition(gamma);
+          Robot.drive.setRightPosition(gammab);
         }
       }
       //Checks if any of the middle sensor has been tripped.
@@ -106,8 +112,8 @@ public class UpToLine extends Command {
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
 
           //Add to make the robot move 1 inch fowards.
-          int precalcL = Robot.drive.getRightEncoder() + 4;
-          int precalcR = Robot.drive.getLeftEncoder() + 4;
+          int precalcL = Robot.drive.getLeftEncoder() + 4;
+          int precalcR = Robot.drive.getRightEncoder() + 4;
 
           //Make the robot move 1 inch fowards.
           Robot.drive.setLeftPosition(precalcL);
@@ -119,8 +125,8 @@ public class UpToLine extends Command {
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
           
           //Subtract to make the robot move 1 inch backwards.
-          int precalcL = Robot.drive.getRightEncoder() - 4;
-          int precalcR = Robot.drive.getLeftEncoder() - 4;
+          int precalcL = Robot.drive.getLeftEncoder() - 4;
+          int precalcR = Robot.drive.getRightEncoder() - 4;
 
           //Make the robot move 1 inch backwards
           Robot.drive.setLeftPosition(precalcL);
@@ -137,8 +143,8 @@ public class UpToLine extends Command {
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
 
           //Subtract to make the robot move 1.8 inches backwards
-          int precalcL = Robot.drive.getRightEncoder() - 7;
-          int precalcR = Robot.drive.getLeftEncoder() - 7;
+          int precalcL = Robot.drive.getLeftEncoder() - 7;
+          int precalcR = Robot.drive.getRightEncoder() - 7;
           
           //Move the robot
           Robot.drive.setLeftPosition(precalcL);
@@ -150,8 +156,8 @@ public class UpToLine extends Command {
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
 
           //Add to make the robot move 1.8 inches backwards
-          int precalcL = Robot.drive.getRightEncoder() + 7;
-          int precalcR = Robot.drive.getLeftEncoder() + 7;
+          int precalcL = Robot.drive.getLeftEncoder() + 7;
+          int precalcR = Robot.drive.getRightEncoder() + 7;
           
           //Move the robot
           Robot.drive.setLeftPosition(precalcL);
