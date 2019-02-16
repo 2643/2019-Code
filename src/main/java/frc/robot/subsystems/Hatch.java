@@ -32,6 +32,7 @@ public class Hatch extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+  
   /**
    * This function will pull the hatch mechanism in.
    */

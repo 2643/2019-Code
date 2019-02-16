@@ -135,10 +135,12 @@ public class RobotMap {
   //carriage
   public static WPI_TalonSRX carriageMotor = new WPI_TalonSRX(carriageMotorPort);
 
-  //cargo
+  //cargo intake 
   public static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
   public static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
   public static WPI_TalonSRX cargoRetractMotor = new WPI_TalonSRX(cargoRetractPort);
+  
+  //cargo outtake
   public static WPI_TalonSRX cargoOuttakeMotor = new WPI_TalonSRX(cargoOuttakePort);
 
   /* Sensors */
@@ -182,8 +184,6 @@ public class RobotMap {
   //This is the maximum encoder ticks allowed from the bottom upwards.
   
   //hatch variables
-  public static double hatchDownSpeed = 0; //TODO Test to find a suitable speed
-  public static double hatchUpSpeed = 0; //TODO Test to find a suitable speed
   public static Timer hatchPistonTimer = new Timer();
   public static int hatchPistonOutTime = 3; //TODO Test this out 
   public static int hatchReleaseTimeout = 0; //TODO Change this
