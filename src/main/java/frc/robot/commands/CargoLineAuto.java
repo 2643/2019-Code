@@ -12,8 +12,8 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.LineDetector;
 
-public class UpToLine extends Command {
-  public UpToLine() {
+public class CargoLineAuto extends Command {
+  public CargoLineAuto() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.drive);
