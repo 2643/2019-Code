@@ -44,10 +44,11 @@ public class Robot extends TimedRobot {
     oi = new OI();
 
     elevator.resetElevatorEncoder();
-    RobotMap.ultrasonicLeftOne.setAutomaticMode(false);
-
+    RobotMap.ultrasonicLeftOne.setAutomaticMode(true);
+    /*
     boolean ultrasonicPingWhichInit = true;
     int ultrasonicPingInit = 0;
+    */
 
     // chooser.addOption("My Auto", new MyAutoCommand());
     //SmartDashboard.putData("Auto mode", m_chooser);

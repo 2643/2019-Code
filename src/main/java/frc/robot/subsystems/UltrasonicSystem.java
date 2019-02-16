@@ -17,8 +17,19 @@ public class UltrasonicSystem extends Subsystem {
 
    /**
    * Gets the angle at the left side of the robot in relation to the wall beside it.
-   * @return left angle
+   * @return left in array
    */
+
+  public int[] getLeftValues() {
+    int[] array = new int[]{(int)RobotMap.ultrasonicLeftOne.getRangeMM(), (int)RobotMap.ultrasonicLeftTwo.getRangeMM()};
+    return(array);
+  }
+  /**  */
+  public int[] getRightValues() {
+    int[] array = new int[]{(int)RobotMap.ultrasonicRightOne.getRangeMM(), (int)RobotMap.ultrasonicRightTwo.getRangeMM()};
+    return(array);
+  }
+  /* Changed for more readable crap
   public int[] getLeftValues() {
     int leftOne = -1;
     int leftTwo = -1;
@@ -55,8 +66,9 @@ public class UltrasonicSystem extends Subsystem {
     array[0] = leftOne;
     array[1] = leftTwo;
     return(array);
-  }
+  } */
   
+  /* MUCH MUCH MUCH better method of doing it now.
   public int[] getRightValues() {
     int[] array = new int[1];
     int rightOne = -1;
@@ -95,7 +107,8 @@ public class UltrasonicSystem extends Subsystem {
     array[1] = rightTwo;
 
     return(array);
-  }
+  } */
+
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
