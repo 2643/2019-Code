@@ -41,6 +41,7 @@ public class ExtendHatch extends TimedCommand {
   @Override
   protected void end() {
     Robot.hatch.mechanismPistonOff();
+    Robot.hatch.getTimer().stop();
   }
 
   @Override

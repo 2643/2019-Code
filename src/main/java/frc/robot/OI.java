@@ -65,6 +65,12 @@ public class OI {
   JoystickButton intake = new JoystickButton(operatorBoard, RobotMap.intakeButtonNumber);
   JoystickButton hatchRelease = new JoystickButton(operatorBoard, RobotMap.hatchReleaseButtonNumber);
   JoystickButton hatchMechanismSwitch = new JoystickButton(operatorBoard, RobotMap.hatchMechanismSwitchNumber);
+  
+  //six position switch levels 
+  //First level of the rocket for the hatch 
+  
+  
+  
   public OI(){
     //DRIVER STICK 
     retractCargoIntake.whenPressed(new RetractCargoIntake());
@@ -72,8 +78,7 @@ public class OI {
 
     //OPERATOR BOARD
     //safety button
-    cancelAutoSafety.cancelWhenPressed(); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
-    cancelAutoSafety.cancelWhenPressed();  //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
+    cancelAutoSafety.cancelWhenPressed(new HatchAuto()); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
    
     //elevator buttons
     elevatorDown.whenPressed(new ElevatorDown());
