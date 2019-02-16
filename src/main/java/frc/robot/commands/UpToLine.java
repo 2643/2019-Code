@@ -29,34 +29,68 @@ public class UpToLine extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
-    
-    // Checks if there isn't a line.
+    //Checks if there isn't a line already sensed.
     if(Robot.lineDetector.getIRSensors() == 0){
-      //Robot has driven to be below the PID tolerance.
-      if(Math.abs(Robot.drive.LeftError) <= encoderErrorTolerance &&
-         Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
-          //If the middle sensor isn't activated, continue driving fowards.
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) != 0 ||
-          (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) != 0) {
 
-          //Add 1 inch to current value
-          int precalcL = Robot.drive.getLeftEncoder() + 4;
-          int precalcR = Robot.drive.getRightEncoder() + 4;
+      //Checks if the previously gotten value is beneath the maximum encoder reliability value.
+      if ((Math.abs(RobotMap.lastLeftTwo[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
+        (Math.abs(RobotMap.lastLeftTwo[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+        Robot.drive.setLeftPosition(RobotMap.lastLeftTwo[0]);
+        Robot.drive.setRightPosition(RobotMap.lastLeftTwo[1]);
+      }
+      else if ((Math.abs(RobotMap.lastRightTwo[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
+        (Math.abs(RobotMap.lastRightTwo[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+        Robot.drive.setLeftPosition(RobotMap.lastRightTwo[0]);
+        Robot.drive.setRightPosition(RobotMap.lastRightTwo[1]);
+      }
+      else if ((Math.abs(RobotMap.lastLeftOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
+        (Math.abs(RobotMap.lastLeftOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+        Robot.drive.setLeftPosition(RobotMap.lastLeftOne[0] + 7);
+        Robot.drive.setRightPosition(RobotMap.lastLeftOne[1] + 7);
+      }
+      else if ((Math.abs(RobotMap.lastRightOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
+        (Math.abs(RobotMap.lastRightOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+        Robot.drive.setLeftPosition(RobotMap.lastRightOne[0] + 7);
+        Robot.drive.setRightPosition(RobotMap.lastRightOne[1] + 7);
+      }
+      else if ((Math.abs(RobotMap.lastLeftThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
+        (Math.abs(RobotMap.lastLeftThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+        Robot.drive.setLeftPosition(RobotMap.lastLeftThree[0] - 7);
+        Robot.drive.setRightPosition(RobotMap.lastLeftThree[1] - 7);
+      }
+      else if ((Math.abs(RobotMap.lastRightThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
+        (Math.abs(RobotMap.lastRightThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+        Robot.drive.setLeftPosition(RobotMap.lastRightThree[0] - 7);
+        Robot.drive.setRightPosition(RobotMap.lastRightThree[1] - 7);
+      }
 
-          //Move the one inch fowards
-          Robot.drive.setLeftPosition(precalcL);
-          Robot.drive.setRightPosition(precalcR);
+      else {
+        int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
+
+        //Robot has driven to be below the PID tolerance.
+        if(Math.abs(Robot.drive.LeftError) <= encoderErrorTolerance &&
+          Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
+            //If the middle sensor isn't activated, continue driving fowards.
+          if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) != 0 ||
+            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) != 0) {
+
+            //Add 1 inch to current value
+            int precalcL = Robot.drive.getLeftEncoder() + 4;
+            int precalcR = Robot.drive.getRightEncoder() + 4;
+
+            //Move the one inch fowards
+            Robot.drive.setLeftPosition(precalcL);
+            Robot.drive.setRightPosition(precalcR);
+            }
+          //If the middle sensor is activated, stop where it is.
+          else {
+            Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
+            Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
           }
-        //If the middle sensor is activated, stop where it is.
-        else {
-          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
-          Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
         }
       }
     }
-    
-    //Checks if there is an IR that's been activated.
+      //Checks if there is an IR that's been activated.
     if(Robot.lineDetector.getIRSensors() != 0) {
       //Only Left middle is activated.
       if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 && 
