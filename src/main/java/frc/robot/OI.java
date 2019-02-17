@@ -10,7 +10,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
-import frc.robot.subsystems.CargoIntake;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -79,7 +78,7 @@ public class OI {
     //OPERATOR BOARD
     //safety button
     cancelAutoSafety.cancelWhenPressed(new HatchAuto()); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
-   
+
     //elevator buttons
     elevatorDown.whenPressed(new ElevatorDown());
     elevatorUp.whenPressed(new ElevatorUp());
@@ -102,9 +101,9 @@ public class OI {
     }
 
     //carriage buttons
-    carriageCenter.whenPressed(new CarriageCenter()); //TODO create CarriageCenter command
-    carriageLeft.whenPressed(new CarriageClockwise()); //TODO check this
-    carriageRight.whenPressed(new CarriageCounterclockwise()); //TODO Check this
+    carriageCenter.whenPressed(new CarriageCenter()); 
+    carriageLeft.whenPressed(new CarriageClockwise()); 
+    carriageRight.whenPressed(new CarriageCounterclockwise());
     
     //cargo outtake buttons
     //cargoOUttakeAuto
@@ -115,36 +114,8 @@ public class OI {
     intake.whenPressed(new IntakeCargo());
     
     //hatch buttons
-    //hatchAuto
-    /*
-    if(hatchRelease.get() == true){
-      hatchRelease.whenPressed(new ReleaseHatch());
-      if(hatchMechanismSwitch.get() == true)
-        hatchMechanismSwitch.whileHeld(new ExtendHatch());
-    }else{
-      hatchMechanismSwitch.whenReleased(new RetractHatch());
-    }
-    int hatchThing = 0;
-
-    if(hatchMechanismSwitch.get() == false){
-      hatchThing = 0;
-    } else if(hatchMechanismSwitch.get() == true){
-      hatchThing = 1;
-    }
-
-    switch(hatchThing){
-      case 0:
-        Robot.hatch.mechanismPistonOut();
-        Robot.hatch.hatchPistonOut();
-        Robot.hatch.hatchPistonIn();
-        Robot.hatch.mechanismPistonIn();
-        break;
-      case 1:
-        Robot.hatch.hatchPistonOut();
-        Robot.hatch.hatchPistonIn();
-        Robot.hatch.mechanismPistonIn();
-        break;
-    } */
+    hatchRelease.whenPressed(new ReleaseHatch());
+    hatchMechanismSwitch.whileHeld(new ExtendHatch());
   }
 
   //Creating the joystick
