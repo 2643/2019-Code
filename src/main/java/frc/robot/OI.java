@@ -68,7 +68,7 @@ public class OI {
   
   //six position switch levels 
   //First level of the rocket for the hatch 
-  
+  double sixPositionSwitchReading = Math.round(operatorBoard.getRawAxis(2)*100)/100;
   
   
   public OI(){
@@ -83,7 +83,23 @@ public class OI {
     //elevator buttons
     elevatorDown.whenPressed(new ElevatorDown());
     elevatorUp.whenPressed(new ElevatorUp());
-    elevatorPreset.whenPressed(new ElevatorTo()); //TODO Finish when things are soldered
+    
+
+    if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel1[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
+        elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketlevel1));
+    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel2[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel2)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel3[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel3)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel4[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel4)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel5[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel5)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel6[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel6)); 
+    }else {
+
+    }
 
     //carriage buttons
     carriageCenter.whenPressed(new CarriageCenter()); //TODO create CarriageCenter command
