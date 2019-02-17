@@ -179,9 +179,17 @@ public class RobotMap {
   public static int leftDriverAxis = 1; 
 
   //elevator variables
-  static public double elevatorSpeed = 0.3; //Temporary elevator speed. TODO elevator PIDS will have to be implemented.
-  static public int elevatorEncoderMaxLimit = 100; //TODO check this upper limit on the real robot
+  public static double elevatorSpeed = 0.3; //Temporary elevator speed. TODO elevator PIDS will have to be implemented.
+  public static int elevatorEncoderMaxLimit = 100; //TODO check this upper limit on the real robot 
   //This is the maximum encoder ticks allowed from the bottom upwards.
+  //rocket heights 
+  public static int rocketlevel1;
+  public static int rocketLevel2;
+  public static int rocketLevel3;
+  public static int rocketLevel4;
+  public static int rocketLevel5;
+  public static int rocketLevel6;
+ 
   
   //hatch variables
   public static Timer hatchPistonTimer = new Timer();
@@ -259,4 +267,14 @@ public class RobotMap {
 
   //Networktables for vision
   public static NetworkTable visionTable = NetworkTableInstance.getDefault().getTable("vision");
+
+  //operator board values for the six position switch 
+  //DO NOT MESS WITH IT!
+  public static double[] rocketHatchLevel1 = {-1.00, -0.7};
+  public static double[] rocketCargoLevel2 = {-0.69, -0.2};
+  public static double[] rocketHatchLevel3 = {-0.19, 0.15};
+  public static double[] rocketCargoLevel4 = {0.16, 0.4};
+  public static double[] rocketHatchLevel5 = {0.41, 0.6};
+  public static double[] rocketCargoLevel6 = {0.61, 0.85};
+  public static double[] nothingSelected = {0.86, 1.0};
 }

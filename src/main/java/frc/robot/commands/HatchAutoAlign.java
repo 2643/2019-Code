@@ -10,7 +10,6 @@ public class HatchAutoAlign extends Command {
 
     public HatchAutoAlign () {
         requires(Robot.drive);
-        requires(Robot.hatch);
     }
 
     @Override
