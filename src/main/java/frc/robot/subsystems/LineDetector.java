@@ -45,30 +45,30 @@ public class LineDetector extends Subsystem {
   public int getIRSensors()
   {
     int sensorsOn = 0;
-    if(RobotMap.irLeft1.get())
+    if(!RobotMap.irLeft1.get())
     {
       sensorsOn |= SENSOR_L1;
     }
 
-    if(RobotMap.irLeft2.get())
+    if(!RobotMap.irLeft2.get())
     {
       sensorsOn |= SENSOR_L2;
     }
 
-    if(RobotMap.irLeft3.get())
+    if(!RobotMap.irLeft3.get())
     {
       sensorsOn |= SENSOR_L3;
     }
 
-    if(RobotMap.irRight1.get())
+    if(!RobotMap.irRight1.get())
     {
       sensorsOn |= SENSOR_R1;
     }
-    if(RobotMap.irRight2.get())
+    if(!RobotMap.irRight2.get())
     {
       sensorsOn |= SENSOR_R2;
     }
-    if(RobotMap.irRight3.get())
+    if(!RobotMap.irRight3.get())
     {
       sensorsOn |= SENSOR_R3;
     }
