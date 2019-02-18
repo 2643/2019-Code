@@ -165,21 +165,21 @@ public class LineDetector extends Subsystem {
   int sensorsOn = 0;
   if(RobotMap.counterLeftOne >= 1 && RobotMap.counterLeftTwo >=1 ) { 
     sensorsOn |= SENSOR_L1;
-    sensorsOn |= SENSOR_L2;
   }
 
   if(RobotMap.counterLeftTwo >= 1 && RobotMap.counterLeftTwo >= 1 ) {
     sensorsOn |= SENSOR_L3;
-    sensorsOn |= SENSOR_L2;
   }
   if(RobotMap.counterRightOne >= 1 && RobotMap.counterRightTwo >=1 ) { 
     sensorsOn |= SENSOR_R1;
-    sensorsOn |= SENSOR_R2;
   }
 
   if(RobotMap.counterRightTwo >= 1 && RobotMap.counterRightTwo >= 1 ) {
     sensorsOn |= SENSOR_R3;
-    sensorsOn |= SENSOR_R2;
+  }
+  
+  if(!RobotMap.irLeft1.get()) {
+    sensorsOn |= SENSOR_L2;
   }
   return(sensorsOn);
    }
