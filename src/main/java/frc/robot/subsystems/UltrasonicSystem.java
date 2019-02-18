@@ -29,6 +29,18 @@ public class UltrasonicSystem extends Subsystem {
     int[] array = new int[]{(int)RobotMap.ultrasonicRightOne.getRangeMM(), (int)RobotMap.ultrasonicRightTwo.getRangeMM()};
     return(array);
   }
+
+  public int getLeftDist() {
+    int ret = 0;
+    Math.min(getLeftValues()[0], getLeftValues()[1]);
+    return(ret);
+  }
+
+  public int getRightDist() {
+    int ret = 0;
+    Math.min(getRightValues()[0], getRightValues()[1]);
+    return(ret);
+  }
   /* Changed for more readable crap
   public int[] getLeftValues() {
     int leftOne = -1;

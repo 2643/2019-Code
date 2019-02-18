@@ -236,7 +236,11 @@ public class RobotMap {
   public static int encoderErrorTolerance = 4; //in encoder ticks //TODO change this.
   public static int ultrasonicErrorTolerance = 33; // in millimeters. //TODO change this.
 
-  //DO NOT CHANGE WHTHOUT ASKING | They are impossibly high/low for a reason
+  public static enum cargoAuto {
+    IDLE, LINE, ANGLE
+  }
+
+  //DO NOT CHANGE WHTHOUT ASKING 
   public static int[] lastLeftOne = new int[1];
   public static int[] lastLeftThree = new int[1];
 
