@@ -26,11 +26,6 @@ public class LineDetector extends Subsystem {
    * RobotMap.irRight1}, {RobotMap.irLeft3, RobotMap.irRight3}, {RobotMap.irLeft4,
    * RobotMap.irRight4}}; return sensorArray; }
    */
-  /**
-   * Tells when a sensor is tripped.
-   * 
-   * @return sensor values
-   */
 
   public static final int SENSOR_L1 = 1 << 0;
   public static final int SENSOR_L2 = 1 << 1;
@@ -39,7 +34,7 @@ public class LineDetector extends Subsystem {
   public static final int SENSOR_R2 = 1 << 4;
   public static final int SENSOR_R3 = 1 << 5;
 
-  public static int pingSensors() {
+  public int getIRSensors() {
     switch (RobotMap.curIRStateLeftOne) {
     case IDLE:
       if (!RobotMap.irLeft1.get()) {
@@ -168,12 +163,24 @@ public class LineDetector extends Subsystem {
     }
   
   int sensorsOn = 0;
-  if(RobotMap.counterLeftOne >= 1 && RobotMap.counterLeftTwo >=1)  { sensorsOn |= SENSOR_L1; }
-  if(!RobotMap.irLeft2.get()) { sensorsOn |= SENSOR_L2; }
-  if(!RobotMap.irLeft3.get()) { sensorsOn |= SENSOR_L3; }
-  if(!RobotMap.irRight1.get()) { sensorsOn |= SENSOR_R1; }
-  if(!RobotMap.irRight2.get()) { sensorsOn |= SENSOR_R2; }
-  if(!RobotMap.irRight3.get()) { sensorsOn |= SENSOR_R3; }
+  if(RobotMap.counterLeftOne >= 1 && RobotMap.counterLeftTwo >=1 ) { 
+    sensorsOn |= SENSOR_L1;
+    sensorsOn |= SENSOR_L2;
+  }
+
+  if(RobotMap.counterLeftTwo >= 1 && RobotMap.counterLeftTwo >= 1 ) {
+    sensorsOn |= SENSOR_L3;
+    sensorsOn |= SENSOR_L2;
+  }
+  if(RobotMap.counterRightOne >= 1 && RobotMap.counterRightTwo >=1 ) { 
+    sensorsOn |= SENSOR_R1;
+    sensorsOn |= SENSOR_R2;
+  }
+
+  if(RobotMap.counterRightTwo >= 1 && RobotMap.counterRightTwo >= 1 ) {
+    sensorsOn |= SENSOR_R3;
+    sensorsOn |= SENSOR_R2;
+  }
   return(sensorsOn);
 
    }
