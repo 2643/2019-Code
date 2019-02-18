@@ -45,10 +45,13 @@ public class Robot extends TimedRobot {
 
     elevator.resetElevatorEncoder();
     RobotMap.ultrasonicLeftOne.setAutomaticMode(true);
-    /*
-    boolean ultrasonicPingWhichInit = true;
-    int ultrasonicPingInit = 0;
-    */
+
+    RobotMap.curIRStateLeftOne = RobotMap.IRState.IDLE;
+    RobotMap.curIRStateLeftTwo = RobotMap.IRState.IDLE;
+    RobotMap.curIRStateLeftThree = RobotMap.IRState.IDLE;
+    RobotMap.curIRStateRightOne = RobotMap.IRState.IDLE;
+    RobotMap.curIRStateRightTwo = RobotMap.IRState.IDLE;
+    RobotMap.curIRStateRightThree = RobotMap.IRState.IDLE;
 
     // chooser.addOption("My Auto", new MyAutoCommand());
     //SmartDashboard.putData("Auto mode", m_chooser);
