@@ -245,6 +245,24 @@ public class RobotMap {
 
   public static int maxReliableEncoder = 20; //currently around 5 inches
 
+  //No touchy either I need these 
+  public static enum IRState {
+    IDLE, TRUE, WAIT;
+  }
+  public static IRState curIRStateLeftOne;
+  public static int counterLeftOne = 0;
+  public static IRState curIRStateLeftTwo;
+  public static int counterLeftTwo = 0;
+  public static IRState curIRStateLeftThree;
+  public static int counterLeftThree = 0;
+  public static IRState curIRStateRightOne;
+  public static int counterRightOne = 0;
+  public static IRState curIRStateRightTwo;
+  public static int counterRightTwo = 0;
+  public static IRState curIRStateRightThree;
+  public static int counterRightThree = 0;
+
+
   //driver joystick button numbers
 
   public static int retractCargoIntakeButtonNumber = 2;
