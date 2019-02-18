@@ -240,6 +240,8 @@ public class RobotMap {
     IDLE, LINE, ANGLE
   }
 
+  public static int IRDistance = 7; //in ticks distance between the middle of sensors 1/3 and 2. //TODO change this.
+
   //DO NOT CHANGE WHTHOUT ASKING 
   public static int[] lastLeftOne = new int[1];
   public static int[] lastLeftThree = new int[1];
