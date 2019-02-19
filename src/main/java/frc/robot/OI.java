@@ -74,47 +74,28 @@ public class OI {
     retractCargoIntake.whenPressed(new RetractCargoIntake()); //TODO implement using current
     releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
 
-    if (driverStick.getPOV() == 0) {
-      Robot.driverCameras.setLeftServoAngle();
-      Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
-    } else if (driverStick.getPOV() == 90) {
-      Robot.driverCameras.setRightServoAngle();
-      Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
-    } else if (driverStick.getPOV() == 180) {
-      Robot.driverCameras.setLeftServoAngle();
-      Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
-    } else if (driverStick.getPOV() == 270) {
-      Robot.driverCameras.setRightServoAngle();
-      Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
-    }
+    //OPERATOR BOARD
+    //safety button
+    cancelAutoSafety.cancelWhenPressed(new HatchAuto()); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
 
-    // OPERATOR BOARD
-    // safety button
-    cancelAutoSafety.cancelWhenPressed(new HatchAuto()); 
+    //elevator buttons
+    elevatorDown.whenPressed(new ElevatorDown());
+    elevatorUp.whenPressed(new ElevatorUp());
+    
 
-    // elevator buttons
-    elevatorDown.whenPressed(new ElevatorDown()); 
-    elevatorUp.whenPressed(new ElevatorUp()); //TODO find upper limit
-
-    if (sixPositionSwitchReading >= RobotMap.rocketHatchLevel1[0]
-        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketlevel1));
-    } else if (sixPositionSwitchReading >= RobotMap.rocketCargoLevel2[0]
-        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel2));
-    } else if (sixPositionSwitchReading >= RobotMap.rocketHatchLevel3[0]
-        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel3));
-    } else if (sixPositionSwitchReading >= RobotMap.rocketCargoLevel4[0]
-        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel4));
-    } else if (sixPositionSwitchReading >= RobotMap.rocketHatchLevel5[0]
-        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel5));
-    } else if (sixPositionSwitchReading >= RobotMap.rocketCargoLevel6[0]
-        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel6));
-    } else {
+    if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel1[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
+        elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketlevel1));
+    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel2[0] && sixPositionSwitchReading <= RobotMap.rocketCargoLevel2[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel2)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel3[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel3[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel3)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel4[0] && sixPositionSwitchReading <= RobotMap.rocketCargoLevel4[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel4)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel5[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel5[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel5)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel6[0] && sixPositionSwitchReading <= RobotMap.rocketCargoLevel6[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel6)); 
+    }else {
 
     }
 
