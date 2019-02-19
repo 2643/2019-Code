@@ -21,6 +21,7 @@ public class ReleaseHatch extends TimedCommand {
 
   @Override
   protected void initialize() {
+    Robot.hatch.getTimer().reset();
     Robot.hatch.getTimer().start();
   }
 

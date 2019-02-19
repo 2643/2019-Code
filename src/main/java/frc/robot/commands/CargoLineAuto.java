@@ -111,9 +111,9 @@ public class CargoLineAuto extends Command {
 
           //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
           int alpha = Robot.ultrasonicSystem.getLeftValues()[0]-Robot.ultrasonicSystem.getLeftValues()[1];
-          int beta = alpha/-7;//TODO verify my math.
+          int beta = alpha / -7;//TODO verify my math.
           int gamma = beta + Robot.drive.getLeftEncoder();
-          int gammab = -beta + Robot.drive.getRightEncoder();
+          int gammab = Robot.drive.getRightEncoder() - beta;
 
           //Turns it the proper amount of ticks
           Robot.drive.setLeftPosition(gamma);
@@ -133,12 +133,12 @@ public class CargoLineAuto extends Command {
         if((Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
 
           //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
-          //Alpha is the error off in MMs
+          //Alpha is the error off in MMs //TODO change name of variables here and everywhere ofc.
           int alpha = Robot.ultrasonicSystem.getRightValues()[0]-Robot.ultrasonicSystem.getRightValues()[1];
           //Divide by 7 to get tick distance
-          int beta = alpha/-7;//TODO verify my math.
+          int beta = alpha / -7;//TODO verify my math.
           //Drive in the direction
-          int gamma = -beta + Robot.drive.getLeftEncoder();
+          int gamma = Robot.drive.getLeftEncoder() - beta;
           //Also drive in the right direction
           int gammab = beta + Robot.drive.getRightEncoder();
 
@@ -236,7 +236,7 @@ public class CargoLineAuto extends Command {
   protected void end() {
     Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
     Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
-
+    //TODO reset counter and stored things.
   }
 
   // Called when another command which requires one or more of the same

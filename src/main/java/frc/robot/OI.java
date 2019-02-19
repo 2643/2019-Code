@@ -95,9 +95,7 @@ public class OI {
       elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel5)); 
     }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel6[0] && sixPositionSwitchReading <= RobotMap.rocketCargoLevel6[1]){
       elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel6)); 
-    }else {
-
-    }
+    } // TODO Govind, go optimize.
 
     // carriage buttons
     carriageCenter.whenPressed(new CarriageCenter());

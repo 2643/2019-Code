@@ -40,11 +40,13 @@ public class LineDetector extends Subsystem {
       if (!RobotMap.irLeft1.get()) {
         RobotMap.curIRStateLeftOne = RobotMap.IRState.TRUE;
       }
+      break;
     case TRUE:
       RobotMap.counterLeftOne = 3;
       if (RobotMap.irLeft1.get()) {
         RobotMap.curIRStateLeftOne = RobotMap.IRState.WAIT;
       }
+      break;
     case WAIT:
       if (!RobotMap.irLeft1.get()) {
         RobotMap.curIRStateLeftOne = RobotMap.IRState.TRUE;
@@ -55,17 +57,20 @@ public class LineDetector extends Subsystem {
           RobotMap.curIRStateLeftOne = RobotMap.IRState.IDLE;
         }
       }
+      break;
     }
     switch (RobotMap.curIRStateLeftTwo) {
     case IDLE:
       if (!RobotMap.irLeft2.get()) {
         RobotMap.curIRStateLeftTwo = RobotMap.IRState.TRUE;
-      }
+      } 
+      break;
     case TRUE:
       RobotMap.counterLeftTwo = 3;
       if (RobotMap.irLeft2.get()) {
         RobotMap.curIRStateLeftTwo = RobotMap.IRState.WAIT;
       }
+      break;
     case WAIT:
       if (!RobotMap.irLeft2.get()) {
         RobotMap.curIRStateLeftTwo = RobotMap.IRState.TRUE;
@@ -76,17 +81,20 @@ public class LineDetector extends Subsystem {
           RobotMap.curIRStateLeftTwo = RobotMap.IRState.IDLE;
         }
       }
+      break;
     }
     switch (RobotMap.curIRStateLeftThree) {
     case IDLE:
       if (!RobotMap.irLeft3.get()) {
         RobotMap.curIRStateLeftThree = RobotMap.IRState.TRUE;
       }
+      break;
     case TRUE:
       RobotMap.counterLeftThree = 3;
       if (RobotMap.irLeft3.get()) {
         RobotMap.curIRStateLeftThree = RobotMap.IRState.WAIT;
       }
+      break;
     case WAIT:
       if (!RobotMap.irLeft3.get()) {
         RobotMap.curIRStateLeftThree = RobotMap.IRState.TRUE;
@@ -97,17 +105,20 @@ public class LineDetector extends Subsystem {
           RobotMap.curIRStateLeftThree = RobotMap.IRState.IDLE;
         }
       }
+      break;
     }
     switch (RobotMap.curIRStateRightOne) {
     case IDLE:
       if (!RobotMap.irRight1.get()) {
         RobotMap.curIRStateRightOne = RobotMap.IRState.TRUE;
       }
+      break;
     case TRUE:
       RobotMap.counterRightOne = 3;
       if (RobotMap.irRight1.get()) {
         RobotMap.curIRStateRightOne = RobotMap.IRState.WAIT;
       }
+      break;
     case WAIT:
       if (!RobotMap.irRight1.get()) {
         RobotMap.curIRStateRightOne = RobotMap.IRState.TRUE;
@@ -118,17 +129,20 @@ public class LineDetector extends Subsystem {
           RobotMap.curIRStateRightOne = RobotMap.IRState.IDLE;
         }
       }
+      break;
     }
     switch (RobotMap.curIRStateRightTwo) {
     case IDLE:
       if (!RobotMap.irRight2.get()) {
         RobotMap.curIRStateRightTwo = RobotMap.IRState.TRUE;
       }
+      break;
     case TRUE:
       RobotMap.counterRightTwo = 3;
       if (RobotMap.irRight2.get()) {
         RobotMap.curIRStateRightTwo = RobotMap.IRState.WAIT;
       }
+      break;
     case WAIT:
       if (!RobotMap.irRight2.get()) {
         RobotMap.curIRStateRightTwo = RobotMap.IRState.TRUE;
@@ -139,17 +153,20 @@ public class LineDetector extends Subsystem {
           RobotMap.curIRStateRightTwo = RobotMap.IRState.IDLE;
         }
       }
+      break;
     }
     switch (RobotMap.curIRStateRightTwo) {
     case IDLE:
       if (!RobotMap.irRight2.get()) {
         RobotMap.curIRStateRightTwo = RobotMap.IRState.TRUE;
       }
+      break;
     case TRUE:
       RobotMap.counterRightTwo = 3;
       if (RobotMap.irRight2.get()) {
         RobotMap.curIRStateRightTwo = RobotMap.IRState.WAIT;
       }
+      break;
     case WAIT:
       if (!RobotMap.irRight2.get()) {
         RobotMap.curIRStateRightTwo = RobotMap.IRState.TRUE;
@@ -160,6 +177,7 @@ public class LineDetector extends Subsystem {
           RobotMap.curIRStateRightTwo = RobotMap.IRState.IDLE;
         }
       }
+      break;
     }
   
   int sensorsOn = 0;
@@ -178,8 +196,12 @@ public class LineDetector extends Subsystem {
     sensorsOn |= SENSOR_R3;
   }
   
-  if(!RobotMap.irLeft1.get()) {
+  if(!RobotMap.irLeft2.get()) {
     sensorsOn |= SENSOR_L2;
+  }
+
+  if(!RobotMap.irRight2.get()) {
+    sensorsOn |= SENSOR_R2;
   }
   return(sensorsOn);
    }

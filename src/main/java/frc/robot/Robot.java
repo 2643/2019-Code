@@ -75,7 +75,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    lineDetector.lastLineDetected(); //TODO Change if removing CargoAuto
+    lineDetector.lastLineDetected(); //TODO set as a command requiring LineDetector Subsystem.
   }
 
   /**
