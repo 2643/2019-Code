@@ -14,8 +14,6 @@ import frc.robot.RobotMap;
 
 /**
  * Moves the "carriage" system at the top of the elevator.
- * 
- * @return
  */
 public class Carriage extends Subsystem {
   // Put methods for controlling this subsystem

@@ -52,17 +52,16 @@ public class OI {
   // operator board and buttons
   Joystick operatorBoard = new Joystick(1);
   JoystickButton cancelAutoSafety = new JoystickButton(operatorBoard, RobotMap.cancelAutoSafetyButtonNumber);
-  //JoystickButton carriageCenter = new JoystickButton(operatorBoard, RobotMap.carriageCenterButtonNumber);
   JoystickButton elevatorDown = new JoystickButton(operatorBoard, RobotMap.elevatorDownButtonNumber);
   JoystickButton cargoOuttakeLeft = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeLeftButtonNumber);
-  //JoystickButton carriageLeft = new JoystickButton(operatorBoard, RobotMap.carriageLeftButtonNumber);
   JoystickButton cargoOuttakeRight = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeRightButtonNumber);
-  //JoystickButton carriageRight = new JoystickButton(operatorBoard, RobotMap.carriageRightButtonNumber);
   JoystickButton elevatorPreset = new JoystickButton(operatorBoard, RobotMap.elevatorPresetButtonNumber);
   JoystickButton elevatorUp = new JoystickButton(operatorBoard, RobotMap.elevatorUpButtonNumber);
   JoystickButton intake = new JoystickButton(operatorBoard, RobotMap.intakeButtonNumber);
   JoystickButton hatchRelease = new JoystickButton(operatorBoard, RobotMap.hatchReleaseButtonNumber);
   JoystickButton hatchMechanismSwitch = new JoystickButton(operatorBoard, RobotMap.hatchMechanismSwitchNumber);
+  JoystickButton hatchAuto = new JoystickButton(operatorBoard, RobotMap.hatchAutoButtonNumber);
+  JoystickButton cargoOuttakeAuto = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeAutoButtonNumber);
 
   // six position switch levels
   // First level of the rocket for the hatch
@@ -74,10 +73,28 @@ public class OI {
     retractCargoIntake.whenPressed(new RetractCargoIntake()); //TODO implement using current
     releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
 
+    if(driverStick.getPOV() == 0){
+      Robot.driverCameras.setRightServoAngle(RobotMap.forwardAngle);
+      Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
+    }else if(driverStick.getPOV() == 90){
+      Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
+      Robot.driverCameras.setRightServoAngle(RobotMap.rightAngle);
+    }else if(driverStick.getPOV() == 180){  
+      Robot.driverCameras.setLeftServoAngle(RobotMap.backwardAngle);
+      Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
+    }else if(driverStick.getPOV() == 270){
+      Robot.driverCameras.setLeftServoAngle(RobotMap.leftAngle);
+      Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
+    }
+
     //OPERATOR BOARD
     //safety button
     cancelAutoSafety.cancelWhenPressed(new HatchAuto()); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
 
+    //auto functions 
+    hatchAuto.whileHeld(new HatchAuto());
+    cargoOuttakeAuto.whileHeld(new CargoLineAuto());
+    
     //elevator buttons
     elevatorDown.whenPressed(new ElevatorDown());
     elevatorUp.whenPressed(new ElevatorUp());
@@ -97,15 +114,10 @@ public class OI {
       elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel6)); 
     } // TODO Govind, go optimize.
 
-    // carriage buttons
-    carriageCenter.whenPressed(new CarriageCenter());
-    carriageLeft.whenPressed(new CarriageClockwise());
-    carriageRight.whenPressed(new CarriageCounterclockwise());
-
-    // cargo outtake buttons
     // cargoOUttakeAuto
     cargoOuttakeRight.whenPressed(new CargoOuttakeRight());
     cargoOuttakeLeft.whenPressed(new CargoOuttakeLeft());
+    
 
     // cargo intake button
     intake.whenPressed(new IntakeCargo());

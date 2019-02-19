@@ -173,18 +173,22 @@ public class RobotMap {
   //drive varibles
   public static int rightDriverAxis = 5; 
   public static int leftDriverAxis = 1; 
+  public static int rightAngle; //TODO check this on the servo 
+  public static int backwardAngle; //TODO check this on the servo 
+  public static int forwardAngle; //TODO check this on the servo 
+  public static int leftAngle; //TODO check this on the servo 
 
   //elevator variables
   public static double elevatorSpeed = 0.3; //Temporary elevator speed. TODO elevator PIDS will have to be implemented.
   public static int elevatorEncoderMaxLimit = 100; //TODO check this upper limit on the real robot 
   //This is the maximum encoder ticks allowed from the bottom upwards.
-  //rocket heights 
-  public static int rocketlevel1;
-  public static int rocketLevel2;
-  public static int rocketLevel3;
-  public static int rocketLevel4;
-  public static int rocketLevel5;
-  public static int rocketLevel6;
+
+  public static int rocketlevel1; //TODO find the rocket heights in encoder ticks 
+  public static int rocketLevel2; //TODO find the rocket heights in encoder ticks 
+  public static int rocketLevel3; //TODO find the rocket heights in encoder ticks 
+  public static int rocketLevel4; //TODO find the rocket heights in encoder ticks 
+  public static int rocketLevel5; //TODO find the rocket heights in encoder ticks 
+  public static int rocketLevel6; //TODO find the rocket heights in encoder ticks 
  
   
   //hatch variables
@@ -210,18 +214,6 @@ public class RobotMap {
   //Gyroscope autoalign speed
   public static double autoAlignSpeed = 0.2; //TODO check this with the real robot
 
-  
-  public static double inchesToEncoderTicks(double inches){
-    //TODO write the inchesToEncoderTicks later
-    
-    return 0;
-  }
-
-  public static double encoderTicksToInches(double encoder){
-    //TODO write the encoderTicksToInches later
-   
-    return 0;
-  }
   //Ultrasonic Initiation
   public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(ultrasonicLeftOneTrigger, ultrasonicLeftOneEcho);
   public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(ultrasonicLeftTwoTrigger, ultrasonicLeftTwoEcho);
@@ -275,17 +267,16 @@ public class RobotMap {
   //operator board button numbers
 
   public static int cancelAutoSafetyButtonNumber = 0; //TODO Check Button Number
-  public static int carriageCenterButtonNumber = 0; //TODO Check Button Number
   public static int elevatorDownButtonNumber = 0; //TODO Check Button Number
   public static int cargoOuttakeLeftButtonNumber = 0; //TODO Check Button Number
-  public static int carriageLeftButtonNumber = 0; //TODO Check Button Number
   public static int cargoOuttakeRightButtonNumber = 0; //TODO Check Button Number
-  public static int carriageRightButtonNumber = 0; //TODO Check Button Number
   public static int elevatorPresetButtonNumber = 0; //TODO Check Button Number
   public static int elevatorUpButtonNumber = 0; //TODO Check Button Number
   public static int intakeButtonNumber = 0; //TODO Check Button Number
   public static int hatchReleaseButtonNumber = 0; //TODO Check Button Number
   public static int hatchMechanismSwitchNumber = 0; //TODO Check Button Number
+  public static int hatchAutoButtonNumber = 0; //TODO check button number
+  public static int cargoOuttakeAutoButtonNumber = 0; //TODO check button number
 
   //Networktables for vision
   public static NetworkTable visionTable = NetworkTableInstance.getDefault().getTable("vision");
