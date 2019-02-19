@@ -167,6 +167,8 @@ public class RobotMap {
   public static int backwardAngle; //TODO Check this on the servo 
   public static int forwardAngle; //TODO Check this on the servo 
   public static int leftAngle; //TODO Check this on the servo 
+  public static double MotorCurrent = 0; //Use to work out if it is up agaisnt a wall.
+  public static double MotorCurrentSum = 0;
 
   //elevator variables
   public static double elevatorSpeed = 0.3; //Temporary elevator speed. //TODO Check power requirement.
@@ -233,17 +235,17 @@ public class RobotMap {
 
   //operator board button numbers
 
-  public static int cancelAutoSafetyButtonNumber = 0; //TODO Check Button Number
-  public static int elevatorDownButtonNumber = 0; //TODO Check Button Number
-  public static int cargoOuttakeLeftButtonNumber = 0; //TODO Check Button Number
-  public static int cargoOuttakeRightButtonNumber = 0; //TODO Check Button Number
-  public static int elevatorPresetButtonNumber = 0; //TODO Check Button Number
-  public static int elevatorUpButtonNumber = 0; //TODO Check Button Number
-  public static int intakeButtonNumber = 0; //TODO Check Button Number
-  public static int hatchReleaseButtonNumber = 0; //TODO Check Button Number
-  public static int hatchMechanismSwitchNumber = 0; //TODO Check Button Number
-  public static int hatchAutoButtonNumber = 0; //TODO check button number
-  public static int cargoOuttakeAutoButtonNumber = 0; //TODO check button number
+  public static int cancelAutoSafetyButtonNumber = 1; //TODO Check Button Number
+  public static int elevatorDownButtonNumber = 5; //TODO Check Button Number
+  public static int cargoOuttakeLeftButtonNumber = 9; //TODO Check Button Number
+  public static int cargoOuttakeRightButtonNumber = 10; //TODO Check Button Number
+  public static int elevatorPresetButtonNumber = 6; //TODO Check Button Number
+  public static int elevatorUpButtonNumber = 4; //TODO Check Button Number
+  public static int intakeButtonNumber = 14; //TODO Check Button Number
+  public static int hatchReleaseButtonNumber = 7; //TODO Check Button Number
+  public static int hatchMechanismSwitchNumber = 12; //TODO Check Button Number
+  public static int hatchAutoButtonNumber = 2; //TODO check button number
+  public static int cargoOuttakeAutoButtonNumber = 3; //TODO check button number
 
   //Networktables for vision
   public static NetworkTable visionTable = NetworkTableInstance.getDefault().getTable("vision");

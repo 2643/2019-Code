@@ -1,6 +1,9 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import java.util.stream.IntStream;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -281,8 +284,19 @@ public class Drive extends Subsystem {
         setLeftPosition(leftTicks);
         setRightPosition(rightTicks);
     }
-
+    
+    int [] MotorCurrentArray = new int [20];
+    int Counter = 0;
     public boolean isStuck(){
-        return false; //TODO FINISH THIS PLEASE WILLIAM!!!!!!
+        Counter ++;
+
+        MotorCurrentArray [Counter%MotorCurrentArray.length%20] = (int) LeftCurrentVel;
+        RobotMap.MotorCurrentSum = IntStream.of(MotorCurrentArray).sum();
+        if(RobotMap.MotorCurrentSum >= 20){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

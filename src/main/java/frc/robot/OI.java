@@ -126,6 +126,7 @@ public class OI {
     // hatch buttons
     hatchRelease.whenPressed(new ReleaseHatch());
     hatchMechanismSwitch.whileHeld(new ExtendHatch());
+    hatchMechanismSwitch.whenReleased(new RetractHatch());
   }
 
   // Creating the joystick

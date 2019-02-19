@@ -39,7 +39,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    oi = new OI();
+    //oi = new OI();
 
     elevator.resetElevatorEncoder(); //Needs to be at the bottom, hitting the limit switch.
     RobotMap.ultrasonicLeftOne.setAutomaticMode(true);
@@ -126,6 +126,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    /** */
     
   }
 }

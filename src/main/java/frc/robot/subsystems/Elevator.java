@@ -50,12 +50,12 @@ public class Elevator extends Subsystem {
     kMinOutput = -.5;
     
     // set PID coefficients
-    m_pidController.setP(kP);
-    m_pidController.setI(kI);
-    m_pidController.setD(kD);
-    m_pidController.setIZone(kIz);
-    m_pidController.setFF(kFF);
-    m_pidController.setOutputRange(kMinOutput, kMaxOutput);
+    RobotMap.elevatorController.setP(kP);
+    RobotMap.elevatorController.setI(kI);
+    RobotMap.elevatorController.setD(kD);
+    RobotMap.elevatorController.setIZone(kIz);
+    RobotMap.elevatorController.setFF(kFF);
+    RobotMap.elevatorController.setOutputRange(kMinOutput, kMaxOutput);
 
   }
 
@@ -107,13 +107,13 @@ public class Elevator extends Subsystem {
      double rotations = 0;
  
      // if PID coefficients on SmartDashboard have changed, write new values to controller
-     if((p != kP)) { m_pidController.setP(p); kP = p; }
-     if((i != kI)) { m_pidController.setI(i); kI = i; }
-     if((d != kD)) { m_pidController.setD(d); kD = d; }
-     if((iz != kIz)) { m_pidController.setIZone(iz); kIz = iz; }
-     if((ff != kFF)) { m_pidController.setFF(ff); kFF = ff; }
+     if((p != kP)) { RobotMap.elevatorController.setP(p); kP = p; }
+     if((i != kI)) { RobotMap.elevatorController.setI(i); kI = i; }
+     if((d != kD)) { RobotMap.elevatorController.setD(d); kD = d; }
+     if((iz != kIz)) { RobotMap.elevatorController.setIZone(iz); kIz = iz; }
+     if((ff != kFF)) { RobotMap.elevatorController.setFF(ff); kFF = ff; }
      if((max != kMaxOutput) || (min != kMinOutput)) { 
-       m_pidController.setOutputRange(min, max); 
+      RobotMap.elevatorController.setOutputRange(min, max); 
        kMinOutput = min; kMaxOutput = max; 
      }
  
@@ -132,7 +132,7 @@ public class Elevator extends Subsystem {
       *  com.revrobotics.ControlType.kVelocity
       *  com.revrobotics.ControlType.kVoltage
       */
-     m_pidController.setReference(rotations, ControlType.kPosition);
+      RobotMap.elevatorController.setReference(rotations, ControlType.kPosition);
      
 
   }
