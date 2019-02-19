@@ -247,11 +247,9 @@ public class RobotMap {
 
   //operator board values for the six position switch 
   //DO NOT MESS WITH IT!
-  public static double[] rocketHatchLevel1 = {-1.00, -0.7};
-  public static double[] rocketCargoLevel2 = {-0.69, -0.2};
-  public static double[] rocketHatchLevel3 = {-0.19, 0.15};
-  public static double[] rocketCargoLevel4 = {0.16, 0.4};
-  public static double[] rocketHatchLevel5 = {0.41, 0.6};
-  public static double[] rocketCargoLevel6 = {0.61, 0.85};
+
+  public static final int[] rocketLevel = {0 /* TODO find encoder tick values*/, 0};
+  public static final double[] rocketHatchLevels = {-1.0, -0.7, -0.2, 0.15, 0.4, 0.6, 0.85, 1.0};
+
   public static double[] nothingSelected = {0.86, 1.0};
 }
