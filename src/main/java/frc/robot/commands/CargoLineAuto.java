@@ -110,14 +110,14 @@ public class CargoLineAuto extends Command {
         if((Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
 
           //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
-          int alpha = Robot.ultrasonicSystem.getLeftValues()[0]-Robot.ultrasonicSystem.getLeftValues()[1];
-          int beta = alpha / -7;//TODO verify my math.
-          int gamma = beta + Robot.drive.getLeftEncoder();
-          int gammab = Robot.drive.getRightEncoder() - beta;
+          int leftDifference = Robot.ultrasonicSystem.getLeftValues()[0]-Robot.ultrasonicSystem.getLeftValues()[1];
+          int distToTicks = leftDifference / -7;//TODO verify my math.
+          int toDriveLeft = distToTicks + Robot.drive.getLeftEncoder();
+          int toDriveRight = Robot.drive.getRightEncoder() - distToTicks;
 
           //Turns it the proper amount of ticks
-          Robot.drive.setLeftPosition(gamma);
-          Robot.drive.setRightPosition(gammab);
+          Robot.drive.setLeftPosition(toDriveLeft);
+          Robot.drive.setRightPosition(toDriveRight);
         }
         //If it isn't too far, stop the movement.
         else {
@@ -133,18 +133,18 @@ public class CargoLineAuto extends Command {
         if((Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
 
           //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
-          //Alpha is the error off in MMs //TODO change name of variables here and everywhere ofc.
-          int alpha = Robot.ultrasonicSystem.getRightValues()[0]-Robot.ultrasonicSystem.getRightValues()[1];
+          //Alpha is the error off in MMs
+          int rightDifference = Robot.ultrasonicSystem.getRightValues()[0]-Robot.ultrasonicSystem.getRightValues()[1];
           //Divide by 7 to get tick distance
-          int beta = alpha / -7;//TODO verify my math.
+          int distToTicks = rightDifference / -7;//TODO verify my math.
           //Drive in the direction
-          int gamma = Robot.drive.getLeftEncoder() - beta;
+          int toDriveLeft = Robot.drive.getLeftEncoder() - distToTicks;
           //Also drive in the right direction
-          int gammab = beta + Robot.drive.getRightEncoder();
+          int toDriveRight = distToTicks + Robot.drive.getRightEncoder();
 
           //Drive to the proper position
-          Robot.drive.setLeftPosition(gamma);
-          Robot.drive.setRightPosition(gammab);
+          Robot.drive.setLeftPosition(toDriveLeft);
+          Robot.drive.setRightPosition(toDriveRight);
         }
       }
       //Checks if any of the middle sensor has been tripped.

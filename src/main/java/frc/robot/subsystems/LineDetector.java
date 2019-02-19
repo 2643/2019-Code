@@ -35,202 +35,218 @@ public class LineDetector extends Subsystem {
   public static final int SENSOR_R3 = 1 << 5;
 
   public int getIRSensors() {
+
+    //Switch is activated by the current IR state
     switch (RobotMap.curIRStateLeftOne) {
-    case IDLE:
-      if (!RobotMap.irLeft1.get()) {
-        RobotMap.curIRStateLeftOne = RobotMap.IRState.TRUE;
-      }
-      break;
-    case TRUE:
-      RobotMap.counterLeftOne = 3;
-      if (RobotMap.irLeft1.get()) {
-        RobotMap.curIRStateLeftOne = RobotMap.IRState.WAIT;
-      }
-      break;
-    case WAIT:
-      if (!RobotMap.irLeft1.get()) {
-        RobotMap.curIRStateLeftOne = RobotMap.IRState.TRUE;
-      } else {
-        if (RobotMap.irLeft1.get()) {
-          RobotMap.counterLeftOne -= 1;
-        } else {
+      //when IDLE
+      case IDLE:
+        //if the ir is True/Tripped
+        if(!RobotMap.irLeft1.get()) {
+          //Make the state true now.
+          RobotMap.curIRStateLeftOne = RobotMap.IRState.TRUE;
+        }
+        break;
+      case TRUE:
+        //counter to implement hang time.
+        RobotMap.counterLeftOne = 3;
+        //when the sensor goes off again, change the state to WAIT
+        if(RobotMap.irLeft1.get()) {
+          RobotMap.curIRStateLeftOne = RobotMap.IRState.WAIT;
+        }
+        break;
+      case WAIT:
+        //If it becomes true again, set back to TRUE
+        if(!RobotMap.irLeft1.get()) {
+          RobotMap.curIRStateLeftOne = RobotMap.IRState.TRUE;
+        }
+        //If it's less than or equal to zero, make it IDLE again
+        else if(RobotMap.counterLeftOne <= 0) {
           RobotMap.curIRStateLeftOne = RobotMap.IRState.IDLE;
         }
+        //Otherwise, decrease the counter by one.
+        else {
+            RobotMap.counterLeftOne -= 1;
+          }
+        break;
       }
-      break;
-    }
+
     switch (RobotMap.curIRStateLeftTwo) {
-    case IDLE:
-      if (!RobotMap.irLeft2.get()) {
-        RobotMap.curIRStateLeftTwo = RobotMap.IRState.TRUE;
-      } 
-      break;
-    case TRUE:
-      RobotMap.counterLeftTwo = 3;
-      if (RobotMap.irLeft2.get()) {
-        RobotMap.curIRStateLeftTwo = RobotMap.IRState.WAIT;
-      }
-      break;
-    case WAIT:
-      if (!RobotMap.irLeft2.get()) {
-        RobotMap.curIRStateLeftTwo = RobotMap.IRState.TRUE;
-      } else {
+      case IDLE:
+        if(!RobotMap.irLeft2.get()) {
+          RobotMap.curIRStateLeftTwo = RobotMap.IRState.TRUE;
+        } 
+        break;
+      case TRUE:
+        RobotMap.counterLeftTwo = 3;
         if (RobotMap.irLeft2.get()) {
-          RobotMap.counterLeftTwo -= 1;
-        } else {
+          RobotMap.curIRStateLeftTwo = RobotMap.IRState.WAIT;
+        }
+        break;
+      case WAIT:
+        if(!RobotMap.irLeft2.get()) {
+          RobotMap.curIRStateLeftTwo = RobotMap.IRState.TRUE;
+        } 
+        else if(RobotMap.counterLeftTwo <= 0) {
           RobotMap.curIRStateLeftTwo = RobotMap.IRState.IDLE;
         }
+        else {
+          RobotMap.counterLeftTwo -= 1;
+          }
+        break;
       }
-      break;
-    }
+
     switch (RobotMap.curIRStateLeftThree) {
-    case IDLE:
-      if (!RobotMap.irLeft3.get()) {
-        RobotMap.curIRStateLeftThree = RobotMap.IRState.TRUE;
-      }
-      break;
-    case TRUE:
-      RobotMap.counterLeftThree = 3;
-      if (RobotMap.irLeft3.get()) {
-        RobotMap.curIRStateLeftThree = RobotMap.IRState.WAIT;
-      }
-      break;
-    case WAIT:
-      if (!RobotMap.irLeft3.get()) {
-        RobotMap.curIRStateLeftThree = RobotMap.IRState.TRUE;
-      } else {
-        if (RobotMap.irLeft3.get()) {
-          RobotMap.counterLeftThree -= 1;
-        } else {
+      case IDLE:
+        if(!RobotMap.irLeft3.get()) {
+          RobotMap.curIRStateLeftThree = RobotMap.IRState.TRUE;
+        }
+        break;
+      case TRUE:
+        RobotMap.counterLeftThree = 3;
+        if(RobotMap.irLeft3.get()) {
+          RobotMap.curIRStateLeftThree = RobotMap.IRState.WAIT;
+        }
+        break;
+      case WAIT:
+        if(!RobotMap.irLeft3.get()) {
+          RobotMap.curIRStateLeftThree = RobotMap.IRState.TRUE;
+        }
+        else if(RobotMap.counterLeftThree <= 0) {
           RobotMap.curIRStateLeftThree = RobotMap.IRState.IDLE;
         }
+        else {
+          RobotMap.counterLeftThree -= 1;
+          }
+        break;
       }
-      break;
-    }
+
     switch (RobotMap.curIRStateRightOne) {
-    case IDLE:
-      if (!RobotMap.irRight1.get()) {
-        RobotMap.curIRStateRightOne = RobotMap.IRState.TRUE;
-      }
-      break;
-    case TRUE:
-      RobotMap.counterRightOne = 3;
-      if (RobotMap.irRight1.get()) {
-        RobotMap.curIRStateRightOne = RobotMap.IRState.WAIT;
-      }
-      break;
-    case WAIT:
-      if (!RobotMap.irRight1.get()) {
-        RobotMap.curIRStateRightOne = RobotMap.IRState.TRUE;
-      } else {
-        if (RobotMap.irRight1.get()) {
-          RobotMap.counterRightOne -= 1;
-        } else {
+      case IDLE:
+        if(!RobotMap.irRight1.get()) {
+          RobotMap.curIRStateRightOne = RobotMap.IRState.TRUE;
+        }
+        break;
+      case TRUE:
+        RobotMap.counterRightOne = 3;
+        if(RobotMap.irRight1.get()) {
+          RobotMap.curIRStateRightOne = RobotMap.IRState.WAIT;
+        }
+        break;
+      case WAIT:
+        if(!RobotMap.irRight1.get()) {
+          RobotMap.curIRStateRightOne = RobotMap.IRState.TRUE;
+        }
+        else if(RobotMap.counterRightOne <= 0) {
           RobotMap.curIRStateRightOne = RobotMap.IRState.IDLE;
         }
+        else {
+          RobotMap.counterRightOne -= 1;
+          }
+        break;
       }
-      break;
-    }
+
     switch (RobotMap.curIRStateRightTwo) {
-    case IDLE:
-      if (!RobotMap.irRight2.get()) {
-        RobotMap.curIRStateRightTwo = RobotMap.IRState.TRUE;
-      }
-      break;
-    case TRUE:
-      RobotMap.counterRightTwo = 3;
-      if (RobotMap.irRight2.get()) {
-        RobotMap.curIRStateRightTwo = RobotMap.IRState.WAIT;
-      }
-      break;
-    case WAIT:
-      if (!RobotMap.irRight2.get()) {
-        RobotMap.curIRStateRightTwo = RobotMap.IRState.TRUE;
-      } else {
-        if (RobotMap.irRight2.get()) {
-          RobotMap.counterRightTwo -= 1;
-        } else {
+      case IDLE:
+        if(!RobotMap.irRight2.get()) {
+          RobotMap.curIRStateRightTwo = RobotMap.IRState.TRUE;
+        }
+        break;
+      case TRUE:
+        RobotMap.counterRightTwo = 3;
+        if(RobotMap.irRight2.get()) {
+          RobotMap.curIRStateRightTwo = RobotMap.IRState.WAIT;
+        }
+        break;
+      case WAIT:
+        if(!RobotMap.irRight2.get()) {
+          RobotMap.curIRStateRightTwo = RobotMap.IRState.TRUE;
+        }
+        else if(RobotMap.counterRightTwo <= 0) {
           RobotMap.curIRStateRightTwo = RobotMap.IRState.IDLE;
         }
-      }
-      break;
-    }
-    switch (RobotMap.curIRStateRightTwo) {
-    case IDLE:
-      if (!RobotMap.irRight2.get()) {
-        RobotMap.curIRStateRightTwo = RobotMap.IRState.TRUE;
-      }
-      break;
-    case TRUE:
-      RobotMap.counterRightTwo = 3;
-      if (RobotMap.irRight2.get()) {
-        RobotMap.curIRStateRightTwo = RobotMap.IRState.WAIT;
-      }
-      break;
-    case WAIT:
-      if (!RobotMap.irRight2.get()) {
-        RobotMap.curIRStateRightTwo = RobotMap.IRState.TRUE;
-      } else {
-        if (RobotMap.irRight2.get()) {
+        else {
           RobotMap.counterRightTwo -= 1;
-        } else {
-          RobotMap.curIRStateRightTwo = RobotMap.IRState.IDLE;
-        }
+          }
+        break;
       }
-      break;
+
+    switch (RobotMap.curIRStateRightThree) {
+      case IDLE:
+        if(!RobotMap.irRight3.get()) {
+          RobotMap.curIRStateRightThree = RobotMap.IRState.TRUE;
+        }
+        break;
+      case TRUE:
+        RobotMap.counterRightThree = 3;
+        if(RobotMap.irRight3.get()) {
+          RobotMap.curIRStateRightThree = RobotMap.IRState.WAIT;
+        }
+        break;
+      case WAIT:
+        if(!RobotMap.irRight3.get()) {
+          RobotMap.curIRStateRightTwo = RobotMap.IRState.TRUE;
+        } 
+        else if(RobotMap.counterRightThree <= 0) {
+          RobotMap.curIRStateRightThree = RobotMap.IRState.IDLE;
+        }
+        else {
+          RobotMap.counterRightThree -= 1;
+          }
+        break;
+      }
+    
+    int sensorsOn = 0;
+    //if the first counter on the left, and the second on the right are "true/greater than 1:
+    if(RobotMap.counterLeftOne >= 1 && RobotMap.counterLeftTwo >=1 ) {
+      //set the bit on sensorsOn specified by SENSOR_L1 to 1, aka True
+      sensorsOn |= SENSOR_L1;
     }
-  
-  int sensorsOn = 0;
-  if(RobotMap.counterLeftOne >= 1 && RobotMap.counterLeftTwo >=1 ) { 
-    sensorsOn |= SENSOR_L1;
-  }
 
-  if(RobotMap.counterLeftTwo >= 1 && RobotMap.counterLeftTwo >= 1 ) {
-    sensorsOn |= SENSOR_L3;
-  }
-  if(RobotMap.counterRightOne >= 1 && RobotMap.counterRightTwo >=1 ) { 
-    sensorsOn |= SENSOR_R1;
-  }
+    if(RobotMap.counterLeftTwo >= 1 && RobotMap.counterLeftTwo >= 1 ) {
+      sensorsOn |= SENSOR_L3;
+    }
 
-  if(RobotMap.counterRightTwo >= 1 && RobotMap.counterRightTwo >= 1 ) {
-    sensorsOn |= SENSOR_R3;
-  }
-  
-  if(!RobotMap.irLeft2.get()) {
-    sensorsOn |= SENSOR_L2;
-  }
+    if(RobotMap.counterRightOne >= 1 && RobotMap.counterRightTwo >=1 ) { 
+      sensorsOn |= SENSOR_R1;
+    }
 
-  if(!RobotMap.irRight2.get()) {
-    sensorsOn |= SENSOR_R2;
+    if(RobotMap.counterRightTwo >= 1 && RobotMap.counterRightTwo >= 1 ) {
+      sensorsOn |= SENSOR_R3;
+    }
+    
+    if(!RobotMap.irLeft2.get()) {
+      sensorsOn |= SENSOR_L2;
+    }
+
+    if(!RobotMap.irRight2.get()) {
+      sensorsOn |= SENSOR_R2;
+    }
+
+    return(sensorsOn);
   }
-  return(sensorsOn);
-   }
   
   public void lastLineDetected() {
-    if((getIRSensors() & LineDetector.SENSOR_L1) == 1){
-      if((getIRSensors() & LineDetector.SENSOR_L2) == 1) {
-        RobotMap.lastLeftOne[0] = RobotMap.LeftEncoder.getRaw();
-        RobotMap.lastLeftOne[1] = RobotMap.RightEncoder.getRaw();
-      }
+    if((getIRSensors() & LineDetector.SENSOR_L1) == 1 &&
+    (getIRSensors() & LineDetector.SENSOR_L2) == 1) {
+      RobotMap.lastLeftOne[0] = RobotMap.LeftEncoder.getRaw();
+      RobotMap.lastLeftOne[1] = RobotMap.RightEncoder.getRaw();
     }
-    if((getIRSensors() & LineDetector.SENSOR_L3) == 1){
-      if((getIRSensors() & LineDetector.SENSOR_L2) == 1) {
-        RobotMap.lastLeftThree[0] = RobotMap.LeftEncoder.getRaw();
-        RobotMap.lastLeftThree[1] = RobotMap.RightEncoder.getRaw();
-      } 
+    if((getIRSensors() & LineDetector.SENSOR_L3) == 1 &&
+    (getIRSensors() & LineDetector.SENSOR_L2) == 1) {
+      RobotMap.lastLeftThree[0] = RobotMap.LeftEncoder.getRaw();
+      RobotMap.lastLeftThree[1] = RobotMap.RightEncoder.getRaw();
+    } 
+    if((getIRSensors() & LineDetector.SENSOR_R1) == 1 && 
+    (getIRSensors() & LineDetector.SENSOR_R2) == 1) {
+      RobotMap.lastRightOne[0] = RobotMap.LeftEncoder.getRaw();
+      RobotMap.lastRightOne[1] = RobotMap.RightEncoder.getRaw();
     }
-    if((getIRSensors() & LineDetector.SENSOR_R1) == 1){
-      if((getIRSensors() & LineDetector.SENSOR_R2) == 1) {
-        RobotMap.lastRightOne[0] = RobotMap.LeftEncoder.getRaw();
-        RobotMap.lastRightOne[1] = RobotMap.RightEncoder.getRaw();
-      }
-    }
-    if((getIRSensors() & LineDetector.SENSOR_R3) == 1){
-      if((getIRSensors() & LineDetector.SENSOR_R2) == 1) {
-        RobotMap.lastRightThree[0] = RobotMap.LeftEncoder.getRaw();
-        RobotMap.lastRightThree[1] = RobotMap.RightEncoder.getRaw();
-      } 
-    }
+
+    if((getIRSensors() & LineDetector.SENSOR_R3) == 1 &&
+    (getIRSensors() & LineDetector.SENSOR_R2) == 1) {
+      RobotMap.lastRightThree[0] = RobotMap.LeftEncoder.getRaw();
+      RobotMap.lastRightThree[1] = RobotMap.RightEncoder.getRaw();
+    } 
   }
 
   @Override

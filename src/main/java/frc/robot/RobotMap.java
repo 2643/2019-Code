@@ -232,11 +232,6 @@ public class RobotMap {
   public static int encoderErrorTolerance = 4; //in encoder ticks //TODO change this.
   public static int ultrasonicErrorTolerance = 33; // in millimeters. //TODO change this.
 
-  public static enum cargoAutoState {
-    IDLE, LINE, DIST, ANGLE, DONE;
-  }
-  public static cargoAutoState curCargoAutoState = cargoAutoState.IDLE;
-
   public static int halfIRDistance = 7; //in ticks, from the middle between the sensors. //TODO change this.
   public static int IRDistance = 14; // in ticks, distance between 2 sensors //TODO, check to make sure.
 
