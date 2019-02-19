@@ -15,14 +15,11 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Servo;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Ultrasonic;
-import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoSink;
 
@@ -172,9 +169,15 @@ public class RobotMap {
   public static double elevatorSpeed = 0.3; //Temporary elevator speed. //TODO Check power requirement.
   public static int elevatorEncoderMaxLimit = 100; //TODO check this upper limit on the real robot 
   //This is the maximum encoder ticks allowed from the bottom upwards.
-  public static double elevatorTolerance = 0; //TODO test this out with the elevator 
-  public static int[] elevatorLevels = {0, 0, 0, 0, 0, 0, 0}; //TODO find the rocket heights in encoder ticks
+
+  public static int rocketlevel1; //TODO find the rocket heights in encoder ticks //TODO Sanjana: Change to an Array.
+  public static int rocketLevel2; //TODO find the rocket heights in encoder ticks 
+  public static int rocketLevel3; //TODO find the rocket heights in encoder ticks 
+  public static int rocketLevel4; //TODO find the rocket heights in encoder ticks
+  public static int rocketLevel5; //TODO find the rocket heights in encoder ticks 
+  public static int rocketLevel6; //TODO find the rocket heights in encoder ticks 
  
+  
   //hatch variables
   public static int hatchReleaseTimeout = 2; //TODO Change this
 
@@ -188,7 +191,7 @@ public class RobotMap {
   public static int encoderErrorTolerance = 4; //in encoder ticks //TODO change this.
   public static int ultrasonicErrorTolerance = 33; // in millimeters. //TODO change this.
 
-  public static int halfIRDistance = 7; //in ticks, from the middle between the sensors. //TODO change this. //TODO William: check encoder Ratios.
+  public static int halfIRDistance = 7; //in ticks, from the middle between the sensors. //TODO change this. TODO William: check encoder Ratios.
   public static int IRDistance = 14; // in ticks, distance between 2 sensors //TODO, check to make sure.
   public static int oneInchEncoder = 4; //TODO CHenry: Check this
 
