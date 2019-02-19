@@ -11,7 +11,6 @@ import com.revrobotics.CANSparkMax;
 
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.TimedRobot;
 
 
@@ -20,8 +19,6 @@ import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-=======
->>>>>>> e26012887c5c3572eec4aabf7917127401623629
 
 /**
  * Add your docs here.
