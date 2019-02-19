@@ -29,29 +29,30 @@ public class CargoLineAuto extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
     //Checks if there isn't a line already sensed.
     if(Robot.lineDetector.getIRSensors() == 0){
 
       //Checks if the previously gotten value is beneath the maximum encoder reliability value.
       if ((Math.abs(RobotMap.lastLeftOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
         (Math.abs(RobotMap.lastLeftOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
-        Robot.drive.setLeftPosition(RobotMap.lastLeftOne[0] + RobotMap.IRDistance); //TODO check these
-        Robot.drive.setRightPosition(RobotMap.lastLeftOne[1] + RobotMap.IRDistance); //TODO check these
+        Robot.drive.setLeftPosition(RobotMap.lastLeftOne[0] + RobotMap.halfIRDistance); //TODO check these
+        Robot.drive.setRightPosition(RobotMap.lastLeftOne[1] + RobotMap.halfIRDistance); //TODO check these
       }
       else if ((Math.abs(RobotMap.lastRightOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
         (Math.abs(RobotMap.lastRightOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
-        Robot.drive.setLeftPosition(RobotMap.lastRightOne[0] + RobotMap.IRDistance); //TODO check these
-        Robot.drive.setRightPosition(RobotMap.lastRightOne[1] + RobotMap.IRDistance); //TODO check these
+        Robot.drive.setLeftPosition(RobotMap.lastRightOne[0] + RobotMap.halfIRDistance); //TODO check these
+        Robot.drive.setRightPosition(RobotMap.lastRightOne[1] + RobotMap.halfIRDistance); //TODO check these
       }
       else if ((Math.abs(RobotMap.lastLeftThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
         (Math.abs(RobotMap.lastLeftThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
-        Robot.drive.setLeftPosition(RobotMap.lastLeftThree[0] - RobotMap.IRDistance); //TODO check these
-        Robot.drive.setRightPosition(RobotMap.lastLeftThree[1] - RobotMap.IRDistance); //TODO check these
+        Robot.drive.setLeftPosition(RobotMap.lastLeftThree[0] - RobotMap.halfIRDistance); //TODO check these
+        Robot.drive.setRightPosition(RobotMap.lastLeftThree[1] - RobotMap.halfIRDistance); //TODO check these
       }
       else if ((Math.abs(RobotMap.lastRightThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
         (Math.abs(RobotMap.lastRightThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
-        Robot.drive.setLeftPosition(RobotMap.lastRightThree[0] - RobotMap.IRDistance); //TODO check these
-        Robot.drive.setRightPosition(RobotMap.lastRightThree[1] - RobotMap.IRDistance); //TODO check these
+        Robot.drive.setLeftPosition(RobotMap.lastRightThree[0] - RobotMap.halfIRDistance); //TODO check these
+        Robot.drive.setRightPosition(RobotMap.lastRightThree[1] - RobotMap.halfIRDistance); //TODO check these
       }
 
       else {
@@ -82,6 +83,25 @@ public class CargoLineAuto extends Command {
     }
       //Checks if there is an IR that's been activated.
     if(Robot.lineDetector.getIRSensors() != 0) {
+
+      //Warning if too far, aka 18 inches ish. //TODO check.
+      if(Robot.ultrasonicSystem.getLeftDist() >= 457){
+        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1){
+          System.out.println("ABORT ABORT LEFT DISTANCE TOO FAR");
+        }
+      }
+
+      //Warning if too far, aka 18 inches ish. //TODO check.
+      if(Robot.ultrasonicSystem.getRightDist() >= 457){
+        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1){
+          System.out.println("ABORT ABORT RIGHT DISTANCE TOO FAR");
+        }
+      }
+
       //Only Left middle is activated.
       if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 && 
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
@@ -167,8 +187,8 @@ public class CargoLineAuto extends Command {
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
 
           //Subtract to make the robot move 1.8 inches backwards
-          int precalcL = Robot.drive.getLeftEncoder() - 7;
-          int precalcR = Robot.drive.getRightEncoder() - 7;
+          int precalcL = Robot.drive.getLeftEncoder() - RobotMap.IRDistance;
+          int precalcR = Robot.drive.getRightEncoder() - RobotMap.IRDistance;
           
           //Move the robot
           Robot.drive.setLeftPosition(precalcL);
@@ -180,8 +200,8 @@ public class CargoLineAuto extends Command {
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
 
           //Add to make the robot move 1.8 inches backwards
-          int precalcL = Robot.drive.getLeftEncoder() + 7;
-          int precalcR = Robot.drive.getRightEncoder() + 7;
+          int precalcL = Robot.drive.getLeftEncoder() + RobotMap.IRDistance;
+          int precalcR = Robot.drive.getRightEncoder() + RobotMap.IRDistance;
           
           //Move the robot
           Robot.drive.setLeftPosition(precalcL);
@@ -216,6 +236,7 @@ public class CargoLineAuto extends Command {
   protected void end() {
     Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
     Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
+
   }
 
   // Called when another command which requires one or more of the same
