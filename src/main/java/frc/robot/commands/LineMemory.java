@@ -9,44 +9,38 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
-/**
- * Turns the chain on the carriage clockwise //TODO Check whether this makes it turn left or right
- */
-public class CarriageClockwise extends Command {
-  public CarriageClockwise() {
-    requires(Robot.carriage);
+
+public class LineMemory extends Command {
+  public LineMemory() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    requires(Robot.lineDetector);
   }
 
+  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
   }
 
+  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.carriage.setCarriageSpeed(RobotMap.carriageMotorSpeed);
+    Robot.lineDetector.lastLineDetected();
   }
 
+  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    /* Check for potentiometer position,
-    *  If at under maximum, continue
-    *  Else, stop immediately.
-    */
-    if (RobotMap.carriagePot.get() < RobotMap.carriageClockwiseMax) {
-      return false;
-    }
-    else {
-      return true;
-    }
+    return false;
   }
 
+  // Called once after isFinished returns true
   @Override
   protected void end() {
-    //Just in case
-    Robot.carriage.setCarriageSpeed(0);
   }
-  
+
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
     end();

@@ -7,41 +7,47 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.TimedCommand;
+import static org.junit.Assume.assumeFalse;
+
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.*;
 /**
  * Releases the hatch panel
  */
-public class ReleaseHatch extends TimedCommand {
+public class ReleaseHatch extends Command {
+
+  Timer hatchTimer = new Timer();
+
   public ReleaseHatch() {
-    super(RobotMap.hatchReleaseTimeout);
     requires(Robot.hatch);
   }
 
   @Override
   protected void initialize() {
-    Robot.hatch.getTimer().start();
+    hatchTimer.reset();
+    hatchTimer.start();
   }
 
   @Override
-  protected void execute() {  
+  protected void execute() { 
     Robot.hatch.hatchPistonOut();
   }
 
   @Override
   protected boolean isFinished() {
-    if(Robot.hatch.getTimer().get() == RobotMap.hatchPistonOutTime){
-      return true;
-    } else{
-      return false;
+    if(hatchTimer.get() >= RobotMap.hatchReleaseTimeout) {
+      return(true);
+    }
+    else{
+      return(false);
     }
   }
 
   @Override
   protected void end() {
     Robot.hatch.hatchPistonIn();
-    Robot.hatch.getTimer().stop();
   }
 
   @Override

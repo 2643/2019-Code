@@ -53,12 +53,24 @@ public class CargoIntake extends Subsystem {
     RetractMotor.set(speed); //TODO Test this
   }
 
+  /**
+   * returns the current of the cargo intake motor 
+   * @return double the current that the motor controller is outputting 
+   */
+  public double getCurrent(){
+    return RobotMap.cargoRetractMotor.getOutputCurrent();
+  }
 
   /**
-   * Returns the value of the cargo intake potentiometer
-   * @return double the value of the potentiometer on the cargo intake
+   * Returns whether the retract motor is at the top or not 
+   * @return boolean is the motor at the top or not 
    */
-  public double getPotentiometer(){
-    return RobotMap.cargoIntakePot.get();
+  public boolean isFullyRetracted(){ //TODO Sanjana: check/change.
+    return false; 
   }
+
+  public boolean isFullyReleased(){ //TODO Sanjana: fix check/change.
+    return false;
+  }
+
 }

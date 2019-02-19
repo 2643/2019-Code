@@ -8,10 +8,10 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.ControlType;
 
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
+<<<<<<< HEAD
 import edu.wpi.first.wpilibj.TimedRobot;
 
 
@@ -20,6 +20,8 @@ import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+=======
+>>>>>>> e26012887c5c3572eec4aabf7917127401623629
 
 /**
  * Add your docs here.
@@ -29,11 +31,6 @@ public class Elevator extends Subsystem {
   // here. Call these from Commands.
   private CANSparkMax Elevator;
   private double encoderOffset; 
-  private static final int deviceID = 1;
-  public static Subsystem m_subsystem;
-  private CANSparkMax m_motor;
-  private CANPIDController m_pidController;
-  private CANEncoder m_encoder;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
 
   /**
@@ -78,21 +75,22 @@ public class Elevator extends Subsystem {
    * @return double elevator encoder position 
    */
   public double getElevatorEncoder() {
-    return Elevator.getEncoder().getPosition() - encoderOffset;
+    return(Elevator.getEncoder().getPosition() - encoderOffset);
   }
 
   /**
    * Resets the encoder by subtracting the current value as an offset, but only when the limit switch is hit 
    */
   public void resetElevatorEncoder(){
-    if(RobotMap.elevatorBottomLimit.get() == true)
+    if(getElevatorLimitSwitch()) {
       encoderOffset = Elevator.getEncoder().getPosition();
+    }
   }
   /** 
    * Gets the Elevator limitswitch value
   */
   public boolean getElevatorLimitSwitch(){
-    return RobotMap.elevatorBottomLimit.get();
+    return(RobotMap.elevatorBottomLimit.get());
   }
 
   /**

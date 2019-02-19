@@ -10,7 +10,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
-import frc.robot.subsystems.CargoIntake;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -45,92 +44,97 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-
-  //driver joystick and buttons
+  // driver joystick and buttons
   Joystick driverStick = new Joystick(0);
   JoystickButton retractCargoIntake = new JoystickButton(driverStick, RobotMap.retractCargoIntakeButtonNumber);
   JoystickButton releaseCargoIntake = new JoystickButton(driverStick, RobotMap.releaseCargoIntakeButtonNumber);
 
-  //operator board and buttons 
+  // operator board and buttons
   Joystick operatorBoard = new Joystick(1);
   JoystickButton cancelAutoSafety = new JoystickButton(operatorBoard, RobotMap.cancelAutoSafetyButtonNumber);
-  JoystickButton carriageCenter = new JoystickButton(operatorBoard, RobotMap.carriageCenterButtonNumber);
   JoystickButton elevatorDown = new JoystickButton(operatorBoard, RobotMap.elevatorDownButtonNumber);
   JoystickButton cargoOuttakeLeft = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeLeftButtonNumber);
-  JoystickButton carriageLeft = new JoystickButton(operatorBoard, RobotMap.carriageLeftButtonNumber);
   JoystickButton cargoOuttakeRight = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeRightButtonNumber);
-  JoystickButton carriageRight = new JoystickButton(operatorBoard, RobotMap.carriageRightButtonNumber);
   JoystickButton elevatorPreset = new JoystickButton(operatorBoard, RobotMap.elevatorPresetButtonNumber);
   JoystickButton elevatorUp = new JoystickButton(operatorBoard, RobotMap.elevatorUpButtonNumber);
   JoystickButton intake = new JoystickButton(operatorBoard, RobotMap.intakeButtonNumber);
   JoystickButton hatchRelease = new JoystickButton(operatorBoard, RobotMap.hatchReleaseButtonNumber);
   JoystickButton hatchMechanismSwitch = new JoystickButton(operatorBoard, RobotMap.hatchMechanismSwitchNumber);
-  public OI(){
-    //DRIVER STICK 
-    retractCargoIntake.whenPressed(new RetractCargoIntake());
+  JoystickButton hatchAuto = new JoystickButton(operatorBoard, RobotMap.hatchAutoButtonNumber);
+  JoystickButton cargoOuttakeAuto = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeAutoButtonNumber);
+
+  // six position switch levels
+  // First level of the rocket for the hatch
+  double sixPositionSwitchReading = Math.round(operatorBoard.getRawAxis(2) * 100) / 100;
+
+  public OI() {
+
+    // DRIVER STICK
+    retractCargoIntake.whenPressed(new RetractCargoIntake()); //TODO implement using current
     releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
+
+    //TODO Sanjana: write default case.
+    if(driverStick.getPOV() == 0){
+      Robot.driverCameras.setRightServoAngle(RobotMap.forwardAngle);
+      Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
+    }else if(driverStick.getPOV() == 90){
+      Robot.driverCameras.setRightServoAngle(RobotMap.rightAngle);
+      Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
+    }else if(driverStick.getPOV() == 180){  
+      Robot.driverCameras.setLeftServoAngle(RobotMap.backwardAngle);
+      Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
+    }else if(driverStick.getPOV() == 270){
+      Robot.driverCameras.setLeftServoAngle(RobotMap.leftAngle);
+      Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
+    }
 
     //OPERATOR BOARD
     //safety button
-    cancelAutoSafety.cancelWhenPressed(); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
-    cancelAutoSafety.cancelWhenPressed();  //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
-   
+    //cancelAutoSafety.cancelWhenPressed(new HatchAuto());
+
+    //auto functions 
+    hatchAuto.whileHeld(new HatchAuto());
+    cargoOuttakeAuto.whileHeld(new CargoLineAuto());
+    
     //elevator buttons
-    elevatorDown.whenPressed(new ElevatorDown());
-    elevatorUp.whenPressed(new ElevatorUp());
-    elevatorPreset.whenPressed(new ElevatorTo()); //TODO Finish when things are soldered
-
-    //carriage buttons
-    carriageCenter.whenPressed(new CarriageCenter()); //TODO create CarriageCenter command
-    carriageLeft.whenPressed(new CarriageClockwise()); //TODO check this
-    carriageRight.whenPressed(new CarriageCounterclockwise()); //TODO Check this
+    elevatorDown.whileHeld(new ElevatorDown());
+    elevatorUp.whileHeld(new ElevatorUp());
     
-    //cargo outtake buttons
-    //cargoOUttakeAuto
-    cargoOuttakeRight.whenPressed(new CargoOuttakeRight());
-    cargoOuttakeLeft.whenPressed(new CargoOuttakeLeft());
 
-    //cargo intake button
-    intake.whenPressed(new IntakeCargo());
+    if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel1[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
+        elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketlevel1));
+    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel2[0] && sixPositionSwitchReading <= RobotMap.rocketCargoLevel2[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel2)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel3[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel3[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel3)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel4[0] && sixPositionSwitchReading <= RobotMap.rocketCargoLevel4[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel4)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel5[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel5[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel5)); 
+    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel6[0] && sixPositionSwitchReading <= RobotMap.rocketCargoLevel6[1]){
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel6)); 
+    } // TODO Govind, go optimize.
+
+    // cargoOuttakeAuto
+    cargoOuttakeRight.whileHeld(new CargoOuttakeRight());
+    cargoOuttakeLeft.whileHeld(new CargoOuttakeLeft());
     
-    //hatch buttons
-    //hatchAuto
-    /*
-    if(hatchRelease.get() == true){
-      hatchRelease.whenPressed(new ReleaseHatch());
-      if(hatchMechanismSwitch.get() == true)
-        hatchMechanismSwitch.whileHeld(new ExtendHatch());
-    }else{
-      hatchMechanismSwitch.whenReleased(new RetractHatch());
-    }
-    int hatchThing = 0;
 
-    if(hatchMechanismSwitch.get() == false){
-      hatchThing = 0;
-    } else if(hatchMechanismSwitch.get() == true){
-      hatchThing = 1;
-    }
+    // cargo intake button
+    intake.whileHeld(new IntakeCargo());
 
-    switch(hatchThing){
-      case 0:
-        Robot.hatch.mechanismPistonOut();
-        Robot.hatch.hatchPistonOut();
-        Robot.hatch.hatchPistonIn();
-        Robot.hatch.mechanismPistonIn();
-        break;
-      case 1:
-        Robot.hatch.hatchPistonOut();
-        Robot.hatch.hatchPistonIn();
-        Robot.hatch.mechanismPistonIn();
-        break;
-    } */
+    // hatch buttons
+    hatchRelease.whenPressed(new ReleaseHatch());
+    hatchMechanismSwitch.whileHeld(new ExtendHatch());
   }
 
-  public Joystick getDriverStick(){
+  // Creating the joystick
+  public Joystick getDriverStick() {
     return driverStick;
   }
 
-  public Joystick getOperatorBoard(){
+  // Creating the Operator Board
+  public Joystick getOperatorBoard() {
     return operatorBoard;
   }
 }
