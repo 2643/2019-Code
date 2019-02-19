@@ -29,7 +29,7 @@ public class CargoLineAuto extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
+    Robot.lineDetector.lastLineDetected();
     //Checks if there isn't a line already sensed.
     if(Robot.lineDetector.getIRSensors() == 0){
 
