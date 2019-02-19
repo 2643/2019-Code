@@ -171,7 +171,7 @@ public class RobotMap {
   public static double elevatorSpeed = 0.3; //Temporary elevator speed. //TODO Check power requirement.
   public static int elevatorEncoderMaxLimit = 100; //TODO check this upper limit on the real robot 
   //This is the maximum encoder ticks allowed from the bottom upwards.
-
+  public static int elevatorTolerance; //TODO test the tolerance of the elevator
   public static int rocketlevel1; //TODO find the rocket heights in encoder ticks //TODO Sanjana: Change to an Array.
   public static int rocketLevel2; //TODO find the rocket heights in encoder ticks 
   public static int rocketLevel3; //TODO find the rocket heights in encoder ticks 

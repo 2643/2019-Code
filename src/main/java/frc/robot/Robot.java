@@ -39,7 +39,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    //oi = new OI();
+    oi = new OI();
 
     elevator.resetElevatorEncoder(); //Needs to be at the bottom, hitting the limit switch.
     RobotMap.ultrasonicLeftOne.setAutomaticMode(true);
@@ -126,7 +126,64 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    /** */
-    
+    if(oi.getOperatorBoard().getRawButton(RobotMap.elevatorUpButtonNumber)){
+      RobotMap.elevatorMotor.set(-0.5);
+      System.out.println("Curremt: " + RobotMap.elevatorMotor.getOutputCurrent());
+      System.out.println("Encoder: " + RobotMap.elevatorMotor.getEncoder());
+      System.out.println("Elevator Up");
+    }else if(oi.getOperatorBoard().getRawButton(RobotMap.elevatorDownButtonNumber)){
+      RobotMap.elevatorMotor.set(0.5);
+      System.out.println("Encoder: " + RobotMap.elevatorMotor.getEncoder());
+      System.out.println("Current: "+ RobotMap.elevatorMotor.getOutputCurrent());
+      System.out.println("Elevator Down");
+      System.out.println("Limit Switch: " + RobotMap.elevatorBottomLimit);
+    }else if(oi.getOperatorBoard().getRawButton(RobotMap.intakeButtonNumber)){
+      RobotMap.cargoIntakeMotor1.set(0.3);
+      RobotMap.cargoIntakeMotor2.set(0.3);
+      System.out.println("Intaking Cargo");
+    }else if(oi.getOperatorBoard().getRawButton(8)){
+      RobotMap.cargoRetractMotor.set(0.4);
+      System.out.println("Retract cargo intake");
+    }else if(oi.getOperatorBoard().getRawButton(11)){
+      RobotMap.cargoRetractMotor.set(-0.4);
+      System.out.println("Extend cargo intake");
+    }else if(oi.getOperatorBoard().getRawButton(RobotMap.cargoOuttakeLeftButtonNumber)){
+      RobotMap.cargoOuttakeMotor.set(-0.4);
+      System.out.println("Cargo outtake left");
+    }else if(oi.getOperatorBoard().getRawButton(RobotMap.cargoOuttakeRightButtonNumber)){
+      RobotMap.cargoOuttakeMotor.set(0.4);
+      System.out.println("Cargo outtake right");
+    }else if(oi.getDriverStick().getRawButton(1)){
+      Robot.hatch.mechanismPistonOut();
+      System.out.println("Hatch Mechanism Out:");
+    }else if(oi.getDriverStick().getRawButton(4)){
+      Robot.hatch.mechanismPistonIn();
+      System.out.println("Hatch Mechanism In:");
+    }else if(oi.getDriverStick().getRawButton(5)){
+      Robot.hatch.hatchPistonOut();
+      System.out.println("Hatch piston out:");
+    }else if(oi.getDriverStick().getRawButton(6)){
+      Robot.hatch.hatchPistonIn();
+      System.out.println("Hatch piston in:");
+    }
+
+    // if(oi.driverStick.getPOV() == 0){
+    //   Robot.driverCameras.setRightServoAngle(RobotMap.forwardAngle);
+    //   Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
+    // }else if(oi.driverStick.getPOV() == 90){
+    //   Robot.driverCameras.setRightServoAngle(RobotMap.rightAngle);
+    //   Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
+    // }else if(oi.driverStick.getPOV() == 180){  
+    //   Robot.driverCameras.setLeftServoAngle(RobotMap.backwardAngle);
+    //   Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
+    // }else if(oi.driverStick.getPOV() == 270){
+    //   Robot.driverCameras.setLeftServoAngle(RobotMap.leftAngle);
+    //   Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
+    // }
+
+    RobotMap.leftDriverCameraServo.setAngle(180);
+    RobotMap.rightDriverCameraServo.setAngle(180);
+
+
   }
 }
