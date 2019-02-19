@@ -23,7 +23,10 @@ public class DriverCamera extends Subsystem {
 
   /**
    * This is the constructor for the DriverCamera class
-   * @param dcs
+   * @param Servo left servo 
+   * @param Servo right servo
+   * @param UsbCamera left camera
+   * @param UsbCamera right camera
    */
   public DriverCamera(Servo servo1, Servo servo2, UsbCamera camera1, UsbCamera camera2){
     driverCameraServo1 = servo1;
@@ -36,16 +39,16 @@ public class DriverCamera extends Subsystem {
    * Sets the angle of servo1
    * @param degrees int angle from 0-360 to make the servo to turn to 
    */
-  public void setServo1Angle(int degrees){
-    RobotMap.driverCameraServo1.setAngle(degrees);
+  public void setLeftServoAngle(int degrees){
+    RobotMap.leftDriverCameraServo.setAngle(degrees);
   }
 
   /**
    * Sets the angle of servo2
    * @param degrees int angle from 0
    */
-  public void setServo2Angle(int degrees){
-    RobotMap.driverCameraServo2.setAngle(degrees);
+  public void setRightServoAngle(int degrees){
+    RobotMap.rightDriverCameraServo.setAngle(degrees);
   }
 
   /**

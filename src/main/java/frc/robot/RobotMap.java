@@ -49,9 +49,6 @@ public class RobotMap {
   /* Pot Offsets */
   //Carriage offset
   public static int carriagePotOffset = 0; //TODO Check the potentiometer offset of the carriage potentiometer
-
-  //Cargo Offset
-  public static int cargoIntakePotOffset = 0; //TODO check the potentiometer offset of the cargo intake potentiometer
   
   /* Ports */
   //drive ports
@@ -96,7 +93,6 @@ public class RobotMap {
   public static int cargoIntakePort1 = 0; //TODO Check the device ID of the first cargo intake motor
   public static int cargoIntakePort2 = 0; //TODO check the device iD of the second cargo intake motor
   public static int cargoRetractPort = 0; //TODO Check the device iD of the retraction cargo intake motor
-  public static int cargoIntakePotPort = 0; //TODO Check the port of the potentiometer of the cargo intake 
   public static int cargoOuttakePort = 0; //TODO Check the device ID of the cargo outtake motor
 
   //Ultrasonic ports
@@ -120,8 +116,8 @@ public class RobotMap {
   public static WPI_TalonSRX LeftBackMotor = new WPI_TalonSRX(lBackMotorPort);
   public static WPI_TalonSRX RightFrontMotor = new WPI_TalonSRX(rFrontMotorPort);
   public static WPI_TalonSRX RightBackMotor = new WPI_TalonSRX(rBackMotorPort);
-  public static Servo driverCameraServo1 = new Servo(driverCameraServoPort1);
-  public static Servo driverCameraServo2 = new Servo(driverCameraServoPort2);
+  public static Servo leftDriverCameraServo = new Servo(driverCameraServoPort1);
+  public static Servo rightDriverCameraServo = new Servo(driverCameraServoPort2);
 
   //elevator motors
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
@@ -147,8 +143,8 @@ public class RobotMap {
   //drive sensors
   public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
-  public static UsbCamera camera1;
-  public static UsbCamera camera2;
+  public static UsbCamera leftCamera;
+  public static UsbCamera rightCamera;
   public static VideoSink server;
   
   //elevator sensors
@@ -160,7 +156,7 @@ public class RobotMap {
   public static Potentiometer carriagePot = new AnalogPotentiometer(carriagePotPort, 3600, carriagePotOffset);
 
   //cargo sensors
-  public static Potentiometer cargoIntakePot = new AnalogPotentiometer(cargoIntakePotPort, 3600, cargoIntakePotOffset);
+  
 
   //IR sensors
   public static DigitalInput irLeft1 = new DigitalInput(irLeftPort1);

@@ -43,7 +43,7 @@ public class HatchAutoAlign extends Command {
 
     @Override
     protected boolean isFinished() {
-        Robot.drive.isStuck();
+        return Robot.drive.isStuck();
     }
 
 }
