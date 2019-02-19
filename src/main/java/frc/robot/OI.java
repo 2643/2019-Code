@@ -44,101 +44,105 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-
-  //driver joystick and buttons
+  // driver joystick and buttons
   Joystick driverStick = new Joystick(0);
   JoystickButton retractCargoIntake = new JoystickButton(driverStick, RobotMap.retractCargoIntakeButtonNumber);
   JoystickButton releaseCargoIntake = new JoystickButton(driverStick, RobotMap.releaseCargoIntakeButtonNumber);
 
-  if(driverStick.getPOV() == 0){
-    Robot.driverCameras.setLeftServoAngle();
-    Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
-  }else if(driverStick.getPOV() == 90){
-    Robot.driverCameras.setRightServoAngle();
-    Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
-  }else if(driverStick.getPOV() == 180){
-    Robot.driverCameras.setLeftServoAngle();
-    Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
-  }else if(driverStick.getPOV() == 270){
-    Robot.driverCameras.setRightServoAngle();
-    Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
-  }
-
-  //operator board and buttons 
+  // operator board and buttons
   Joystick operatorBoard = new Joystick(1);
   JoystickButton cancelAutoSafety = new JoystickButton(operatorBoard, RobotMap.cancelAutoSafetyButtonNumber);
-  JoystickButton carriageCenter = new JoystickButton(operatorBoard, RobotMap.carriageCenterButtonNumber);
+  //JoystickButton carriageCenter = new JoystickButton(operatorBoard, RobotMap.carriageCenterButtonNumber);
   JoystickButton elevatorDown = new JoystickButton(operatorBoard, RobotMap.elevatorDownButtonNumber);
   JoystickButton cargoOuttakeLeft = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeLeftButtonNumber);
-  JoystickButton carriageLeft = new JoystickButton(operatorBoard, RobotMap.carriageLeftButtonNumber);
+  //JoystickButton carriageLeft = new JoystickButton(operatorBoard, RobotMap.carriageLeftButtonNumber);
   JoystickButton cargoOuttakeRight = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeRightButtonNumber);
-  JoystickButton carriageRight = new JoystickButton(operatorBoard, RobotMap.carriageRightButtonNumber);
+  //JoystickButton carriageRight = new JoystickButton(operatorBoard, RobotMap.carriageRightButtonNumber);
   JoystickButton elevatorPreset = new JoystickButton(operatorBoard, RobotMap.elevatorPresetButtonNumber);
   JoystickButton elevatorUp = new JoystickButton(operatorBoard, RobotMap.elevatorUpButtonNumber);
   JoystickButton intake = new JoystickButton(operatorBoard, RobotMap.intakeButtonNumber);
   JoystickButton hatchRelease = new JoystickButton(operatorBoard, RobotMap.hatchReleaseButtonNumber);
   JoystickButton hatchMechanismSwitch = new JoystickButton(operatorBoard, RobotMap.hatchMechanismSwitchNumber);
-  
-  //six position switch levels 
-  //First level of the rocket for the hatch 
-  double sixPositionSwitchReading = Math.round(operatorBoard.getRawAxis(2)*100)/100;
-  
-  
-  public OI(){
-    //DRIVER STICK 
-    retractCargoIntake.whenPressed(new RetractCargoIntake());
+
+  // six position switch levels
+  // First level of the rocket for the hatch
+  double sixPositionSwitchReading = Math.round(operatorBoard.getRawAxis(2) * 100) / 100;
+
+  public OI() {
+
+    // DRIVER STICK
+    retractCargoIntake.whenPressed(new RetractCargoIntake()); //TODO implement using current
     releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
 
-    //OPERATOR BOARD
-    //safety button
-    cancelAutoSafety.cancelWhenPressed(new HatchAuto()); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
+    if (driverStick.getPOV() == 0) {
+      Robot.driverCameras.setLeftServoAngle();
+      Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
+    } else if (driverStick.getPOV() == 90) {
+      Robot.driverCameras.setRightServoAngle();
+      Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
+    } else if (driverStick.getPOV() == 180) {
+      Robot.driverCameras.setLeftServoAngle();
+      Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
+    } else if (driverStick.getPOV() == 270) {
+      Robot.driverCameras.setRightServoAngle();
+      Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
+    }
 
-    //elevator buttons
-    elevatorDown.whenPressed(new ElevatorDown());
-    elevatorUp.whenPressed(new ElevatorUp());
-    
+    // OPERATOR BOARD
+    // safety button
+    cancelAutoSafety.cancelWhenPressed(new HatchAuto()); 
 
-    if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel1[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
-        elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketlevel1));
-    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel2[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel2)); 
-    }else if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel3[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel3)); 
-    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel4[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel4)); 
-    }else if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel5[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel5)); 
-    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel6[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel6)); 
-    }else {
+    // elevator buttons
+    elevatorDown.whenPressed(new ElevatorDown()); 
+    elevatorUp.whenPressed(new ElevatorUp()); //TODO find upper limit
+
+    if (sixPositionSwitchReading >= RobotMap.rocketHatchLevel1[0]
+        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketlevel1));
+    } else if (sixPositionSwitchReading >= RobotMap.rocketCargoLevel2[0]
+        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel2));
+    } else if (sixPositionSwitchReading >= RobotMap.rocketHatchLevel3[0]
+        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel3));
+    } else if (sixPositionSwitchReading >= RobotMap.rocketCargoLevel4[0]
+        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel4));
+    } else if (sixPositionSwitchReading >= RobotMap.rocketHatchLevel5[0]
+        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel5));
+    } else if (sixPositionSwitchReading >= RobotMap.rocketCargoLevel6[0]
+        && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]) {
+      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel6));
+    } else {
 
     }
 
-    //carriage buttons
-    carriageCenter.whenPressed(new CarriageCenter()); 
-    carriageLeft.whenPressed(new CarriageClockwise()); 
+    // carriage buttons
+    carriageCenter.whenPressed(new CarriageCenter());
+    carriageLeft.whenPressed(new CarriageClockwise());
     carriageRight.whenPressed(new CarriageCounterclockwise());
-    
-    //cargo outtake buttons
-    //cargoOUttakeAuto
+
+    // cargo outtake buttons
+    // cargoOUttakeAuto
     cargoOuttakeRight.whenPressed(new CargoOuttakeRight());
     cargoOuttakeLeft.whenPressed(new CargoOuttakeLeft());
 
-    //cargo intake button
+    // cargo intake button
     intake.whenPressed(new IntakeCargo());
-    
-    //hatch buttons
+
+    // hatch buttons
     hatchRelease.whenPressed(new ReleaseHatch());
     hatchMechanismSwitch.whileHeld(new ExtendHatch());
   }
 
-  //Creating the joystick
-  public Joystick getDriverStick(){
+  // Creating the joystick
+  public Joystick getDriverStick() {
     return driverStick;
   }
 
-  //Creating the Operator Board
-  public Joystick getOperatorBoard(){
+  // Creating the Operator Board
+  public Joystick getOperatorBoard() {
     return operatorBoard;
   }
 }
