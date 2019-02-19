@@ -50,6 +50,20 @@ public class OI {
   JoystickButton retractCargoIntake = new JoystickButton(driverStick, RobotMap.retractCargoIntakeButtonNumber);
   JoystickButton releaseCargoIntake = new JoystickButton(driverStick, RobotMap.releaseCargoIntakeButtonNumber);
 
+  if(driverStick.getPOV() == 0){
+    Robot.driverCameras.setLeftServoAngle();
+    Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
+  }else if(driverStick.getPOV() == 90){
+    Robot.driverCameras.setRightServoAngle();
+    Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
+  }else if(driverStick.getPOV() == 180){
+    Robot.driverCameras.setLeftServoAngle();
+    Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
+  }else if(driverStick.getPOV() == 270){
+    Robot.driverCameras.setRightServoAngle();
+    Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
+  }
+
   //operator board and buttons 
   Joystick operatorBoard = new Joystick(1);
   JoystickButton cancelAutoSafety = new JoystickButton(operatorBoard, RobotMap.cancelAutoSafetyButtonNumber);

@@ -279,4 +279,8 @@ public class Drive extends Subsystem {
         setLeftPosition(leftTicks);
         setRightPosition(rightTicks);
     }
+
+    public boolean isStuck(){
+        return false; //TODO FINISH THIS PLEASE WILLIAM!!!!!!
+    }
 }

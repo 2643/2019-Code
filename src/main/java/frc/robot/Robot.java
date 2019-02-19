@@ -26,6 +26,7 @@ public class Robot extends TimedRobot {
   public static Hatch hatch = new Hatch(RobotMap.HatchPiston, RobotMap.HatchPiston2, RobotMap.ReleaseHatchPiston1, RobotMap.ReleaseHatchPiston2);
   public static Elevator elevator = new Elevator(RobotMap.elevatorMotor);
   public static Drive drive = new Drive(RobotMap.LeftFrontMotor, RobotMap.LeftBackMotor, RobotMap.RightFrontMotor, RobotMap.RightBackMotor);
+  public static DriverCamera driverCameras = new DriverCamera(RobotMap.leftDriverCameraServo, RobotMap.rightDriverCameraServo, RobotMap.leftCamera, RobotMap.rightCamera);
   public static Carriage carriage = new Carriage(RobotMap.carriageMotor);
   public static CargoIntake cargoIntake = new CargoIntake(RobotMap.cargoIntakeMotor1, RobotMap.cargoIntakeMotor2, RobotMap.cargoRetractMotor);
   public static CargoOuttake cargoOuttake = new CargoOuttake(RobotMap.cargoOuttakeMotor);
@@ -56,12 +57,12 @@ public class Robot extends TimedRobot {
     // chooser.addOption("My Auto", new MyAutoCommand());
     //SmartDashboard.putData("Auto mode", m_chooser);
 
-    RobotMap.camera1 = CameraServer.getInstance().startAutomaticCapture(0);
-    RobotMap.camera2 = CameraServer.getInstance().startAutomaticCapture(1);
+    RobotMap.leftCamera = CameraServer.getInstance().startAutomaticCapture(0);
+    RobotMap.rightCamera = CameraServer.getInstance().startAutomaticCapture(1);
     RobotMap.server = CameraServer.getInstance().getServer();
 
-    RobotMap.camera1.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
-    RobotMap.camera2.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+    RobotMap.leftCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+    RobotMap.rightCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
   }
 
   /**
