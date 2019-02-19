@@ -172,15 +172,9 @@ public class RobotMap {
   public static double elevatorSpeed = 0.3; //Temporary elevator speed. //TODO Check power requirement.
   public static int elevatorEncoderMaxLimit = 100; //TODO check this upper limit on the real robot 
   //This is the maximum encoder ticks allowed from the bottom upwards.
-
-  public static int rocketlevel1; //TODO find the rocket heights in encoder ticks //TODO Sanjana: Change to an Array.
-  public static int rocketLevel2; //TODO find the rocket heights in encoder ticks 
-  public static int rocketLevel3; //TODO find the rocket heights in encoder ticks 
-  public static int rocketLevel4; //TODO find the rocket heights in encoder ticks
-  public static int rocketLevel5; //TODO find the rocket heights in encoder ticks 
-  public static int rocketLevel6; //TODO find the rocket heights in encoder ticks 
+  public static double elevatorTolerance = 0; //TODO test this out with the elevator 
+  public static int[] elevatorLevels = {0, 0, 0, 0, 0, 0, 0}; //TODO find the rocket heights in encoder ticks
  
-  
   //hatch variables
   public static int hatchReleaseTimeout = 2; //TODO Change this
 
@@ -250,11 +244,9 @@ public class RobotMap {
 
   //operator board values for the six position switch 
   //DO NOT MESS WITH IT!
-  public static double[] rocketHatchLevel1 = {-1.00, -0.7};
-  public static double[] rocketCargoLevel2 = {-0.69, -0.2};
-  public static double[] rocketHatchLevel3 = {-0.19, 0.15};
-  public static double[] rocketCargoLevel4 = {0.16, 0.4};
-  public static double[] rocketHatchLevel5 = {0.41, 0.6};
-  public static double[] rocketCargoLevel6 = {0.61, 0.85};
+
+  public static final int[] rocketLevel = {0 /* TODO find encoder tick values*/, 0};
+  public static final double[] rocketHatchLevels = {-1.0, -0.7, -0.2, 0.15, 0.4, 0.6, 0.85, 1.0};
+
   public static double[] nothingSelected = {0.86, 1.0};
 }
