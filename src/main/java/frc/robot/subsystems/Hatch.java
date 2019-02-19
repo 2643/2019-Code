@@ -20,12 +20,12 @@ public class Hatch extends Subsystem {
   DoubleSolenoid releaseHatchPiston1;
   DoubleSolenoid releaseHatchPiston2;
 
-    public Hatch(DoubleSolenoid HatchSolenoid, DoubleSolenoid HatchSolenoid2, DoubleSolenoid HatchSolenoid3, DoubleSolenoid HatchSolenoid4){
-        HatchSolenoid = hatchPiston1;
-        HatchSolenoid2 = hatchPiston2;
-        HatchSolenoid3 = releaseHatchPiston1;
-        HatchSolenoid4 = releaseHatchPiston2;
-    }
+  public Hatch(DoubleSolenoid HatchSolenoid, DoubleSolenoid HatchSolenoid2, DoubleSolenoid HatchSolenoid3, DoubleSolenoid HatchSolenoid4){
+    HatchSolenoid = hatchPiston1;
+    HatchSolenoid2 = hatchPiston2;
+    HatchSolenoid3 = releaseHatchPiston1;
+    HatchSolenoid4 = releaseHatchPiston2;
+  }
  
   @Override
   public void initDefaultCommand() {
@@ -76,11 +76,5 @@ public class Hatch extends Subsystem {
   public void hatchPistonOff(){
     releaseHatchPiston1.set(DoubleSolenoid.Value.kOff);
     releaseHatchPiston2.set(DoubleSolenoid.Value.kOff);
-  }
-  /**
-   * Gets the hatch timer
-   */
-  public Timer getTimer() {
-  	return RobotMap.hatchPistonTimer;
   }
 }

@@ -15,11 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class Gyroscope extends Subsystem {
-  ADXRS450_Gyro gyro; 
-
-  public Gyroscope(ADXRS450_Gyro g){
-    gyro = g;
-  }
+  //TODO ProbablyanAsian: Change to pigeonIMU.
 
   @Override
   public void initDefaultCommand() {
@@ -32,13 +28,12 @@ public class Gyroscope extends Subsystem {
    * @return the angle of the gyroscope in double 
    */
   public double getGyroAngle(){
-    return gyro.getAngle();
+    return(0.0);
   }
 
   /**
    * Resets the angle of the gyroscope to 0
    */
   public void resetAngle(){
-    gyro.reset();
   }
 }

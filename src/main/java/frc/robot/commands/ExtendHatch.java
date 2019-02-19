@@ -7,16 +7,15 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.TimedCommand;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 /**
  * Extends hatch mechanism
  */
-public class ExtendHatch extends TimedCommand {
+public class ExtendHatch extends Command {
   public ExtendHatch() {
-    super(RobotMap.hatchExtendTimeout);
     requires(Robot.hatch);
   }
 
@@ -31,17 +30,12 @@ public class ExtendHatch extends TimedCommand {
 
   @Override
   protected boolean isFinished() {
-    if(Robot.hatch.getTimer().get() == RobotMap.hatchExtendTimeout){
-      return true;
-    } else{
-      return false;
-    }
+    return(true);
   }
 
   @Override
   protected void end() {
     Robot.hatch.mechanismPistonOff();
-    Robot.hatch.getTimer().stop();
   }
 
   @Override

@@ -14,10 +14,10 @@ public class Drive extends Subsystem {
     private final WPI_TalonSRX rightDriveMaster;
     private final WPI_TalonSRX rightDriveSlave;
     // PID Numbers
-    double LeftCurrentEncoderInput = 0;
-    double RightCurrentEncoderInput = 0;
-    double RightEncoderTarget = 0;
-    double LeftEncoderTarget = 0;
+    double LeftCurrentEncoderInput = 0.0;
+    double RightCurrentEncoderInput = 0.0;
+    double RightEncoderTarget = 0.0;
+    double LeftEncoderTarget = 0.0;
     // Right PID
     double RightP = 0.05;
     double RightI = 0.0;
@@ -27,31 +27,31 @@ public class Drive extends Subsystem {
     double LeftI = 0.0;
     double LeftD = 0.0;
     // PID Variables
-    double RightSum = 0;
-    double LeftSum = 0;
-    double RightPreviousEncoderInput = 0;
-    double LeftPreviousEncoderInput = 0;
+    double RightSum = 0.0;
+    double LeftSum = 0.0;
+    double RightPreviousEncoderInput = 0.0;
+    double LeftPreviousEncoderInput = 0.0;
 
-    public double LeftError = 0;
-    public double RightError = 0;
+    public double LeftError = 0.0;
+    public double RightError = 0.0;
 
-    double RightDelta = 0;
-    double LeftDelta = 0;
-    double LeftOutput = 0;
-    double RightOutput = 0;
-    double RightOldVel = 0;
-    double RightOldPos = 0;
-    double RightCurrentVel = 0;
-    double RightCurrentAccel = 0;
-    double LeftOldVel = 0;
-    double LeftOldPos = 0;
-    double LeftCurrentVel = 0;
-    double LeftCurrentAccel = 0;
-    double AGain = 0;
-    double ALimit = 18;
-    double unlimitedAccel = 0;
+    double RightDelta = 0.0;
+    double LeftDelta = 0.0;
+    double LeftOutput = 0.0;
+    double RightOutput = 0.0;
+    double RightOldVel = 0.0;
+    double RightOldPos = 0.0;
+    double RightCurrentVel = 0.0;
+    double RightCurrentAccel = 0.0;
+    double LeftOldVel = 0.0;
+    double LeftOldPos = 0.0;
+    double LeftCurrentVel = 0.0;
+    double LeftCurrentAccel = 0.0;
+    double AGain = 0.0;
+    double ALimit = 18.0;
+    double unlimitedAccel = 0.0;
     double MaxOutput = 0.5;
-    double SumLimit = 25;
+    double SumLimit = 25.0;
 
     /**
      * Drive constructor
@@ -61,7 +61,10 @@ public class Drive extends Subsystem {
      * @param r1 right front motor
      * @param r2 right back motor
      */
+    
     public Drive(WPI_TalonSRX l1, WPI_TalonSRX l2, WPI_TalonSRX r1, WPI_TalonSRX r2) {
+        //TODO Navneeth: Implement Distance per pulse, later
+
         leftDriveMaster = l1;
         leftDriveSlave = l2;
 
@@ -208,26 +211,26 @@ public class Drive extends Subsystem {
         LeftCurrentAccel = LeftCurrentVel - LeftOldVel;
         LeftError = LeftEncoderTarget - LeftCurrentEncoderInput;
         LeftSum = LeftSum + LeftError;
-        // IntgotSum limiter sum.
+        // IntgoreSum limiter sum.
         if (LeftSum > SumLimit) {
             LeftSum = SumLimit;
         }
-        if (LeftSum < -SumLimit) {
-            LeftSum = -SumLimit;
+        if (LeftSum < (-SumLimit)) {
+            LeftSum = (-SumLimit);
         }
         // PID equations.
-        LeftOutput = (-LeftP * LeftError) + (LeftSum * LeftI) + (LeftD * LeftDelta) + (LeftCurrentAccel * AGain);
+        LeftOutput = ((-LeftP) * LeftError) + (LeftSum * LeftI) + (LeftD * LeftDelta) + (LeftCurrentAccel * AGain);
         // Left motor speed limiter.
         if (LeftOutput > MaxOutput) {
             LeftOutput = MaxOutput;
         }
-        if (LeftOutput < -MaxOutput) {
-            LeftOutput = -MaxOutput;
+        if (LeftOutput < (-MaxOutput)) {
+            LeftOutput = (-MaxOutput);
         }
         // Set the motor speed.
         RobotMap.LeftFrontMotor.set(-LeftOutput);
         RobotMap.LeftBackMotor.set(-LeftOutput);
-        // Resign some more left variables.
+        // Reassign some more left variables.
         LeftPreviousEncoderInput = LeftCurrentEncoderInput;
         LeftOldVel = LeftCurrentVel;
     }
@@ -249,17 +252,16 @@ public class Drive extends Subsystem {
         if (RightSum > SumLimit) {
             RightSum = SumLimit;
         }
-        if (RightSum < -SumLimit) {
+        if (RightSum < (-SumLimit)) {
             RightSum = -SumLimit;
         }
         // PID equations.
-        RightOutput = (-RightP * RightError) + (RightSum * RightI) + (RightD * RightDelta)
-                + (RightCurrentAccel * AGain);
+        RightOutput = ((-RightP) * RightError) + (RightSum * RightI) + (RightD * RightDelta) + (RightCurrentAccel * AGain);
         // Right motor speed limiter.
         if (RightOutput > MaxOutput) {
             RightOutput = MaxOutput;
         }
-        if (RightOutput < -MaxOutput) {
+        if (RightOutput < (-MaxOutput)) {
             RightOutput = -MaxOutput;
         }
         // Set the motor speed.

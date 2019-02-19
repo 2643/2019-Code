@@ -7,13 +7,12 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.TimedCommand;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class RetractHatch extends TimedCommand {
+public class RetractHatch extends Command {
   public RetractHatch() {
-    super(RobotMap.hatchRetractTimeout);
     requires(Robot.hatch);
   }
 
@@ -28,7 +27,7 @@ public class RetractHatch extends TimedCommand {
 
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   @Override

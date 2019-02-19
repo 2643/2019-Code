@@ -73,12 +73,13 @@ public class OI {
     retractCargoIntake.whenPressed(new RetractCargoIntake()); //TODO implement using current
     releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
 
+    //TODO Sanjana: write default case.
     if(driverStick.getPOV() == 0){
       Robot.driverCameras.setRightServoAngle(RobotMap.forwardAngle);
       Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
     }else if(driverStick.getPOV() == 90){
-      Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
       Robot.driverCameras.setRightServoAngle(RobotMap.rightAngle);
+      Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
     }else if(driverStick.getPOV() == 180){  
       Robot.driverCameras.setLeftServoAngle(RobotMap.backwardAngle);
       Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
@@ -89,15 +90,15 @@ public class OI {
 
     //OPERATOR BOARD
     //safety button
-    cancelAutoSafety.cancelWhenPressed(new HatchAuto()); //TODO cancel the auto routines; THAT ARE NOT WRITTEN YET!!!!
+    //cancelAutoSafety.cancelWhenPressed(new HatchAuto());
 
     //auto functions 
     hatchAuto.whileHeld(new HatchAuto());
     cargoOuttakeAuto.whileHeld(new CargoLineAuto());
     
     //elevator buttons
-    elevatorDown.whenPressed(new ElevatorDown());
-    elevatorUp.whenPressed(new ElevatorUp());
+    elevatorDown.whileHeld(new ElevatorDown());
+    elevatorUp.whileHeld(new ElevatorUp());
     
 
     if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel1[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
@@ -114,13 +115,13 @@ public class OI {
       elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel6)); 
     } // TODO Govind, go optimize.
 
-    // cargoOUttakeAuto
-    cargoOuttakeRight.whenPressed(new CargoOuttakeRight());
-    cargoOuttakeLeft.whenPressed(new CargoOuttakeLeft());
+    // cargoOuttakeAuto
+    cargoOuttakeRight.whileHeld(new CargoOuttakeRight());
+    cargoOuttakeLeft.whileHeld(new CargoOuttakeLeft());
     
 
     // cargo intake button
-    intake.whenPressed(new IntakeCargo());
+    intake.whileHeld(new IntakeCargo());
 
     // hatch buttons
     hatchRelease.whenPressed(new ReleaseHatch());

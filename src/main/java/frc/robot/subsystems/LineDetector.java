@@ -48,7 +48,7 @@ public class LineDetector extends Subsystem {
         break;
       case TRUE:
         //counter to implement hang time.
-        RobotMap.counterLeftOne = 3;
+        RobotMap.counterLeftOne = 2;
         //when the sensor goes off again, change the state to WAIT
         if(RobotMap.irLeft1.get()) {
           RobotMap.curIRStateLeftOne = RobotMap.IRState.WAIT;
@@ -77,7 +77,7 @@ public class LineDetector extends Subsystem {
         } 
         break;
       case TRUE:
-        RobotMap.counterLeftTwo = 3;
+        RobotMap.counterLeftTwo = 2;
         if (RobotMap.irLeft2.get()) {
           RobotMap.curIRStateLeftTwo = RobotMap.IRState.WAIT;
         }
@@ -102,7 +102,7 @@ public class LineDetector extends Subsystem {
         }
         break;
       case TRUE:
-        RobotMap.counterLeftThree = 3;
+        RobotMap.counterLeftThree = 2;
         if(RobotMap.irLeft3.get()) {
           RobotMap.curIRStateLeftThree = RobotMap.IRState.WAIT;
         }
@@ -127,7 +127,7 @@ public class LineDetector extends Subsystem {
         }
         break;
       case TRUE:
-        RobotMap.counterRightOne = 3;
+        RobotMap.counterRightOne = 2;
         if(RobotMap.irRight1.get()) {
           RobotMap.curIRStateRightOne = RobotMap.IRState.WAIT;
         }
@@ -152,7 +152,7 @@ public class LineDetector extends Subsystem {
         }
         break;
       case TRUE:
-        RobotMap.counterRightTwo = 3;
+        RobotMap.counterRightTwo = 2;
         if(RobotMap.irRight2.get()) {
           RobotMap.curIRStateRightTwo = RobotMap.IRState.WAIT;
         }
@@ -177,7 +177,7 @@ public class LineDetector extends Subsystem {
         }
         break;
       case TRUE:
-        RobotMap.counterRightThree = 3;
+        RobotMap.counterRightThree = 2;
         if(RobotMap.irRight3.get()) {
           RobotMap.curIRStateRightThree = RobotMap.IRState.WAIT;
         }

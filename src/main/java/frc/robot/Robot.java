@@ -27,15 +27,12 @@ public class Robot extends TimedRobot {
   public static Elevator elevator = new Elevator(RobotMap.elevatorMotor);
   public static Drive drive = new Drive(RobotMap.LeftFrontMotor, RobotMap.LeftBackMotor, RobotMap.RightFrontMotor, RobotMap.RightBackMotor);
   public static DriverCamera driverCameras = new DriverCamera(RobotMap.leftDriverCameraServo, RobotMap.rightDriverCameraServo, RobotMap.leftCamera, RobotMap.rightCamera);
-  public static Carriage carriage = new Carriage(RobotMap.carriageMotor);
   public static CargoIntake cargoIntake = new CargoIntake(RobotMap.cargoIntakeMotor1, RobotMap.cargoIntakeMotor2, RobotMap.cargoRetractMotor);
   public static CargoOuttake cargoOuttake = new CargoOuttake(RobotMap.cargoOuttakeMotor);
-  public static Gyroscope gyroscope = new Gyroscope(RobotMap.gyro);
+  // ++ public static Gyroscope gyroscope = new Gyroscope(RobotMap.gyro);
   public static LineDetector lineDetector = new LineDetector();
   public static UltrasonicSystem ultrasonicSystem = new UltrasonicSystem();
-  //Command m_autonomousCommand;
-  //SendableChooser<Command> m_chooser = new SendableChooser<>();
-
+ 
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -44,7 +41,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     oi = new OI();
 
-    elevator.resetElevatorEncoder();
+    elevator.resetElevatorEncoder(); //Needs to be at the bottom, hitting the limit switch.
     RobotMap.ultrasonicLeftOne.setAutomaticMode(true);
 
     RobotMap.curIRStateLeftOne = RobotMap.IRState.IDLE;
@@ -54,13 +51,11 @@ public class Robot extends TimedRobot {
     RobotMap.curIRStateRightTwo = RobotMap.IRState.IDLE;
     RobotMap.curIRStateRightThree = RobotMap.IRState.IDLE;
 
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    //SmartDashboard.putData("Auto mode", m_chooser);
-
     RobotMap.leftCamera = CameraServer.getInstance().startAutomaticCapture(0);
     RobotMap.rightCamera = CameraServer.getInstance().startAutomaticCapture(1);
     RobotMap.server = CameraServer.getInstance().getServer();
 
+    //TODO Sanjana: Set default camera source and direction
     RobotMap.leftCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     RobotMap.rightCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
   }
@@ -104,19 +99,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    //m_autonomousCommand = m_chooser.getSelected();
-
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector",
-     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     * = new MyAutoCommand(); break; case "Default Auto": default:
-     * autonomousCommand = new ExampleCommand(); break; }
-     */
-
-    // schedule the autonomous command (example)
-    //if (m_autonomousCommand != null) {
-    //  m_autonomousCommand.start();
-    //}
   }
 
   /**
@@ -129,14 +111,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
-    
-    //if (m_autonomousCommand != null) {
-    //  m_autonomousCommand.cancel();
-    //}
   }
 
   /**

@@ -24,7 +24,7 @@ public class ElevatorDown extends Command {
 
   @Override
   protected void execute() {
-    Robot.elevator.setElevatorSpeed(-RobotMap.elevatorSpeed);
+    Robot.elevator.setElevatorSpeed(-RobotMap.elevatorSpeed); //TODO William: Check elevator direction
   }
 
   @Override
@@ -42,10 +42,7 @@ public class ElevatorDown extends Command {
 
   @Override
   protected void end() {
-    //Just in case
-    if (isFinished()) {
-      Robot.elevator.resetElevatorEncoder();
-    }
+    Robot.elevator.resetElevatorEncoder();
     Robot.elevator.setElevatorSpeed(0);
   }
 

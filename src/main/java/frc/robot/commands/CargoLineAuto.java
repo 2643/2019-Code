@@ -26,6 +26,8 @@ public class CargoLineAuto extends Command {
   protected void initialize() {
   }
 
+  boolean finished = false;
+
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
@@ -62,12 +64,12 @@ public class CargoLineAuto extends Command {
         if(Math.abs(Robot.drive.LeftError) <= encoderErrorTolerance &&
           Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
             //If the middle sensor isn't activated, continue driving fowards.
-          if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) != 0 ||
-            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) != 0) {
+          if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
+            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
 
             //Add 1 inch to current value
-            int precalcL = Robot.drive.getLeftEncoder() + 4;
-            int precalcR = Robot.drive.getRightEncoder() + 4;
+            int precalcL = Robot.drive.getLeftEncoder() + RobotMap.oneInchEncoder;
+            int precalcR = Robot.drive.getRightEncoder() + RobotMap.oneInchEncoder;
 
             //Move the one inch fowards
             Robot.drive.setLeftPosition(precalcL);
@@ -85,20 +87,22 @@ public class CargoLineAuto extends Command {
     if(Robot.lineDetector.getIRSensors() != 0) {
 
       //Warning if too far, aka 18 inches ish. //TODO check.
-      if(Robot.ultrasonicSystem.getLeftDist() >= 457){
+      if(Robot.ultrasonicSystem.getLeftDist() >= RobotMap.maxUltrasonicDist){
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1){
-          System.out.println("ABORT ABORT LEFT DISTANCE TOO FAR");
+          System.err.println("ABORT ABORT LEFT DISTANCE TOO FAR");
+          finished = true;
         }
       }
 
       //Warning if too far, aka 18 inches ish. //TODO check.
-      if(Robot.ultrasonicSystem.getRightDist() >= 457){
+      if(Robot.ultrasonicSystem.getRightDist() >= RobotMap.maxUltrasonicDist){
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1){
-          System.out.println("ABORT ABORT RIGHT DISTANCE TOO FAR");
+          System.err.println("ABORT ABORT RIGHT DISTANCE TOO FAR");
+          finished = true;
         }
       }
 
@@ -111,7 +115,7 @@ public class CargoLineAuto extends Command {
 
           //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
           int leftDifference = Robot.ultrasonicSystem.getLeftValues()[0]-Robot.ultrasonicSystem.getLeftValues()[1];
-          int distToTicks = leftDifference / -7;//TODO verify my math.
+          int distToTicks = leftDifference / -7; //TODO verify my math. pls k thx
           int toDriveLeft = distToTicks + Robot.drive.getLeftEncoder();
           int toDriveRight = Robot.drive.getRightEncoder() - distToTicks;
 
@@ -133,7 +137,7 @@ public class CargoLineAuto extends Command {
         if((Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
 
           //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
-          //Alpha is the error off in MMs
+          //rightDifference is the error off in MMs
           int rightDifference = Robot.ultrasonicSystem.getRightValues()[0]-Robot.ultrasonicSystem.getRightValues()[1];
           //Divide by 7 to get tick distance
           int distToTicks = rightDifference / -7;//TODO verify my math.
@@ -147,6 +151,7 @@ public class CargoLineAuto extends Command {
           Robot.drive.setRightPosition(toDriveRight);
         }
       }
+      
       //Checks if any of the middle sensor has been tripped.
       if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
@@ -155,26 +160,18 @@ public class CargoLineAuto extends Command {
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
 
-          //Add to make the robot move 1 inch fowards.
-          int precalcL = Robot.drive.getLeftEncoder() + 4;
-          int precalcR = Robot.drive.getRightEncoder() + 4;
-
           //Make the robot move 1 inch fowards.
-          Robot.drive.setLeftPosition(precalcL);
-          Robot.drive.setRightPosition(precalcR);
+          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + RobotMap.oneInchEncoder);
+          Robot.drive.setRightPosition(Robot.drive.getRightEncoder() + RobotMap.oneInchEncoder);
         }
 
         //Checks if the back sensor has been tripped
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
-          
-          //Subtract to make the robot move 1 inch backwards.
-          int precalcL = Robot.drive.getLeftEncoder() - 4;
-          int precalcR = Robot.drive.getRightEncoder() - 4;
 
           //Make the robot move 1 inch backwards
-          Robot.drive.setLeftPosition(precalcL);
-          Robot.drive.setRightPosition(precalcR);
+          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() - RobotMap.oneInchEncoder);
+          Robot.drive.setRightPosition(Robot.drive.getRightEncoder() - RobotMap.oneInchEncoder);
         }
       }
 
@@ -185,27 +182,19 @@ public class CargoLineAuto extends Command {
         //Checks that the back sensor IS tripped
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
-
-          //Subtract to make the robot move 1.8 inches backwards
-          int precalcL = Robot.drive.getLeftEncoder() - RobotMap.IRDistance;
-          int precalcR = Robot.drive.getRightEncoder() - RobotMap.IRDistance;
-          
+                    
           //Move the robot
-          Robot.drive.setLeftPosition(precalcL);
-          Robot.drive.setRightPosition(precalcR);
+          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() - RobotMap.halfIRDistance);
+          Robot.drive.setRightPosition(Robot.drive.getRightEncoder() - RobotMap.halfIRDistance);
         }
 
         //Checks that the front sensor IS tripped
         if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
         (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
 
-          //Add to make the robot move 1.8 inches backwards
-          int precalcL = Robot.drive.getLeftEncoder() + RobotMap.IRDistance;
-          int precalcR = Robot.drive.getRightEncoder() + RobotMap.IRDistance;
-          
           //Move the robot
-          Robot.drive.setLeftPosition(precalcL);
-          Robot.drive.setRightPosition(precalcR);
+          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + RobotMap.halfIRDistance);
+          Robot.drive.setRightPosition(Robot.drive.getRightEncoder() + RobotMap.halfIRDistance);
         }
       }
     }
@@ -214,21 +203,21 @@ public class CargoLineAuto extends Command {
     (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
     (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0 &&
     (Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1]) <= RobotMap.ultrasonicErrorTolerance) {
-      end();
+      finished = true;
     }
 
     if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 0 &&
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 &&
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0 &&
       (Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) <= RobotMap.ultrasonicErrorTolerance) {
-      end();
+      finished = true;
     }
 }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return finished;
   }
 
   // Called once after isFinished returns true

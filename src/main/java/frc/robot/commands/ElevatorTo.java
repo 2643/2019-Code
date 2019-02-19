@@ -40,6 +40,7 @@ public class ElevatorTo extends Command {
   protected boolean isFinished() {
     //Checks to see whether the height above the ground is equal to the encoder ticks for the elevator encoder
     if(Robot.elevator.getElevatorEncoder() == levelToGoTo){
+      //TODO Sanjana: Fix this.
       return true;
     }
     else{

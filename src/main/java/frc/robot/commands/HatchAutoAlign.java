@@ -14,8 +14,7 @@ public class HatchAutoAlign extends Command {
 
     @Override
     protected void execute() {
-        double centerLocation = (RobotMap.visionTable.getEntry("centroid-left-x").getDouble(0)
-                + RobotMap.visionTable.getEntry("centroid-right-x").getDouble(0)) / 2;
+        double centerLocation = (RobotMap.visionTable.getEntry("centroid-left-x").getDouble(0) + RobotMap.visionTable.getEntry("centroid-right-x").getDouble(0)) / 2;
         boolean valid = RobotMap.visionTable.getEntry("valid").getBoolean(false);
         System.out.println("valid: " + valid + "center: " + centerLocation);
         if (valid) {

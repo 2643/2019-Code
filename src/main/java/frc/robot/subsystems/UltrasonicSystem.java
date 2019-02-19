@@ -31,13 +31,14 @@ public class UltrasonicSystem extends Subsystem {
   }
 
   public int getLeftDist() {
-    return(Math.min(getLeftValues()[0], getLeftValues()[1]));
+    return((getLeftValues()[0] + getLeftValues()[1])/2);
   }
 
   public int getRightDist() {
-    return(Math.min(getRightValues()[0], getRightValues()[1]));
+    return((getRightValues()[0] + getRightValues()[1])/2);
   }
-  /* Changed for more readable crap
+
+  /* Changed for more readable stuf.
   public int[] getLeftValues() {
     int leftOne = -1;
     int leftTwo = -1;

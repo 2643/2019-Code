@@ -47,21 +47,22 @@ public class Elevator extends Subsystem {
    * @return double elevator encoder position 
    */
   public double getElevatorEncoder() {
-    return Elevator.getEncoder().getPosition() - encoderOffset;
+    return(Elevator.getEncoder().getPosition() - encoderOffset);
   }
 
   /**
    * Resets the encoder by subtracting the current value as an offset, but only when the limit switch is hit 
    */
   public void resetElevatorEncoder(){
-    if(RobotMap.elevatorBottomLimit.get() == true)
+    if(getElevatorLimitSwitch()) {
       encoderOffset = Elevator.getEncoder().getPosition();
+    }
   }
   /** 
    * Gets the Elevator limitswitch value
   */
   public boolean getElevatorLimitSwitch(){
-    return RobotMap.elevatorBottomLimit.get();
+    return(RobotMap.elevatorBottomLimit.get());
   }
 
   /**
