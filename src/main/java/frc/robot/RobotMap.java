@@ -15,14 +15,11 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Servo;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Ultrasonic;
-import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoSink;
 
@@ -196,7 +193,7 @@ public class RobotMap {
   public static int encoderErrorTolerance = 4; //in encoder ticks //TODO change this.
   public static int ultrasonicErrorTolerance = 33; // in millimeters. //TODO change this.
 
-  public static int halfIRDistance = 7; //in ticks, from the middle between the sensors. //TODO change this. //TODO William: check encoder Ratios.
+  public static int halfIRDistance = 7; //in ticks, from the middle between the sensors. //TODO change this. TODO William: check encoder Ratios.
   public static int IRDistance = 14; // in ticks, distance between 2 sensors //TODO, check to make sure.
   public static int oneInchEncoder = 4; //TODO CHenry: Check this
 
@@ -252,11 +249,9 @@ public class RobotMap {
 
   //operator board values for the six position switch 
   //DO NOT MESS WITH IT!
-  public static double[] rocketHatchLevel1 = {-1.00, -0.7};
-  public static double[] rocketCargoLevel2 = {-0.69, -0.2};
-  public static double[] rocketHatchLevel3 = {-0.19, 0.15};
-  public static double[] rocketCargoLevel4 = {0.16, 0.4};
-  public static double[] rocketHatchLevel5 = {0.41, 0.6};
-  public static double[] rocketCargoLevel6 = {0.61, 0.85};
+
+  public static final int[] rocketLevel = {0 /* TODO find encoder tick values*/, 0};
+  public static final double[] rocketHatchLevels = {-1.0, -0.7, -0.2, 0.15, 0.4, 0.6, 0.85, 1.0};
+
   public static double[] nothingSelected = {0.86, 1.0};
 }

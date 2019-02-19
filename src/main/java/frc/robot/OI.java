@@ -101,19 +101,12 @@ public class OI {
     elevatorUp.whileHeld(new ElevatorUp());
     
 
-    if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel1[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel1[1]){
-        elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketlevel1));
-    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel2[0] && sixPositionSwitchReading <= RobotMap.rocketCargoLevel2[1]){
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel2)); 
-    }else if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel3[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel3[1]){
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel3)); 
-    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel4[0] && sixPositionSwitchReading <= RobotMap.rocketCargoLevel4[1]){
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel4)); 
-    }else if(sixPositionSwitchReading >= RobotMap.rocketHatchLevel5[0] && sixPositionSwitchReading <= RobotMap.rocketHatchLevel5[1]){
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel5)); 
-    }else if(sixPositionSwitchReading >= RobotMap.rocketCargoLevel6[0] && sixPositionSwitchReading <= RobotMap.rocketCargoLevel6[1]){
-      elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel6)); 
-    } // TODO Govind, go optimize.
+    for(int i = 0; i < RobotMap.rocketLevel.length-1; i++) {
+      if(sixPositionSwitchReading > RobotMap.rocketHatchLevels[i] && sixPositionSwitchReading < RobotMap.rocketHatchLevels[i+1]) {
+        elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel[i]));
+        break;
+      }
+    }
 
     // cargoOuttakeAuto
     cargoOuttakeRight.whileHeld(new CargoOuttakeRight());

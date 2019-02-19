@@ -7,7 +7,6 @@
 
 package frc.robot.commands;
 
-import static org.junit.Assume.assumeFalse;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
