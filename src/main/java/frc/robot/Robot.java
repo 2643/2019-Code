@@ -159,19 +159,19 @@ public class Robot extends TimedRobot {
     }else if(oi.getOperatorBoard().getRawButton(RobotMap.cargoOuttakeRightButtonNumber)){
       RobotMap.cargoOuttakeMotor.set(0.4);
       System.out.println("Cargo outtake right");
-    }else if(oi.getDriverStick().getRawButton(1)){
+    }/* else if(oi.getDriverStick().getRawButton(1)){
       Robot.hatch.mechanismPistonOut();
       System.out.println("Hatch Mechanism Out:");
     }else if(oi.getDriverStick().getRawButton(4)){
       Robot.hatch.mechanismPistonIn();
       System.out.println("Hatch Mechanism In:");
-    }else if(oi.getDriverStick().getRawButton(5)){
+    else if(oi.getDriverStick().getRawButton(5)){
       Robot.hatch.hatchPistonOut();
       System.out.println("Hatch piston out:");
     }else if(oi.getDriverStick().getRawButton(6)){
       Robot.hatch.hatchPistonIn();
       System.out.println("Hatch piston in:");
-    }
+    }*/
 
     // if(oi.driverStick.getPOV() == 0){
     //   Robot.driverCameras.setRightServoAngle(RobotMap.forwardAngle);
