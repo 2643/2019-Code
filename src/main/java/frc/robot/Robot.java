@@ -134,15 +134,15 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
     if(oi.getOperatorBoard().getRawButton(RobotMap.elevatorUpButtonNumber)){
       RobotMap.elevatorMotor.set(-0.5);
-      System.out.println("Curremt: " + RobotMap.elevatorMotor.getOutputCurrent());
+      System.out.println("Current: " + RobotMap.elevatorMotor.getOutputCurrent());
       System.out.println("Encoder: " + RobotMap.elevatorMotor.getEncoder());
       System.out.println("Elevator Up");
     }else if(oi.getOperatorBoard().getRawButton(RobotMap.elevatorDownButtonNumber)){
       RobotMap.elevatorMotor.set(0.5);
       System.out.println("Encoder: " + RobotMap.elevatorMotor.getEncoder());
-      System.out.println("Current: "+ RobotMap.elevatorMotor.getOutputCurrent());
+      System.out.println("Current: " + RobotMap.elevatorMotor.getOutputCurrent());
       System.out.println("Elevator Down");
-      System.out.println("Limit Switch: " + RobotMap.elevatorBottomLimit);
+      System.out.println("Limit Switch: " + RobotMap.elevatorBottomLimit.get());
     }else if(oi.getOperatorBoard().getRawButton(RobotMap.intakeButtonNumber)){
       RobotMap.cargoIntakeMotor1.set(0.3);
       RobotMap.cargoIntakeMotor2.set(0.3);
