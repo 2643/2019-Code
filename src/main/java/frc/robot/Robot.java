@@ -120,7 +120,13 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
   }
-
+  public static void pause(int millis) {
+    try {
+      Thread.sleep(millis);
+    } catch(InterruptedException ie) {
+      System.err.println("whoops! sleep interrupted!");
+    }
+  }
   /**
    * This function is called periodically during test mode.
    */
