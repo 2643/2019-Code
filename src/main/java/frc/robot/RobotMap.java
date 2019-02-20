@@ -64,10 +64,6 @@ public class RobotMap {
   public static int Solenoid1Port2 = 2;     //TODO Check the second port of the first solenoid
   public static int Solenoid2Port1 = 3;     //TODO Check the first port of the second solenoid
   public static int Solenoid2Port2 = 4;     //TODO Check the second port of the second solenoid
-  public static int Solenoid3Port1 = 5;     //TODO Check the first port of the third solenoid
-  public static int Solenoid3Port2 = 6;     //TODO Check the second port of the third solenoid
-  public static int Solenoid4Port1 = 7;     //TODO Check the first port of the fourth solenoid
-  public static int Solenoid4Port2 = 8;     //TODO Check the second port of the fourth solenoid
 
   // IR sensor ports
   public static int irLeftPort1 = 1;  //TODO Check the port of this left side IR sensor
@@ -112,9 +108,9 @@ public class RobotMap {
 
   //hatch solenoids
   public static DoubleSolenoid HatchPiston = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
-  public static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
-  public static DoubleSolenoid ReleaseHatchPiston1 = new DoubleSolenoid(Solenoid3Port1, Solenoid3Port2);
-  public static DoubleSolenoid ReleaseHatchPiston2 = new DoubleSolenoid(Solenoid4Port1, Solenoid4Port2);
+  public static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
+  public static DoubleSolenoid ReleaseHatchPiston1 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
+  public static DoubleSolenoid ReleaseHatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
 
   //cargo intake 
   public static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
