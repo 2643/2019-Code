@@ -77,7 +77,7 @@ public class RobotMap {
   public static int cargoIntakePort1 = 0; //TODO Check the device ID of the first cargo intake motor
   public static int cargoIntakePort2 = 0; //TODO Check the device ID of the second cargo intake motor
   public static int cargoRetractPort = 0; //TODO Check the device ID of the retraction cargo intake motor
-  public static int cargoOuttakePort = 0; //TODO Check the device ID of the cargo outtake motor
+  public static int cargoOuttakePort = 0; //TODO Ccheck the device ID of the cargo outtake motor
 
   //Ultrasonic ports
   public static int ultrasonicLeftOneTrigger = 0;
