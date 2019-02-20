@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.ControlType;
 
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -32,6 +33,23 @@ public class Elevator extends Subsystem {
     Elevator.getPIDController().setP(kP);
     Elevator.getPIDController().setI(kI);
     Elevator.getPIDController().setD(kD);
+    // PID coefficients
+    kP = 0.1; 
+    kI = 1e-4;
+    kD = 1; 
+    kIz = 0; 
+    kFF = 0; 
+    kMaxOutput = .5; 
+    kMinOutput = -.5;
+    
+    // set PID coefficients
+    RobotMap.elevatorController.setP(kP);
+    RobotMap.elevatorController.setI(kI);
+    RobotMap.elevatorController.setD(kD);
+    RobotMap.elevatorController.setIZone(kIz);
+    RobotMap.elevatorController.setFF(kFF);
+    RobotMap.elevatorController.setOutputRange(kMinOutput, kMaxOutput);
+
   }
 
   /**
@@ -71,7 +89,45 @@ public class Elevator extends Subsystem {
    */
   public void setElevatorPosition(int value){
     //Elevator.getPIDController().setReference(value, ControlType.kPosition);
-    
+     // read PID coefficients from SmartDashboard
+     double p = 0.065;
+     double i = 0.005;
+     double d = 0;
+     double iz = 0;
+     double ff = 0;
+     double max = 0.5;
+     double min = -0.5;
+     double rotations = 0;
+ 
+     // if PID coefficients on SmartDashboard have changed, write new values to controller
+     if((p != kP)) { RobotMap.elevatorController.setP(p); kP = p; }
+     if((i != kI)) { RobotMap.elevatorController.setI(i); kI = i; }
+     if((d != kD)) { RobotMap.elevatorController.setD(d); kD = d; }
+     if((iz != kIz)) { RobotMap.elevatorController.setIZone(iz); kIz = iz; }
+     if((ff != kFF)) { RobotMap.elevatorController.setFF(ff); kFF = ff; }
+     if((max != kMaxOutput) || (min != kMinOutput)) { 
+      RobotMap.elevatorController.setOutputRange(min, max); 
+       kMinOutput = min; kMaxOutput = max; 
+     }
+ 
+     /**
+      * PIDController objects are commanded to a set point using the 
+      * SetReference() method.
+      * 
+      * 
+      * The first parameter is the value of the set point, whose units vary
+      * depending on the control type set in the second parameter.
+      * 
+      * The second parameter is the control type can be set to one of four 
+      * parameters:
+      *  com.revrobotics.ControlType.kDutyCycle
+      *  com.revrobotics.ControlType.kPosition
+      *  com.revrobotics.ControlType.kVelocity
+      *  com.revrobotics.ControlType.kVoltage
+      */
+      RobotMap.elevatorController.setReference(rotations, ControlType.kPosition);
+     
+
   }
   
   @Override

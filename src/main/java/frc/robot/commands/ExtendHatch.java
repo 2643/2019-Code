@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
 /**
  * Extends hatch mechanism
@@ -30,7 +29,7 @@ public class ExtendHatch extends Command {
 
   @Override
   protected boolean isFinished() {
-    return(true);
+    return true;
   }
 
   @Override

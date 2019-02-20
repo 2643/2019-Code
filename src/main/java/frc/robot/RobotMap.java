@@ -15,14 +15,11 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Servo;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Ultrasonic;
-import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoSink;
 
@@ -167,14 +164,22 @@ public class RobotMap {
   public static int backwardAngle; //TODO Check this on the servo 
   public static int forwardAngle; //TODO Check this on the servo 
   public static int leftAngle; //TODO Check this on the servo 
+  public static double MotorCurrent = 0; //Use to work out if it is up agaisnt a wall.
+  public static double MotorCurrentSum = 0;
 
   //elevator variables
   public static double elevatorSpeed = 0.3; //Temporary elevator speed. //TODO Check power requirement.
   public static int elevatorEncoderMaxLimit = 100; //TODO check this upper limit on the real robot 
   //This is the maximum encoder ticks allowed from the bottom upwards.
-  public static double elevatorTolerance = 0; //TODO test this out with the elevator 
-  public static int[] elevatorLevels = {0, 0, 0, 0, 0, 0, 0}; //TODO find the rocket heights in encoder ticks
+  public static int elevatorTolerance; //TODO test the tolerance of the elevator
+  public static int rocketlevel1; //TODO find the rocket heights in encoder ticks //TODO Sanjana: Change to an Array.
+  public static int rocketLevel2; //TODO find the rocket heights in encoder ticks 
+  public static int rocketLevel3; //TODO find the rocket heights in encoder ticks 
+  public static int rocketLevel4; //TODO find the rocket heights in encoder ticks
+  public static int rocketLevel5; //TODO find the rocket heights in encoder ticks 
+  public static int rocketLevel6; //TODO find the rocket heights in encoder ticks 
  
+  
   //hatch variables
   public static int hatchReleaseTimeout = 2; //TODO Change this
 
@@ -188,9 +193,15 @@ public class RobotMap {
   public static int encoderErrorTolerance = 4; //in encoder ticks //TODO change this.
   public static int ultrasonicErrorTolerance = 33; // in millimeters. //TODO change this.
 
+<<<<<<< HEAD
   public static int halfIRDistance = 3; //in ticks, from the middle between the sensors. //TODO change this. //TODO William: check encoder Ratios.
   public static int IRDistance = 7; // in ticks, distance between 2 sensors //TODO, check to make sure.
   public static int oneInchEncoder = 4; 
+=======
+  public static int halfIRDistance = 7; //in ticks, from the middle between the sensors. //TODO change this. TODO William: check encoder Ratios.
+  public static int IRDistance = 14; // in ticks, distance between 2 sensors //TODO, check to make sure.
+  public static int oneInchEncoder = 4; //TODO CHenry: Check this
+>>>>>>> 84df510143459f63a61cdb139c3fe0d58be4f188
 
   //DO NOT CHANGE WHTHOUT ASKING 
   public static int[] lastLeftOne = new int[2];
@@ -227,17 +238,17 @@ public class RobotMap {
 
   //operator board button numbers
 
-  public static int cancelAutoSafetyButtonNumber = 0; //TODO Check Button Number
-  public static int elevatorDownButtonNumber = 0; //TODO Check Button Number
-  public static int cargoOuttakeLeftButtonNumber = 0; //TODO Check Button Number
-  public static int cargoOuttakeRightButtonNumber = 0; //TODO Check Button Number
-  public static int elevatorPresetButtonNumber = 0; //TODO Check Button Number
-  public static int elevatorUpButtonNumber = 0; //TODO Check Button Number
-  public static int intakeButtonNumber = 0; //TODO Check Button Number
-  public static int hatchReleaseButtonNumber = 0; //TODO Check Button Number
-  public static int hatchMechanismSwitchNumber = 0; //TODO Check Button Number
-  public static int hatchAutoButtonNumber = 0; //TODO check button number
-  public static int cargoOuttakeAutoButtonNumber = 0; //TODO check button number
+  public static int cancelAutoSafetyButtonNumber = 1; //TODO Check Button Number
+  public static int elevatorDownButtonNumber = 5; //TODO Check Button Number
+  public static int cargoOuttakeLeftButtonNumber = 9; //TODO Check Button Number
+  public static int cargoOuttakeRightButtonNumber = 10; //TODO Check Button Number
+  public static int elevatorPresetButtonNumber = 6; //TODO Check Button Number
+  public static int elevatorUpButtonNumber = 4; //TODO Check Button Number
+  public static int intakeButtonNumber = 14; //TODO Check Button Number
+  public static int hatchReleaseButtonNumber = 7; //TODO Check Button Number
+  public static int hatchMechanismSwitchNumber = 12; //TODO Check Button Number
+  public static int hatchAutoButtonNumber = 2; //TODO check button number
+  public static int cargoOuttakeAutoButtonNumber = 3; //TODO check button number
 
   //Networktables for vision
   public static NetworkTable visionTable = NetworkTableInstance.getDefault().getTable("vision");

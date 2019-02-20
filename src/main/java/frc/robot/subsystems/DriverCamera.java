@@ -33,6 +33,9 @@ public class DriverCamera extends Subsystem {
     driverCameraServo2 = servo2;
     driverCamera1 = camera1;
     driverCamera2 = camera2;
+    setLeftServoAngle(RobotMap.forwardAngle);
+    setRightServoAngle(RobotMap.forwardAngle);
+    setCameraSource(RobotMap.rightCamera);
   }
 
   /**
