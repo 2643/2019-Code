@@ -78,17 +78,10 @@ public class RobotMap {
   public static int irRightPort3 = 2; //TODO Check the port of this right side IR sensor
 
   //cargo ports
-<<<<<<< Updated upstream
   public static int cargoIntakePort1 = 27; //TODO Check the device ID of the first cargo intake motor
   public static int cargoIntakePort2 = 23;
   public static int cargoRetractPort = 22; //TODO Check the device ID of the retraction cargo intake motor
   public static int cargoOuttakePort = 20; //TODO Ccheck the device ID of the cargo outtake motor
-=======
-  public static int cargoIntakePort1 = 0; //TODO Check the device ID of the first cargo intake motor
-  public static int cargoIntakePort2 = 0; //TODO Check the device ID of the second cargo intake motor
-  public static int cargoRetractPort = 0; //TODO Check the device ID of the retraction cargo intake motor
-  public static int cargoOuttakePort = 0; //TODO Check the device ID of the cargo outtake motor
->>>>>>> Stashed changes
 
   //Ultrasonic ports
   public static int ultrasonicLeftOneTrigger = 16;
@@ -118,16 +111,9 @@ public class RobotMap {
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
 
   //hatch solenoids
-<<<<<<< Updated upstream
   public static DoubleSolenoid HatchPiston = null; //new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
   public static DoubleSolenoid ReleaseHatchPiston1 = null; //new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
   
-=======
-  public static DoubleSolenoid HatchPiston = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
-  public static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
-  public static DoubleSolenoid ReleaseHatchPiston1 = new DoubleSolenoid(Solenoid3Port1, Solenoid3Port2);
-  public static DoubleSolenoid ReleaseHatchPiston2 = new DoubleSolenoid(Solenoid4Port1, Solenoid4Port2);
->>>>>>> Stashed changes
 
   //cargo intake 
   public static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
