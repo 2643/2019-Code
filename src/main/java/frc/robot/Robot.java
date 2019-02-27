@@ -8,7 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.*;
 import frc.robot.RobotMap;
@@ -23,7 +25,7 @@ import edu.wpi.cscore.VideoSource;
  */
 public class Robot extends TimedRobot {
   public static OI oi;
-  public static Hatch hatch = new Hatch(RobotMap.HatchPiston, RobotMap.HatchPiston2, RobotMap.ReleaseHatchPiston1, RobotMap.ReleaseHatchPiston2);
+  public static Hatch hatch = new Hatch(RobotMap.HatchPiston, RobotMap.ReleaseHatchPiston1);
   public static Elevator elevator = new Elevator(RobotMap.elevatorMotor);
   public static Drive drive = new Drive(RobotMap.LeftFrontMotor, RobotMap.LeftBackMotor, RobotMap.RightFrontMotor, RobotMap.RightBackMotor);
   public static DriverCamera driverCameras = new DriverCamera(RobotMap.leftDriverCameraServo, RobotMap.rightDriverCameraServo, RobotMap.leftCamera, RobotMap.rightCamera);
@@ -33,6 +35,8 @@ public class Robot extends TimedRobot {
   public static LineDetector lineDetector = new LineDetector();
   public static UltrasonicSystem ultrasonicSystem = new UltrasonicSystem();
  
+
+  Compressor compressor = new Compressor();
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -51,13 +55,13 @@ public class Robot extends TimedRobot {
     RobotMap.curIRStateRightTwo = RobotMap.IRState.IDLE;
     RobotMap.curIRStateRightThree = RobotMap.IRState.IDLE;
 
-    RobotMap.leftCamera = CameraServer.getInstance().startAutomaticCapture(0);
-    RobotMap.rightCamera = CameraServer.getInstance().startAutomaticCapture(1);
-    RobotMap.server = CameraServer.getInstance().getServer();
+    // RobotMap.leftCamera = CameraServer.getInstance().startAutomaticCapture(0);
+    // RobotMap.rightCamera = CameraServer.getInstance().startAutomaticCapture(1);
+    // RobotMap.server = CameraServer.getInstance().getServer();
 
     //TODO Sanjana: Set default camera source and direction
-    RobotMap.leftCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
-    RobotMap.rightCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+    //RobotMap.leftCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+    //RobotMap.rightCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
   }
 
   /**
@@ -133,33 +137,78 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
     if(oi.getOperatorBoard().getRawButton(RobotMap.elevatorUpButtonNumber)){
-      RobotMap.elevatorMotor.set(-0.5);
+      RobotMap.elevatorMotor.set(-0.7);
       System.out.println("Current: " + RobotMap.elevatorMotor.getOutputCurrent());
-      System.out.println("Encoder: " + RobotMap.elevatorMotor.getEncoder());
+      System.out.println("Encoder: " + RobotMap.elevatorMotor.getEncoder().getPosition());
       System.out.println("Elevator Up");
-    }else if(oi.getOperatorBoard().getRawButton(RobotMap.elevatorDownButtonNumber)){
-      RobotMap.elevatorMotor.set(0.5);
-      System.out.println("Encoder: " + RobotMap.elevatorMotor.getEncoder());
+    }else{
+      RobotMap.elevatorMotor.set(0);
+    } 
+    
+    if(oi.getOperatorBoard().getRawButton(RobotMap.elevatorDownButtonNumber)){
+      RobotMap.elevatorMotor.set(0.4);
+      System.out.println("Encoder: " + RobotMap.elevatorMotor.getEncoder().getPosition());
       System.out.println("Current: " + RobotMap.elevatorMotor.getOutputCurrent());
       System.out.println("Elevator Down");
       System.out.println("Limit Switch: " + RobotMap.elevatorBottomLimit.get());
-    }else if(oi.getOperatorBoard().getRawButton(RobotMap.intakeButtonNumber)){
-      RobotMap.cargoIntakeMotor1.set(0.3);
-      RobotMap.cargoIntakeMotor2.set(0.3);
+    }else {
+      RobotMap.elevatorMotor.set(0);
+    }
+     
+     
+    if(oi.getOperatorBoard().getRawButton(RobotMap.intakeButtonNumber)){
+      RobotMap.cargoIntakeMotor1.set(1);
+      RobotMap.cargoIntakeMotor2.set(-1);
       System.out.println("Intaking Cargo");
-    }else if(oi.getOperatorBoard().getRawButton(8)){
-      RobotMap.cargoRetractMotor.set(0.4);
+    }else{
+      RobotMap.cargoIntakeMotor1.set(0);
+      RobotMap.cargoIntakeMotor2.set(0);
+    }
+    
+    if(oi.getOperatorBoard().getRawButton(8)){
+      RobotMap.cargoRetractMotor.set(-0.6);
       System.out.println("Retract cargo intake");
-    }else if(oi.getOperatorBoard().getRawButton(11)){
-      RobotMap.cargoRetractMotor.set(-0.4);
+    }else{
+      RobotMap.cargoRetractMotor.set(0);
+    }
+    
+    if(oi.getOperatorBoard().getRawButton(11)){
+      RobotMap.cargoRetractMotor.set(0.4);
       System.out.println("Extend cargo intake");
-    }else if(oi.getOperatorBoard().getRawButton(RobotMap.cargoOuttakeLeftButtonNumber)){
-      RobotMap.cargoOuttakeMotor.set(-0.4);
+    }else{
+      RobotMap.cargoRetractMotor.set(0);
+    }
+    
+    
+    if(oi.getOperatorBoard().getRawButton(RobotMap.cargoOuttakeLeftButtonNumber)){
+      RobotMap.cargoOuttakeMotor.set(-1);
       System.out.println("Cargo outtake left");
-    }else if(oi.getOperatorBoard().getRawButton(RobotMap.cargoOuttakeRightButtonNumber)){
-      RobotMap.cargoOuttakeMotor.set(0.4);
+    }else{
+      RobotMap.cargoOuttakeMotor.set(0);
+    }
+    
+    
+    if(oi.getOperatorBoard().getRawButton(RobotMap.cargoOuttakeRightButtonNumber)){
+      RobotMap.cargoOuttakeMotor.set(1);
       System.out.println("Cargo outtake right");
-    }/* else if(oi.getDriverStick().getRawButton(1)){
+    }else{
+      RobotMap.cargoOuttakeMotor.set(0);
+    }  
+    if(oi.getOperatorBoard().getRawButton(RobotMap.cancelAutoSafetyButtonNumber)){
+      compressor.stop();
+    }else if(oi.getOperatorBoard().getRawButton(RobotMap.cargoOuttakeAutoButtonNumber)){
+      compressor.start();
+    }
+
+    compressor.setClosedLoopControl(true);
+    System.out.println(compressor.getClosedLoopControl());
+
+    System.out.println(compressor.enabled());
+    if(oi.getOperatorBoard().getRawButton(RobotMap.hatchAutoButtonNumber)){
+      RobotMap.HatchPiston.set(Value.kForward);
+    }
+
+    /* else if(oi.getDriverStick().getRawButton(1)){
       Robot.hatch.mechanismPistonOut();
       System.out.println("Hatch Mechanism Out:");
     }else if(oi.getDriverStick().getRawButton(4)){
@@ -187,8 +236,11 @@ public class Robot extends TimedRobot {
     //   Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
     // }
 
-    RobotMap.leftDriverCameraServo.setAngle(180);
-    RobotMap.rightDriverCameraServo.setAngle(180);
+    // RobotMap.leftDriverCameraServo.setAngle(180);
+    // RobotMap.rightDriverCameraServo.setAngle(180);
+
+    Robot.drive.setLeftSpeed(oi.getDriverStick().getRawAxis(1));
+    Robot.drive.setRightSpeed(oi.getDriverStick().getRawAxis(5));
 
 
   }

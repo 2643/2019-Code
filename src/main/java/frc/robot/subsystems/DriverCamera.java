@@ -35,7 +35,7 @@ public class DriverCamera extends Subsystem {
     driverCamera2 = camera2;
     setLeftServoAngle(RobotMap.forwardAngle);
     setRightServoAngle(RobotMap.forwardAngle);
-    setCameraSource(RobotMap.rightCamera);
+    //setCameraSource(RobotMap.rightCamera);
   }
 
   /**
@@ -59,7 +59,7 @@ public class DriverCamera extends Subsystem {
    * @param camera Camera that you want to change the view to 
    */
   public void setCameraSource(UsbCamera camera){
-    RobotMap.server.setSource(camera);
+    //RobotMap.server.setSource(camera);
   }
 
   @Override

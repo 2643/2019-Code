@@ -35,7 +35,7 @@ public class LineDetector extends Subsystem {
   public static final int SENSOR_R3 = 1 << 5;
 
   public int getIRSensors() {
-
+    
     //Switch is activated by the current IR state
     switch (RobotMap.curIRStateLeftOne) {
       //when IDLE

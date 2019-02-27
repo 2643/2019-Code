@@ -16,7 +16,7 @@ import frc.robot.*;
  */
 public class CargoIntake extends Subsystem {
   public WPI_TalonSRX CargoIntake1;
-  public WPI_TalonSRX CargoIntake2;
+  public WPI_TalonSRX CargoIntake2; 
   public WPI_TalonSRX RetractMotor;
 
 

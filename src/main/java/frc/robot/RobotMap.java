@@ -44,50 +44,61 @@ public class RobotMap {
 
   /* Ports */
   //drive ports
-  public static int lFrontMotorPort = 0;   //TODO Check the device ID of the left front motor on the drive train on Phoenix Tuner
-  public static int lBackMotorPort = 0;    //TODO Check the device ID of the left back motor on the drive train 
-  public static int rFrontMotorPort = 0;   //TODO Check the device ID  of the right front motor on the drive train 
-  public static int rBackMotorPort = 0;    //TODO Check the device ID of the right back motor on the drive train 
+  public static int lFrontMotorPort = 29;   //TODO Check the device ID of the left front motor on the drive train on Phoenix Tuner
+  public static int lBackMotorPort = 21;    //TODO Check the device ID of the left back motor on the drive train 
+  public static int rFrontMotorPort = 26;   //TODO Check the device ID  of the right front motor on the drive train 
+  public static int rBackMotorPort = 28;    //TODO Check the device ID of the right back motor on the drive train 
   public static int rEncoderPort1 = 0;     //TODO Check the first port of the right encoder 
   public static int rEncoderPort2 = 1;     //TODO Check the second port of the right encoder
-  public static int lEncoderPort1 = 0;     //TODO Check the first port of the left encoder
-  public static int lEncoderPort2 = 1;     //TODO Check the second port of the left encoder
-  public static int driverCameraServoPort1 = 0; //TODO Check the PWM port that this is plugged into
-  public static int driverCameraServoPort2 = 1; //TODO Check the PWN port that this is plugged into 
+  public static int lEncoderPort1 = 2;     //TODO Check the first port of the left encoder
+  public static int lEncoderPort2 = 3;     //TODO Check the second port of the left encoder
+  public static int driverCameraServoPort1 = 1; //TODO Check the PWM port that this is plugged into
+  public static int driverCameraServoPort2 = 0; //TODO Check the PWN port that this is plugged into 
 
   //elevator ports
-  public static int elevatorPort = 0;      //TODO Check the device ID of the master motor 
-  public static int elevatorBottomLimitPort = 0; //TODO Check the port of the bottom limit switch 
+  public static int elevatorPort = 20;      //TODO Check the device ID of the master motor 
+  public static int elevatorBottomLimitPort = 18; //TODO Check the port of the bottom limit switch 
 
   //solenoid ports
   public static int Solenoid1Port1 = 1;     //TODO Check the first port of the first solenoid
   public static int Solenoid1Port2 = 2;     //TODO Check the second port of the first solenoid
   public static int Solenoid2Port1 = 3;     //TODO Check the first port of the second solenoid
   public static int Solenoid2Port2 = 4;     //TODO Check the second port of the second solenoid
+  public static int Solenoid3Port1 = 5;     //TODO Check the first port of the third solenoid
+  public static int Solenoid3Port2 = 6;     //TODO Check the second port of the third solenoid
+  public static int Solenoid4Port1 = 7;     //TODO Check the first port of the fourth solenoid
+  public static int Solenoid4Port2 = 8;     //TODO Check the second port of the fourth solenoid
 
   // IR sensor ports
-  public static int irLeftPort1 = 1;  //TODO Check the port of this left side IR sensor
-  public static int irLeftPort2 = 2;  //TODO Check the port of this left side IR sensor
-  public static int irLeftPort3 = 3;  //TODO Check the port of this left side IR sensor
+  public static int irLeftPort1 = 9;  //TODO Check the port of this left side IR sensor
+  public static int irLeftPort2 = 7;  //TODO Check the port of this left side IR sensor
+  public static int irLeftPort3 = 8;  //TODO Check the port of this left side IR sensor
   public static int irRightPort1 = 5; //TODO Check the port of this right side IR sensor
   public static int irRightPort2 = 6; //TODO Check the port of this right side IR sensor
-  public static int irRightPort3 = 7; //TODO Check the port of this right side IR sensor
+  public static int irRightPort3 = 2; //TODO Check the port of this right side IR sensor
 
   //cargo ports
+<<<<<<< Updated upstream
+  public static int cargoIntakePort1 = 27; //TODO Check the device ID of the first cargo intake motor
+  public static int cargoIntakePort2 = 23;
+  public static int cargoRetractPort = 22; //TODO Check the device ID of the retraction cargo intake motor
+  public static int cargoOuttakePort = 20; //TODO Ccheck the device ID of the cargo outtake motor
+=======
   public static int cargoIntakePort1 = 0; //TODO Check the device ID of the first cargo intake motor
   public static int cargoIntakePort2 = 0; //TODO Check the device ID of the second cargo intake motor
   public static int cargoRetractPort = 0; //TODO Check the device ID of the retraction cargo intake motor
-  public static int cargoOuttakePort = 0; //TODO Ccheck the device ID of the cargo outtake motor
+  public static int cargoOuttakePort = 0; //TODO Check the device ID of the cargo outtake motor
+>>>>>>> Stashed changes
 
   //Ultrasonic ports
-  public static int ultrasonicLeftOneTrigger = 0;
-  public static int ultrasonicLeftOneEcho = 0;
-  public static int ultrasonicLeftTwoTrigger = 0;
-  public static int ultrasonicLeftTwoEcho = 0;
-  public static int ultrasonicRightOneTrigger = 0;
-  public static int ultrasonicRightOneEcho = 0;
-  public static int ultrasonicRightTwoTrigger = 0;
-  public static int ultrasonicRightTwoEcho = 0;
+  public static int ultrasonicLeftOneTrigger = 16;
+  public static int ultrasonicLeftOneEcho = 15;
+  public static int ultrasonicLeftTwoTrigger = 19;
+  public static int ultrasonicLeftTwoEcho = 17;
+  public static int ultrasonicRightOneTrigger = 13;
+  public static int ultrasonicRightOneEcho = 12;
+  public static int ultrasonicRightTwoTrigger = 10;
+  public static int ultrasonicRightTwoEcho = 14;
 
   //DriveTrainPIDTarget
   public static double RightEncoderTarget = 0;
@@ -107,14 +118,22 @@ public class RobotMap {
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
 
   //hatch solenoids
+<<<<<<< Updated upstream
+  public static DoubleSolenoid HatchPiston = null; //new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
+  public static DoubleSolenoid ReleaseHatchPiston1 = null; //new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
+  
+=======
   public static DoubleSolenoid HatchPiston = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
-  public static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
-  public static DoubleSolenoid ReleaseHatchPiston1 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
-  public static DoubleSolenoid ReleaseHatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
+  public static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
+  public static DoubleSolenoid ReleaseHatchPiston1 = new DoubleSolenoid(Solenoid3Port1, Solenoid3Port2);
+  public static DoubleSolenoid ReleaseHatchPiston2 = new DoubleSolenoid(Solenoid4Port1, Solenoid4Port2);
+>>>>>>> Stashed changes
 
   //cargo intake 
   public static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
   public static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
+
+
   public static WPI_TalonSRX cargoRetractMotor = new WPI_TalonSRX(cargoRetractPort);
   
   //cargo outtake
@@ -126,9 +145,9 @@ public class RobotMap {
   //drive sensors
   public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
-  public static UsbCamera leftCamera;
-  public static UsbCamera rightCamera;
-  public static VideoSink server;
+  public static UsbCamera leftCamera = null;
+  public static UsbCamera rightCamera = null;
+  public static VideoSink server = null;
   
   //Ultrasonic Initiation
   public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(ultrasonicLeftOneTrigger, ultrasonicLeftOneEcho);
@@ -142,12 +161,12 @@ public class RobotMap {
   public static CANPIDController elevatorController = new CANPIDController(elevatorMotor);
 
   //IR sensors
-  public static DigitalInput irLeft1 = new DigitalInput(irLeftPort1);
-  public static DigitalInput irLeft2 = new DigitalInput(irLeftPort2);
-  public static DigitalInput irLeft3 = new DigitalInput(irLeftPort3);
-  public static DigitalInput irRight1 = new DigitalInput(irRightPort1);
-  public static DigitalInput irRight2 = new DigitalInput(irRightPort2);
-  public static DigitalInput irRight3 = new DigitalInput(irRightPort3);
+  public static DigitalInput irLeft1 = null; //new DigitalInput(irLeftPort1);
+  public static DigitalInput irLeft2 = null; //new DigitalInput(irLeftPort2);
+  public static DigitalInput irLeft3 = null; //new DigitalInput(irLeftPort3);
+  public static DigitalInput irRight1 = null; //new DigitalInput(irRightPort1);
+  public static DigitalInput irRight2 = null; //new DigitalInput(irRightPort2);
+  public static DigitalInput irRight3 = null; //new DigitalInput(irRightPort3);
 
   //gyroscope 
   //TODO ProbablyanAsian: change to PigeonIMU
@@ -230,7 +249,7 @@ public class RobotMap {
 
   public static int cancelAutoSafetyButtonNumber = 1; //TODO Check Button Number
   public static int elevatorDownButtonNumber = 5; //TODO Check Button Number
-  public static int cargoOuttakeLeftButtonNumber = 9; //TODO Check Button Number
+  public static int cargoOuttakeLeftButtonNumber = 8; //TODO Check Button Number
   public static int cargoOuttakeRightButtonNumber = 10; //TODO Check Button Number
   public static int elevatorPresetButtonNumber = 6; //TODO Check Button Number
   public static int elevatorUpButtonNumber = 4; //TODO Check Button Number
