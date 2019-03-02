@@ -164,7 +164,7 @@ public class RobotMap {
   public static double MotorCurrentSum = 0;
 
   //elevator variables
-  public static double elevatorSpeed = 0.3; //Temporary elevator speed. //TODO Check power requirement.
+  public static double elevatorSpeed = -0.7;
   public static int elevatorEncoderMaxLimit = 100; //TODO check this upper limit on the real robot 
   //This is the maximum encoder ticks allowed from the bottom upwards.
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
@@ -180,10 +180,11 @@ public class RobotMap {
   public static int hatchReleaseTimeout = 2; //TODO Change this
 
   //cargo variables
-  public static double cargoIntakeSpeed = 0.5; //TODO Check
-  public static double cargoReleaseSpeed = 0.5; //TODO Test on the real robot
-  public static double cargoRetractSpeed = 0.5; //TODO Test on the real robot
-  public static double cargoOuttakeSpeed = 0.3; //TODO check this speed with the real robot
+  public static double cargoIntakeSpeed = 1; 
+  public static double cargoReleaseSpeed = 0.6; 
+  public static double cargoRetractSpeed = -0.6; 
+  public static double cargoOuttakeLeftSpeed = -1; 
+  public static double cargoOuttakeRightSpeed = 1;
 
   //Line targets
   public static int encoderErrorTolerance = 4; //in encoder ticks //TODO change this.
