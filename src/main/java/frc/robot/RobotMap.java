@@ -60,10 +60,10 @@ public class RobotMap {
   public static int elevatorBottomLimitPort = 0; //TODO Check the port of the bottom limit switch 
 
   //solenoid ports
-  public static int Solenoid1Port1 = 1;     //TODO Check the first port of the first solenoid
-  public static int Solenoid1Port2 = 2;     //TODO Check the second port of the first solenoid
-  public static int Solenoid2Port1 = 3;     //TODO Check the first port of the second solenoid
-  public static int Solenoid2Port2 = 4;     //TODO Check the second port of the second solenoid
+  public static int hatchMechanismSolenoidPort1 = 1;     //TODO Check the first port of the first solenoid
+  public static int hatchMechanismSolenoidPort2 = 2;     //TODO Check the second port of the first solenoid
+  public static int releaseHatchSolenoidPort1 = 3;     //TODO Check the first port of the second solenoid
+  public static int releaseHatchSolenoidPort2 = 4;     //TODO Check the second port of the second solenoid
 
   // IR sensor ports
   public static int irLeftPort1 = 1;  //TODO Check the port of this left side IR sensor
@@ -107,11 +107,9 @@ public class RobotMap {
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
 
   //hatch solenoids
-  public static DoubleSolenoid HatchPiston = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
-  public static DoubleSolenoid HatchPiston2 = new DoubleSolenoid(Solenoid1Port1, Solenoid1Port2);
-  public static DoubleSolenoid ReleaseHatchPiston1 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
-  public static DoubleSolenoid ReleaseHatchPiston2 = new DoubleSolenoid(Solenoid2Port1, Solenoid2Port2);
-
+  public static DoubleSolenoid hatchMechanismSolenoid = new DoubleSolenoid(hatchMechanismSolenoidPort1, hatchMechanismSolenoidPort2);
+  public static DoubleSolenoid releaseHatchSolenoid = new DoubleSolenoid(releaseHatchSolenoidPort1, releaseHatchSolenoidPort2);
+ 
   //cargo intake 
   public static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
   public static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
