@@ -52,8 +52,8 @@ public class RobotMap {
   public static int rEncoderPort2 = 1;     //TODO Check the second port of the right encoder
   public static int lEncoderPort1 = 0;     //TODO Check the first port of the left encoder
   public static int lEncoderPort2 = 1;     //TODO Check the second port of the left encoder
-  public static int driverCameraServoPort1 = 0; //TODO Check the PWM port that this is plugged into
-  public static int driverCameraServoPort2 = 1; //TODO Check the PWN port that this is plugged into 
+  public static int leftDriverCameraServoPort = 1; //TODO Check the PWM port that this is plugged into
+  public static int rightDriverCameraServoPort = 0; //TODO Check the PWN port that this is plugged into 
 
   //elevator ports
   public static int elevatorPort = 0;      //TODO Check the device ID of the master motor 
@@ -100,8 +100,8 @@ public class RobotMap {
   public static WPI_TalonSRX LeftBackMotor = new WPI_TalonSRX(lBackMotorPort);
   public static WPI_TalonSRX RightFrontMotor = new WPI_TalonSRX(rFrontMotorPort);
   public static WPI_TalonSRX RightBackMotor = new WPI_TalonSRX(rBackMotorPort);
-  public static Servo leftDriverCameraServo = new Servo(driverCameraServoPort1);
-  public static Servo rightDriverCameraServo = new Servo(driverCameraServoPort2);
+  public static Servo leftDriverCameraServo = new Servo(leftDriverCameraServoPort);
+  public static Servo rightDriverCameraServo = new Servo(rightDriverCameraServoPort);
 
   //elevator motors
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
@@ -166,13 +166,6 @@ public class RobotMap {
   public static int elevatorEncoderMaxLimit = 100; //TODO check this upper limit on the real robot 
   //This is the maximum encoder ticks allowed from the bottom upwards.
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
-  public static int rocketlevel1; //TODO find the rocket heights in encoder ticks //TODO Sanjana: Change to an Array.
-  public static int rocketLevel2; //TODO find the rocket heights in encoder ticks 
-  public static int rocketLevel3; //TODO find the rocket heights in encoder ticks 
-  public static int rocketLevel4; //TODO find the rocket heights in encoder ticks
-  public static int rocketLevel5; //TODO find the rocket heights in encoder ticks 
-  public static int rocketLevel6; //TODO find the rocket heights in encoder ticks 
- 
   
   //hatch variables
   public static int hatchReleaseTimeout = 2; //TODO Change this

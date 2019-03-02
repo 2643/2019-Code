@@ -19,7 +19,7 @@ public class Hatch extends Subsystem {
 
   public Hatch(DoubleSolenoid HatchMechanismSolenoid, DoubleSolenoid ReleaseHatchSolenoid){
     hatchMechanismSolenoid = HatchMechanismSolenoid;
-    ReleaseHatchSolenoid = releaseHatchSolenoid;
+    releaseHatchSolenoid = ReleaseHatchSolenoid;
   }
  
   @Override
@@ -38,7 +38,7 @@ public class Hatch extends Subsystem {
    * This function will push the hatch mechanism out.
    */
   public void mechanismPistonOut(){
-    hatchMechanismSolenoid.set(DouubleSolenoid.Value.kReverse);
+    hatchMechanismSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
 
   /**
