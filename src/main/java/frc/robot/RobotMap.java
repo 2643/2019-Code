@@ -44,50 +44,50 @@ public class RobotMap {
 
   /* Ports */
   //drive ports
-  public static int lFrontMotorPort = 0;   //TODO Check the device ID of the left front motor on the drive train on Phoenix Tuner
-  public static int lBackMotorPort = 0;    //TODO Check the device ID of the left back motor on the drive train 
-  public static int rFrontMotorPort = 0;   //TODO Check the device ID  of the right front motor on the drive train 
-  public static int rBackMotorPort = 0;    //TODO Check the device ID of the right back motor on the drive train 
-  public static int rEncoderPort1 = 0;     //TODO Check the first port of the right encoder 
-  public static int rEncoderPort2 = 1;     //TODO Check the second port of the right encoder
-  public static int lEncoderPort1 = 0;     //TODO Check the first port of the left encoder
-  public static int lEncoderPort2 = 1;     //TODO Check the second port of the left encoder
-  public static int leftDriverCameraServoPort = 1; //TODO Check the PWM port that this is plugged into
-  public static int rightDriverCameraServoPort = 0; //TODO Check the PWN port that this is plugged into 
+  public static int lFrontMotorPort = 29;   
+  public static int lBackMotorPort = 21;    
+  public static int rFrontMotorPort = 26;   
+  public static int rBackMotorPort = 38;    
+  public static int rEncoderPort1 = 0;     //TODO Check to make sure that forward makes the output increase
+  public static int rEncoderPort2 = 1;     //TODO Check to make sure that forwards makes the output increase
+  public static int lEncoderPort1 = 2;     //TODO Check to make sure that forwards makes the output increase
+  public static int lEncoderPort2 = 3;     //TODO Check to make sure that forwards maeks the output increase
+  public static int leftDriverCameraServoPort = 1; //TODO Make sure that this is for the servo on the left side of the robot
+  public static int rightDriverCameraServoPort = 0; //TODO Make sure that this is for the servo on the right side of the robot
 
   //elevator ports
-  public static int elevatorPort = 0;      //TODO Check the device ID of the master motor 
-  public static int elevatorBottomLimitPort = 0; //TODO Check the port of the bottom limit switch 
+  public static int elevatorPort = 20; 
+  public static int elevatorBottomLimitPort = 18; //TODO Elevator Limit Switch : unplugged, need to find new port  
 
   //solenoid ports
-  public static int hatchMechanismSolenoidPort1 = 1;     //TODO Check the first port of the first solenoid
-  public static int hatchMechanismSolenoidPort2 = 2;     //TODO Check the second port of the first solenoid
-  public static int releaseHatchSolenoidPort1 = 3;     //TODO Check the first port of the second solenoid
-  public static int releaseHatchSolenoidPort2 = 4;     //TODO Check the second port of the second solenoid
+  public static int hatchMechanismSolenoidPort1 = 1;     //TODO Check the first port of the solenoid on the PCM
+  public static int hatchMechanismSolenoidPort2 = 2;     //TODO Check the second port of the solenoid on the PCM
+  public static int releaseHatchSolenoidPort1 = 3;     //TODO Check the first port of the solenoid on the PCM
+  public static int releaseHatchSolenoidPort2 = 4;     //TODO Check the second port of the solenoid on the PCM
 
   // IR sensor ports
-  public static int irLeftPort1 = 1;  //TODO Check the port of this left side IR sensor
-  public static int irLeftPort2 = 2;  //TODO Check the port of this left side IR sensor
-  public static int irLeftPort3 = 3;  //TODO Check the port of this left side IR sensor
-  public static int irRightPort1 = 5; //TODO Check the port of this right side IR sensor
-  public static int irRightPort2 = 6; //TODO Check the port of this right side IR sensor
-  public static int irRightPort3 = 7; //TODO Check the port of this right side IR sensor
+  public static int irLeftPort1 = 1;  //TODO Check if these are correct
+  public static int irLeftPort2 = 2;  //TODO Check if these are correct
+  public static int irLeftPort3 = 3;  //TODO Check if these are correct
+  public static int irRightPort1 = 5; //TODO Check if these are correct
+  public static int irRightPort2 = 6; //TODO Check if these are correct
+  public static int irRightPort3 = 7; //TODO Check if these are correct
 
   //cargo ports
-  public static int cargoIntakePort1 = 0; //TODO Check the device ID of the first cargo intake motor
-  public static int cargoIntakePort2 = 0; //TODO Check the device ID of the second cargo intake motor
-  public static int cargoRetractPort = 0; //TODO Check the device ID of the retraction cargo intake motor
-  public static int cargoOuttakePort = 0; //TODO Ccheck the device ID of the cargo outtake motor
+  public static int cargoIntakePort1 = 27; 
+  public static int cargoIntakePort2 = 23; 
+  public static int cargoRetractPort = 22; 
+  public static int cargoOuttakePort = 20; 
 
   //Ultrasonic ports
-  public static int ultrasonicLeftOneTrigger = 0;
-  public static int ultrasonicLeftOneEcho = 0;
-  public static int ultrasonicLeftTwoTrigger = 0;
-  public static int ultrasonicLeftTwoEcho = 0;
-  public static int ultrasonicRightOneTrigger = 0;
-  public static int ultrasonicRightOneEcho = 0;
-  public static int ultrasonicRightTwoTrigger = 0;
-  public static int ultrasonicRightTwoEcho = 0;
+  public static int ultrasonicLeftOneTrigger = 16; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicLeftOneEcho = 15; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicLeftTwoTrigger = 19; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicLeftTwoEcho = 17; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicRightOneTrigger = 13; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicRightOneEcho = 12; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicRightTwoTrigger = 10; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicRightTwoEcho = 14; //TODO Ultrasonics: were unplugged, make sure these ports are correct
 
   //DriveTrainPIDTarget
   public static double RightEncoderTarget = 0;
@@ -160,11 +160,11 @@ public class RobotMap {
   public static int leftAngle; //TODO Check this on the servo 
   public static double MotorCurrent = 0; //Use to work out if it is up agaisnt a wall.
   public static double MotorCurrentSum = 0;
+  public static double multiplier = 0.7;
 
   //elevator variables
   public static double elevatorSpeed = -0.7;
-  public static int elevatorEncoderMaxLimit = 100; //TODO check this upper limit on the real robot 
-  //This is the maximum encoder ticks allowed from the bottom upwards.
+  public static int elevatorEncoderMaxLimit = 100; //This is the maximum encoder ticks allowed from the bottom upwards. //TODO check this upper limit on the real robot 
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
   
   //hatch variables

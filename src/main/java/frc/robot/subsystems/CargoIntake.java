@@ -42,15 +42,15 @@ public class CargoIntake extends Subsystem {
    * @param speed double from -1 to 1 
    */
   public void setIntakeSpeed(double speed){
-    CargoIntake1.set(speed); //TODO Test this
-    CargoIntake2.set(speed); //TODO Test this
+    CargoIntake1.set(speed); 
+    CargoIntake2.set(-speed); 
   }
   /**
    * Sets the speed for the Retract Motor
    * @param speed double from -1 to 1
    */
   public void setRectractSpeed(double speed){
-    RetractMotor.set(speed); //TODO Test this
+    RetractMotor.set(speed); 
   }
 
   /**
@@ -65,11 +65,11 @@ public class CargoIntake extends Subsystem {
    * Returns whether the retract motor is at the top or not 
    * @return boolean is the motor at the top or not 
    */
-  public boolean isFullyRetracted(){ //TODO Sanjana: check/change.
+  public boolean isFullyRetracted(){ //TODO Sanjana: implement soft stop using current
     return false; 
   }
 
-  public boolean isFullyReleased(){ //TODO Sanjana: fix check/change.
+  public boolean isFullyReleased(){ //TODO Sanjana: implement soft stop using current
     return false;
   }
 

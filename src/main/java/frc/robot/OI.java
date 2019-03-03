@@ -70,7 +70,7 @@ public class OI {
   public OI() {
 
     // DRIVER STICK
-    retractCargoIntake.whenPressed(new RetractCargoIntake()); //TODO implement using current
+    retractCargoIntake.whenPressed(new RetractCargoIntake()); 
     releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
 
     //TODO Sanjana: write default case.
