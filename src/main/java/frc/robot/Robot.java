@@ -55,7 +55,6 @@ public class Robot extends TimedRobot {
     RobotMap.rightCamera = CameraServer.getInstance().startAutomaticCapture(1);
     RobotMap.server = CameraServer.getInstance().getServer();
 
-    //TODO Sanjana: Set default camera source and direction
     RobotMap.leftCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     RobotMap.rightCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
   }
