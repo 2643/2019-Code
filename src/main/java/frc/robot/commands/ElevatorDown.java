@@ -24,7 +24,7 @@ public class ElevatorDown extends Command {
 
   @Override
   protected void execute() {
-    Robot.elevator.setElevatorSpeed(-RobotMap.elevatorSpeed); //TODO William: Check elevator direction
+    Robot.elevator.setElevatorSpeed(-RobotMap.elevatorSpeed); 
   }
 
   @Override
