@@ -69,7 +69,7 @@ public class CargoIntake extends Subsystem {
     return false; 
   }
 
-  public boolean isFullyReleased(){ //TODO Sanjana: implement soft stop using current
+  public boolean isFullyReleased(){ 
     return false;
   }
 
