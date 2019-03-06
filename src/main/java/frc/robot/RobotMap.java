@@ -18,7 +18,6 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoSink;
@@ -52,8 +51,6 @@ public class RobotMap {
   public static int rEncoderPort2 = 1;     //TODO Check to make sure that forwards makes the output increase
   public static int lEncoderPort1 = 2;     //TODO Check to make sure that forwards makes the output increase
   public static int lEncoderPort2 = 3;     //TODO Check to make sure that forwards maeks the output increase
-  public static int leftDriverCameraServoPort = 1; //TODO Make sure that this is for the servo on the left side of the robot
-  public static int rightDriverCameraServoPort = 0; //TODO Make sure that this is for the servo on the right side of the robot
 
   //elevator ports
   public static int elevatorPort = 20; 
@@ -100,8 +97,6 @@ public class RobotMap {
   public static WPI_TalonSRX LeftBackMotor = new WPI_TalonSRX(lBackMotorPort);
   public static WPI_TalonSRX RightFrontMotor = new WPI_TalonSRX(rFrontMotorPort);
   public static WPI_TalonSRX RightBackMotor = new WPI_TalonSRX(rBackMotorPort);
-  public static Servo leftDriverCameraServo = new Servo(leftDriverCameraServoPort);
-  public static Servo rightDriverCameraServo = new Servo(rightDriverCameraServoPort);
 
   //elevator motors
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
@@ -154,10 +149,6 @@ public class RobotMap {
   //drive variables
   public static int rightDriverAxis = 5; 
   public static int leftDriverAxis = 1; 
-  public static int rightAngle; //TODO Check this on the servo 
-  public static int backwardAngle; //TODO Check this on the servo 
-  public static int forwardAngle; //TODO Check this on the servo 
-  public static int leftAngle; //TODO Check this on the servo 
   public static double MotorCurrent = 0; //Use to work out if it is up agaisnt a wall.
   public static double MotorCurrentSum = 0;
   public static double multiplier = 0.7;
@@ -217,20 +208,22 @@ public class RobotMap {
 
   public static int retractCargoIntakeButtonNumber = 2;
   public static int releaseCargoIntakeButtonNumber = 3;
+  public static int switchToLeftCameraButtonNumber = 0; //TODO check button number; this will be the buttons near the trigger
+  public static int switchToRightCameraButtonNumber = 0; //TODO check button number; this will be the buttons near the trigger
 
   //operator board button numbers
 
-  public static int cancelAutoSafetyButtonNumber = 1; //TODO Check Button Number
-  public static int elevatorDownButtonNumber = 5; //TODO Check Button Number
-  public static int cargoOuttakeLeftButtonNumber = 9; //TODO Check Button Number
-  public static int cargoOuttakeRightButtonNumber = 10; //TODO Check Button Number
-  public static int elevatorPresetButtonNumber = 6; //TODO Check Button Number
-  public static int elevatorUpButtonNumber = 4; //TODO Check Button Number
-  public static int intakeButtonNumber = 14; //TODO Check Button Number
-  public static int hatchReleaseButtonNumber = 7; //TODO Check Button Number
-  public static int hatchMechanismSwitchNumber = 12; //TODO Check Button Number
-  public static int hatchAutoButtonNumber = 2; //TODO check button number
-  public static int cargoOuttakeAutoButtonNumber = 3; //TODO check button number
+  public static int cancelAutoSafetyButtonNumber = 1; 
+  public static int elevatorDownButtonNumber = 5; 
+  public static int cargoOuttakeLeftButtonNumber = 9; 
+  public static int cargoOuttakeRightButtonNumber = 10; 
+  public static int elevatorPresetButtonNumber = 6; 
+  public static int elevatorUpButtonNumber = 4; 
+  public static int intakeButtonNumber = 14; 
+  public static int hatchReleaseButtonNumber = 7; 
+  public static int hatchMechanismSwitchNumber = 12; 
+  public static int hatchAutoButtonNumber = 2; 
+  public static int cargoOuttakeAutoButtonNumber = 3; 
 
   //Networktables for vision
   public static NetworkTable visionTable = NetworkTableInstance.getDefault().getTable("vision");
