@@ -75,23 +75,6 @@ public class OI {
     retractCargoIntake.whenPressed(new RetractCargoIntake()); 
     releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
 
-    // //TODO Sanjana: write default case.
-    // if(driverStick.getPOV() == 0){
-    //   Robot.driverCameras.setRightServoAngle(RobotMap.forwardAngle);
-    //   Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
-    // }else if(driverStick.getPOV() == 90){
-    //   Robot.driverCameras.setRightServoAngle(RobotMap.rightAngle);
-    //   Robot.driverCameras.setCameraSource(RobotMap.rightCamera);
-    // }else if(driverStick.getPOV() == 180){  
-    //   Robot.driverCameras.setLeftServoAngle(RobotMap.backwardAngle);
-    //   Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
-    // }else if(driverStick.getPOV() == 270){
-    //   Robot.driverCameras.setLeftServoAngle(RobotMap.leftAngle);
-    //   Robot.driverCameras.setCameraSource(RobotMap.leftCamera);
-    // }else{
-    //
-    // }
-
     //TODO check getRawButtonPressed() somewhere else before using it
     if(driverStick.getRawButtonPressed(RobotMap.switchToLeftCameraButtonNumber)){
       Robot.driverCameras.getServer().setSource(RobotMap.leftCamera);
@@ -100,8 +83,6 @@ public class OI {
     } else {
       Robot.driverCameras.getServer().setSource(RobotMap.rightCamera);
     }
-
-    
 
     //OPERATOR BOARD
     //safety button
