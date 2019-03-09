@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -19,8 +20,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Elevator extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private CANSparkMax Elevator;
-  private double encoderOffset; 
+  private CANSparkMax elevatorMotor;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
 
   /**
@@ -28,11 +28,11 @@ public class Elevator extends Subsystem {
    * @param liftMotor elevator motor
    */
   public Elevator(CANSparkMax liftMotor) {
-    Elevator = liftMotor;
+    elevatorMotor = liftMotor;
 
-    Elevator.getPIDController().setP(kP);
-    Elevator.getPIDController().setI(kI);
-    Elevator.getPIDController().setD(kD);
+    elevatorMotor.getPIDController().setP(kP);
+    elevatorMotor.getPIDController().setI(kI);
+    elevatorMotor.getPIDController().setD(kD);
     // PID coefficients
     kP = 0.1; 
     kI = 1e-4;
@@ -57,7 +57,7 @@ public class Elevator extends Subsystem {
   * @param speed from -1 to 1
   */
   public void setElevatorSpeed(double speed) {
-    Elevator.set(speed);
+    elevatorMotor.set(speed);
   }
 
   /**
@@ -65,7 +65,7 @@ public class Elevator extends Subsystem {
    * @return double elevator encoder position 
    */
   public double getElevatorEncoder() {
-    return(Elevator.getEncoder().getPosition() - encoderOffset);
+    return(elevatorMotor.getEncoder().getPosition());
   }
 
   /**
@@ -73,7 +73,7 @@ public class Elevator extends Subsystem {
    */
   public void resetElevatorEncoder(){
     if(getElevatorLimitSwitch()) {
-      encoderOffset = Elevator.getEncoder().getPosition();
+      elevatorMotor.getEncoder().setPosition(0);
     }
   }
   /** 
@@ -100,13 +100,13 @@ public class Elevator extends Subsystem {
      double rotations = 0;
  
      // if PID coefficients on SmartDashboard have changed, write new values to controller
-     if((p != kP)) { RobotMap.elevatorController.setP(p); kP = p; }
-     if((i != kI)) { RobotMap.elevatorController.setI(i); kI = i; }
-     if((d != kD)) { RobotMap.elevatorController.setD(d); kD = d; }
-     if((iz != kIz)) { RobotMap.elevatorController.setIZone(iz); kIz = iz; }
-     if((ff != kFF)) { RobotMap.elevatorController.setFF(ff); kFF = ff; }
+     if((p != kP)) { elevatorMotor.getPIDController().setP(p); kP = p; }
+     if((i != kI)) { elevatorMotor.getPIDController().setI(i); kI = i; }
+     if((d != kD)) { elevatorMotor.getPIDController().setD(d); kD = d; }
+     if((iz != kIz)) { elevatorMotor.getPIDController().setIZone(iz); kIz = iz; }
+     if((ff != kFF)) { elevatorMotor.getPIDController().setFF(ff); kFF = ff; }
      if((max != kMaxOutput) || (min != kMinOutput)) { 
-      RobotMap.elevatorController.setOutputRange(min, max); 
+      elevatorMotor.getPIDController().setOutputRange(min, max); 
        kMinOutput = min; kMaxOutput = max; 
      }
  
@@ -125,7 +125,7 @@ public class Elevator extends Subsystem {
       *  com.revrobotics.ControlType.kVelocity
       *  com.revrobotics.ControlType.kVoltage
       */
-      RobotMap.elevatorController.setReference(rotations, ControlType.kPosition);
+      elevatorMotor.getPIDController().setReference(rotations, ControlType.kPosition);
      
 
   }
