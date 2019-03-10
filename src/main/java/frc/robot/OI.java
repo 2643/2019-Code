@@ -75,7 +75,7 @@ public class OI {
     retractCargoIntake.whenPressed(new RetractCargoIntake()); 
     releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
 
-    //TODO check getRawButtonPressed() somewhere else before using it
+    
     if(driverStick.getRawButtonPressed(RobotMap.switchToLeftCameraButtonNumber)){
       Robot.driverCameras.getServer().setSource(RobotMap.leftCamera);
     } else if(driverStick.getRawButtonPressed(RobotMap.switchToRightCameraButtonNumber)){
