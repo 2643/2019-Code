@@ -42,6 +42,12 @@ public class RobotMap {
 
   // Everything is public because vscode likes to complain a lot about it.
 
+  //TODO Change **EVERY** Competition.
+  public static double gyroCompassDeclination = 13.18; 
+  //About 13.18 in San Jose CA.
+  //About 13.05 in Seaside, CA.
+  //About 13.32 in Nampa, ID.
+
   /* Ports */
   //drive ports
   public static int lFrontMotorPort = 29;   
@@ -127,7 +133,7 @@ public class RobotMap {
   public static UsbCamera rightCamera;
   public static VideoSink server;
   public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
-  
+
   //Ultrasonic Initiation
   public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(ultrasonicLeftOneTrigger, ultrasonicLeftOneEcho);
   public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(ultrasonicLeftTwoTrigger, ultrasonicLeftTwoEcho);

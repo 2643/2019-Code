@@ -7,8 +7,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.sensors.PigeonIMU;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -32,6 +30,12 @@ public class Gyroscope extends Subsystem {
     return(RobotMap.pigeonIMU.getFusedHeading());
   }
 
+  /**
+   * Sets the magnetic declination of the Pi(d)geonIMU.
+   */
+  public void setGyroDeclination(){
+    RobotMap.pigeonIMU.setCompassDeclination(RobotMap.gyroCompassDeclination);
+  }
   /**
    * Resets the angle of the gyroscope to 0
    */

@@ -29,7 +29,7 @@
     public static DriverCamera driverCameras = new DriverCamera(RobotMap.leftCamera, RobotMap.rightCamera);
     public static CargoIntake cargoIntake = new CargoIntake(RobotMap.cargoIntakeMotor1, RobotMap.cargoIntakeMotor2, RobotMap.cargoRetractMotor);
     public static CargoOuttake cargoOuttake = new CargoOuttake(RobotMap.cargoOuttakeMotor);
-    // ++ public static Gyroscope gyroscope = new Gyroscope(RobotMap.gyro);
+    public static Gyroscope gyroscope = new Gyroscope();
     public static LineDetector lineDetector = new LineDetector();
     public static UltrasonicSystem ultrasonicSystem = new UltrasonicSystem();
   
@@ -40,7 +40,8 @@
     @Override
     public void robotInit() {
       oi = new OI();
-
+      
+      gyroscope.setGyroDeclination();
       elevator.resetElevatorEncoder(); //Needs to be at the bottom, hitting the limit switch.
       RobotMap.ultrasonicLeftOne.setAutomaticMode(true);
 
