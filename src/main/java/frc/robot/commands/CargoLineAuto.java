@@ -230,7 +230,6 @@ public class CargoLineAuto extends Command {
   protected void end() {
     Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
     Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
-    //TODO reset counter and stored things.
   }
 
   // Called when another command which requires one or more of the same

@@ -7,14 +7,16 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import com.ctre.phoenix.sensors.PigeonIMU;
 
+import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
 public class Gyroscope extends Subsystem {
-  //TODO ProbablyanAsian: Change to pigeonIMU.
+  // TODO ProbablyanAsian: Change to pigeonIMU.
 
   @Override
   public void initDefaultCommand() {
@@ -27,12 +29,13 @@ public class Gyroscope extends Subsystem {
    * @return the angle of the gyroscope in double 
    */
   public double getGyroAngle(){
-    return(0.0);
+    return(RobotMap.pigeonIMU.getFusedHeading());
   }
 
   /**
    * Resets the angle of the gyroscope to 0
    */
   public void resetAngle(){
+    RobotMap.pigeonIMU.setFusedHeading(0);
   }
 }
