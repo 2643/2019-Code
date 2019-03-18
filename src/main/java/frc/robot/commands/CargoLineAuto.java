@@ -150,6 +150,11 @@ public class CargoLineAuto extends Command {
           Robot.drive.setLeftPosition(toDriveLeft);
           Robot.drive.setRightPosition(toDriveRight);
         }
+        //If it isn't too far, stop the movement.
+        else {
+          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
+          Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
+        }
       }
       
       //Checks if any of the middle sensor has been tripped.
