@@ -8,6 +8,7 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.sensors.PigeonIMU;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
@@ -40,6 +41,12 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
   // Everything is public because vscode likes to complain a lot about it.
+
+  //TODO Change **EVERY** Competition.
+  public static double gyroCompassDeclination = 13.18; 
+  //About 13.18 in San Jose CA.
+  //About 13.05 in Seaside, CA.
+  //About 13.32 in Nampa, ID.
 
   /* Ports */
   //drive ports
@@ -75,6 +82,9 @@ public class RobotMap {
   public static int cargoIntakePort2 = 23; 
   public static int cargoRetractPort = 22; 
   public static int cargoOuttakePort = 20; 
+  
+  //Gyroscope port
+  public static int gyroscopePort = 28;
 
   //Ultrasonic ports
   public static int ultrasonicLeftOneTrigger = 16; //TODO Ultrasonics: were unplugged, make sure these ports are correct
@@ -122,7 +132,8 @@ public class RobotMap {
   public static UsbCamera leftCamera;
   public static UsbCamera rightCamera;
   public static VideoSink server;
-  
+  public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
+
   //Ultrasonic Initiation
   public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(ultrasonicLeftOneTrigger, ultrasonicLeftOneEcho);
   public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(ultrasonicLeftTwoTrigger, ultrasonicLeftTwoEcho);
