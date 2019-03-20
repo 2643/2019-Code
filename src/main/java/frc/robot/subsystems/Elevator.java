@@ -84,10 +84,9 @@ public class Elevator extends Subsystem {
 
   /**
    * Sets the elevator position 
-   * @param position //TODO don't know whether to make this in encoder ticks, or RPM
+   * @param position in rotations
    */
-  public void setElevatorPosition(int value){
-    //Elevator.getPIDController().setReference(value, ControlType.kPosition);
+  public void setElevatorPosition(int rotation){
      // read PID coefficients from SmartDashboard
      double p = 0.065;
      double i = 0.005;
@@ -96,7 +95,7 @@ public class Elevator extends Subsystem {
      double ff = 0;
      double max = 0.5;
      double min = -0.5;
-     double rotations = 0;
+     double rotations = rotation;
  
      // if PID coefficients on SmartDashboard have changed, write new values to controller
      if((p != kP)) { elevatorMotor.getPIDController().setP(p); kP = p; }

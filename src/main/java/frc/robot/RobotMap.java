@@ -54,7 +54,7 @@ public class RobotMap {
 
   //elevator ports
   public static int elevatorPort = 20; 
-  public static int elevatorBottomLimitPort = 18; //TODO Elevator Limit Switch : unplugged, need to find new port  
+  public static int elevatorBottomLimitPort = 0; //TODO Elevator Limit Switch : unplugged, need to find new port 18 
 
   //solenoid ports
   public static int hatchMechanismSolenoidPort1 = 1;     //TODO Check the first port of the solenoid on the PCM
