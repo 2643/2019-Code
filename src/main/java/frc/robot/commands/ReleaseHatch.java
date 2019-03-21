@@ -31,7 +31,13 @@ public class ReleaseHatch extends Command {
 
   @Override
   protected void execute() { 
-    Robot.hatch.hatchPistonOut();
+    if(hatchTimer.get() <= 1){
+      Robot.hatch.hatchPistonOut();
+    }else if(hatchTimer.get() <= 2 && hatchTimer.get() > 1){
+
+    }else if(hatchTimer.get() >= 3){
+      Robot.hatch.hatchPistonIn();
+    }
   }
 
   @Override
@@ -47,6 +53,7 @@ public class ReleaseHatch extends Command {
   @Override
   protected void end() {
     Robot.hatch.hatchPistonIn();
+    hatchTimer.stop();
   }
 
   @Override

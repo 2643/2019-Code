@@ -170,7 +170,7 @@ public class RobotMap {
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
   
   //hatch variables
-  public static int hatchReleaseTimeout = 2; //TODO Change this
+  public static int hatchReleaseTimeout = 4; //TODO Change this
 
   //cargo variables
   public static double cargoIntakeSpeed = 1; 
