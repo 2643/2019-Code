@@ -15,7 +15,8 @@ import frc.robot.RobotMap;
  * Sets the elevator to a given height
  */
 public class ElevatorTo extends Command {
-  int levelToGoTo;
+  int rotations;
+  boolean finished = false; 
 
   /**
    * Sets the elevator to a given height
@@ -23,34 +24,33 @@ public class ElevatorTo extends Command {
    */
   public ElevatorTo(int elevatorLevelInTicks) {
     requires (Robot.elevator);
-    levelToGoTo = (elevatorLevelInTicks);
+    rotations = (elevatorLevelInTicks);
   }
 
   @Override
   protected void initialize() {
-    Robot.elevator.resetElevatorEncoder();
   }
 
   @Override
   protected void execute() {
-    Robot.elevator.setElevatorPosition(levelToGoTo);
+    Robot.elevator.setElevatorPosition(rotations);
   }
 
   @Override
   protected boolean isFinished() {
     //Checks to see whether the height above the ground is equal to the encoder ticks for the elevator encoder
-    if(Math.abs(Robot.elevator.getElevatorEncoder() - levelToGoTo) < RobotMap.elevatorTolerance){
-      return true;
+    if(Math.abs(Robot.elevator.getElevatorEncoder() - rotations) < RobotMap.elevatorTolerance){
+      finished = true;
     }
     else{
-      return false;
+      finished = false;
     }
+    return finished;
   }
 
   @Override
   protected void end() {
     Robot.elevator.setElevatorSpeed(0);
-    Robot.elevator.resetElevatorEncoder();
   }
 
   @Override

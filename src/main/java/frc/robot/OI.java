@@ -97,7 +97,7 @@ public class OI {
     elevatorUp.whileHeld(new ElevatorUp());
     
 
-    for(int i = 0; i < RobotMap.rocketLevel.length-1; i++) {
+    for(int i = 1; i < 5; i++) {
       if(sixPositionSwitchReading > RobotMap.rocketHatchLevels[i] && sixPositionSwitchReading < RobotMap.rocketHatchLevels[i+1]) {
         elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel[i]));
         break;

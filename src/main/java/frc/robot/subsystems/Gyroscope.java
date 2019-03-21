@@ -14,7 +14,6 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class Gyroscope extends Subsystem {
-  // TODO ProbablyanAsian: Change to pigeonIMU.
 
   @Override
   public void initDefaultCommand() {

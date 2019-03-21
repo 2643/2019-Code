@@ -66,8 +66,6 @@ public class Drive extends Subsystem {
      */
     
     public Drive(WPI_TalonSRX l1, WPI_TalonSRX l2, WPI_TalonSRX r1, WPI_TalonSRX r2) {
-        //TODO Navneeth: Implement Distance per pulse, later
-
         leftDriveMaster = l1;
         leftDriveSlave = l2;
 
