@@ -65,7 +65,7 @@ public class CargoIntake extends Subsystem {
    * Returns whether the retract motor is at the top or not 
    * @return boolean is the motor at the top or not 
    */
-  public boolean isFullyRetracted(){ //TODO Sanjana: implement soft stop using current
+  public boolean isFullyRetracted(){ //TODO Sanjana: implement encoder
     return false; 
   }
 
