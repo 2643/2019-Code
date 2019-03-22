@@ -129,7 +129,7 @@ public class RobotMap {
   //drive sensors
   public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
-  public static UsbCamera leftCamera;
+  public static UsbCamera frontCamera;
   public static UsbCamera rightCamera;
   public static VideoSink server;
   public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
@@ -219,8 +219,8 @@ public class RobotMap {
 
   public static int retractCargoIntakeButtonNumber = 2;
   public static int releaseCargoIntakeButtonNumber = 3;
-  public static int switchToLeftCameraButtonNumber = 0; //TODO check button number; this will be the buttons near the trigger
-  public static int switchToRightCameraButtonNumber = 0; //TODO check button number; this will be the buttons near the trigger
+  public static int hatchAutoButtonNumber = 5; 
+  public static int cargoOuttakeAutoButtonNumber = 6; 
 
   //operator board button numbers
 
@@ -233,8 +233,6 @@ public class RobotMap {
   public static int intakeButtonNumber = 14; 
   public static int hatchReleaseButtonNumber = 7; 
   public static int hatchMechanismSwitchNumber = 12; 
-  public static int hatchAutoButtonNumber = 2; 
-  public static int cargoOuttakeAutoButtonNumber = 3; 
 
   //Networktables for vision
   public static NetworkTable visionTable = NetworkTableInstance.getDefault().getTable("vision");
@@ -242,7 +240,8 @@ public class RobotMap {
   //operator board values for the six position switch 
   //DO NOT MESS WITH IT!
 
-  //TODO write in the encoder values for the rocket levels and replace the nulls with 0 
-  public static final int[] rocketLevel = {null, 0, 0, 0, 0, null, null, null};
+  //first level hatch, first level cargo, second level hatch, cargoship cargo
+  //2, -133, -235, -235
+  public static final int[] rocketLevel = {0, 2, -133, -235, -235, 0, 0, 0};
   public static final double[] rocketHatchLevels = {-1.0, -0.7, -0.2, 0.15, 0.4, 0.6, 0.85, 1.0};
 }

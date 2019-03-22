@@ -1,18 +1,21 @@
-  /*----------------------------------------------------------------------------*/
-  /* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-  /* Open Source Software - may be modified and shared by FRC teams. The code   */
-  /* must be accompanied by the FIRST BSD license file in the root directory of */
-  /* the project.                                                               */
-  /*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
 
-  package frc.robot;
+package frc.robot;
 
-  import edu.wpi.first.cameraserver.CameraServer;
-  import edu.wpi.first.wpilibj.TimedRobot;
-  import edu.wpi.first.wpilibj.command.Scheduler;
-  import frc.robot.subsystems.*;
-  import frc.robot.RobotMap;
-  import edu.wpi.cscore.VideoSource;
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import frc.robot.subsystems.*;
+import frc.robot.RobotMap;
+
+import com.revrobotics.ControlType;
+
+import edu.wpi.cscore.VideoSource;
 
   /**
    * The VM is configured to automatically run this class, and to call the
@@ -26,12 +29,16 @@
     public static Hatch hatch = new Hatch(RobotMap.hatchMechanismSolenoid, RobotMap.releaseHatchSolenoid);
     public static Elevator elevator = new Elevator(RobotMap.elevatorMotor);
     public static Drive drive = new Drive(RobotMap.LeftFrontMotor, RobotMap.LeftBackMotor, RobotMap.RightFrontMotor, RobotMap.RightBackMotor);
-    public static DriverCamera driverCameras = new DriverCamera(RobotMap.leftCamera, RobotMap.rightCamera);
+    public static DriverCamera driverCameras = new DriverCamera(RobotMap.frontCamera, RobotMap.rightCamera);
     public static CargoIntake cargoIntake = new CargoIntake(RobotMap.cargoIntakeMotor1, RobotMap.cargoIntakeMotor2, RobotMap.cargoRetractMotor);
     public static CargoOuttake cargoOuttake = new CargoOuttake(RobotMap.cargoOuttakeMotor);
     public static Gyroscope gyroscope = new Gyroscope();
     public static LineDetector lineDetector = new LineDetector();
     public static UltrasonicSystem ultrasonicSystem = new UltrasonicSystem();
+
+    public static boolean CalibrateSparkMax = false;
+    public static int CalibrateNumber;
+    public static double rotations;
   
     /**
      * This function is run when the robot is first started up and should be
@@ -52,11 +59,11 @@
       RobotMap.curIRStateRightTwo = RobotMap.IRState.IDLE;
       RobotMap.curIRStateRightThree = RobotMap.IRState.IDLE;
 
-      RobotMap.leftCamera = CameraServer.getInstance().startAutomaticCapture(0);
+      RobotMap.frontCamera = CameraServer.getInstance().startAutomaticCapture(0);
       RobotMap.rightCamera = CameraServer.getInstance().startAutomaticCapture(1);
       RobotMap.server = CameraServer.getInstance().getServer();
 
-      RobotMap.leftCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+      RobotMap.frontCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
       RobotMap.rightCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     }
 
@@ -70,6 +77,8 @@
      */
     @Override
     public void robotPeriodic() {
+      
+      
     }
 
     /**
@@ -106,7 +115,21 @@
      */
     @Override
     public void autonomousPeriodic() {
-      Scheduler.getInstance().run();
+      if(CalibrateSparkMax == false){
+        CalibrateNumber ++;
+        if(RobotMap.elevatorBottomLimit.get() == true){
+          if(CalibrateNumber % 25 == 0){
+            rotations = (RobotMap.elevatorMotor.getEncoder().getPosition() - 1);
+            RobotMap.elevatorMotor.getPIDController().setReference(rotations, ControlType.kPosition);
+          }else if(RobotMap.elevatorBottomLimit.get() == false){
+            rotations = 0;
+            RobotMap.elevatorMotor.getEncoder().setPosition(0);
+            CalibrateSparkMax = true;
+          }
+        }
+      }else{
+        Scheduler.getInstance().run();
+      }
     }
 
     @Override

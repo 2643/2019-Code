@@ -48,9 +48,9 @@ public class OI {
   Joystick driverStick = new Joystick(0);
   JoystickButton retractCargoIntake = new JoystickButton(driverStick, RobotMap.retractCargoIntakeButtonNumber);
   JoystickButton releaseCargoIntake = new JoystickButton(driverStick, RobotMap.releaseCargoIntakeButtonNumber);
-  JoystickButton switchToLeftCamera = new JoystickButton(driverStick, RobotMap.switchToLeftCameraButtonNumber);
-  JoystickButton switchToRightCamera = new JoystickButton(driverStick, RobotMap.switchToRightCameraButtonNumber);
-
+  JoystickButton hatchAuto = new JoystickButton(driverStick, RobotMap.hatchAutoButtonNumber);
+  JoystickButton cargoOuttakeAuto = new JoystickButton(driverStick, RobotMap.cargoOuttakeAutoButtonNumber);
+  
   // operator board and buttons
   Joystick operatorBoard = new Joystick(1);
   JoystickButton cancelAutoSafety = new JoystickButton(operatorBoard, RobotMap.cancelAutoSafetyButtonNumber);
@@ -62,8 +62,7 @@ public class OI {
   JoystickButton intake = new JoystickButton(operatorBoard, RobotMap.intakeButtonNumber);
   JoystickButton hatchRelease = new JoystickButton(operatorBoard, RobotMap.hatchReleaseButtonNumber);
   JoystickButton hatchMechanismSwitch = new JoystickButton(operatorBoard, RobotMap.hatchMechanismSwitchNumber);
-  JoystickButton hatchAuto = new JoystickButton(operatorBoard, RobotMap.hatchAutoButtonNumber);
-  JoystickButton cargoOuttakeAuto = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeAutoButtonNumber);
+
 
   // six position switch levels
   // First level of the rocket for the hatch
@@ -76,21 +75,20 @@ public class OI {
     releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
 
     
-    if(driverStick.getRawButtonPressed(RobotMap.switchToLeftCameraButtonNumber)){
-      Robot.driverCameras.getServer().setSource(RobotMap.leftCamera);
-    } else if(driverStick.getRawButtonPressed(RobotMap.switchToRightCameraButtonNumber)){
-      Robot.driverCameras.getServer().setSource(RobotMap.rightCamera);
-    } else {
+    if(driverStick.getPOV() == 0){
+      Robot.driverCameras.getServer().setSource(RobotMap.frontCamera);
+    } else if(driverStick.getPOV() == 45){
       Robot.driverCameras.getServer().setSource(RobotMap.rightCamera);
     }
-
-    //OPERATOR BOARD
-    //safety button
-    //cancelAutoSafety.cancelWhenPressed(new HatchAuto());
 
     //auto functions 
     hatchAuto.whileHeld(new HatchAuto());
     cargoOuttakeAuto.whileHeld(new CargoLineAuto());
+
+    
+    //OPERATOR BOARD
+    //safety button
+    //cancelAutoSafety.cancelWhenPressed(new HatchAuto());
     
     //elevator buttons
     elevatorDown.whileHeld(new ElevatorDown());
