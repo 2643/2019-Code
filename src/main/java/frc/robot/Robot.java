@@ -34,7 +34,6 @@ import edu.wpi.cscore.VideoSource;
     public static CargoOuttake cargoOuttake = new CargoOuttake(RobotMap.cargoOuttakeMotor);
     public static Gyroscope gyroscope = new Gyroscope();
     public static LineDetector lineDetector = new LineDetector();
-    public static UltrasonicSystem ultrasonicSystem = new UltrasonicSystem();
 
     public static boolean CalibrateSparkMax = false;
     public static int CalibrateNumber;
@@ -50,7 +49,6 @@ import edu.wpi.cscore.VideoSource;
       
       gyroscope.setGyroDeclination();
       elevator.resetElevatorEncoder(); //Needs to be at the bottom, hitting the limit switch.
-      RobotMap.ultrasonicLeftOne.setAutomaticMode(true);
 
       RobotMap.curIRStateLeftOne = RobotMap.IRState.IDLE;
       RobotMap.curIRStateLeftTwo = RobotMap.IRState.IDLE;

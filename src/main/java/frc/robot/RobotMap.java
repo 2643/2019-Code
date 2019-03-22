@@ -19,7 +19,6 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoSink;
 

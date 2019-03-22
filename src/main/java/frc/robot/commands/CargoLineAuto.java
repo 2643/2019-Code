@@ -18,7 +18,6 @@ public class CargoLineAuto extends Command {
     // eg. requires(chassis);
     requires(Robot.drive);
     requires(Robot.lineDetector);
-    requires(Robot.ultrasonicSystem);
   }
 
   // Called just before this Command runs the first time
@@ -86,77 +85,6 @@ public class CargoLineAuto extends Command {
       //Checks if there is an IR that's been activated.
     if(Robot.lineDetector.getIRSensors() != 0) {
 
-      //Warning if too far, aka 18 inches ish. //TODO check.
-      if(Robot.ultrasonicSystem.getLeftDist() >= RobotMap.maxUltrasonicDist){
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1){
-          System.err.println("ABORT ABORT LEFT DISTANCE TOO FAR");
-          finished = true;
-        }
-      }
-
-      //Warning if too far, aka 18 inches ish. //TODO check.
-      if(Robot.ultrasonicSystem.getRightDist() >= RobotMap.maxUltrasonicDist){
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1){
-          System.err.println("ABORT ABORT RIGHT DISTANCE TOO FAR");
-          finished = true;
-        }
-      }
-
-      //Only Left middle is activated.
-      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 && 
-      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
-      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0) {
-        //Checks if it's angled too far.
-        if((Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
-
-          //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
-          int leftDifference = Robot.ultrasonicSystem.getLeftValues()[0]-Robot.ultrasonicSystem.getLeftValues()[1];
-          int distToTicks = leftDifference / -7; //TODO verify my math. pls k thx
-          int toDriveLeft = distToTicks + Robot.drive.getLeftEncoder();
-          int toDriveRight = Robot.drive.getRightEncoder() - distToTicks;
-
-          //Turns it the proper amount of ticks
-          Robot.drive.setLeftPosition(toDriveLeft);
-          Robot.drive.setRightPosition(toDriveRight);
-        }
-        //If it isn't too far, stop the movement.
-        else {
-          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
-          Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
-        }
-      }
-      //Only if Right middle is activated.
-      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 0 &&
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 &&
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0){
-        //Checks that the ultrasonic is over the tolerance threshold
-        if((Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
-
-          //Temp variables, to ensure that the math is done in the proper order, as Java doesn't abide by PEMDAS.
-          //rightDifference is the error off in MMs
-          int rightDifference = Robot.ultrasonicSystem.getRightValues()[0]-Robot.ultrasonicSystem.getRightValues()[1];
-          //Divide by 7 to get tick distance
-          int distToTicks = rightDifference / -7;//TODO verify my math.
-          //Drive in the direction
-          int toDriveLeft = Robot.drive.getLeftEncoder() - distToTicks;
-          //Also drive in the right direction
-          int toDriveRight = distToTicks + Robot.drive.getRightEncoder();
-
-          //Drive to the proper position
-          Robot.drive.setLeftPosition(toDriveLeft);
-          Robot.drive.setRightPosition(toDriveRight);
-        }
-        //If it isn't too far, stop the movement.
-        else {
-          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
-          Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
-        }
-      }
-      
       //Checks if any of the middle sensor has been tripped.
       if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
@@ -203,18 +131,17 @@ public class CargoLineAuto extends Command {
         }
       }
     }
+     
     //Checks if all of the positions have been met, if they have, end().
     if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 &&
     (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
-    (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0 &&
-    (Robot.ultrasonicSystem.getLeftValues()[0] - Robot.ultrasonicSystem.getLeftValues()[1]) <= RobotMap.ultrasonicErrorTolerance) {
+    (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0) {
       finished = true;
     }
 
     if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 0 &&
       (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 &&
-      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0 &&
-      (Robot.ultrasonicSystem.getRightValues()[0] - Robot.ultrasonicSystem.getRightValues()[1]) <= RobotMap.ultrasonicErrorTolerance) {
+      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0 ) {
       finished = true;
     }
 }
