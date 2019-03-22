@@ -86,16 +86,6 @@ public class RobotMap {
   //Gyroscope port
   public static int gyroscopePort = 28;
 
-  //Ultrasonic ports
-  public static int ultrasonicLeftOneTrigger = 16; //TODO Ultrasonics: were unplugged, make sure these ports are correct
-  public static int ultrasonicLeftOneEcho = 15; //TODO Ultrasonics: were unplugged, make sure these ports are correct
-  public static int ultrasonicLeftTwoTrigger = 19; //TODO Ultrasonics: were unplugged, make sure these ports are correct
-  public static int ultrasonicLeftTwoEcho = 17; //TODO Ultrasonics: were unplugged, make sure these ports are correct
-  public static int ultrasonicRightOneTrigger = 13; //TODO Ultrasonics: were unplugged, make sure these ports are correct
-  public static int ultrasonicRightOneEcho = 12; //TODO Ultrasonics: were unplugged, make sure these ports are correct
-  public static int ultrasonicRightTwoTrigger = 10; //TODO Ultrasonics: were unplugged, make sure these ports are correct
-  public static int ultrasonicRightTwoEcho = 14; //TODO Ultrasonics: were unplugged, make sure these ports are correct
-
   //DriveTrainPIDTarget
   public static double RightEncoderTarget = 0;
   public static double LeftEncoderTarget = 0;
@@ -133,12 +123,6 @@ public class RobotMap {
   public static UsbCamera rightCamera;
   public static VideoSink server;
   public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
-
-  //Ultrasonic Initiation
-  public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(ultrasonicLeftOneTrigger, ultrasonicLeftOneEcho);
-  public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(ultrasonicLeftTwoTrigger, ultrasonicLeftTwoEcho);
-  public static Ultrasonic ultrasonicRightOne = new Ultrasonic(ultrasonicRightOneTrigger, ultrasonicRightOneEcho);
-  public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(ultrasonicRightTwoTrigger, ultrasonicRightTwoEcho);
 
   //elevator sensors
   public static DigitalInput elevatorBottomLimit = new DigitalInput(elevatorBottomLimitPort);
