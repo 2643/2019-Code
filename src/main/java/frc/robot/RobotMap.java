@@ -54,20 +54,20 @@ public class RobotMap {
   public static int lBackMotorPort = 21;    
   public static int rFrontMotorPort = 26;   
   public static int rBackMotorPort = 38;    
-  public static int rEncoderPort1 = 6;     //TODO Check to make sure that forward makes the output increase (Given by Rushabh 2019-03-22)
-  public static int rEncoderPort2 = 7;     //TODO Check to make sure that forwards makes the output increase
-  public static int lEncoderPort1 = 9;     //TODO Check to make sure that forwards makes the output increase
-  public static int lEncoderPort2 = 8;     //TODO Check to make sure that forwards maeks the output increase
+  public static int rEncoderPort1 = 6;     //(Given by Rushabh 2019-03-22)
+  public static int rEncoderPort2 = 7;     
+  public static int lEncoderPort1 = 9;     
+  public static int lEncoderPort2 = 8;     
 
   //elevator ports
   public static int elevatorPort = 20; 
   public static int elevatorBottomLimitPort = 10; //Given by Rushabh 2019-02-22
 
   //solenoid ports
-  public static int hatchMechanismSolenoidPort1 = 6; //out full   //TODO Check the first port of the solenoid on the PCM
-  public static int hatchMechanismSolenoidPort2 = 7; //in  full   //TODO Check the second port of the solenoid on the PCM
-  public static int releaseHatchSolenoidPort1 = 5;  //out  dispense   //TODO Check the first port of the solenoid on the PCM
-  public static int releaseHatchSolenoidPort2 = 4;  //in   dispense   //TODO Check the second port of the solenoid on the PCM
+  public static int hatchMechanismSolenoidPort1 = 6; //out full   
+  public static int hatchMechanismSolenoidPort2 = 7; //in  full   
+  public static int releaseHatchSolenoidPort1 = 5;  //out  dispense   
+  public static int releaseHatchSolenoidPort2 = 4;  //in   dispense   
 
   // IR sensor ports Confirmed by rushabh 2019-03-22
   public static int irLeftPort1 = 0; 
@@ -162,7 +162,7 @@ public class RobotMap {
   //Line targets
   public static int encoderErrorTolerance = 4; //in encoder ticks //TODO change this.
 
-  public static int halfIRDistance = 3; //in ticks, from the middle between the sensors. //TODO change this. //TODO William: check encoder Ratios.
+  public static int halfIRDistance = 3; //in ticks, from the middle between the sensors. //TODO change this. 
   public static int IRDistance = 7; // in ticks, distance between 2 sensors //TODO, check to make sure.
   public static int oneInchEncoder = 4; 
 
