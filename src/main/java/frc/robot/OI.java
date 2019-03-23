@@ -73,13 +73,8 @@ public class OI {
     // DRIVER STICK
     retractCargoIntake.whenPressed(new RetractCargoIntake()); 
     releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
-
     
-    if(driverStick.getPOV() == 0){
-      Robot.driverCameras.getServer().setSource(RobotMap.frontCamera);
-    } else if(driverStick.getPOV() == 45){
-      Robot.driverCameras.getServer().setSource(RobotMap.rightCamera);
-    }
+    Robot.driverCameras.getServer().setSource(RobotMap.frontCamera);
 
     //auto functions 
     hatchAuto.whileHeld(new HatchAuto());

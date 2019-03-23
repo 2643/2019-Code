@@ -60,7 +60,7 @@ public class RobotMap {
 
   //elevator ports
   public static int elevatorPort = 20; 
-  public static int elevatorBottomLimitPort = 0; //TODO Elevator Limit Switch : unplugged, need to find new port 18 
+  public static int elevatorBottomLimitPort = 10; //Given by Rushabh 2019-02-22
 
   //solenoid ports
   public static int hatchMechanismSolenoidPort1 = 1;     //TODO Check the first port of the solenoid on the PCM
@@ -119,7 +119,6 @@ public class RobotMap {
   public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
   public static UsbCamera frontCamera;
-  public static UsbCamera rightCamera;
   public static VideoSink server;
   public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
 

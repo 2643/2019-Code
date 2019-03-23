@@ -17,16 +17,13 @@ import frc.robot.RobotMap;
  */
 public class DriverCamera extends Subsystem {
   UsbCamera driverCamera1;
-  UsbCamera driverCamera2;
 
   /**
    * This is the constructor for the DriverCamera class
    * @param UsbCamera left camera
-   * @param UsbCamera right camera
    */
-  public DriverCamera(UsbCamera camera1, UsbCamera camera2){
+  public DriverCamera(UsbCamera camera1){
     driverCamera1 = camera1;
-    driverCamera2 = camera2;
   }
 
   /**
