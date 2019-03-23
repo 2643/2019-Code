@@ -14,6 +14,7 @@ import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -118,8 +119,8 @@ public class RobotMap {
   //drive sensors
   public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
-  public static UsbCamera frontCamera;
-  public static VideoSink server;
+  public static UsbCamera frontCamera = CameraServer.getInstance().startAutomaticCapture(0);
+  public static VideoSink server = CameraServer.getInstance().getServer();
   public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
 
   //elevator sensors

@@ -57,9 +57,6 @@ import edu.wpi.cscore.VideoSource;
       RobotMap.curIRStateRightTwo = RobotMap.IRState.IDLE;
       RobotMap.curIRStateRightThree = RobotMap.IRState.IDLE;
 
-      RobotMap.frontCamera = CameraServer.getInstance().startAutomaticCapture(0);
-      RobotMap.server = CameraServer.getInstance().getServer();
-
       RobotMap.frontCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     }
 
