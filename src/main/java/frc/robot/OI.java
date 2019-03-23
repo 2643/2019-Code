@@ -106,8 +106,9 @@ public class OI {
     intake.whileHeld(new IntakeCargo());
 
     // hatch buttons
-    hatchRelease.whenPressed(new ReleaseHatch());
-    hatchMechanismSwitch.whileHeld(new RetractHatch());
+    hatchRelease.whenPressed(new ReleaseHatchPanel());
+    hatchRelease.whenReleased(new RetractHatchPanel());
+    hatchMechanismSwitch.whenPressed(new RetractHatch());
     hatchMechanismSwitch.whenReleased(new ExtendHatch());
   }
 

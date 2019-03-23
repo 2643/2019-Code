@@ -64,8 +64,8 @@ public class RobotMap {
   public static int elevatorBottomLimitPort = 10; //Given by Rushabh 2019-02-22
 
   //solenoid ports
-  public static int hatchMechanismSolenoidPort1 = 6; //out full   
-  public static int hatchMechanismSolenoidPort2 = 7; //in  full   
+  public static int hatchMechanismSolenoidPort1 = 7; //out full   
+  public static int hatchMechanismSolenoidPort2 = 6; //in  full   
   public static int releaseHatchSolenoidPort1 = 5;  //out  dispense   
   public static int releaseHatchSolenoidPort2 = 4;  //in   dispense   
 

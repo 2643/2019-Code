@@ -7,55 +7,41 @@
 
 package frc.robot.commands;
 
-
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.*;
-/**
- * Releases the hatch panel
- */
-public class ReleaseHatch extends Command {
 
-  Timer hatchTimer = new Timer();
-
-  public ReleaseHatch() {
+public class RetractHatchPanel extends Command {
+  public RetractHatchPanel() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
     requires(Robot.hatch);
   }
 
+  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    hatchTimer.reset();
-    hatchTimer.start();
   }
 
+  // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() { 
-    if(hatchTimer.get() <= 1){
-      Robot.hatch.hatchPistonOut();
-    }else if(hatchTimer.get() <= 2 && hatchTimer.get() > 1){
-
-    }else if(hatchTimer.get() >= 3){
-      Robot.hatch.hatchPistonIn();
-    }
+  protected void execute() {
+    Robot.hatch.hatchPistonIn();
   }
 
+  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(hatchTimer.get() >= RobotMap.hatchReleaseTimeout) {
-      return(true);
-    }
-    else{
-      return(false);
-    }
+    return false;
   }
 
+  // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.hatch.hatchPistonIn();
-    hatchTimer.stop();
+    Robot.hatch.hatchPistonOff();
   }
 
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
     end();
