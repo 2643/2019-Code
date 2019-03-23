@@ -53,28 +53,28 @@ public class RobotMap {
   public static int lBackMotorPort = 21;    
   public static int rFrontMotorPort = 26;   
   public static int rBackMotorPort = 38;    
-  public static int rEncoderPort1 = 0;     //TODO Check to make sure that forward makes the output increase
-  public static int rEncoderPort2 = 1;     //TODO Check to make sure that forwards makes the output increase
-  public static int lEncoderPort1 = 2;     //TODO Check to make sure that forwards makes the output increase
-  public static int lEncoderPort2 = 3;     //TODO Check to make sure that forwards maeks the output increase
+  public static int rEncoderPort1 = 6;     //TODO Check to make sure that forward makes the output increase (Given by Rushabh 2019-03-22)
+  public static int rEncoderPort2 = 7;     //TODO Check to make sure that forwards makes the output increase
+  public static int lEncoderPort1 = 9;     //TODO Check to make sure that forwards makes the output increase
+  public static int lEncoderPort2 = 8;     //TODO Check to make sure that forwards maeks the output increase
 
   //elevator ports
   public static int elevatorPort = 20; 
   public static int elevatorBottomLimitPort = 10; //Given by Rushabh 2019-02-22
 
   //solenoid ports
-  public static int hatchMechanismSolenoidPort1 = 1;     //TODO Check the first port of the solenoid on the PCM
-  public static int hatchMechanismSolenoidPort2 = 2;     //TODO Check the second port of the solenoid on the PCM
-  public static int releaseHatchSolenoidPort1 = 3;     //TODO Check the first port of the solenoid on the PCM
-  public static int releaseHatchSolenoidPort2 = 4;     //TODO Check the second port of the solenoid on the PCM
+  public static int hatchMechanismSolenoidPort1 = 6; //out full   //TODO Check the first port of the solenoid on the PCM
+  public static int hatchMechanismSolenoidPort2 = 7; //in  full   //TODO Check the second port of the solenoid on the PCM
+  public static int releaseHatchSolenoidPort1 = 5;  //out  dispense   //TODO Check the first port of the solenoid on the PCM
+  public static int releaseHatchSolenoidPort2 = 4;  //in   dispense   //TODO Check the second port of the solenoid on the PCM
 
-  // IR sensor ports
-  public static int irLeftPort1 = 1;  //TODO Check if these are correct
-  public static int irLeftPort2 = 2;  //TODO Check if these are correct
-  public static int irLeftPort3 = 3;  //TODO Check if these are correct
-  public static int irRightPort1 = 5; //TODO Check if these are correct
-  public static int irRightPort2 = 6; //TODO Check if these are correct
-  public static int irRightPort3 = 7; //TODO Check if these are correct
+  // IR sensor ports Confirmed by rushabh 2019-03-22
+  public static int irLeftPort1 = 0; 
+  public static int irLeftPort2 = 1; 
+  public static int irLeftPort3 = 2; 
+  public static int irRightPort1 = 3;
+  public static int irRightPort2 = 4;
+  public static int irRightPort3 = 5;
 
   //cargo ports
   public static int cargoIntakePort1 = 27; 
@@ -135,9 +135,6 @@ public class RobotMap {
   public static DigitalInput irRight2 = new DigitalInput(irRightPort2);
   public static DigitalInput irRight3 = new DigitalInput(irRightPort3);
 
-  //gyroscope 
-  //TODO ProbablyanAsian: change to PigeonIMU
-
   /* Variables */
   //drive variables
   public static int rightDriverAxis = 5; 
@@ -163,7 +160,6 @@ public class RobotMap {
 
   //Line targets
   public static int encoderErrorTolerance = 4; //in encoder ticks //TODO change this.
-  public static int ultrasonicErrorTolerance = 33; // in millimeters. //TODO change this.
 
   public static int halfIRDistance = 3; //in ticks, from the middle between the sensors. //TODO change this. //TODO William: check encoder Ratios.
   public static int IRDistance = 7; // in ticks, distance between 2 sensors //TODO, check to make sure.
