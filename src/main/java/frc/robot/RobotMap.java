@@ -119,7 +119,7 @@ public class RobotMap {
   //drive sensors
   public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
-  public static UsbCamera frontCamera = CameraServer.getInstance().startAutomaticCapture(0);
+  public static UsbCamera frontCamera = CameraServer.getInstance().startAutomaticCapture();
   public static VideoSink server = CameraServer.getInstance().getServer();
   public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
 
@@ -146,7 +146,7 @@ public class RobotMap {
 
   //elevator variables
   public static double elevatorSpeed = -0.7;
-  public static int elevatorEncoderMaxLimit = 100; //This is the maximum encoder ticks allowed from the bottom upwards. //TODO check this upper limit on the real robot 
+  public static int elevatorEncoderMaxLimit = -238; //This is the maximum encoder ticks allowed from the bottom upwards. //TODO check this upper limit on the real robot 
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
   
   //hatch variables
@@ -210,7 +210,7 @@ public class RobotMap {
   public static int elevatorPresetButtonNumber = 6; 
   public static int elevatorUpButtonNumber = 4; 
   public static int intakeButtonNumber = 14; 
-  public static int hatchReleaseButtonNumber = 7; 
+  public static int hatchReleaseButtonNumber = 4; 
   public static int hatchMechanismSwitchNumber = 12; 
 
   //Networktables for vision

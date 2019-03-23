@@ -108,21 +108,21 @@ import edu.wpi.cscore.VideoSource;
      */
     @Override
     public void autonomousPeriodic() {
-      if(CalibrateSparkMax == false){
-        CalibrateNumber ++;
-        if(RobotMap.elevatorBottomLimit.get() == true){
-          if(CalibrateNumber % 25 == 0){
-            rotations = (RobotMap.elevatorMotor.getEncoder().getPosition() - 1);
-            RobotMap.elevatorMotor.getPIDController().setReference(rotations, ControlType.kPosition);
-          }else if(RobotMap.elevatorBottomLimit.get() == false){
-            rotations = 0;
-            RobotMap.elevatorMotor.getEncoder().setPosition(0);
-            CalibrateSparkMax = true;
-          }
-        }
-      }else{
+      // if(CalibrateSparkMax == false){
+      //   CalibrateNumber ++;
+      //   if(RobotMap.elevatorBottomLimit.get() == true){
+      //     if(CalibrateNumber % 25 == 0){
+      //       rotations = (RobotMap.elevatorMotor.getEncoder().getPosition() - 1);
+      //       RobotMap.elevatorMotor.getPIDController().setReference(rotations, ControlType.kPosition);
+      //     }else if(RobotMap.elevatorBottomLimit.get() == false){
+      //       rotations = 0;
+      //       RobotMap.elevatorMotor.getEncoder().setPosition(0);
+      //       CalibrateSparkMax = true;
+      //     }
+      //   }
+      // }else{
         Scheduler.getInstance().run();
-      }
+      //}
     }
 
     @Override

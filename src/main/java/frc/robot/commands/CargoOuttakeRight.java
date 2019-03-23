@@ -25,7 +25,7 @@ public class CargoOuttakeRight extends Command {
 
   @Override
   protected void execute() {
-    Robot.cargoOuttake.setCargoSpeed(-RobotMap.cargoOuttakeRightSpeed); 
+    Robot.cargoOuttake.setCargoSpeed(RobotMap.cargoOuttakeRightSpeed); 
   }
 
   @Override

@@ -31,12 +31,7 @@ public class ReleaseCargoIntake extends Command {
 
   @Override
   protected boolean isFinished() {
-    //Checks to see whether the cargo potentiometer value is the same as the cargo intake value
-    if(Robot.cargoIntake.isFullyReleased()){
-      return true;
-    } else{
-      return false;
-    }
+    return false;
   }
 
   @Override

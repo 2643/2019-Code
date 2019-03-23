@@ -42,7 +42,6 @@ public class ElevatorDown extends Command {
 
   @Override
   protected void end() {
-    Robot.elevator.resetElevatorEncoder();
     Robot.elevator.setElevatorSpeed(0);
   }
 

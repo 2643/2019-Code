@@ -60,7 +60,7 @@ public class OI {
   JoystickButton elevatorPreset = new JoystickButton(operatorBoard, RobotMap.elevatorPresetButtonNumber);
   JoystickButton elevatorUp = new JoystickButton(operatorBoard, RobotMap.elevatorUpButtonNumber);
   JoystickButton intake = new JoystickButton(operatorBoard, RobotMap.intakeButtonNumber);
-  JoystickButton hatchRelease = new JoystickButton(operatorBoard, RobotMap.hatchReleaseButtonNumber);
+  JoystickButton hatchRelease = new JoystickButton(driverStick, RobotMap.hatchReleaseButtonNumber);
   JoystickButton hatchMechanismSwitch = new JoystickButton(operatorBoard, RobotMap.hatchMechanismSwitchNumber);
 
 
@@ -71,8 +71,8 @@ public class OI {
   public OI() {
 
     // DRIVER STICK
-    retractCargoIntake.whenPressed(new RetractCargoIntake()); 
-    releaseCargoIntake.whenPressed(new ReleaseCargoIntake());
+    retractCargoIntake.whileHeld(new RetractCargoIntake()); 
+    releaseCargoIntake.whileHeld(new ReleaseCargoIntake());
     
     Robot.driverCameras.getServer().setSource(RobotMap.frontCamera);
 
