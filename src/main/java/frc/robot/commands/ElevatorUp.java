@@ -26,6 +26,7 @@ public class ElevatorUp extends Command {
   @Override
   protected void execute() {
     Robot.elevator.setElevatorSpeed(RobotMap.elevatorSpeed);
+    //System.out.println("Elevator UP");
   }
 
   @Override
@@ -33,12 +34,13 @@ public class ElevatorUp extends Command {
     /* Check if the encoder is still below the softlimit
     *  If it is, continue, otherwise stop
     */
-    if (Robot.elevator.getElevatorEncoder() < RobotMap.elevatorEncoderMaxLimit) {
-      return false;
-    }
-    else {
-      return true;
-    }
+    // if (Robot.elevator.getElevatorEncoder() < RobotMap.elevatorEncoderMaxLimit) {
+    //   return false;
+    // }
+    // else {
+    //   return true;
+    // }
+    return false;
   }
 
   @Override

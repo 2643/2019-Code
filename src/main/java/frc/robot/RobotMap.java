@@ -210,7 +210,7 @@ public class RobotMap {
   public static int elevatorPresetButtonNumber = 6; 
   public static int elevatorUpButtonNumber = 4; 
   public static int intakeButtonNumber = 14; 
-  public static int hatchReleaseButtonNumber = 4; 
+  public static int hatchReleaseButtonNumber = 6; 
   public static int hatchMechanismSwitchNumber = 12; 
 
   //Networktables for vision

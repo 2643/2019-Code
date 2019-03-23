@@ -25,6 +25,7 @@ public class ElevatorDown extends Command {
   @Override
   protected void execute() {
     Robot.elevator.setElevatorSpeed(-RobotMap.elevatorSpeed); 
+    //System.out.println("elevator down");
   }
 
   @Override
