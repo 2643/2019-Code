@@ -119,8 +119,8 @@ public class RobotMap {
   //drive sensors
   public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
- // public static UsbCamera frontCamera = CameraServer.getInstance().startAutomaticCapture();
-  //public static VideoSink server = CameraServer.getInstance().getServer();
+  public static UsbCamera frontCamera = CameraServer.getInstance().startAutomaticCapture();
+  public static VideoSink server = CameraServer.getInstance().getServer();
   public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
 
   //elevator sensors
