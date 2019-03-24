@@ -27,7 +27,7 @@ import edu.wpi.cscore.VideoSource;
     public static Hatch hatch = new Hatch(RobotMap.hatchMechanismSolenoid, RobotMap.releaseHatchSolenoid);
     public static Elevator elevator = new Elevator(RobotMap.elevatorMotor);
     public static Drive drive = new Drive(RobotMap.LeftFrontMotor, RobotMap.LeftBackMotor, RobotMap.RightFrontMotor, RobotMap.RightBackMotor);
-    //public static DriverCamera driverCameras = new DriverCamera(RobotMap.frontCamera);
+    public static DriverCamera driverCameras = new DriverCamera(RobotMap.frontCamera);
     public static CargoIntake cargoIntake = new CargoIntake(RobotMap.cargoIntakeMotor1, RobotMap.cargoIntakeMotor2, RobotMap.cargoRetractMotor);
     public static CargoOuttake cargoOuttake = new CargoOuttake(RobotMap.cargoOuttakeMotor);
     public static Gyroscope gyroscope = new Gyroscope();
@@ -55,7 +55,7 @@ import edu.wpi.cscore.VideoSource;
       RobotMap.curIRStateRightTwo = RobotMap.IRState.IDLE;
       RobotMap.curIRStateRightThree = RobotMap.IRState.IDLE;
 
-      //RobotMap.frontCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+      RobotMap.frontCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     }
 
     /**
@@ -132,8 +132,8 @@ import edu.wpi.cscore.VideoSource;
      */
     @Override
     public void teleopPeriodic() {
-      System.out.println("Left Encoder: " + RobotMap.LeftEncoder.get());
-      System.out.println("Right Encoder: " + RobotMap.RightEncoder.get());
+      //System.out.println("Left Encoder: " + RobotMap.LeftEncoder.get());
+      //System.out.println("Right Encoder: " + RobotMap.RightEncoder.get());
       Scheduler.getInstance().run();
     }
    
