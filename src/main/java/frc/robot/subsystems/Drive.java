@@ -187,6 +187,7 @@ public class Drive extends Subsystem {
      * Sets speed for both sides
      */
     public void setAllSpeed(double leftSpeed, double rightSpeed) {
+        System.out.println("Drive: "+ leftSpeed + " " + rightSpeed);
         setLeftSpeed(leftSpeed);
         setRightSpeed(rightSpeed);
     }

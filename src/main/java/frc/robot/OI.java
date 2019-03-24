@@ -73,11 +73,11 @@ public class OI {
     retractCargoIntake.whileHeld(new RetractCargoIntake()); 
     releaseCargoIntake.whileHeld(new ReleaseCargoIntake());
     
-    Robot.driverCameras.getServer().setSource(RobotMap.frontCamera);
+   // Robot.driverCameras.getServer().setSource(RobotMap.frontCamera);
 
     //auto functions 
-    hatchAuto.whileHeld(new HatchAuto());
-    cargoOuttakeAuto.whileHeld(new CargoLineAuto());
+    //hatchAuto.whileHeld(new HatchAuto());
+    //cargoOuttakeAuto.whileHeld(new CargoLineAuto());
 
     
     //OPERATOR BOARD

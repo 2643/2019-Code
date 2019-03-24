@@ -30,9 +30,9 @@ public class DriverCamera extends Subsystem {
    * Gets the server that the cameras are using 
    * @return VideoSink the server that the cameras are using
    */
-  public VideoSink getServer(){
-    return RobotMap.server; 
-  }
+  // public VideoSink getServer(){
+  //   return RobotMap.server; 
+  // }
 
   @Override
   public void initDefaultCommand() {

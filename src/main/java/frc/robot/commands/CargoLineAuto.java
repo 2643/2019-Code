@@ -34,7 +34,7 @@ public class CargoLineAuto extends Command {
     //Checks if there isn't a line already sensed.
     if(Robot.lineDetector.getIRSensors() == 0){
 
-      //Checks if the previously gotten value is beneath the maximum encoder reliability value.
+      /*//Checks if the previously gotten value is beneath the maximum encoder reliability value.
       if ((Math.abs(RobotMap.lastLeftOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
         (Math.abs(RobotMap.lastLeftOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
         Robot.drive.setLeftPosition(RobotMap.lastLeftOne[0] + RobotMap.halfIRDistance); //TODO check these
@@ -54,9 +54,9 @@ public class CargoLineAuto extends Command {
         (Math.abs(RobotMap.lastRightThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
         Robot.drive.setLeftPosition(RobotMap.lastRightThree[0] - RobotMap.halfIRDistance); //TODO check these
         Robot.drive.setRightPosition(RobotMap.lastRightThree[1] - RobotMap.halfIRDistance); //TODO check these
-      }
+        } */
 
-      else {
+      // -- else {
         int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
 
         //Robot has driven to be below the PID tolerance.
@@ -81,7 +81,7 @@ public class CargoLineAuto extends Command {
           }
         }
       }
-    }
+    // -- }
       //Checks if there is an IR that's been activated.
     if(Robot.lineDetector.getIRSensors() != 0) {
 
@@ -133,15 +133,11 @@ public class CargoLineAuto extends Command {
     }
      
     //Checks if all of the positions have been met, if they have, end().
-    if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 0 &&
-    (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 &&
-    (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 0) {
+    if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1) {
       finished = true;
     }
 
-    if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 0 &&
-      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1 &&
-      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 0 ) {
+    if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
       finished = true;
     }
 }
@@ -155,8 +151,9 @@ public class CargoLineAuto extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
-    Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
+    //Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
+    //Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
+    Robot.drive.setAllSpeed(0, 0);
   }
 
   // Called when another command which requires one or more of the same
