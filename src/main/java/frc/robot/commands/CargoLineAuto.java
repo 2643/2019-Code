@@ -24,7 +24,7 @@ public class CargoLineAuto extends Command {
   @Override
   protected void initialize() {
   }
-
+  
   boolean finished = false;
 
   // Called repeatedly when this Command is scheduled to run
@@ -63,8 +63,8 @@ public class CargoLineAuto extends Command {
         if(Math.abs(Robot.drive.LeftError) <= encoderErrorTolerance &&
           Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
             //If the middle sensor isn't activated, continue driving fowards.
-          if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
-            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
+          if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 0 ||
+            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 0) {
 
             //Add 1 inch to current value
             int precalcL = Robot.drive.getLeftEncoder() + RobotMap.oneInchEncoder;
