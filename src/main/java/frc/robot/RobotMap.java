@@ -200,18 +200,18 @@ public class RobotMap {
   public static int releaseCargoIntakeButtonNumber = 3;
   public static int hatchAutoButtonNumber = 5; 
   public static int cargoOuttakeAutoButtonNumber = 6; 
-
+  public static int hatchReleaseButtonNumber = 6; 
+  
   //operator board button numbers
-
-  public static int cancelAutoSafetyButtonNumber = 1; 
+  public static int calibrateButtonNumber = 1; 
   public static int elevatorDownButtonNumber = 5; 
   public static int cargoOuttakeLeftButtonNumber = 9; 
   public static int cargoOuttakeRightButtonNumber = 10; 
   public static int elevatorPresetButtonNumber = 6; 
   public static int elevatorUpButtonNumber = 4; 
   public static int intakeButtonNumber = 14; 
-  public static int hatchReleaseButtonNumber = 6; 
   public static int hatchMechanismSwitchNumber = 12; 
+
 
   //Networktables for vision
   public static NetworkTable visionTable = NetworkTableInstance.getDefault().getTable("vision");

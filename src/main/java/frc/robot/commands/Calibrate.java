@@ -17,7 +17,11 @@ public class Calibrate extends Command {
   private int calibrateCycle = 0;  
   private double rotations = 0; 
   private boolean finished = false; 
+  private boolean reset = false; 
 
+  /**
+   * Elevator needs to be at the bottom in order to run this
+   */
   public Calibrate() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -27,21 +31,48 @@ public class Calibrate extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.elevator.setElevatorPosition(0);
+
+    //if not hitting the limit switch don't calibrate
+    if(RobotMap.elevatorBottomLimit.get() == false){
+      finished = true; 
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    calibrateCycle++;
-    if(calibrateCycle % 10 == 0 && RobotMap.elevatorBottomLimit.get()){
-        rotations = (RobotMap.elevatorMotor.getEncoder().getPosition() + 5);
-        RobotMap.elevatorMotor.getPIDController().setReference(rotations, ControlType.kPosition);
+    calibrateCycle ++;
+    
+    // if(!reset){
+    //   Robot.elevator.setElevatorPosition(0);
+    //   if(calibrateCycle % 5 == 0 && Math.round(RobotMap.elevatorMotor.getEncoder().getPosition()) == 0){
+    //     reset = true; 
+    //   }
+    // }
+    // else if(RobotMap.elevatorBottomLimit.get()){
+    //   if(calibrateCycle % 10 == 0){
+    //     rotations = (RobotMap.elevatorMotor.getEncoder().getPosition() + 2);
+    //     RobotMap.elevatorMotor.getPIDController().setReference(rotations, ControlType.kPosition);
+    //   }
+    // }else if(!RobotMap.elevatorBottomLimit.get()){
+    //   rotations = 0;
+    //   RobotMap.elevatorMotor.getEncoder().setPosition(0);
+    //   RobotMap.elevatorMotor.getPIDController().setReference(0, ControlType.kPosition);
+    //   finished = true; 
+    // }
+
+    /*************************************************************************************/
+
+    //zero should be two encoder ticks above the very bottom of the elevator
+    if(!reset){
+      RobotMap.elevatorMotor.getPIDController().setReference(-2, ControlType.kPosition);
+      reset = true; 
     }
-    else if(calibrateCycle % 25 == 0 && !RobotMap.elevatorBottomLimit.get()){
-        rotations = 0;
-        RobotMap.elevatorMotor.getEncoder().setPosition(0);
-        finished = true; 
+    //if it has been reset and some time has passed, make where it is at the new zero
+    else if(reset && calibrateCycle % 10 == 0){
+      RobotMap.elevatorMotor.getEncoder().setPosition(0);
+      RobotMap.elevatorMotor.getPIDController().setReference(0, ControlType.kPosition);
+      finished = true;
     }
   }
 
@@ -54,7 +85,7 @@ public class Calibrate extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    
+    RobotMap.elevatorMotor.set(0);
   }
 
   // Called when another command which requires one or more of the same

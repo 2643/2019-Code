@@ -50,19 +50,18 @@ public class OI {
   JoystickButton releaseCargoIntake = new JoystickButton(driverStick, RobotMap.releaseCargoIntakeButtonNumber);
   JoystickButton hatchAuto = new JoystickButton(driverStick, RobotMap.hatchAutoButtonNumber);
   JoystickButton cargoOuttakeAuto = new JoystickButton(driverStick, RobotMap.cargoOuttakeAutoButtonNumber);
-  
+  JoystickButton hatchRelease = new JoystickButton(driverStick, RobotMap.hatchReleaseButtonNumber);
+
   // operator board and buttons
   Joystick operatorBoard = new Joystick(1);
-  JoystickButton cancelAutoSafety = new JoystickButton(operatorBoard, RobotMap.cancelAutoSafetyButtonNumber);
   JoystickButton elevatorDown = new JoystickButton(operatorBoard, RobotMap.elevatorDownButtonNumber);
   JoystickButton cargoOuttakeLeft = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeLeftButtonNumber);
   JoystickButton cargoOuttakeRight = new JoystickButton(operatorBoard, RobotMap.cargoOuttakeRightButtonNumber);
   JoystickButton elevatorPreset = new JoystickButton(operatorBoard, RobotMap.elevatorPresetButtonNumber);
   JoystickButton elevatorUp = new JoystickButton(operatorBoard, RobotMap.elevatorUpButtonNumber);
   JoystickButton intake = new JoystickButton(operatorBoard, RobotMap.intakeButtonNumber);
-  JoystickButton hatchRelease = new JoystickButton(driverStick, RobotMap.hatchReleaseButtonNumber);
   JoystickButton hatchMechanismSwitch = new JoystickButton(operatorBoard, RobotMap.hatchMechanismSwitchNumber);
-
+  JoystickButton calibrate = new JoystickButton(operatorBoard, RobotMap.calibrateButtonNumber);
 
   // six position switch levels
   // First level of the rocket for the hatch
@@ -82,8 +81,8 @@ public class OI {
 
     
     //OPERATOR BOARD
-    //safety button
-    //cancelAutoSafety.cancelWhenPressed(new HatchAuto());
+    //calibrate button 
+    //calibrate.whenPressed(new Calibrate());
     
     //elevator buttons
     elevatorDown.whileHeld(new ElevatorDown());
