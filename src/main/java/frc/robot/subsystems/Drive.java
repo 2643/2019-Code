@@ -105,14 +105,14 @@ public class Drive extends Subsystem {
     }
 
     /**
-     * Gets Right Encoder
+     * Gets Raw Right Encoder
      */
     public int getRightEncoder() {
         return RobotMap.RightEncoder.getRaw();
     }
 
     /**
-     * Gets Left Encoder
+     * Gets Raw Left Encoder
      */
     public int getLeftEncoder() {
         return RobotMap.LeftEncoder.getRaw();
@@ -206,7 +206,7 @@ public class Drive extends Subsystem {
      */
     public void setLeftPosition(int ticks) {
         // Gets the current Left encoder ticks.
-        LeftCurrentEncoderInput = RobotMap.LeftEncoder.getRaw();
+        LeftCurrentEncoderInput = getLeftEncoder();
         LeftEncoderTarget = RobotMap.LeftEncoderTarget;
         // Resign all the left variables.
         LeftCurrentVel = LeftCurrentEncoderInput - LeftPreviousEncoderInput;
@@ -230,8 +230,7 @@ public class Drive extends Subsystem {
             LeftOutput = (-MaxOutput);
         }
         // Set the motor speed.
-        RobotMap.LeftFrontMotor.set(-LeftOutput);
-        RobotMap.LeftBackMotor.set(-LeftOutput);
+        setLeftSpeed(LeftOutput);
         // Reassign some more left variables.
         LeftPreviousEncoderInput = LeftCurrentEncoderInput;
         LeftOldVel = LeftCurrentVel;
@@ -243,7 +242,7 @@ public class Drive extends Subsystem {
      */
     public void setRightPosition(int ticks){
         //Gets the currnet Right encoder ticks.
-        RightCurrentEncoderInput = RobotMap.RightEncoder.getRaw();
+        RightCurrentEncoderInput = getRightEncoder();
         RightEncoderTarget = RobotMap.RightEncoderTarget;
         // Resign all the right variables.
         RightCurrentVel = RightCurrentEncoderInput - RightPreviousEncoderInput;
@@ -267,8 +266,7 @@ public class Drive extends Subsystem {
             RightOutput = -MaxOutput;
         }
         // Set the motor speed.
-        RobotMap.RightFrontMotor.set(RightOutput);
-        RobotMap.RightBackMotor.set(RightOutput);
+        setRightSpeed(RightOutput);
         // Resign some more right variables.
         RightPreviousEncoderInput = RightCurrentEncoderInput;
         RightOldVel = RightCurrentVel;
@@ -285,17 +283,13 @@ public class Drive extends Subsystem {
     }
     
     int [] MotorCurrentArray = new int [20];
-    int Counter = 0;
+    int counter = 0;
     public boolean isStuck(){
-        Counter ++;
-
-        MotorCurrentArray [Counter%MotorCurrentArray.length%20] = (int) LeftCurrentVel;
+        counter++;
+        MotorCurrentArray [counter%MotorCurrentArray.length%20] = (int) LeftCurrentVel;
+        //Sum array
         RobotMap.MotorCurrentSum = IntStream.of(MotorCurrentArray).sum();
-        if(RobotMap.MotorCurrentSum >= 20){
-            return true;
-        }
-        else{
-            return false;
-        }
+        //If the motor current draw has beenvery high over the past aray
+        return RobotMap.MotorCurrentSum >= 20; 
     }
 }
