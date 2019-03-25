@@ -159,7 +159,7 @@ public class RobotMap {
   public static double cargoOuttakeRightSpeed = 1;
 
   //Line targets
-  public static int encoderErrorTolerance = 4; //in encoder ticks //TODO change this.
+  public static int encoderErrorTolerance = 7; //in encoder ticks //TODO change this.
 
   public static int halfIRDistance = 3; //in ticks, from the middle between the sensors. //TODO change this. 
   public static int IRDistance = 7; // in ticks, distance between 2 sensors //TODO, check to make sure.

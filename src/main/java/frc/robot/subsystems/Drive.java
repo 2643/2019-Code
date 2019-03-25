@@ -236,7 +236,7 @@ public class Drive extends Subsystem {
     }
 
     /**
-     * Sets the position fo the right side of the robot
+     * Sets the position of the right side of the robot
      * @param ticks int the position that you want to set the right side of the robot to 
      */
     public void setRightPosition(int ticks){
@@ -272,7 +272,7 @@ public class Drive extends Subsystem {
     }
 
     /**
-     * Sets the position of both sides of the robo
+     * Sets the position of both sides of the robot *send help plz*
      * @param leftTicks int the position that you want to set the left side of the robot to
      * @param rightTicks int the position that you want to set the right side of the robot to 
      */
