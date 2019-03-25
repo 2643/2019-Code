@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.*;
 import frc.robot.RobotMap;
 
-import com.revrobotics.ControlType;
+// import com.revrobotics.ControlType;
 
 import edu.wpi.cscore.VideoSource;
 
@@ -47,8 +47,7 @@ import edu.wpi.cscore.VideoSource;
       oi = new OI();
       
       gyroscope.setGyroDeclination();
-      elevator.resetElevatorEncoder(); //Needs to be at the bottom, hitting the limit switch.
-
+      
       RobotMap.curIRStateLeftOne = RobotMap.IRState.IDLE;
       RobotMap.curIRStateLeftTwo = RobotMap.IRState.IDLE;
       RobotMap.curIRStateLeftThree = RobotMap.IRState.IDLE;
@@ -107,24 +106,29 @@ import edu.wpi.cscore.VideoSource;
      */
     @Override
     public void autonomousPeriodic() {
-    // if(RobotMap.elevatorBottomLimit.get() == true && atBottom == false && CalibrateSparkMax == false){
+    /* --
+    //This is commented out because the elevator become unoperational after Govind broke it
+    //It should be uncommented when the elevator is fixed mechanically
+
+    // if(RobotMap.elevatorBottomLimit.get() && !atBottom && !CalibrateSparkMax){
+        //This reduces the amount of times that this piece of code runs
     //   if(CalibrateNumber % 5 == 0){
     //     RobotMap.rotations = RobotMap.elevatorMotor.getEncoder().getPosition() - 2;
     //     RobotMap.elevatorMotor.getPIDController().setReference(RobotMap.rotations, ControlType.kPosition);
     //   }
     // }
-    // else if(RobotMap.elevatorBottomLimit.get() == false && CalibrateSparkMax == false){
+    // else if(!RobotMap.elevatorBottomLimit.get() && !CalibrateSparkMax){
     //   atBottom = true;
     // }
-    // else if(CalibrateSparkMax == false){
+    // else if(!CalibrateSparkMax){
     //     CalibrateNumber ++;
-    //     if(RobotMap.elevatorBottomLimit.get() == true){
+    //     if(RobotMap.elevatorBottomLimit.get()){
     //       if(CalibrateNumber % 25 == 0){
     //         RobotMap.rotations = (RobotMap.elevatorMotor.getEncoder().getPosition() - 1);
     //         RobotMap.elevatorMotor.getPIDController().setReference(RobotMap.rotations, ControlType.kPosition);
     //         System.out.println("Moving up");
     //       }
-    //     }else if(RobotMap.elevatorBottomLimit.get() == false){
+    //     }else if(!RobotMap.elevatorBottomLimit.get()){
     //         RobotMap.rotations = 0;
     //         RobotMap.elevatorMotor.getEncoder().setPosition(0);
     //         CalibrateSparkMax = true;
@@ -134,6 +138,7 @@ import edu.wpi.cscore.VideoSource;
     //    Scheduler.getInstance().run();
     //    System.out.println(RobotMap.elevatorMotor.getEncoder().getPosition());
     //   }
+    */
       Scheduler.getInstance().run();
     }
 
@@ -146,8 +151,6 @@ import edu.wpi.cscore.VideoSource;
      */
     @Override
     public void teleopPeriodic() {
-      //System.out.println("Left Encoder: " + RobotMap.LeftEncoder.get());
-      //System.out.println("Right Encoder: " + RobotMap.RightEncoder.get());
       Scheduler.getInstance().run();
     }
    
@@ -164,7 +167,6 @@ import edu.wpi.cscore.VideoSource;
      */
     @Override
     public void testPeriodic() {
-      Robot.drive.setLeftPosition(50);
-      Robot.drive.setRightPosition(50);
+      
     }
   }

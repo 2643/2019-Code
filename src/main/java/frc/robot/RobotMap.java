@@ -57,7 +57,7 @@ public class RobotMap {
   public static int rFrontMotorPort = 26;   
   public static int rBackMotorPort = 38;    
   public static int rEncoderPort1 = 6;     //(Given by Rushabh 2019-03-22)
-  public static int rEncoderPort2 = 7;     
+  public static int rEncoderPort2 = 7;     //Correct as of 3/25 -ProbablyanAsian
   public static int lEncoderPort1 = 9;     
   public static int lEncoderPort2 = 8;     
 
@@ -66,7 +66,7 @@ public class RobotMap {
   public static int elevatorBottomLimitPort = 10; //Given by Rushabh 2019-02-22
 
   //solenoid ports
-  public static int hatchMechanismSolenoidPort1 = 7; //out full   
+  public static int hatchMechanismSolenoidPort1 = 7; //out full   //Given by Rushabh 3/24
   public static int hatchMechanismSolenoidPort2 = 6; //in  full   
   public static int releaseHatchSolenoidPort1 = 5;  //out  dispense   
   public static int releaseHatchSolenoidPort2 = 4;  //in   dispense   
@@ -148,11 +148,8 @@ public class RobotMap {
 
   //elevator variables
   public static double elevatorSpeed = -0.7;
-  public static int elevatorEncoderMaxLimit = -327; //This is the maximum encoder ticks allowed from the bottom upwards. //TODO check this upper limit on the real robot 
+  public static int elevatorEncoderMaxLimit = -50; //Testing number //This is the maximum encoder ticks allowed from the bottom upwards. //TODO check this upper limit on the real robot 
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
-  
-  //hatch variables
-  public static int hatchReleaseTimeout = 4; //TODO Change this
 
   //cargo variables
   public static double cargoIntakeSpeed = 1; 

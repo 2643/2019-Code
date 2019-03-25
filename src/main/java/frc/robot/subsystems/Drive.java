@@ -52,7 +52,6 @@ public class Drive extends Subsystem {
     double LeftCurrentAccel = 0.0;
     double AGain = 0.0;
     double ALimit = 18.0;
-    double unlimitedAccel = 0.0;
     double MaxOutput = 0.5;
     double SumLimit = 25.0;
 
@@ -187,7 +186,7 @@ public class Drive extends Subsystem {
      * Sets speed for both sides
      */
     public void setAllSpeed(double leftSpeed, double rightSpeed) {
-        System.out.println("Drive: "+ leftSpeed + " " + rightSpeed);
+        System.out.println("Drive: " + leftSpeed + " " + rightSpeed);
         setLeftSpeed(leftSpeed);
         setRightSpeed(rightSpeed);
     }
