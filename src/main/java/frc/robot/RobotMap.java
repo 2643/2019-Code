@@ -48,6 +48,8 @@ public class RobotMap {
   //About 13.05 in Seaside, CA.
   //About 13.32 in Nampa, ID.
 
+  public static double rotations;
+
   /* Ports */
   //drive ports
   public static int lFrontMotorPort = 29;   
@@ -146,7 +148,7 @@ public class RobotMap {
 
   //elevator variables
   public static double elevatorSpeed = -0.7;
-  public static int elevatorEncoderMaxLimit = -238; //This is the maximum encoder ticks allowed from the bottom upwards. //TODO check this upper limit on the real robot 
+  public static int elevatorEncoderMaxLimit = -327; //This is the maximum encoder ticks allowed from the bottom upwards. //TODO check this upper limit on the real robot 
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
   
   //hatch variables
@@ -200,7 +202,7 @@ public class RobotMap {
   public static int releaseCargoIntakeButtonNumber = 3;
   public static int hatchAutoButtonNumber = 5; 
   public static int cargoOuttakeAutoButtonNumber = 6; 
-  public static int hatchReleaseButtonNumber = 6; 
+  public static int hatchReleaseButtonNumber = 4; 
   
   //operator board button numbers
   public static int calibrateButtonNumber = 1; 
@@ -217,10 +219,7 @@ public class RobotMap {
   public static NetworkTable visionTable = NetworkTableInstance.getDefault().getTable("vision");
 
   //operator board values for the six position switch 
-  //DO NOT MESS WITH IT!
-
-  //first level hatch, first level cargo, second level hatch, cargoship cargo
-  //2, -133, -235, -235
-  public static final int[] rocketLevel = {0, 2, -133, -235, -235, 0, 0, 0};
-  public static final double[] rocketHatchLevels = {-1.0, -0.7, -0.2, 0.15, 0.4, 0.6, 0.85, 1.0};
+  public static final double[] presetDialValues = {-1.0, -0.7, -0.2, 0.15, 0.4, 0.6, 0.85, 1.0};
+  // Encoder tick goals
+  public static final int[] elevatorTickGoals = {-133, -200, -325};
 }

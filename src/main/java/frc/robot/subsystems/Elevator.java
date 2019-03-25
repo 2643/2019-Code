@@ -86,7 +86,7 @@ public class Elevator extends Subsystem {
    * Sets the elevator position 
    * @param position in rotations
    */
-  public void setElevatorPosition(int rotation){
+  public void setElevatorPosition(double rotation){
      // read PID coefficients from SmartDashboard
      double p = 0.065;
      double i = 0.005;

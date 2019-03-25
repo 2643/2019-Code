@@ -77,7 +77,7 @@ public class OI {
 
     //auto functions 
     //hatchAuto.whileHeld(new HatchAuto());
-    //cargoOuttakeAuto.whileHeld(new CargoLineAuto());
+   //cargoOuttakeAuto.whileHeld(new CargoLineAuto());
 
     
     //OPERATOR BOARD
@@ -88,10 +88,15 @@ public class OI {
     elevatorDown.whileHeld(new ElevatorDown());
     elevatorUp.whileHeld(new ElevatorUp());
     
-
-    for(int i = 1; i < 5; i++) {
-      if(sixPositionSwitchReading > RobotMap.rocketHatchLevels[i] && sixPositionSwitchReading < RobotMap.rocketHatchLevels[i+1]) {
-        elevatorPreset.whenPressed(new ElevatorTo(RobotMap.rocketLevel[i]));
+    for(int i = 1; i < RobotMap.presetDialValues.length-1; i++) {
+      if(sixPositionSwitchReading > RobotMap.presetDialValues[i] && sixPositionSwitchReading < RobotMap.presetDialValues[i+1]) {
+        if(i < RobotMap.elevatorTickGoals.length)
+        {
+          elevatorPreset.whenPressed(new ElevatorTo(RobotMap.elevatorTickGoals[i]));
+        }
+        else {
+          System.err.println("WARNING: Elevator Position: " +i + " not implemented!");
+        }
         break;
       }
     }

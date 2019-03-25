@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.*;
 import frc.robot.RobotMap;
 
+import com.revrobotics.ControlType;
 
 import edu.wpi.cscore.VideoSource;
 
@@ -35,7 +36,7 @@ import edu.wpi.cscore.VideoSource;
 
     public static boolean CalibrateSparkMax = false;
     public static int CalibrateNumber;
-    public static double rotations;
+    public static boolean atBottom = false; 
   
     /**
      * This function is run when the robot is first started up and should be
@@ -106,21 +107,34 @@ import edu.wpi.cscore.VideoSource;
      */
     @Override
     public void autonomousPeriodic() {
-      // if(CalibrateSparkMax == false){
-      //   CalibrateNumber ++;
-      //   if(RobotMap.elevatorBottomLimit.get() == true){
-      //     if(CalibrateNumber % 25 == 0){
-      //       rotations = (RobotMap.elevatorMotor.getEncoder().getPosition() - 1);
-      //       RobotMap.elevatorMotor.getPIDController().setReference(rotations, ControlType.kPosition);
-      //     }else if(RobotMap.elevatorBottomLimit.get() == false){
-      //       rotations = 0;
-      //       RobotMap.elevatorMotor.getEncoder().setPosition(0);
-      //       CalibrateSparkMax = true;
-      //     }
-      //   }
-      // }else{
-        Scheduler.getInstance().run();
-      //}
+    // if(RobotMap.elevatorBottomLimit.get() == true && atBottom == false && CalibrateSparkMax == false){
+    //   if(CalibrateNumber % 5 == 0){
+    //     RobotMap.rotations = RobotMap.elevatorMotor.getEncoder().getPosition() - 2;
+    //     RobotMap.elevatorMotor.getPIDController().setReference(RobotMap.rotations, ControlType.kPosition);
+    //   }
+    // }
+    // else if(RobotMap.elevatorBottomLimit.get() == false && CalibrateSparkMax == false){
+    //   atBottom = true;
+    // }
+    // else if(CalibrateSparkMax == false){
+    //     CalibrateNumber ++;
+    //     if(RobotMap.elevatorBottomLimit.get() == true){
+    //       if(CalibrateNumber % 25 == 0){
+    //         RobotMap.rotations = (RobotMap.elevatorMotor.getEncoder().getPosition() - 1);
+    //         RobotMap.elevatorMotor.getPIDController().setReference(RobotMap.rotations, ControlType.kPosition);
+    //         System.out.println("Moving up");
+    //       }
+    //     }else if(RobotMap.elevatorBottomLimit.get() == false){
+    //         RobotMap.rotations = 0;
+    //         RobotMap.elevatorMotor.getEncoder().setPosition(0);
+    //         CalibrateSparkMax = true;
+    //         System.out.println("Zeroed");
+    //     }
+    //   }else{
+    //    Scheduler.getInstance().run();
+    //    System.out.println(RobotMap.elevatorMotor.getEncoder().getPosition());
+    //   }
+      Scheduler.getInstance().run();
     }
 
     @Override
