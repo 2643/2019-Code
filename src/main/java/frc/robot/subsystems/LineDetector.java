@@ -285,19 +285,19 @@ public class LineDetector extends Subsystem {
     }
   }
   /**
-   * Clears all line memories, sets to -1000000000
+   * Clears all line memories, sets to -1000000000 and 1000000000 for circles if broken
    */
   public void clearLastLines() {
     RobotMap.lastLeftOne[0] = -1000000000;
-    RobotMap.lastLeftOne[1] = -1000000000;
+    RobotMap.lastLeftOne[1] = 1000000000;
 
-    RobotMap.lastLeftThree[0] = -1000000000;
+    RobotMap.lastLeftThree[0] = 1000000000;
     RobotMap.lastLeftThree[1] = -1000000000;
 
     RobotMap.lastRightOne[0] = -1000000000;
-    RobotMap.lastRightOne[1] = -1000000000;
+    RobotMap.lastRightOne[1] = 1000000000;
 
-    RobotMap.lastRightThree[0] = -1000000000;
+    RobotMap.lastRightThree[0] = 1000000000;
     RobotMap.lastRightThree[1] = -1000000000;
   }
 
