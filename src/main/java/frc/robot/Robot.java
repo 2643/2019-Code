@@ -33,6 +33,7 @@ import edu.wpi.cscore.VideoSource;
     public static CargoOuttake cargoOuttake = new CargoOuttake(RobotMap.cargoOuttakeMotor);
     public static Gyroscope gyroscope = new Gyroscope();
     public static LineDetector lineDetector = new LineDetector();
+    public static UltrasonicSubsystem ultrasonicSubsystem = new UltrasonicSubsystem();
 
     public static boolean CalibrateSparkMax = false;
     public static int CalibrateNumber;

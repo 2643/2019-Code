@@ -87,13 +87,26 @@ public class CargoLineAuto extends Command {
         if(Robot.lineDetector.getIRSensors() == 0) {
           RobotMap.curCargoAutoState = RobotMap.cargoAutoState.LINE;
         }
-        else {
-          
+        switch(RobotMap.curCargoAutoSide) {
+
+          case NONE:
+            System.err.println("ERROR: NONE sided");
+            RobotMap.curCargoAutoState = RobotMap.cargoAutoState.LINE;
+            break;
+
+          case LEFT:
+            if(Robot.ultrasonicSubsystem.getLeftDist() >= RobotMap.maxUltrasonicDist) {
+              System.err.println("ERROR: Too far, get closer");
+            }
+            if((Robot.ultrasonicSubsystem.getLeftValues()[0] - Robot.ultrasonicSubsystem.getLeftValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
+
+            }
+            break;
         }
         break;
     }
 
-    // -- }
+    /* --}
       //Checks if there is an IR that's been activated.
     if(Robot.lineDetector.getIRSensors() != 0) {
 
@@ -117,9 +130,9 @@ public class CargoLineAuto extends Command {
           //Make the robot move 1 inch backwards
           Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() - RobotMap.oneInchEncoder);
           Robot.drive.setRightPosition(Robot.drive.getRightEncoder() - RobotMap.oneInchEncoder);
-        }
-      }
-    }
+        } 
+      } 
+    } */
      
     //Checks if all of the positions have been met, if they have, end().
     if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1) {
