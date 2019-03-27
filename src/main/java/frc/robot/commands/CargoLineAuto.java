@@ -186,8 +186,8 @@ public class CargoLineAuto extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    //Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
-    //Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
+    Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
+    Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
     Robot.drive.setAllSpeed(0, 0);
     RobotMap.curCargoAutoState = RobotMap.cargoAutoState.IDLE;
     RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.NONE;
