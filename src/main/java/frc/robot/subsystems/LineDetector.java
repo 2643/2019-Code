@@ -33,6 +33,7 @@ public class LineDetector extends Subsystem {
   public static final int SENSOR_R1 = 1 << 3;
   public static final int SENSOR_R2 = 1 << 4;
   public static final int SENSOR_R3 = 1 << 5;
+  // TODO define a 1 + 2 + 3  mask.
 
   public int getIRSensors() {
 
@@ -229,27 +230,34 @@ public class LineDetector extends Subsystem {
     // gets the IR sensors and uses `bitwise and` to find if it equals the mask
     // If both IR sensors are true, then we can be certain that there *is* a line being detected.
     if((getIRSensors() & LineDetector.SENSOR_L1) == LineDetector.SENSOR_L1 &&
-    (getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2) {
-      //Stores current encoder value into an array.
-      RobotMap.lastLeftOne[0] = RobotMap.LeftEncoder.getRaw();
-      RobotMap.lastLeftOne[1] = RobotMap.RightEncoder.getRaw();
+    (getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2 &&
+    (getIRSensors() & LineDetector.SENSOR_L3) == LineDetector.SENSOR_L3) {
+      System.err.println("Drive better.");
     }
-    if((getIRSensors() & LineDetector.SENSOR_L3) == LineDetector.SENSOR_L3 &&
-    (getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2) {
-      RobotMap.lastLeftThree[0] = RobotMap.LeftEncoder.getRaw();
-      RobotMap.lastLeftThree[1] = RobotMap.RightEncoder.getRaw();
-    } 
-    if((getIRSensors() & LineDetector.SENSOR_R1) == LineDetector.SENSOR_R1 && 
-    (getIRSensors() & LineDetector.SENSOR_R2) == LineDetector.SENSOR_R2) {
-      RobotMap.lastRightOne[0] = RobotMap.LeftEncoder.getRaw();
-      RobotMap.lastRightOne[1] = RobotMap.RightEncoder.getRaw();
+    else {
+      if((getIRSensors() & LineDetector.SENSOR_L1) == LineDetector.SENSOR_L1 &&
+      (getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2) {
+        //Stores current encoder value into an array.
+        RobotMap.lastLeftOne[0] = RobotMap.LeftEncoder.getRaw();
+        RobotMap.lastLeftOne[1] = RobotMap.RightEncoder.getRaw();
+      }
+      if((getIRSensors() & LineDetector.SENSOR_L3) == LineDetector.SENSOR_L3 &&
+      (getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2) {
+        RobotMap.lastLeftThree[0] = RobotMap.LeftEncoder.getRaw();
+        RobotMap.lastLeftThree[1] = RobotMap.RightEncoder.getRaw();
+      }
     }
+      if((getIRSensors() & LineDetector.SENSOR_R1) == LineDetector.SENSOR_R1 && 
+      (getIRSensors() & LineDetector.SENSOR_R2) == LineDetector.SENSOR_R2) {
+        RobotMap.lastRightOne[0] = RobotMap.LeftEncoder.getRaw();
+        RobotMap.lastRightOne[1] = RobotMap.RightEncoder.getRaw();
+      }
 
-    if((getIRSensors() & LineDetector.SENSOR_R3) == LineDetector.SENSOR_R3 &&
-    (getIRSensors() & LineDetector.SENSOR_R2) == LineDetector.SENSOR_R2) {
-      RobotMap.lastRightThree[0] = RobotMap.LeftEncoder.getRaw();
-      RobotMap.lastRightThree[1] = RobotMap.RightEncoder.getRaw();
-    } 
+      if((getIRSensors() & LineDetector.SENSOR_R3) == LineDetector.SENSOR_R3 &&
+      (getIRSensors() & LineDetector.SENSOR_R2) == LineDetector.SENSOR_R2) {
+        RobotMap.lastRightThree[0] = RobotMap.LeftEncoder.getRaw();
+        RobotMap.lastRightThree[1] = RobotMap.RightEncoder.getRaw();
+      } 
   }
 
   @Override

@@ -30,7 +30,7 @@ public class CargoLineAuto extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.lineDetector.lastLineDetected();
+    // -- Robot.lineDetector.lastLineDetected();
     //Checks if there isn't a line already sensed.
     if(Robot.lineDetector.getIRSensors() == 0){
 
@@ -54,10 +54,14 @@ public class CargoLineAuto extends Command {
         (Math.abs(RobotMap.lastRightThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
         Robot.drive.setLeftPosition(RobotMap.lastRightThree[0] - RobotMap.halfIRDistance); //TODO check these
         Robot.drive.setRightPosition(RobotMap.lastRightThree[1] - RobotMap.halfIRDistance); //TODO check these
-        } */
+        }
+      else {
+        //TODO invalidate all last[DIR][NUM] as -1000000000 (1 bil)
+      } */
+
 
       // -- else {
-        int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
+        /* -- int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
 
         //Robot has driven to be below the PID tolerance.
         if(Math.abs(Robot.drive.LeftError) <= encoderErrorTolerance &&
@@ -79,7 +83,7 @@ public class CargoLineAuto extends Command {
             Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
             Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
           }
-        }
+        } -- */
       }
     // -- }
       //Checks if there is an IR that's been activated.
