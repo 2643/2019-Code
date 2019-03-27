@@ -66,33 +66,24 @@ public class CargoLineAuto extends Command {
         (Math.abs(RobotMap.lastRightThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
         Robot.drive.setLeftPosition(RobotMap.lastRightThree[0] - RobotMap.halfIRDistance); //TODO check these
         Robot.drive.setRightPosition(RobotMap.lastRightThree[1] - RobotMap.halfIRDistance); //TODO check these
+      }
+      else {
+        //Robot has driven to be below the PID tolerance.
+        if(Math.abs(Robot.drive.LeftError) <= RobotMap.encoderErrorTolerance &&
+          Math.abs(Robot.drive.RightError) <= RobotMap.encoderErrorTolerance) {
+
+          //Move the one inch fowards
+          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + RobotMap.oneInchEncoder);
+          Robot.drive.setRightPosition(Robot.drive.getRightEncoder() + RobotMap.oneInchEncoder);
         }
 
-      /* -- else {
-        int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
-
-        //Robot has driven to be below the PID tolerance.
-        if(Math.abs(Robot.drive.LeftError) <= encoderErrorTolerance &&
-          Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
-            //If the middle sensor isn't activated, continue driving fowards.
-          if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 0 ||
-            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 0) {
-
-            //Add 1 inch to current value
-            int precalcL = Robot.drive.getLeftEncoder() + RobotMap.oneInchEncoder;
-            int precalcR = Robot.drive.getRightEncoder() + RobotMap.oneInchEncoder;
-
-            //Move the one inch fowards
-            Robot.drive.setLeftPosition(precalcL);
-            Robot.drive.setRightPosition(precalcR);
-            }
-          //If the middle sensor is activated, stop where it is.
-          else {
-            Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
-            Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
-          }
-          } */
+        //If the middle sensor is activated, stop where it is.
+        else {
+          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
+          Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
+        }
       }
+    }
     // -- }
       //Checks if there is an IR that's been activated.
     if(Robot.lineDetector.getIRSensors() != 0) {

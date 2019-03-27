@@ -227,6 +227,9 @@ public class LineDetector extends Subsystem {
     return(sensorsOn);
   }
   
+  /**
+   * When called, checks if there's a line then remembers where (by encoder).
+   */
   public void lastLineDetected() {
     // gets the IR sensors and uses `bitwise and` to find if it equals the mask
     // If both IR sensors are true, then we can be certain that there *is* a line being detected.
@@ -240,7 +243,7 @@ public class LineDetector extends Subsystem {
     }
 
     if((getIRSensors() & LineDetector.SENSOR_L123) == LineDetector.SENSOR_L123) {
-      System.err.println("Drive Better.");
+      System.err.println("Drive Better. All Left IRs Active");
     }
     else{
       if((getIRSensors() & LineDetector.SENSOR_L1) == LineDetector.SENSOR_L1 &&
@@ -261,7 +264,7 @@ public class LineDetector extends Subsystem {
     }
 
     if((getIRSensors() & LineDetector.SENSOR_R123) == LineDetector.SENSOR_R123){
-      System.err.println("Drive Better.");
+      System.err.println("Drive Better. All Right IRs Active");
     }
     else {
       if((getIRSensors() & LineDetector.SENSOR_R1) == LineDetector.SENSOR_R1 && 
@@ -281,7 +284,9 @@ public class LineDetector extends Subsystem {
       }
     }
   }
-
+  /**
+   * Clears all line memories, sets to -1000000000
+   */
   public void clearLastLines() {
     RobotMap.lastLeftOne[0] = -1000000000;
     RobotMap.lastLeftOne[1] = -1000000000;
