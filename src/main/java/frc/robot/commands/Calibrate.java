@@ -14,8 +14,8 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class Calibrate extends Command {
-  private int calibrateCycle = 0;  
-  private double rotations = 0; 
+  //private int calibrateCycle = 0;  
+  //private double rotations = 0; 
   private boolean finished = false; 
   private boolean reset = false; 
 
@@ -41,7 +41,7 @@ public class Calibrate extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    calibrateCycle ++;
+    //calibrateCycle ++;
     
     // if(!reset){
     //   Robot.elevator.setElevatorPosition(0);
@@ -65,11 +65,11 @@ public class Calibrate extends Command {
 
     //zero should be two encoder ticks above the very bottom of the elevator
     if(!reset){
-      RobotMap.elevatorMotor.getPIDController().setReference(-2, ControlType.kPosition);
+      RobotMap.elevatorMotor.getPIDController().setReference(RobotMap.elevatorMotor.getEncoder().getPosition()-2, ControlType.kPosition);
       reset = true; 
     }
     //if it has been reset and some time has passed, make where it is at the new zero
-    else if(reset && calibrateCycle % 10 == 0){
+    else if(reset){
       RobotMap.elevatorMotor.getEncoder().setPosition(0);
       RobotMap.elevatorMotor.getPIDController().setReference(0, ControlType.kPosition);
       finished = true;

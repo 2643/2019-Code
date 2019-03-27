@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
 /**
  * Sets the elevator to a given height
@@ -38,23 +37,24 @@ public class ElevatorTo extends Command {
 
   @Override
   protected boolean isFinished() {
-    //Checks to see whether the height above the ground is equal to the encoder ticks for the elevator encoder
-    if(Math.abs(Robot.elevator.getElevatorEncoder() - rotations) < RobotMap.elevatorTolerance){
-      finished = true;
+    //Checks to see if the bottom limit switch or the top limit switch is hit
+    //TODO check this end condition for the elevator please before using it
+    if(Robot.elevator.getElevatorBottomLimitSwitch() || Robot.elevator.getElevatorUpperLimitSwitch()){
+      return true;
+    }else{
+      return false;
     }
-    else{
-      finished = false;
-    }
-    return finished;
   }
 
   @Override
   protected void end() {
-    Robot.elevator.setElevatorSpeed(0);
+    //TODO test this end for the elevator please before implementing this
+    Robot.elevator.setElevatorPosition(Robot.elevator.getElevatorEncoder());
   }
 
   @Override
   protected void interrupted() {
-    end();
+    Robot.elevator.setElevatorPosition(Robot.elevator.getElevatorEncoder()-5);
+
   }
 }
