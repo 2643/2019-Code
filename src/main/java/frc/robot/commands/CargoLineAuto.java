@@ -99,14 +99,20 @@ public class CargoLineAuto extends Command {
             if(Robot.ultrasonicSubsystem.getLeftDist() >= RobotMap.maxUltrasonicDist) {
               System.err.println("ERROR: Too far, get closer");
             }
-            if((Robot.ultrasonicSubsystem.getLeftValues()[0] - Robot.ultrasonicSubsystem.getLeftValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
+            
+            else {
+              if((Robot.ultrasonicSubsystem.getLeftValues()[0] - Robot.ultrasonicSubsystem.getLeftValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
 
-              int leftDifference = Robot.ultrasonicSubsystem.getLeftValues()[0]-Robot.ultrasonicSubsystem.getLeftValues()[1];
-              int distToTicks = leftDifference / -7; //TODO verify my math properly
-              //Turns it the proper amount of ticks
+                int leftDifference = Robot.ultrasonicSubsystem.getLeftValues()[0]-Robot.ultrasonicSubsystem.getLeftValues()[1];
+                int distToTicks = leftDifference / -7; //TODO verify my math properly
+                //Turns it the proper amount of ticks
 
-              Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + distToTicks);
-              Robot.drive.setRightPosition(Robot.drive.getRightEncoder() - distToTicks);
+                Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + distToTicks);
+                Robot.drive.setRightPosition(Robot.drive.getRightEncoder() - distToTicks);
+              }
+              else {
+                finished = true;
+              }
             }
             break;
 
@@ -114,14 +120,19 @@ public class CargoLineAuto extends Command {
             if(Robot.ultrasonicSubsystem.getRightDist() >= RobotMap.maxUltrasonicDist) {
               System.err.println("ERROR: Too far, get closer");
             }
-            if((Robot.ultrasonicSubsystem.getRightValues()[0] - Robot.ultrasonicSubsystem.getRightValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
-              
-              int rightDifference = Robot.ultrasonicSubsystem.getRightValues()[0] - Robot.ultrasonicSubsystem.getRightValues()[1];
-              int distToTicks = rightDifference / -7; //TODO verify my math properly
-              //Turns it the proper amount of ticks
+            else {
+              if((Robot.ultrasonicSubsystem.getRightValues()[0] - Robot.ultrasonicSubsystem.getRightValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
+                
+                int rightDifference = Robot.ultrasonicSubsystem.getRightValues()[0] - Robot.ultrasonicSubsystem.getRightValues()[1];
+                int distToTicks = rightDifference / -7; //TODO verify my math properly
+                //Turns it the proper amount of ticks
 
-              Robot.drive.setRightPosition(Robot.drive.getRightEncoder() - distToTicks);
-              Robot.drive.setRightPosition(Robot.drive.getRightEncoder() + distToTicks);
+                Robot.drive.setRightPosition(Robot.drive.getRightEncoder() - distToTicks);
+                Robot.drive.setRightPosition(Robot.drive.getRightEncoder() + distToTicks);
+              }
+              else {
+                finished = true;
+              }
             }
             break;
         }
@@ -156,14 +167,14 @@ public class CargoLineAuto extends Command {
       } 
     } */
      
-    //Checks if all of the positions have been met, if they have, end().
+    /* -- //Checks if all of the positions have been met, if they have, end().
     if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1) {
       finished = true;
     }
 
     if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
       finished = true;
-    }
+    } */
 }
 
   // Make this return true when this Command no longer needs to run execute()
