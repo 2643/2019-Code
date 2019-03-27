@@ -47,7 +47,11 @@ import edu.wpi.cscore.VideoSource;
       oi = new OI();
       
       gyroscope.setGyroDeclination();
+
+      RobotMap.ultrasonicLeftOne.setAutomaticMode(true);
       
+      RobotMap.curAutoState = RobotMap.autoState.IDLE;
+
       RobotMap.curIRStateLeftOne = RobotMap.IRState.IDLE;
       RobotMap.curIRStateLeftTwo = RobotMap.IRState.IDLE;
       RobotMap.curIRStateLeftThree = RobotMap.IRState.IDLE;

@@ -20,6 +20,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoSink;
 
@@ -92,6 +93,15 @@ public class RobotMap {
   public static double RightEncoderTarget = 0;
   public static double LeftEncoderTarget = 0;
   
+  //Ultrasonci Ports
+  public static int ultrasonicLeftOneTrigger = 16; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicLeftOneEcho = 15; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicLeftTwoTrigger = 19; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicLeftTwoEcho = 17; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicRightOneTrigger = 13; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicRightOneEcho = 12; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicRightTwoTrigger = 10; //TODO Ultrasonics: were unplugged, make sure these ports are correct
+  public static int ultrasonicRightTwoEcho = 14; //TODO Ultrasonics: were unplugged, make sure these ports are correct
 
   /* Motors */
   //Drive motors
@@ -138,6 +148,12 @@ public class RobotMap {
   public static DigitalInput irRight2 = new DigitalInput(irRightPort2);
   public static DigitalInput irRight3 = new DigitalInput(irRightPort3);
 
+  //Ultrasonic Initiation
+  public static Ultrasonic ultrasonicLeftOne = new Ultrasonic(ultrasonicLeftOneTrigger, ultrasonicLeftOneEcho);
+  public static Ultrasonic ultrasonicLeftTwo = new Ultrasonic(ultrasonicLeftTwoTrigger, ultrasonicLeftTwoEcho);
+  public static Ultrasonic ultrasonicRightOne = new Ultrasonic(ultrasonicRightOneTrigger, ultrasonicRightOneEcho);
+  public static Ultrasonic ultrasonicRightTwo = new Ultrasonic(ultrasonicRightTwoTrigger, ultrasonicRightTwoEcho);
+
   /* Variables */
   //drive variables
   public static int rightDriverAxis = 5; 
@@ -163,6 +179,7 @@ public class RobotMap {
 
   public static int encoderErrorTolerance = (oneInchEncoder * 2); //in encoder ticks //TODO change this.
   
+
   public static int halfIRDistance = (int)(oneInchEncoder * 0.875); //in ticks, from the middle between the sensors. //TODO change this. 
   public static int IRDistance = (oneInchEncoder * 2) + 1; // in ticks, distance between 2 sensors //TODO, check to make sure.
   public static int IRClearCounter = 0;
@@ -173,9 +190,17 @@ public class RobotMap {
   public static int[] lastRightOne = new int[2];
   public static int[] lastRightThree = new int[2];
 
+  public static int ultrasonicErrorTolerance = 33; // in millimeters. //TODO change this.
   public static int maxReliableEncoder = (oneInchEncoder * 5); //currently around 5 inches //maximum distance we can trust the last known line encoder position to stay valid.
   public static int maxUltrasonicDist = (int)(5 * 25.4); //Defined in MMs, currently around 13 inches
   //No touchy either I(CargoAutoCode) need these 
+
+  public static enum autoState {
+    IDLE, LINE, ANGLE; 
+  }
+  
+  public static autoState curAutoState;
+
   public static enum IRState {
     IDLE, TRUE, WAIT;
   }

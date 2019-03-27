@@ -30,7 +30,19 @@ public class CargoLineAuto extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.lineDetector.lastLineDetected();
+    switch(RobotMap.curAutoState) {
+
+      case IDLE:
+        break;
+
+      case LINE:
+
+        break;
+      
+      case ANGLE:
+
+        break;
+    }
     //Checks if there isn't a line already sensed.
     if(Robot.lineDetector.getIRSensors() == 0){
 
@@ -131,6 +143,7 @@ public class CargoLineAuto extends Command {
     //Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
     //Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
     Robot.drive.setAllSpeed(0, 0);
+    RobotMap.curAutoState = RobotMap.autoState.IDLE;
   }
 
   // Called when another command which requires one or more of the same
