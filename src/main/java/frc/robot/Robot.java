@@ -37,6 +37,7 @@ import edu.wpi.cscore.VideoSource;
     public static boolean CalibrateSparkMax = false;
     public static int CalibrateNumber;
     public static boolean atBottom = false; 
+
   
     /**
      * This function is run when the robot is first started up and should be
@@ -55,7 +56,7 @@ import edu.wpi.cscore.VideoSource;
       RobotMap.curIRStateRightTwo = RobotMap.IRState.IDLE;
       RobotMap.curIRStateRightThree = RobotMap.IRState.IDLE;
 
-      RobotMap.frontCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+      RobotMap.frontCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen); 
     }
 
     /**

@@ -71,17 +71,26 @@ public class Elevator extends Subsystem {
    * Resets the encoder by subtracting the current value as an offset, but only when the limit switch is hit 
    */
   public void resetElevatorEncoder(){
-    if(getElevatorLimitSwitch()) {
+    if(getElevatorBottomLimitSwitch()) {
       elevatorMotor.getEncoder().setPosition(0);
     }
   }
   /** 
-   * Gets the Elevator limitswitch value
+   * Gets the value of the bottom limit switch
+   * @return boolean
   */
-  public boolean getElevatorLimitSwitch(){
+  public boolean getElevatorBottomLimitSwitch(){
     return(RobotMap.elevatorBottomLimit.get());
   }
 
+  /**
+   * Gets the value of the upper limit switch 
+   * @return boolean
+   */
+  public boolean getElevatorUpperLimitSwitch(){
+    return (RobotMap.elevatorUpperLimit.get());
+  }
+  
   /**
    * Sets the elevator position 
    * @param position in rotations

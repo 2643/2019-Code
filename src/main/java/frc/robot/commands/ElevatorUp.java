@@ -35,13 +35,12 @@ public class ElevatorUp extends Command {
     /* Check if the encoder is still below the softlimit
     *  If it is, continue, otherwise stop
     */
-    // if (Robot.elevator.getElevatorEncoder() < RobotMap.elevatorEncoderMaxLimit) {
-    //   return false;
-    // }
-    // else {
-    //   return true;
-    // }
-    return false;
+    if (Robot.elevator.getElevatorUpperLimitSwitch()) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   @Override

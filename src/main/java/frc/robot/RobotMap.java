@@ -48,7 +48,6 @@ public class RobotMap {
   //About 13.05 in Seaside, CA.
   //About 13.32 in Nampa, ID.
 
-  public static double rotations;
 
   /* Ports */
   //drive ports
@@ -64,6 +63,7 @@ public class RobotMap {
   //elevator ports
   public static int elevatorPort = 20; 
   public static int elevatorBottomLimitPort = 10; //Given by Rushabh 2019-02-22
+  public static int elevatorUpperLimitPort = 0; //TODO find the upper limit switch port
 
   //solenoid ports
   public static int hatchMechanismSolenoidPort1 = 7; //out full   //Given by Rushabh 3/24
@@ -122,11 +122,12 @@ public class RobotMap {
   public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
   public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
   public static UsbCamera frontCamera = CameraServer.getInstance().startAutomaticCapture();
-  public static VideoSink server = CameraServer.getInstance().getServer();
+  public static VideoSink server = CameraServer.getInstance().getServer(); 
   public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
 
   //elevator sensors
   public static DigitalInput elevatorBottomLimit = new DigitalInput(elevatorBottomLimitPort);
+  public static DigitalInput elevatorUpperLimit = new DigitalInput(elevatorUpperLimitPort);
   public static CANEncoder elevatorEncoder = new CANEncoder(elevatorMotor);
   public static CANPIDController elevatorController = new CANPIDController(elevatorMotor);
 
@@ -145,10 +146,12 @@ public class RobotMap {
   public static double MotorCurrent = 0; //Use to work out if it is up agaisnt a wall.
   public static double MotorCurrentSum = 0;
   public static double multiplier = 0.7;
+  public static double rotations;
 
   //elevator variables
   public static double elevatorSpeed = -0.7;
-  public static int elevatorEncoderMaxLimit = -50; //Testing number //This is the maximum encoder ticks allowed from the bottom upwards. //TODO check this upper limit on the real robot 
+  //TODO check this value on the robot
+  public static int elevatorEncoderMaxLimit = -50; //Testing number, this is the maximum encoder ticks allowed from the bottom upwards.
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
 
   //cargo variables
