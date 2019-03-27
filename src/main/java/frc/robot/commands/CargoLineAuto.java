@@ -33,10 +33,10 @@ public class CargoLineAuto extends Command {
     switch(RobotMap.curCargoAutoState) {
 
       case IDLE:
+        RobotMap.curCargoAutoState = RobotMap.cargoAutoState.LINE;
         break;
 
       case LINE:
-
           //Checks if the previously gotten value is beneath the maximum encoder reliability value.
           if ((Math.abs(RobotMap.lastLeftOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
             (Math.abs(RobotMap.lastLeftOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {

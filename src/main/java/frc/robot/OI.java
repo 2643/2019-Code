@@ -49,7 +49,7 @@ public class OI {
   JoystickButton retractCargoIntake = new JoystickButton(driverStick, RobotMap.retractCargoIntakeButtonNumber);
   JoystickButton releaseCargoIntake = new JoystickButton(driverStick, RobotMap.releaseCargoIntakeButtonNumber);
   JoystickButton hatchAuto = new JoystickButton(driverStick, RobotMap.hatchAutoButtonNumber);
-  JoystickButton cargoOuttakeAuto = new JoystickButton(driverStick, RobotMap.cargoOuttakeAutoButtonNumber);
+  public JoystickButton cargoOuttakeAuto = new JoystickButton(driverStick, RobotMap.cargoOuttakeAutoButtonNumber);
   JoystickButton hatchRelease = new JoystickButton(driverStick, RobotMap.hatchReleaseButtonNumber);
 
   // operator board and buttons
@@ -77,7 +77,7 @@ public class OI {
 
     //auto functions 
     //hatchAuto.whileHeld(new HatchAuto());
-   //cargoOuttakeAuto.whileHeld(new CargoLineAuto());
+    //cargoOuttakeAuto.whileHeld(new CargoLineAuto());
 
     
     //OPERATOR BOARD
@@ -95,7 +95,7 @@ public class OI {
           elevatorPreset.whenPressed(new ElevatorTo(RobotMap.elevatorTickGoals[i]));
         }
         else {
-          System.err.println("WARNING: Elevator Position: " +i + " not implemented!");
+          System.err.println("WARNING: Elevator Position: " + i + " not implemented!");
         }
         break;
       }
