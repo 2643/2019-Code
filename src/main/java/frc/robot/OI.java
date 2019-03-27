@@ -77,7 +77,7 @@ public class OI {
 
     //auto functions 
     //hatchAuto.whileHeld(new HatchAuto());
-   //cargoOuttakeAuto.whileHeld(new CargoLineAuto());
+    //cargoOuttakeAuto.whileHeld(new CargoLineAuto());
 
     
     //OPERATOR BOARD
@@ -113,7 +113,9 @@ public class OI {
     hatchRelease.whenPressed(new ReleaseHatchPanel());
     hatchRelease.whenReleased(new RetractHatchPanel());
     hatchMechanismSwitch.whenPressed(new RetractHatch());
-    hatchMechanismSwitch.whenReleased(new ExtendHatch());
+    hatchMechanismSwitch.whenReleased(new ExtendHatch()); 
+
+    //TODO check whether the right functions are being activated the hatch buttons on the operator board and joystick
   }
 
   // Creating the joystick
