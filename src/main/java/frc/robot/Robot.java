@@ -50,7 +50,8 @@ import edu.wpi.cscore.VideoSource;
 
       RobotMap.ultrasonicLeftOne.setAutomaticMode(true);
       
-      RobotMap.curAutoState = RobotMap.autoState.IDLE;
+      RobotMap.curCargoAutoState = RobotMap.cargoAutoState.IDLE;
+      RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.NONE;
 
       RobotMap.curIRStateLeftOne = RobotMap.IRState.IDLE;
       RobotMap.curIRStateLeftTwo = RobotMap.IRState.IDLE;

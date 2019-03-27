@@ -195,11 +195,16 @@ public class RobotMap {
   public static int maxUltrasonicDist = (int)(5 * 25.4); //Defined in MMs, currently around 13 inches
   //No touchy either I(CargoAutoCode) need these 
 
-  public static enum autoState {
+  public static enum cargoAutoState {
     IDLE, LINE, ANGLE; 
   }
   
-  public static autoState curAutoState;
+  public static cargoAutoState curCargoAutoState;
+
+  public static enum cargoAutoSide {
+    NONE, LEFT, RIGHT;
+  }
+  public static cargoAutoSide curCargoAutoSide;
 
   public static enum IRState {
     IDLE, TRUE, WAIT;
