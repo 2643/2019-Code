@@ -161,13 +161,14 @@ public class RobotMap {
   public static double cargoOuttakeLeftSpeed = -1; 
   public static double cargoOuttakeRightSpeed = 1;
 
-  //Line targets
-  public static int encoderErrorTolerance = 7; //in encoder ticks //TODO change this.
-
-  public static int halfIRDistance = 3; //in ticks, from the middle between the sensors. //TODO change this. 
-  public static int IRDistance = 7; // in ticks, distance between 2 sensors //TODO, check to make sure.
+  //Line targets 
   public static int oneInchEncoder = 4; 
 
+  public static int encoderErrorTolerance = (oneInchEncoder * 2); //in encoder ticks //TODO change this.
+  
+  public static int halfIRDistance = (int)(oneInchEncoder * 0.875); //in ticks, from the middle between the sensors. //TODO change this. 
+  public static int IRDistance = (oneInchEncoder * 2) + 1; // in ticks, distance between 2 sensors //TODO, check to make sure.
+  public static int IRClearCounter = 0;
   //DO NOT CHANGE WHTHOUT ASKING 
   public static int[] lastLeftOne = new int[2];
   public static int[] lastLeftThree = new int[2];
@@ -175,8 +176,8 @@ public class RobotMap {
   public static int[] lastRightOne = new int[2];
   public static int[] lastRightThree = new int[2];
 
-  public static int maxReliableEncoder = 20; //currently around 5 inches //maximum distance we can trust the last known line encoder position to stay valid.
-  public static int maxUltrasonicDist = 457; //Defined in MMs, currently around 13 inches
+  public static int maxReliableEncoder = (oneInchEncoder * 5); //currently around 5 inches //maximum distance we can trust the last known line encoder position to stay valid.
+  public static int maxUltrasonicDist = (int)(5 * 25.4); //Defined in MMs, currently around 13 inches
   //No touchy either I(CargoAutoCode) need these 
   public static enum IRState {
     IDLE, TRUE, WAIT;

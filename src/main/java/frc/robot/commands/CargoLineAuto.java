@@ -34,7 +34,7 @@ public class CargoLineAuto extends Command {
     //Checks if there isn't a line already sensed.
     if(Robot.lineDetector.getIRSensors() == 0){
 
-      /*//Checks if the previously gotten value is beneath the maximum encoder reliability value.
+      //Checks if the previously gotten value is beneath the maximum encoder reliability value.
       if ((Math.abs(RobotMap.lastLeftOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
         (Math.abs(RobotMap.lastLeftOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
         Robot.drive.setLeftPosition(RobotMap.lastLeftOne[0] + RobotMap.halfIRDistance); //TODO check these
@@ -54,9 +54,9 @@ public class CargoLineAuto extends Command {
         (Math.abs(RobotMap.lastRightThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
         Robot.drive.setLeftPosition(RobotMap.lastRightThree[0] - RobotMap.halfIRDistance); //TODO check these
         Robot.drive.setRightPosition(RobotMap.lastRightThree[1] - RobotMap.halfIRDistance); //TODO check these
-        } */
+        }
 
-      // -- else {
+      /* -- else {
         int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
 
         //Robot has driven to be below the PID tolerance.
@@ -79,19 +79,19 @@ public class CargoLineAuto extends Command {
             Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
             Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
           }
-        }
+          } */
       }
     // -- }
       //Checks if there is an IR that's been activated.
     if(Robot.lineDetector.getIRSensors() != 0) {
 
       //Checks if any of the middle sensor has been tripped.
-      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1 ||
-      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
+      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2 ||
+      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == LineDetector.SENSOR_R2) {
 
         //Checks if the front sensor has been tripped
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
+        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == LineDetector.SENSOR_L1 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == LineDetector.SENSOR_R1) {
 
           //Make the robot move 1 inch fowards.
           Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + RobotMap.oneInchEncoder);
@@ -99,35 +99,12 @@ public class CargoLineAuto extends Command {
         }
 
         //Checks if the back sensor has been tripped
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
+        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == LineDetector.SENSOR_L3 ||
+        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == LineDetector.SENSOR_L3) {
 
           //Make the robot move 1 inch backwards
           Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() - RobotMap.oneInchEncoder);
           Robot.drive.setRightPosition(Robot.drive.getRightEncoder() - RobotMap.oneInchEncoder);
-        }
-      }
-
-      //Checks that the middle sensor is NOT tripped
-      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 0 ||
-      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 0) {
-
-        //Checks that the back sensor IS tripped
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == 1 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == 1) {
-                    
-          //Move the robot
-          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() - RobotMap.halfIRDistance);
-          Robot.drive.setRightPosition(Robot.drive.getRightEncoder() - RobotMap.halfIRDistance);
-        }
-
-        //Checks that the front sensor IS tripped
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == 1 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == 1) {
-
-          //Move the robot
-          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + RobotMap.halfIRDistance);
-          Robot.drive.setRightPosition(Robot.drive.getRightEncoder() + RobotMap.halfIRDistance);
         }
       }
     }
