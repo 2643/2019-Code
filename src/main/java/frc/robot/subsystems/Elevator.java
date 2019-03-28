@@ -56,7 +56,7 @@ public class Elevator extends Subsystem {
   * @param speed from -1 to 1
   */
   public void setElevatorSpeed(double speed) {
-    elevatorMotor.set(speed);
+    elevatorMotor.getPIDController().setReference(speed, ControlType.kDutyCycle);
   }
 
   /**
