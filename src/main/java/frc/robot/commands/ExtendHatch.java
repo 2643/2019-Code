@@ -34,7 +34,7 @@ public class ExtendHatch extends Command {
 
   @Override
   protected void end() {
-    Robot.hatch.mechanismPistonOff();
+    //Robot.hatch.mechanismPistonOff();
   }
 
   @Override

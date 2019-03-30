@@ -37,7 +37,7 @@ public class RetractHatchPanel extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.hatch.hatchPistonOff();
+    //Robot.hatch.hatchPistonOff();
   }
 
   // Called when another command which requires one or more of the same

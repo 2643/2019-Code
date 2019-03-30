@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
 import frc.robot.RobotMap;
 
@@ -28,7 +29,7 @@ import edu.wpi.cscore.VideoSource;
     public static Hatch hatch = new Hatch(RobotMap.hatchMechanismSolenoid, RobotMap.releaseHatchSolenoid);
     public static Elevator elevator = new Elevator(RobotMap.elevatorMotor);
     public static Drive drive = new Drive(RobotMap.LeftFrontMotor, RobotMap.LeftBackMotor, RobotMap.RightFrontMotor, RobotMap.RightBackMotor);
-    public static DriverCamera driverCameras = new DriverCamera(RobotMap.frontCamera);
+    public static DriverCamera driverCameras = new DriverCamera(RobotMap.frontCamera, RobotMap.leftCamera);
     public static CargoIntake cargoIntake = new CargoIntake(RobotMap.cargoIntakeMotor1, RobotMap.cargoIntakeMotor2, RobotMap.cargoRetractMotor);
     public static CargoOuttake cargoOuttake = new CargoOuttake(RobotMap.cargoOuttakeMotor);
     public static Gyroscope gyroscope = new Gyroscope();
@@ -57,6 +58,7 @@ import edu.wpi.cscore.VideoSource;
       RobotMap.curIRStateRightThree = RobotMap.IRState.IDLE;
 
       RobotMap.frontCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen); 
+      RobotMap.leftCamera.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     }
 
     /**
@@ -69,8 +71,14 @@ import edu.wpi.cscore.VideoSource;
      */
     @Override
     public void robotPeriodic() {
-      
-      
+      SmartDashboard.putBoolean("Left Front", !RobotMap.irLeft1.get());
+      SmartDashboard.putBoolean("Left Middle", !RobotMap.irLeft2.get());
+      SmartDashboard.putBoolean("Left Right", !RobotMap.irLeft3.get());
+      SmartDashboard.putBoolean("Right Front", !RobotMap.irRight1.get());
+      SmartDashboard.putBoolean("Right Middle", !RobotMap.irRight2.get());
+      SmartDashboard.putBoolean("Right Back", !RobotMap.irRight3.get());
+
+      SmartDashboard.putBoolean("Slow Mode Activated", RobotMap.slowActivated);
     }
 
     /**

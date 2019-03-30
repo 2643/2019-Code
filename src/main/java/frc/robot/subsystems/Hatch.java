@@ -32,13 +32,13 @@ public class Hatch extends Subsystem {
    * This function will pull the hatch mechanism in.
    */
   public void mechanismPistonIn(){
-    hatchMechanismSolenoid.set(DoubleSolenoid.Value.kForward);
+    hatchMechanismSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
   /**
    * This function will push the hatch mechanism out.
    */
   public void mechanismPistonOut(){
-    hatchMechanismSolenoid.set(DoubleSolenoid.Value.kReverse);
+    hatchMechanismSolenoid.set(DoubleSolenoid.Value.kForward);
   }
 
   /**
@@ -52,13 +52,13 @@ public class Hatch extends Subsystem {
    * Moves hatch pistons in
    */
   public void hatchPistonIn(){
-    releaseHatchSolenoid.set(DoubleSolenoid.Value.kReverse);
+    releaseHatchSolenoid.set(DoubleSolenoid.Value.kForward);
   }
   /**
    * Moves hatch pistons out
    */
   public void hatchPistonOut(){
-    releaseHatchSolenoid.set(DoubleSolenoid.Value.kForward);
+    releaseHatchSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
 
   /**

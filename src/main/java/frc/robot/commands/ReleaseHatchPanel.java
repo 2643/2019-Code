@@ -38,7 +38,7 @@ public class ReleaseHatchPanel extends Command {
 
   @Override
   protected void end() {
-    Robot.hatch.hatchPistonOff();
+    //Robot.hatch.hatchPistonOff();
   }
 
   @Override

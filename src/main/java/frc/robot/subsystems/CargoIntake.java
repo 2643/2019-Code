@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.*;
 /**
  * Add your docs here.
  */
@@ -52,25 +51,4 @@ public class CargoIntake extends Subsystem {
   public void setRectractSpeed(double speed){
     RetractMotor.set(speed); 
   }
-
-  /**
-   * returns the current of the cargo intake motor 
-   * @return double the current that the motor controller is outputting 
-   */
-  public double getCurrent(){
-    return RobotMap.cargoRetractMotor.getOutputCurrent();
-  }
-
-  /**
-   * Returns whether the retract motor is at the top or not 
-   * @return boolean is the motor at the top or not 
-   */
-  public boolean isFullyRetracted(){ //TODO Sanjana: implement encoder
-    return false; 
-  }
-
-  public boolean isFullyReleased(){ 
-    return false;
-  }
-
 }

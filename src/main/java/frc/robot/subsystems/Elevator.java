@@ -57,6 +57,7 @@ public class Elevator extends Subsystem {
   */
   public void setElevatorSpeed(double speed) {
     elevatorMotor.getPIDController().setReference(speed, ControlType.kDutyCycle);
+    System.out.println("Speed: " + speed);
   }
 
   /**

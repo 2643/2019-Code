@@ -10,38 +10,46 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-/**
- * Sets speeds to Drivestick axis
- */
-public class TankDrive extends Command {
-  public TankDrive() {
 
+public class SlowTankDrive extends Command {
+  public SlowTankDrive() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
     requires(Robot.drive);
+    
   }
 
+  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    RobotMap.slowActivated = true; 
   }
 
+  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Setting joystick axis
-    Robot.drive.setLeftSpeed(Robot.oi.getDriverStick().getRawAxis(RobotMap.leftDriverAxis));
-    Robot.drive.setRightSpeed(Robot.oi.getDriverStick().getRawAxis(RobotMap.rightDriverAxis));
+    Robot.drive.setLeftSpeed(RobotMap.multiplier*Robot.oi.getDriverStick().getRawAxis(RobotMap.leftDriverAxis));
+    Robot.drive.setRightSpeed(RobotMap.multiplier*Robot.oi.getDriverStick().getRawAxis(RobotMap.rightDriverAxis));
+    System.out.println("Slow mode");
   }
 
+  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
 
+  // Called once after isFinished returns true
   @Override
   protected void end() {
     Robot.drive.stopAllSpeed();
-  } 
+    RobotMap.slowActivated = false; 
+  }
 
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
+    end(); 
   }
 }

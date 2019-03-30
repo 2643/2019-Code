@@ -44,13 +44,14 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
+  boolean twoPressed = false; 
+  boolean fourPressed = true; 
+
   // driver joystick and buttons
   Joystick driverStick = new Joystick(0);
-  JoystickButton retractCargoIntake = new JoystickButton(driverStick, RobotMap.retractCargoIntakeButtonNumber);
-  JoystickButton releaseCargoIntake = new JoystickButton(driverStick, RobotMap.releaseCargoIntakeButtonNumber);
+  JoystickButton slowMode = new JoystickButton(driverStick, RobotMap.slowModeButtonNumber);
   JoystickButton hatchAuto = new JoystickButton(driverStick, RobotMap.hatchAutoButtonNumber);
   JoystickButton cargoOuttakeAuto = new JoystickButton(driverStick, RobotMap.cargoOuttakeAutoButtonNumber);
-  JoystickButton hatchRelease = new JoystickButton(driverStick, RobotMap.hatchReleaseButtonNumber);
 
   // operator board and buttons
   Joystick operatorBoard = new Joystick(1);
@@ -60,7 +61,9 @@ public class OI {
   JoystickButton elevatorPreset = new JoystickButton(operatorBoard, RobotMap.elevatorPresetButtonNumber);
   JoystickButton elevatorUp = new JoystickButton(operatorBoard, RobotMap.elevatorUpButtonNumber);
   JoystickButton intake = new JoystickButton(operatorBoard, RobotMap.intakeButtonNumber);
-  JoystickButton hatchMechanismSwitch = new JoystickButton(operatorBoard, RobotMap.hatchMechanismSwitchNumber);
+  JoystickButton hatchMechanismIn = new JoystickButton(operatorBoard, RobotMap.hatchMechanismInButton);
+  JoystickButton hatchMechanismOut = new JoystickButton(operatorBoard, RobotMap.hatchMechanismOutButton);
+  JoystickButton hatchRelease = new JoystickButton(operatorBoard, RobotMap.hatchReleaseButtonNumber);
   JoystickButton calibrate = new JoystickButton(operatorBoard, RobotMap.calibrateButtonNumber);
 
   // six position switch levels
@@ -70,9 +73,9 @@ public class OI {
   public OI() {
 
     // DRIVER STICK
-    retractCargoIntake.whileHeld(new RetractCargoIntake()); 
-    releaseCargoIntake.whileHeld(new ReleaseCargoIntake());
+    slowMode.toggleWhenPressed(new SlowTankDrive());
     
+    Robot.driverCameras.getServer().setSource(RobotMap.frontCamera);
     Robot.driverCameras.getServer().setSource(RobotMap.frontCamera);
 
     //auto functions 
@@ -88,18 +91,18 @@ public class OI {
     elevatorDown.whileHeld(new ElevatorDown());
     elevatorUp.whileHeld(new ElevatorUp());
     
-    for(int i = 1; i < RobotMap.presetDialValues.length-1; i++) {
-      if(sixPositionSwitchReading > RobotMap.presetDialValues[i] && sixPositionSwitchReading < RobotMap.presetDialValues[i+1]) {
-        if(i < RobotMap.elevatorTickGoals.length)
-        {
-          elevatorPreset.whenPressed(new ElevatorTo(RobotMap.elevatorTickGoals[i]));
-        }
-        else {
-          System.err.println("WARNING: Elevator Position: " +i + " not implemented!");
-        }
-        break;
-      }
-    }
+    // for(int i = 1; i < RobotMap.presetDialValues.length-1; i++) {
+    //   if(sixPositionSwitchReading > RobotMap.presetDialValues[i] && sixPositionSwitchReading < RobotMap.presetDialValues[i+1]) {
+    //     if(i < RobotMap.elevatorTickGoals.length)
+    //     {
+    //       elevatorPreset.whenPressed(new ElevatorTo(RobotMap.elevatorTickGoals[i]));
+    //     }
+    //     else {
+    //       System.err.println("WARNING: Elevator Position: " +i + " not implemented!");
+    //     }
+    //     break;
+    //   }
+    // }
 
     // cargoOuttakeAuto
     cargoOuttakeRight.whileHeld(new CargoOuttakeRight());
@@ -112,10 +115,9 @@ public class OI {
     // hatch buttons
     hatchRelease.whenPressed(new ReleaseHatchPanel());
     hatchRelease.whenReleased(new RetractHatchPanel());
-    hatchMechanismSwitch.whenPressed(new RetractHatch());
-    hatchMechanismSwitch.whenReleased(new ExtendHatch()); 
+    hatchMechanismIn.whenPressed(new RetractHatch());
+    hatchMechanismOut.whenPressed(new ExtendHatch()); 
 
-    //TODO check whether the right functions are being activated the hatch buttons on the operator board and joystick
   }
 
   // Creating the joystick

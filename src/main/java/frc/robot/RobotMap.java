@@ -43,7 +43,7 @@ public class RobotMap {
   // Everything is public because vscode likes to complain a lot about it.
 
   //TODO Change **EVERY** Competition.
-  public static double gyroCompassDeclination = 13.18; 
+  public static double gyroCompassDeclination = 13.32; 
   //About 13.18 in San Jose CA.
   //About 13.05 in Seaside, CA.
   //About 13.32 in Nampa, ID.
@@ -55,21 +55,22 @@ public class RobotMap {
   public static int lBackMotorPort = 21;    
   public static int rFrontMotorPort = 26;   
   public static int rBackMotorPort = 38;    
-  public static int rEncoderPort1 = 6;     //(Given by Rushabh 2019-03-22)
-  public static int rEncoderPort2 = 7;     //Correct as of 3/25 -ProbablyanAsian
-  public static int lEncoderPort1 = 9;     
-  public static int lEncoderPort2 = 8;     
+  public static int rEncoderPort1 = 6;    //TODO check if these encoder ports are correct with Rushabh
+  public static int rEncoderPort2 = 7;    //TODO check if these encoder ports are correct with Rushabh
+  public static int lEncoderPort1 = 9;    //TODO check if these encoder ports are correct with Rushabh
+  public static int lEncoderPort2 = 8;    //TODO check if these encoder ports are correct with Rushabh
 
   //elevator ports
   public static int elevatorPort = 20; 
-  public static int elevatorBottomLimitPort = 10; //Given by Rushabh 2019-02-22
-  public static int elevatorUpperLimitPort = 0; //TODO find the upper limit switch port
+  public static int elevatorBottomLimitPort = 10; //Given by Rushabh 2019-03-22
+  public static int elevatorUpperLimitPort = 11;  //Given by Rushabh 2019-03-28
+
 
   //solenoid ports
-  public static int hatchMechanismSolenoidPort1 = 7; //out full   //Given by Rushabh 3/24
-  public static int hatchMechanismSolenoidPort2 = 6; //in  full   
-  public static int releaseHatchSolenoidPort1 = 5;  //out  dispense   
-  public static int releaseHatchSolenoidPort2 = 4;  //in   dispense   
+  public static int hatchMechanismSolenoidPort1 = 7; //TODO check solenoid ports with Nathan and Rushabh again
+  public static int hatchMechanismSolenoidPort2 = 6; //TODO check solenoid ports with Nathan and Rushabh again   
+  public static int releaseHatchSolenoidPort1 = 4;  //TODO check solenoid ports with Nathan and Rushabh again    
+  public static int releaseHatchSolenoidPort2 = 5;  //TODO check solenoid ports with Nathan and Rushabh again
 
   // IR sensor ports Confirmed by rushabh 2019-03-22
   public static int irLeftPort1 = 0; 
@@ -107,21 +108,20 @@ public class RobotMap {
   public static DoubleSolenoid hatchMechanismSolenoid = new DoubleSolenoid(hatchMechanismSolenoidPort1, hatchMechanismSolenoidPort2);
   public static DoubleSolenoid releaseHatchSolenoid = new DoubleSolenoid(releaseHatchSolenoidPort1, releaseHatchSolenoidPort2);
  
-  //cargo intake 
+  //cargo intake motors
   public static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
   public static WPI_TalonSRX cargoIntakeMotor2 = new WPI_TalonSRX(cargoIntakePort2);
   public static WPI_TalonSRX cargoRetractMotor = new WPI_TalonSRX(cargoRetractPort);
   
-  //cargo outtake
+  //cargo outtake motors
   public static WPI_TalonSRX cargoOuttakeMotor = new WPI_TalonSRX(cargoOuttakePort);
-
-  //cargo sensors
 
   /* Sensors */
   //drive sensors
-  public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2);
-  public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);
-  public static UsbCamera frontCamera = CameraServer.getInstance().startAutomaticCapture();
+  public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2); //TODO DO NOT USE THESE ENCODERS
+  public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);  //TODO DO NOT USE THESE ENCODERS
+  public static UsbCamera frontCamera = CameraServer.getInstance().startAutomaticCapture(0);
+  public static UsbCamera leftCamera = CameraServer.getInstance().startAutomaticCapture(1);
   public static VideoSink server = CameraServer.getInstance().getServer(); 
   public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
 
@@ -145,8 +145,9 @@ public class RobotMap {
   public static int leftDriverAxis = 1; 
   public static double MotorCurrent = 0; //Use to work out if it is up agaisnt a wall.
   public static double MotorCurrentSum = 0;
-  public static double multiplier = 0.7;
+  public static double multiplier = 0.3;
   public static double rotations;
+  public static boolean slowActivated = false; 
 
   //elevator variables
   public static double elevatorSpeed = -0.7;
@@ -199,11 +200,9 @@ public class RobotMap {
 
   //driver joystick button numbers
 
-  public static int retractCargoIntakeButtonNumber = 2;
-  public static int releaseCargoIntakeButtonNumber = 3;
+  public static int slowModeButtonNumber = 2; 
   public static int hatchAutoButtonNumber = 5; 
   public static int cargoOuttakeAutoButtonNumber = 6; 
-  public static int hatchReleaseButtonNumber = 4; 
   
   //operator board button numbers
   public static int calibrateButtonNumber = 1; 
@@ -213,7 +212,9 @@ public class RobotMap {
   public static int elevatorPresetButtonNumber = 6; 
   public static int elevatorUpButtonNumber = 4; 
   public static int intakeButtonNumber = 14; 
-  public static int hatchMechanismSwitchNumber = 12; 
+  public static int hatchReleaseButtonNumber = 7; 
+  public static int hatchMechanismInButton = 2;
+  public static int hatchMechanismOutButton = 3; 
 
 
   //Networktables for vision
