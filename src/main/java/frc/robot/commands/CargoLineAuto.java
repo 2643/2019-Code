@@ -8,6 +8,10 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardComponent;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardContainer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.LineDetector;
@@ -30,7 +34,10 @@ public class CargoLineAuto extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.lineDetector.lastLineDetected();
+    SmartDashboard.putBooleanArray("RowOne", RobotMap.activatedIRs[0]);
+    SmartDashboard.putBooleanArray("RowTwo", RobotMap.activatedIRs[1]);
+    SmartDashboard.putBooleanArray("RowThree", RobotMap.activatedIRs[2]);
+    /* -- Robot.lineDetector.lastLineDetected();
     //Checks if there isn't a line already sensed.
     if(Robot.lineDetector.getIRSensors() == 0){
 
@@ -79,7 +86,7 @@ public class CargoLineAuto extends Command {
             Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
             Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
           }
-          } */
+          } 
       }
     // -- }
       //Checks if there is an IR that's been activated.
@@ -116,7 +123,7 @@ public class CargoLineAuto extends Command {
 
     if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
       finished = true;
-    }
+    } -- */
 }
 
   // Make this return true when this Command no longer needs to run execute()

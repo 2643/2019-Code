@@ -21,7 +21,8 @@ public class LineDetector extends Subsystem {
 
   // Obsolete
   /*
-   * public DigitalInput[][] getIrSensors() { DigitalInput[][] sensorArray =
+   * public DigitalInput[][] getIrSensors() {
+   * DigitalInput[][] sensorArray =
    * {{RobotMap.irLeft1, RobotMap.irRight1}, {RobotMap.irLeft2,
    * RobotMap.irRight1}, {RobotMap.irLeft3, RobotMap.irRight3}, {RobotMap.irLeft4,
    * RobotMap.irRight4}}; return sensorArray; }
@@ -202,28 +203,51 @@ public class LineDetector extends Subsystem {
     if(RobotMap.counterLeftOne >= 1 && RobotMap.counterLeftTwo >=1 ) {
       //set the bit on sensorsOn specified by SENSOR_L1 to 1, aka True
       sensorsOn |= SENSOR_L1;
+      RobotMap.activatedIRs[0][0] = true;
+    }
+    else {
+      RobotMap.activatedIRs[0][0] = false;
     }
 
     if(RobotMap.counterLeftTwo >= 1 && RobotMap.counterLeftTwo >= 1 ) {
       sensorsOn |= SENSOR_L3;
+      RobotMap.activatedIRs[2][0] = true;
+    }
+    else {
+      RobotMap.activatedIRs[2][0] = false;
     }
 
     if(RobotMap.counterRightOne >= 1 && RobotMap.counterRightTwo >=1 ) { 
       sensorsOn |= SENSOR_R1;
+      RobotMap.activatedIRs[0][1] = true;
+    }
+    else {
+      RobotMap.activatedIRs[0][1] = false;
     }
 
     if(RobotMap.counterRightTwo >= 1 && RobotMap.counterRightTwo >= 1 ) {
       sensorsOn |= SENSOR_R3;
+      RobotMap.activatedIRs[2][1] = true;
     }
-    
+    else{
+      RobotMap.activatedIRs[2][1] = false;
+    }
+
     if(!RobotMap.irLeft2.get()) {
       sensorsOn |= SENSOR_L2;
+      RobotMap.activatedIRs[1][0] = true;
+    }
+    else {
+      RobotMap.activatedIRs[1][0] = false;
     }
 
     if(!RobotMap.irRight2.get()) {
       sensorsOn |= SENSOR_R2;
+      RobotMap.activatedIRs[1][1] = true;
     }
-
+    else{
+      RobotMap.activatedIRs[1][1] = false;
+    }
     return(sensorsOn);
   }
   

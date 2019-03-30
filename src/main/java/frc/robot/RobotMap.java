@@ -177,6 +177,8 @@ public class RobotMap {
   public static int[] lastRightOne = new int[2];
   public static int[] lastRightThree = new int[2];
 
+  public static final boolean[][] activatedIRs = {{false, false},{false, false},{false, false}};
+
   public static int maxReliableEncoder = (oneInchEncoder * 5); //currently around 5 inches //maximum distance we can trust the last known line encoder position to stay valid.
   public static int maxUltrasonicDist = (int)(5 * 25.4); //Defined in MMs, currently around 13 inches
   //No touchy either I(CargoAutoCode) need these 
