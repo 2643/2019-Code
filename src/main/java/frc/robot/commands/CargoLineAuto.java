@@ -8,13 +8,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardComponent;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardContainer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.subsystems.LineDetector;
 
 public class CargoLineAuto extends Command {
   public CargoLineAuto() {
