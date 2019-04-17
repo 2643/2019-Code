@@ -79,7 +79,7 @@ public class OI {
     Robot.driverCameras.getServer().setSource(RobotMap.frontCamera);
 
     //auto functions 
-    //hatchAuto.whileHeld(new HatchAutoAlign());
+    hatchAuto.whileHeld(new HatchAutoAlign());
     //cargoOuttakeAuto.whileHeld(new CargoLineAuto());
 
     
