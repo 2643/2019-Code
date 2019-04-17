@@ -55,11 +55,11 @@ public class RobotMap {
   public static int lBackMotorPort = 21;    
   public static int rFrontMotorPort = 26;   
   public static int rBackMotorPort = 38;    
-  public static int rEncoderPort1 = 6;    //TODO check if these encoder ports are correct with Rushabh
-  public static int rEncoderPort2 = 7;    //TODO check if these encoder ports are correct with Rushabh
-  public static int lEncoderPort1 = 9;    //TODO check if these encoder ports are correct with Rushabh
-  public static int lEncoderPort2 = 8;    //TODO check if these encoder ports are correct with Rushabh
-
+  public static int rEncoderPort1 = 6;    
+  public static int rEncoderPort2 = 7;    
+  public static int lEncoderPort1 = 9;    
+  public static int lEncoderPort2 = 8;    
+  
   //elevator ports
   public static int elevatorPort = 20; 
   public static int elevatorBottomLimitPort = 10; //Given by Rushabh 2019-03-22
@@ -67,10 +67,10 @@ public class RobotMap {
 
 
   //solenoid ports
-  public static int hatchMechanismSolenoidPort1 = 7; //TODO check solenoid ports with Nathan and Rushabh again
-  public static int hatchMechanismSolenoidPort2 = 6; //TODO check solenoid ports with Nathan and Rushabh again   
-  public static int releaseHatchSolenoidPort1 = 4;  //TODO check solenoid ports with Nathan and Rushabh again    
-  public static int releaseHatchSolenoidPort2 = 5;  //TODO check solenoid ports with Nathan and Rushabh again
+  public static int hatchMechanismSolenoidPort1 = 7; 
+  public static int hatchMechanismSolenoidPort2 = 6;  
+  public static int releaseHatchSolenoidPort1 = 4;     
+  public static int releaseHatchSolenoidPort2 = 5;  
 
   // IR sensor ports Confirmed by rushabh 2019-03-22
   public static int irLeftPort1 = 0; 
@@ -118,8 +118,8 @@ public class RobotMap {
 
   /* Sensors */
   //drive sensors
-  public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2); //TODO DO NOT USE THESE ENCODERS
-  public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);  //TODO DO NOT USE THESE ENCODERS
+  public static Encoder RightEncoder = new Encoder(rEncoderPort1, rEncoderPort2); 
+  public static Encoder LeftEncoder = new Encoder(lEncoderPort1, lEncoderPort2);  
   public static UsbCamera frontCamera = CameraServer.getInstance().startAutomaticCapture(0);
   public static UsbCamera leftCamera = CameraServer.getInstance().startAutomaticCapture(1);
   public static VideoSink server = CameraServer.getInstance().getServer(); 
