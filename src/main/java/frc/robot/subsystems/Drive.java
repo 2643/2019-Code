@@ -206,7 +206,8 @@ public class Drive extends Subsystem {
     public void setLeftPosition(int ticks) {
         // Gets the current Left encoder ticks.
         LeftCurrentEncoderInput = getLeftEncoder();
-        LeftEncoderTarget = RobotMap.LeftEncoderTarget;
+        LeftEncoderTarget = LeftCurrentEncoderInput + ticks;
+        RobotMap.LeftEncoderTarget = LeftEncoderTarget;
         // Resign all the left variables.
         LeftCurrentVel = LeftCurrentEncoderInput - LeftPreviousEncoderInput;
         LeftCurrentAccel = LeftCurrentVel - LeftOldVel;
@@ -242,7 +243,8 @@ public class Drive extends Subsystem {
     public void setRightPosition(int ticks){
         //Gets the currnet Right encoder ticks.
         RightCurrentEncoderInput = getRightEncoder();
-        RightEncoderTarget = RobotMap.RightEncoderTarget;
+        RightEncoderTarget = RightCurrentEncoderInput + ticks;
+        RobotMap.RightEncoderTarget = RightEncoderTarget;
         // Resign all the right variables.
         RightCurrentVel = RightCurrentEncoderInput - RightPreviousEncoderInput;
         RightCurrentAccel = RightCurrentVel - RightOldVel;
