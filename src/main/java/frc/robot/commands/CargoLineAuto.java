@@ -30,97 +30,138 @@ public class CargoLineAuto extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putBooleanArray("RowOne", RobotMap.activatedIRs[0]);
-    SmartDashboard.putBooleanArray("RowTwo", RobotMap.activatedIRs[1]);
-    SmartDashboard.putBooleanArray("RowThree", RobotMap.activatedIRs[2]);
-    /* -- Robot.lineDetector.lastLineDetected();
-    //Checks if there isn't a line already sensed.
-    if(Robot.lineDetector.getIRSensors() == 0){
+    switch(RobotMap.curCargoAutoState) {
 
-      //Checks if the previously gotten value is beneath the maximum encoder reliability value.
+      case IDLE:
+        if(Robot.oi.getDriverStick().getRawButton(RobotMap.cargoOuttakeAutoButtonNumber)) {
+        RobotMap.curCargoAutoState = RobotMap.cargoAutoState.LINE;
+      } else {
+        RobotMap.curCargoAutoState = RobotMap.cargoAutoState.IDLE;
+      }
+      break;
+
+    case LINE:
+      if(!Robot.oi.getDriverStick().getRawButton(RobotMap.cargoOuttakeAutoButtonNumber)) {
+      RobotMap.curCargoAutoState = RobotMap.cargoAutoState.IDLE;
+       break;
+      }
+
+      //Checks if the previously gotten value is beneath the maximum encoder
+      //reliability value.
       if ((Math.abs(RobotMap.lastLeftOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
-        (Math.abs(RobotMap.lastLeftOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+          (Math.abs(RobotMap.lastLeftOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+        RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.LEFT;
         Robot.drive.setLeftPosition(RobotMap.lastLeftOne[0] + RobotMap.halfIRDistance); //TODO check these
         Robot.drive.setRightPosition(RobotMap.lastLeftOne[1] + RobotMap.halfIRDistance); //TODO check these
       }
+
       else if ((Math.abs(RobotMap.lastRightOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
-        (Math.abs(RobotMap.lastRightOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
-        Robot.drive.setLeftPosition(RobotMap.lastRightOne[0] + RobotMap.halfIRDistance); //TODO check these
-        Robot.drive.setRightPosition(RobotMap.lastRightOne[1] + RobotMap.halfIRDistance); //TODO check these
+                (Math.abs(RobotMap.lastRightOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+      RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.RIGHT;
+      Robot.drive.setLeftPosition(RobotMap.lastRightOne[0] + RobotMap.halfIRDistance); //TODO check these
+      Robot.drive.setRightPosition(RobotMap.lastRightOne[1] +
+      RobotMap.halfIRDistance); //TODO check these
       }
-      else if ((Math.abs(RobotMap.lastLeftThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
-        (Math.abs(RobotMap.lastLeftThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
-        Robot.drive.setLeftPosition(RobotMap.lastLeftThree[0] - RobotMap.halfIRDistance); //TODO check these
-        Robot.drive.setRightPosition(RobotMap.lastLeftThree[1] - RobotMap.halfIRDistance); //TODO check these
+
+      if ((Math.abs(RobotMap.lastLeftThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder)
+          && (Math.abs(RobotMap.lastLeftThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+        RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.LEFT;
+        Robot.drive.setLeftPosition(RobotMap.lastLeftThree[0] - RobotMap.halfIRDistance); // TODO check these
+        Robot.drive.setRightPosition(RobotMap.lastLeftThree[1] - RobotMap.halfIRDistance); // TODO check these
+        System.out.println("Adjusting");
+        System.out.println(RobotMap.lastLeftThree[0]);
+        System.out.println(RobotMap.lastLeftThree[1]);
       }
+
       else if ((Math.abs(RobotMap.lastRightThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&
-        (Math.abs(RobotMap.lastRightThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
-        Robot.drive.setLeftPosition(RobotMap.lastRightThree[0] - RobotMap.halfIRDistance); //TODO check these
-        Robot.drive.setRightPosition(RobotMap.lastRightThree[1] - RobotMap.halfIRDistance); //TODO check these
-        }
-
-      /* -- else {
-        int encoderErrorTolerance = RobotMap.encoderErrorTolerance;
-
-        //Robot has driven to be below the PID tolerance.
-        if(Math.abs(Robot.drive.LeftError) <= encoderErrorTolerance &&
-          Math.abs(Robot.drive.RightError) <= encoderErrorTolerance) {
-            //If the middle sensor isn't activated, continue driving fowards.
-          if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 0 ||
-            (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 0) {
-
-            //Add 1 inch to current value
-            int precalcL = Robot.drive.getLeftEncoder() + RobotMap.oneInchEncoder;
-            int precalcR = Robot.drive.getRightEncoder() + RobotMap.oneInchEncoder;
-
-            //Move the one inch fowards
-            Robot.drive.setLeftPosition(precalcL);
-            Robot.drive.setRightPosition(precalcR);
-            }
-          //If the middle sensor is activated, stop where it is.
-          else {
-            Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
-            Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
-          }
-          } 
+              (Math.abs(RobotMap.lastRightThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+      RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.RIGHT;
+      Robot.drive.setLeftPosition(RobotMap.lastRightThree[0] - RobotMap.halfIRDistance); //TODO check these
+      Robot.drive.setRightPosition(RobotMap.lastRightThree[1] - RobotMap.halfIRDistance); //TODO check these
       }
-    // -- }
-      //Checks if there is an IR that's been activated.
-    if(Robot.lineDetector.getIRSensors() != 0) {
 
-      //Checks if any of the middle sensor has been tripped.
-      if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2 ||
-      (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == LineDetector.SENSOR_R2) {
+      else if (Robot.lineDetector.getIRSensors() == 0) {
+        // Robot has driven to be below the PID tolerance.
+        if (Math.abs(Robot.drive.LeftError) <= RobotMap.encoderErrorTolerance
+            && Math.abs(Robot.drive.RightError) <= RobotMap.encoderErrorTolerance) {
 
-        //Checks if the front sensor has been tripped
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L1) == LineDetector.SENSOR_L1 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R1) == LineDetector.SENSOR_R1) {
-
-          //Make the robot move 1 inch fowards.
+          // Move the one inch fowards
           Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + RobotMap.oneInchEncoder);
           Robot.drive.setRightPosition(Robot.drive.getRightEncoder() + RobotMap.oneInchEncoder);
         }
-
-        //Checks if the back sensor has been tripped
-        if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L3) == LineDetector.SENSOR_L3 ||
-        (Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R3) == LineDetector.SENSOR_L3) {
-
-          //Make the robot move 1 inch backwards
-          Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() - RobotMap.oneInchEncoder);
-          Robot.drive.setRightPosition(Robot.drive.getRightEncoder() - RobotMap.oneInchEncoder);
-        }
       }
-    }
-     
-    //Checks if all of the positions have been met, if they have, end().
-    if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_L2) == 1) {
-      finished = true;
-    }
 
-    if((Robot.lineDetector.getIRSensors() & LineDetector.SENSOR_R2) == 1) {
-      finished = true;
-    } -- */
+      else if ((Robot.lineDetector.getIRSensors() & Robot.lineDetector.SENSOR_L2) == Robot.lineDetector.SENSOR_L2
+          || (Robot.lineDetector.getIRSensors() & Robot.lineDetector.SENSOR_R2) == Robot.lineDetector.SENSOR_R2) {
+        RobotMap.curCargoAutoState = RobotMap.cargoAutoState.ANGLE;
+      }
+
+      break;
+    /* case ANGLE:
+      if (!Robot.oi.getDriverStick().getRawButton(1)) {
+          RobotMap.curCargoAutoState = RobotMap.cargoAutoState.IDLE;
+          break;
+        }
+        if(Robot.lineDetector.getIRSensors() == 0) {
+          RobotMap.curCargoAutoState = RobotMap.cargoAutoState.LINE;
+          break;
+        }
+        switch(RobotMap.curCargoAutoSide) {
+
+          case NONE:
+            System.err.println("ERROR: NONE sided");
+            RobotMap.curCargoAutoState = RobotMap.cargoAutoState.LINE;
+            break;
+
+          case LEFT:
+            if(Robot.ultrasonicSubsystem.getLeftDist() >= RobotMap.maxUltrasonicDist) {
+              System.err.println("ERROR: Too far, get closer");
+            }
+            
+            else {
+              if((Robot.ultrasonicSubsystem.getLeftValues()[0] - Robot.ultrasonicSubsystem.getLeftValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
+
+                int leftDifference = Robot.ultrasonicSubsystem.getLeftValues()[0]-Robot.ultrasonicSubsystem.getLeftValues()[1];
+                int distToTicks = leftDifference / -7; //TODO verify my math properly
+                //Turns it the proper amount of ticks
+
+                Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + distToTicks);
+                Robot.drive.setRightPosition(Robot.drive.getRightEncoder() - distToTicks);
+              }
+              else {
+                finished = true;
+              }
+            }
+            break;
+
+          case RIGHT:
+            if(Robot.ultrasonicSubsystem.getRightDist() >= RobotMap.maxUltrasonicDist) {
+              System.err.println("ERROR: Too far, get closer");
+            }
+            else {
+              if((Robot.ultrasonicSubsystem.getRightValues()[0] - Robot.ultrasonicSubsystem.getRightValues()[1]) >= RobotMap.ultrasonicErrorTolerance) {
+                
+                int rightDifference = Robot.ultrasonicSubsystem.getRightValues()[0] - Robot.ultrasonicSubsystem.getRightValues()[1];
+                int distToTicks = rightDifference / -7; //TODO verify my math properly
+                //Turns it the proper amount of ticks
+
+                Robot.drive.setLeftPosition(Robot.drive.getRightEncoder() - distToTicks);
+                Robot.drive.setRightPosition(Robot.drive.getRightEncoder() + distToTicks);
+              }
+              else {
+                finished = true;
+              }
+            }
+            break;
+        }
+        break;*/
+    }
 }
+  
+  public void clearStores() {
+    RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.NONE;
+
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override

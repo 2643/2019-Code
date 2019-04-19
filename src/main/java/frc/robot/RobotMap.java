@@ -185,6 +185,16 @@ public class RobotMap {
   public static enum IRState {
     IDLE, TRUE, WAIT;
   }
+  public static enum cargoAutoState {
+    IDLE, LINE, ANGLE; 
+  }
+  public static cargoAutoState curCargoAutoState = cargoAutoState.IDLE;
+
+  public static enum cargoAutoSide {
+    NONE, LEFT, RIGHT;
+  }
+  public static cargoAutoSide curCargoAutoSide = cargoAutoSide.NONE;
+
 
   public static IRState curIRStateLeftOne;
   public static int counterLeftOne = 0;
