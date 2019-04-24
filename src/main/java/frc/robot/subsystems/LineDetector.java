@@ -36,9 +36,12 @@ public class LineDetector extends Subsystem {
   public static final int SENSOR_R3 = 1 << 5;
   public static final int SENSOR_L123 = SENSOR_L1 + SENSOR_L2 + SENSOR_L3;
   public static final int SENSOR_R123 = SENSOR_R1 + SENSOR_R2 + SENSOR_R3;
-
+  public static final boolean debug = false;
   public int getIRSensors() {
-
+    
+    if(debug){
+      System.out.println("New Loop");
+    }
     //Switch is activated by the current IR state
     switch (RobotMap.curIRStateLeftOne) {
       //when IDLE
@@ -52,6 +55,9 @@ public class LineDetector extends Subsystem {
       case TRUE:
         //counter to implement hang time.
         RobotMap.counterLeftOne = 2;
+        if(debug){
+          System.out.print("L1;");
+        }
         //when the sensor goes off again, change the state to WAIT
         if(RobotMap.irLeft1.get()) {
           RobotMap.curIRStateLeftOne = RobotMap.IRState.WAIT;
@@ -81,6 +87,9 @@ public class LineDetector extends Subsystem {
         break;
       case TRUE:
         RobotMap.counterLeftTwo = 2;
+        if(debug){
+          System.out.print("L2;");
+        }
         if (RobotMap.irLeft2.get()) {
           RobotMap.curIRStateLeftTwo = RobotMap.IRState.WAIT;
         }
@@ -106,6 +115,9 @@ public class LineDetector extends Subsystem {
         break;
       case TRUE:
         RobotMap.counterLeftThree = 2;
+        if(debug){
+          System.out.print("L3;");
+        }
         if(RobotMap.irLeft3.get()) {
           RobotMap.curIRStateLeftThree = RobotMap.IRState.WAIT;
         }
@@ -131,6 +143,9 @@ public class LineDetector extends Subsystem {
         break;
       case TRUE:
         RobotMap.counterRightOne = 2;
+        if(debug){
+          System.out.print("R1;");
+        }
         if(RobotMap.irRight1.get()) {
           RobotMap.curIRStateRightOne = RobotMap.IRState.WAIT;
         }
@@ -156,6 +171,9 @@ public class LineDetector extends Subsystem {
         break;
       case TRUE:
         RobotMap.counterRightTwo = 2;
+        if(debug){
+          System.out.print("R2;");
+        }
         if(RobotMap.irRight2.get()) {
           RobotMap.curIRStateRightTwo = RobotMap.IRState.WAIT;
         }
@@ -181,6 +199,9 @@ public class LineDetector extends Subsystem {
         break;
       case TRUE:
         RobotMap.counterRightThree = 2;
+        if(debug){
+          System.out.println("R3;");
+        }
         if(RobotMap.irRight3.get()) {
           RobotMap.curIRStateRightThree = RobotMap.IRState.WAIT;
         }
@@ -224,7 +245,6 @@ public class LineDetector extends Subsystem {
     if(!RobotMap.irRight2.get()) {
       sensorsOn |= SENSOR_R2;
     }
-
     return(sensorsOn);
   }
   
@@ -254,7 +274,6 @@ public class LineDetector extends Subsystem {
         RobotMap.IRClearCounter = 0;
         RobotMap.lastLeftOne[0] = RobotMap.LeftEncoder.getRaw();
         RobotMap.lastLeftOne[1] = RobotMap.RightEncoder.getRaw();
-        System.out.println("Encoder values stored");
       }
       if((getIRSensors() & LineDetector.SENSOR_L3) == LineDetector.SENSOR_L3 &&
       (getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2) {
@@ -262,16 +281,13 @@ public class LineDetector extends Subsystem {
         RobotMap.IRClearCounter = 0;
         RobotMap.lastLeftThree[0] = RobotMap.LeftEncoder.getRaw();
         RobotMap.lastLeftThree[1] = RobotMap.RightEncoder.getRaw();
-        System.out.println("Encoder values stored");
       }
       if(!RobotMap.irLeft2.get()){
         //clearLastLines();
         RobotMap.IRClearCounter = 0;
         RobotMap.lastLeftThree[0] = RobotMap.LeftEncoder.getRaw();
         RobotMap.lastLeftThree[1] = RobotMap.RightEncoder.getRaw();
-        System.out.println("Encoder values stored");
       }
-      System.out.println("Else statement");
     }
 
     if((getIRSensors() & LineDetector.SENSOR_R123) == LineDetector.SENSOR_R123){
@@ -293,7 +309,6 @@ public class LineDetector extends Subsystem {
         RobotMap.IRClearCounter = 0;
         RobotMap.lastRightThree[0] = RobotMap.LeftEncoder.getRaw();
         RobotMap.lastRightThree[1] = RobotMap.RightEncoder.getRaw();
-        System.out.println("Encoder values stored");
       }
     }
   }
@@ -312,7 +327,6 @@ public class LineDetector extends Subsystem {
 
     RobotMap.lastRightThree[0] = 1000000000;
     RobotMap.lastRightThree[1] = -1000000000;
-    System.out.println("Cleared");
   }
 
   @Override

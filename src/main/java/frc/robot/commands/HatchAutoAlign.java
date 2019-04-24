@@ -3,10 +3,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-
+ 
 public class HatchAutoAlign extends Command {
-
-    boolean finished = true;
 
     public HatchAutoAlign () {
         requires(Robot.drive);
@@ -19,11 +17,11 @@ public class HatchAutoAlign extends Command {
         System.out.println("valid: " + valid + "center: " + centerLocation);
         if (valid) {
             if (centerLocation > 0.1) {
-                Robot.drive.setAllSpeed(0.3, -0.3);
+                Robot.drive.setAllSpeed(0.5, -0.5);
             } else if (centerLocation < -0.1) {
-                Robot.drive.setAllSpeed(-0.3, 0.3);
+                Robot.drive.setAllSpeed(-0.5, 0.5);
             } else {
-                Robot.drive.setAllSpeed(0.3, 0.3);
+                Robot.drive.setAllSpeed(0.5, 0.5);
             }
         } else {
             Robot.drive.setAllSpeed(0, 0);
@@ -42,7 +40,6 @@ public class HatchAutoAlign extends Command {
 
     @Override
     protected boolean isFinished() {
-        return Robot.drive.isStuck();
+        return false; 
     }
-
 }

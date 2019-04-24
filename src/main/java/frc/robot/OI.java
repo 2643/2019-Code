@@ -65,6 +65,7 @@ public class OI {
   JoystickButton hatchMechanismOut = new JoystickButton(operatorBoard, RobotMap.hatchMechanismOutButton);
   JoystickButton hatchRelease = new JoystickButton(operatorBoard, RobotMap.hatchReleaseButtonNumber);
   JoystickButton calibrate = new JoystickButton(operatorBoard, RobotMap.calibrateButtonNumber);
+  JoystickButton outtakeCargo = new JoystickButton(operatorBoard, RobotMap.outtakeCargoButtonNumber);
 
   // six position switch levels
   // First level of the rocket for the hatch
@@ -80,7 +81,7 @@ public class OI {
 
     //auto functions 
     hatchAuto.whileHeld(new HatchAutoAlign());
-    //cargoOuttakeAuto.whileHeld(new CargoLineAuto());
+    cargoOuttakeAuto.whileHeld(new CargoLineAuto());
 
     
     //OPERATOR BOARD
@@ -111,6 +112,7 @@ public class OI {
 
     // cargo intake button
     intake.whileHeld(new IntakeCargo());
+    outtakeCargo.whileHeld(new OuttakeCargo());
 
     // hatch buttons
     hatchRelease.whenPressed(new ReleaseHatchPanel());

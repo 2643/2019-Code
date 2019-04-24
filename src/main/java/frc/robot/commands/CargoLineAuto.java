@@ -68,9 +68,6 @@ public class CargoLineAuto extends Command {
         RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.LEFT;
         Robot.drive.setLeftPosition(RobotMap.lastLeftThree[0] - RobotMap.halfIRDistance); // TODO check these
         Robot.drive.setRightPosition(RobotMap.lastLeftThree[1] - RobotMap.halfIRDistance); // TODO check these
-        System.out.println("Adjusting");
-        System.out.println(RobotMap.lastLeftThree[0]);
-        System.out.println(RobotMap.lastLeftThree[1]);
       }
 
       else if ((Math.abs(RobotMap.lastRightThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder) &&

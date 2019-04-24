@@ -180,6 +180,7 @@ public class Drive extends Subsystem {
      */
     public void setRightSpeed(double speed) {
         rightDriveMaster.set(speed);
+        
     }
 
     /**
@@ -290,7 +291,7 @@ public class Drive extends Subsystem {
         MotorCurrentArray [counter%MotorCurrentArray.length%20] = (int) LeftCurrentVel;
         //Sum array
         RobotMap.MotorCurrentSum = IntStream.of(MotorCurrentArray).sum();
-        //If the motor current draw has beenvery high over the past aray
+        //If the motor current draw has been very high over the past aray
         return RobotMap.MotorCurrentSum >= 20; 
     }
 }

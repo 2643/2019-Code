@@ -54,7 +54,7 @@ public class RobotMap {
   public static int lFrontMotorPort = 29;   
   public static int lBackMotorPort = 21;    
   public static int rFrontMotorPort = 26;   
-  public static int rBackMotorPort = 38;    
+  public static int rBackMotorPort = 28;    
   public static int rEncoderPort1 = 6;    
   public static int rEncoderPort2 = 7;    
   public static int lEncoderPort1 = 9;    
@@ -227,6 +227,7 @@ public class RobotMap {
   public static int hatchReleaseButtonNumber = 7; 
   public static int hatchMechanismInButton = 2;
   public static int hatchMechanismOutButton = 3; 
+  public static int outtakeCargoButtonNumber = 13; 
 
 
   //Networktables for vision
