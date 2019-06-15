@@ -220,7 +220,7 @@ public class LineDetector extends Subsystem {
       }
     
     int sensorsOn = 0;
-    //if the first counter on the left, and the second on the right are "true/greater than 1:
+    //if the first counter on the left, and the second on the left are "true/greater than 1:
     if(RobotMap.counterLeftOne >= 1 && RobotMap.counterLeftTwo >=1 ) {
       //set the bit on sensorsOn specified by SENSOR_L1 to 1, aka True
       sensorsOn |= SENSOR_L1;
@@ -238,11 +238,11 @@ public class LineDetector extends Subsystem {
       sensorsOn |= SENSOR_R3;
     }
     
-    if(!RobotMap.irLeft2.get()) {
+    if(RobotMap.counterLeftTwo >= 1) {
       sensorsOn |= SENSOR_L2;
     }
 
-    if(!RobotMap.irRight2.get()) {
+    if(RobotMap.counterRightTwo >= 1) {
       sensorsOn |= SENSOR_R2;
     }
     return(sensorsOn);
@@ -256,7 +256,9 @@ public class LineDetector extends Subsystem {
     // If both IR sensors are true, then we can be certain that there *is* a line being detected.
 
     //clear after 5 seconds.
-    if(RobotMap.IRClearCounter >= 251) { 
+    boolean debug = true;
+
+    if(RobotMap.IRClearCounter >= 501) { 
       clearLastLines();
     }
     else {
@@ -267,26 +269,24 @@ public class LineDetector extends Subsystem {
       System.err.println("Drive Better. All Left IRs Active");
     }
     else{
-      if((getIRSensors() & LineDetector.SENSOR_L1) == LineDetector.SENSOR_L1 &&
-      (getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2) {
+      if((getIRSensors() & LineDetector.SENSOR_L1) == LineDetector.SENSOR_L1) {
         //Stores current encoder value into an array.
         clearLastLines();
         RobotMap.IRClearCounter = 0;
         RobotMap.lastLeftOne[0] = RobotMap.LeftEncoder.getRaw();
         RobotMap.lastLeftOne[1] = RobotMap.RightEncoder.getRaw();
+        if(debug){
+          System.out.println("LL0 Stored");
+        }
       }
-      if((getIRSensors() & LineDetector.SENSOR_L3) == LineDetector.SENSOR_L3 &&
-      (getIRSensors() & LineDetector.SENSOR_L2) == LineDetector.SENSOR_L2) {
+      if((getIRSensors() & LineDetector.SENSOR_L3) == LineDetector.SENSOR_L3) {
         clearLastLines();
         RobotMap.IRClearCounter = 0;
         RobotMap.lastLeftThree[0] = RobotMap.LeftEncoder.getRaw();
         RobotMap.lastLeftThree[1] = RobotMap.RightEncoder.getRaw();
-      }
-      if(!RobotMap.irLeft2.get()){
-        //clearLastLines();
-        RobotMap.IRClearCounter = 0;
-        RobotMap.lastLeftThree[0] = RobotMap.LeftEncoder.getRaw();
-        RobotMap.lastLeftThree[1] = RobotMap.RightEncoder.getRaw();
+        if(debug){
+          System.out.println("LL3 Stored");
+        }
       }
     }
 
@@ -294,21 +294,24 @@ public class LineDetector extends Subsystem {
       System.err.println("Drive Better. All Right IRs Active");
     }
     else {
-      if((getIRSensors() & LineDetector.SENSOR_R1) == LineDetector.SENSOR_R1 && 
-      (getIRSensors() & LineDetector.SENSOR_R2) == LineDetector.SENSOR_R2) {
+      if((getIRSensors() & LineDetector.SENSOR_R1) == LineDetector.SENSOR_R1) { 
         clearLastLines();
         RobotMap.IRClearCounter = 0;
         RobotMap.lastRightOne[0] = RobotMap.LeftEncoder.getRaw();
         RobotMap.lastRightOne[1] = RobotMap.RightEncoder.getRaw();
-        System.out.println("Encoder values stored");
+        if(debug){
+          System.out.println("LR0 Stored");
+        }
       }
 
-      if((getIRSensors() & LineDetector.SENSOR_R3) == LineDetector.SENSOR_R3 &&
-      (getIRSensors() & LineDetector.SENSOR_R2) == LineDetector.SENSOR_R2) {
+      if((getIRSensors() & LineDetector.SENSOR_R3) == LineDetector.SENSOR_R3) {
         clearLastLines();
         RobotMap.IRClearCounter = 0;
         RobotMap.lastRightThree[0] = RobotMap.LeftEncoder.getRaw();
         RobotMap.lastRightThree[1] = RobotMap.RightEncoder.getRaw();
+        if(debug){
+          System.out.println("LR3 Stored");
+        }
       }
     }
   }
