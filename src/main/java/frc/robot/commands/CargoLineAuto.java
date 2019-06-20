@@ -33,17 +33,21 @@ public class CargoLineAuto extends Command {
     switch (RobotMap.curCargoAutoState) {
 
     case IDLE:
+
+      
       if (debug) {
           System.out.println("cur IDLE state");
         }
-      if (Robot.oi.getDriverStick().getRawButton(RobotMap.cargoOuttakeAutoButtonNumber)) {
-        RobotMap.curCargoAutoState = RobotMap.cargoAutoState.LINE;
-        if (debug) {
-          System.out.println("Line State chk1");
+      if (RobotMap.autoDelay <= 1) {
+        if (Robot.oi.getDriverStick().getRawButton(RobotMap.cargoOuttakeAutoButtonNumber)) {
+          RobotMap.curCargoAutoState = RobotMap.cargoAutoState.LINE;
+          if (debug) {
+            System.out.println("Line State chk1");
+          }
         }
-      } 
+      }
       else {
-        RobotMap.curCargoAutoState = RobotMap.cargoAutoState.IDLE;
+        RobotMap.autoDelay --;
         if (debug) {
           System.out.println("Idle State chk1");
         }
@@ -54,6 +58,7 @@ public class CargoLineAuto extends Command {
       if (debug) {
         System.out.println("cur LINE state");
       }
+
       if (!Robot.oi.getDriverStick().getRawButton(RobotMap.cargoOuttakeAutoButtonNumber)) {
         RobotMap.curCargoAutoState = RobotMap.cargoAutoState.IDLE;
         if (debug) {
@@ -62,15 +67,29 @@ public class CargoLineAuto extends Command {
         break;
       }
 
+      /*
+      if ((Math.abs(Robot.drive.LeftError) >= RobotMap.encoderErrorTolerance)
+        && (Math.abs(Robot.drive.RightError) >= RobotMap.encoderErrorTolerance)){
+        if (debug) {
+          System.out.println("Encoder Over");
+        }
+      }
+      */
+
       //Check for sensor2 lit
       if (((Robot.lineDetector.getIRSensors() & Robot.lineDetector.SENSOR_L2) == Robot.lineDetector.SENSOR_L2)
           || ((Robot.lineDetector.getIRSensors() & Robot.lineDetector.SENSOR_R2) == Robot.lineDetector.SENSOR_R2)) {
         RobotMap.curCargoAutoState = RobotMap.cargoAutoState.ANGLE;
+        Robot.drive.setAllSpeed(-0.3, -0.3);
+        //Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder());
+        //Robot.drive.setRightPosition(Robot.drive.getRightEncoder());
         if(debug){
           System.out.println("Angle State chk2, Sensor2 lit");
         }
+        Robot.drive.setAllSpeed(0, 0);
       }
 
+      /*
       // Checks if the previously gotten value is beneath the maximum encoder
       // reliability value.
       else if ((Math.abs(RobotMap.lastLeftOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder)
@@ -83,6 +102,7 @@ public class CargoLineAuto extends Command {
         }
       }
 
+      
       else if ((Math.abs(RobotMap.lastRightOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder)
           && (Math.abs(RobotMap.lastRightOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
         RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.RIGHT;
@@ -93,16 +113,25 @@ public class CargoLineAuto extends Command {
         }
       }
 
-      if ((Math.abs(RobotMap.lastLeftThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder)
-          && (Math.abs(RobotMap.lastLeftThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
-        RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.LEFT;
-        Robot.drive.setLeftPosition(RobotMap.lastLeftThree[0] - RobotMap.halfIRDistance); // TODO check these
-        Robot.drive.setRightPosition(RobotMap.lastLeftThree[1] - RobotMap.halfIRDistance); // TODO check these
-        if (debug) {
-          System.out.println("LEFT set");
+      
+      */
+      else if (RobotMap.autoDelayTwo <= 1) {
+        if ((Math.abs(RobotMap.lastLeftThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder)
+            && (Math.abs(RobotMap.lastLeftThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+          RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.LEFT;
+          Robot.drive.setLeftPosition(RobotMap.lastLeftThree[0] - RobotMap.halfIRDistance); // TODO check these
+          Robot.drive.setRightPosition(RobotMap.lastLeftThree[1] - RobotMap.halfIRDistance); // TODO check these
+          if (debug) {
+            System.out.println("LEFT set");
+          }
+          RobotMap.autoDelayTwo = 251;
         }
       }
+      else if (RobotMap.autoDelayTwo >= 0) {
+        RobotMap.autoDelayTwo --;
+      }
 
+      /*
       else if ((Math.abs(RobotMap.lastRightThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder)
           && (Math.abs(RobotMap.lastRightThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
         RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.RIGHT;
@@ -112,6 +141,7 @@ public class CargoLineAuto extends Command {
           System.out.println("RIGHT Set");
         }
       }
+      */
 
       else if (Robot.lineDetector.getIRSensors() == 0) {
         // Robot has driven to be below the PID tolerance.
@@ -134,9 +164,11 @@ public class CargoLineAuto extends Command {
       case ANGLE:
         RobotMap.curCargoAutoState = RobotMap.cargoAutoState.IDLE;
         Robot.lineDetector.clearLastLines();
+        RobotMap.autoDelay = 30;
         if(debug){
           System.out.println("State set to IDLE");
         }
+        
       break;
     /* case ANGLE:
       if (!Robot.oi.getDriverStick().getRawButton(1)) {

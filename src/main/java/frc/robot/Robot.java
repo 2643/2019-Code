@@ -32,7 +32,7 @@ import edu.wpi.cscore.VideoSource;
     public static DriverCamera driverCameras = new DriverCamera(RobotMap.frontCamera, RobotMap.leftCamera);
     public static CargoIntake cargoIntake = new CargoIntake(RobotMap.cargoIntakeMotor1, RobotMap.cargoIntakeMotor2, RobotMap.cargoRetractMotor);
     public static CargoOuttake cargoOuttake = new CargoOuttake(RobotMap.cargoOuttakeMotor);
-    public static Gyroscope gyroscope = new Gyroscope();
+    // -- public static Gyroscope gyroscope = new Gyroscope();
     public static LineDetector lineDetector = new LineDetector();
 
     public static boolean CalibrateSparkMax = false;
@@ -48,7 +48,7 @@ import edu.wpi.cscore.VideoSource;
     public void robotInit() {
       oi = new OI();
       
-      gyroscope.setGyroDeclination();
+      // -- gyroscope.setGyroDeclination();
       
       RobotMap.curIRStateLeftOne = RobotMap.IRState.IDLE;
       RobotMap.curIRStateLeftTwo = RobotMap.IRState.IDLE;
@@ -77,6 +77,7 @@ import edu.wpi.cscore.VideoSource;
       SmartDashboard.putBoolean("Right Front", !RobotMap.irRight1.get());
       SmartDashboard.putBoolean("Right Middle", !RobotMap.irRight2.get());
       SmartDashboard.putBoolean("Right Back", !RobotMap.irRight3.get());
+
 
       SmartDashboard.putBoolean("Slow Mode Activated", RobotMap.slowActivated);
     }
@@ -176,6 +177,5 @@ import edu.wpi.cscore.VideoSource;
      */
     @Override
     public void testPeriodic() {
-      
     }
   }

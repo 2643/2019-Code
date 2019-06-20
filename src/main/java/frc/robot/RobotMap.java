@@ -43,7 +43,7 @@ public class RobotMap {
   // Everything is public because vscode likes to complain a lot about it.
 
   //TODO Change **EVERY** Competition.
-  public static double gyroCompassDeclination = 13.32; 
+  // -- public static double gyroCompassDeclination = 13.32; 
   //About 13.18 in San Jose CA.
   //About 13.05 in Seaside, CA.
   //About 13.32 in Nampa, ID.
@@ -87,7 +87,7 @@ public class RobotMap {
   public static int cargoOuttakePort = 20; 
   
   //Gyroscope port
-  public static int gyroscopePort = 28;
+  // -- public static int gyroscopePort = 28;
 
   //DriveTrainPIDTarget
   public static double RightEncoderTarget = 0;
@@ -123,7 +123,7 @@ public class RobotMap {
   public static UsbCamera frontCamera = CameraServer.getInstance().startAutomaticCapture(0);
   public static UsbCamera leftCamera = CameraServer.getInstance().startAutomaticCapture(1);
   public static VideoSink server = CameraServer.getInstance().getServer(); 
-  public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
+  // -- public static PigeonIMU pigeonIMU = new PigeonIMU(gyroscopePort);
 
   //elevator sensors
   public static DigitalInput elevatorBottomLimit = new DigitalInput(elevatorBottomLimitPort);
@@ -165,7 +165,10 @@ public class RobotMap {
   //Line targets 
   public static int oneInchEncoder = 4; 
 
-  public static int encoderErrorTolerance = (oneInchEncoder * 2); //in encoder ticks //TODO change this.
+  public static int encoderErrorTolerance = (oneInchEncoder * 4); //in encoder ticks //TODO change this.
+ 
+  public static int autoDelay = 0;
+  public static int autoDelayTwo = 0;
   
   public static int halfIRDistance = (int)(oneInchEncoder * 0.875); //in ticks, from the middle between the sensors. //TODO change this. 
   public static int IRDistance = (oneInchEncoder * 2) + 1; // in ticks, distance between 2 sensors //TODO, check to make sure.
@@ -179,7 +182,7 @@ public class RobotMap {
 
   public static final boolean[][] activatedIRs = {{false, false},{false, false},{false, false}};
 
-  public static int maxReliableEncoder = (oneInchEncoder * 5); //currently around 5 inches //maximum distance we can trust the last known line encoder position to stay valid.
+  public static int maxReliableEncoder = (oneInchEncoder * 48); //currently around 5 inches //maximum distance we can trust the last known line encoder position to stay valid.
   public static int maxUltrasonicDist = (int)(5 * 25.4); //Defined in MMs, currently around 13 inches
   //No touchy either I(CargoAutoCode) need these 
   public static enum IRState {
