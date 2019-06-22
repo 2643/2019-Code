@@ -74,25 +74,31 @@ public class CargoLineAuto extends Command {
       // Checks if the previously gotten value is beneath the maximum encoder
       // reliability value.
       else if ((Math.abs(RobotMap.lastLeftOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder)
-          && (Math.abs(RobotMap.lastLeftOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
-        RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.LEFT;
-        Robot.drive.setLeftPosition(RobotMap.lastLeftOne[0] + RobotMap.halfIRDistance); // TODO check these
-        Robot.drive.setRightPosition(RobotMap.lastLeftOne[1] + RobotMap.halfIRDistance); // TODO check these
-        if (debug) {
-          System.out.println("Try LL0");
+        && (Math.abs(RobotMap.lastLeftOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+        if ((Math.abs(Robot.drive.LeftError) <= RobotMap.encoderErrorTolerance)
+        && (Math.abs(Robot.drive.RightError) <= RobotMap.encoderErrorTolerance)) {
+          RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.LEFT;
+          Robot.drive.setLeftPosition(RobotMap.lastLeftOne[0] + RobotMap.halfIRDistance); // TODO check these
+          Robot.drive.setRightPosition(RobotMap.lastLeftOne[1] + RobotMap.halfIRDistance); // TODO check these
+          if (debug) {
+            System.out.println("Try LL0");
+          }
         }
       }
 
       else if ((Math.abs(RobotMap.lastRightOne[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder)
-          && (Math.abs(RobotMap.lastRightOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
-        RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.RIGHT;
-        Robot.drive.setLeftPosition(RobotMap.lastRightOne[0] + RobotMap.halfIRDistance); // TODO check these
-        Robot.drive.setRightPosition(RobotMap.lastRightOne[1] + RobotMap.halfIRDistance); // TODO check these
-        if (debug) {
-          System.out.println("Try LR0");
+        && (Math.abs(RobotMap.lastRightOne[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
+        if ((Math.abs(Robot.drive.LeftError) <= RobotMap.encoderErrorTolerance)
+        && (Math.abs(Robot.drive.RightError) <= RobotMap.encoderErrorTolerance)) {
+          RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.RIGHT;
+          Robot.drive.setLeftPosition(RobotMap.lastRightOne[0] + RobotMap.halfIRDistance); // TODO check these
+          Robot.drive.setRightPosition(RobotMap.lastRightOne[1] + RobotMap.halfIRDistance); // TODO check these
+          if (debug) {
+            System.out.println("Try LR0");
+          }
         }
       }
-
+      /*  
       if ((Math.abs(RobotMap.lastLeftThree[0] - Robot.drive.getLeftEncoder()) <= RobotMap.maxReliableEncoder)
           && (Math.abs(RobotMap.lastLeftThree[1] - Robot.drive.getRightEncoder()) <= RobotMap.maxReliableEncoder)) {
         RobotMap.curCargoAutoSide = RobotMap.cargoAutoSide.LEFT;
@@ -112,14 +118,15 @@ public class CargoLineAuto extends Command {
           System.out.println("RIGHT Set");
         }
       }
+      */
 
       else if (Robot.lineDetector.getIRSensors() == 0) {
         // Robot has driven to be below the PID tolerance.
         if (debug) {
           System.out.println("NoIRDetected");
         }
-        if (Math.abs(Robot.drive.LeftError) <= RobotMap.encoderErrorTolerance
-            && Math.abs(Robot.drive.RightError) <= RobotMap.encoderErrorTolerance) {
+        if ((Math.abs(Robot.drive.LeftError) <= RobotMap.encoderErrorTolerance)
+            && (Math.abs(Robot.drive.RightError) <= RobotMap.encoderErrorTolerance)) {
 
           // Move the one inch fowards
           Robot.drive.setLeftPosition(Robot.drive.getLeftEncoder() + RobotMap.oneInchEncoder);
