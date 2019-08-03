@@ -154,6 +154,7 @@ import edu.wpi.cscore.VideoSource;
 
     @Override
     public void teleopInit() {
+      drive.resetAllEncoders();
     }
 
     /**
@@ -162,6 +163,7 @@ import edu.wpi.cscore.VideoSource;
     @Override
     public void teleopPeriodic() {
       Scheduler.getInstance().run();
+      //System.out.println(drive.getLeftEncoder() + " " + drive.getRightEncoder());
     }
    
     public static void pause(int millis) {
@@ -177,5 +179,7 @@ import edu.wpi.cscore.VideoSource;
      */
     @Override
     public void testPeriodic() {
+      Robot.drive.setPosition(25, 25);
+      
     }
   }

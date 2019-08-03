@@ -107,14 +107,14 @@ public class Drive extends Subsystem {
      * Gets Raw Right Encoder
      */
     public int getRightEncoder() {
-        return RobotMap.RightEncoder.getRaw();
+        return -RobotMap.RightEncoder.getRaw();
     }
 
     /**
      * Gets Raw Left Encoder
      */
     public int getLeftEncoder() {
-        return RobotMap.LeftEncoder.getRaw();
+        return -RobotMap.LeftEncoder.getRaw();
     }
 
     /**
@@ -187,7 +187,6 @@ public class Drive extends Subsystem {
      * Sets speed for both sides
      */
     public void setAllSpeed(double leftSpeed, double rightSpeed) {
-        System.out.println("Drive: " + leftSpeed + " " + rightSpeed);
         setLeftSpeed(leftSpeed);
         setRightSpeed(rightSpeed);
     }
