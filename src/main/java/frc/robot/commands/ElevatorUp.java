@@ -48,6 +48,8 @@ public class ElevatorUp extends Command {
 
   @Override
   protected void interrupted() {
-    end();
+    if(!Robot.oi.getDriverStick().getRawButton(RobotMap.elevatorUpButtonNumber)){
+      end();
+    }
   }
 }
