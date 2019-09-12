@@ -56,8 +56,10 @@ public class Elevator extends Subsystem {
   * @param speed from -1 to 1
   */
   public void setElevatorSpeed(double speed) {
-    elevatorMotor.getPIDController().setReference(speed, ControlType.kDutyCycle);
-    System.out.println("Speed: " + speed);
+    //elevatorMotor.getPIDController().setReference(speed, ControlType.kDutyCycle);
+
+    elevatorMotor.set(speed);
+    System.out.println("Ele Speed: " + speed);
   }
 
   /**
@@ -98,8 +100,8 @@ public class Elevator extends Subsystem {
    */
   public void setElevatorPosition(double rotation){
      // read PID coefficients from SmartDashboard
-     double p = 0.065;
-     double i = 0.005;
+     double p = 0.21;
+     double i = 0.007;
      double d = 0;
      double iz = 0;
      double ff = 0;

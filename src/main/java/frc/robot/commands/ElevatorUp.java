@@ -25,7 +25,12 @@ public class ElevatorUp extends Command {
 
   @Override
   protected void execute() {
+    if(Robot.elevator.getElevatorUpperLimitSwitch()){
+      Robot.elevator.setElevatorSpeed(0);
+    }
+    else{
     Robot.elevator.setElevatorSpeed(RobotMap.elevatorSpeed);
+    }
   }
 
   @Override

@@ -89,6 +89,7 @@ import edu.wpi.cscore.VideoSource;
      */
     @Override
     public void disabledInit() {
+      Robot.elevator.setElevatorSpeed(0);
     }
 
     @Override
@@ -164,6 +165,7 @@ import edu.wpi.cscore.VideoSource;
     public void teleopPeriodic() {
       Scheduler.getInstance().run();
       //System.out.println(drive.getLeftEncoder() + " " + drive.getRightEncoder());
+      //System.out.println(RobotMap.elevatorMotor.getOutputCurrent());
     }
    
     public static void pause(int millis) {

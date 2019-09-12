@@ -24,7 +24,12 @@ public class ElevatorDown extends Command {
 
   @Override
   protected void execute() {
-    Robot.elevator.setElevatorSpeed(-RobotMap.elevatorSpeed);
+    if(Robot.elevator.getElevatorBottomLimitSwitch()){
+      Robot.elevator.setElevatorSpeed(0);
+    }
+    else{
+      Robot.elevator.setElevatorSpeed(-RobotMap.elevatorSpeed);
+    }
   }
 
   @Override
@@ -47,7 +52,8 @@ public class ElevatorDown extends Command {
 
   @Override
   protected void interrupted() {
-    if(!Robot.oi.getDriverStick().getRawButton(RobotMap.elevatorUpButtonNumber)){
+    if(!Robot.oi.getDriverStick().getRawButton(RobotMap.elevatorDownButtonNumber)){
+      System.out.println("Hi there, I messed up.");
       end();
     }
   }

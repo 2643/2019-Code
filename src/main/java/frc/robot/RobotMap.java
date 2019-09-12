@@ -63,7 +63,7 @@ public class RobotMap {
   //elevator ports
   public static int elevatorPort = 20; 
   public static int elevatorBottomLimitPort = 10; //Given by Rushabh 2019-03-22
-  public static int elevatorUpperLimitPort = 11;  //Given by Rushabh 2019-03-28
+  public static int elevatorUpperLimitPort = 18;  //Given by Rushabh 2019-09-11
 
 
   //solenoid ports
@@ -150,7 +150,7 @@ public class RobotMap {
   public static boolean slowActivated = false; 
 
   //elevator variables
-  public static double elevatorSpeed = -0.7;
+  public static double elevatorSpeed = -0.2;
   //TODO check this value on the robot
   public static int elevatorEncoderMaxLimit = -150; //Testing number, this is the maximum encoder ticks allowed from the bottom upwards.
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
