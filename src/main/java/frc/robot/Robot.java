@@ -181,7 +181,7 @@ import edu.wpi.cscore.VideoSource;
      */
     @Override
     public void testPeriodic() {
-      Robot.drive.setPosition(25, 25);
+      //Robot.drive.setPosition(25, 25);
       
     }
   }

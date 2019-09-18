@@ -33,9 +33,9 @@ public class Elevator extends Subsystem {
     elevatorMotor.getPIDController().setI(kI);
     elevatorMotor.getPIDController().setD(kD);
     // PID coefficients
-    kP = 0.1; 
-    kI = 1e-4;
-    kD = 1; 
+    kP = 0.007; 
+    kI = 0;
+    kD = 0; 
     kIz = 0; 
     kFF = 0; 
     kMaxOutput = .5; 
@@ -100,13 +100,13 @@ public class Elevator extends Subsystem {
    */
   public void setElevatorPosition(double rotation){
      // read PID coefficients from SmartDashboard
-     double p = 0.21;
-     double i = 0.007;
-     double d = 0;
-     double iz = 0;
-     double ff = 0;
-     double max = 0.5;
-     double min = -0.5;
+     double p = kP;
+     double i = kI;
+     double d = kD;
+     double iz = kIz;
+     double ff = kFF;
+     double max = kMaxOutput;
+     double min = kMinOutput;
      double rotations = rotation;
  
      // if PID coefficients on SmartDashboard have changed, write new values to controller
