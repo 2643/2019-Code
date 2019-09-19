@@ -150,7 +150,7 @@ public class RobotMap {
   public static boolean slowActivated = false; 
 
   //elevator variables
-  public static double elevatorSpeed = -0.2;
+  public static double elevatorSpeed = -0.6;
   //TODO check this value on the robot
   public static int elevatorEncoderMaxLimit = -150; //Testing number, this is the maximum encoder ticks allowed from the bottom upwards.
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
