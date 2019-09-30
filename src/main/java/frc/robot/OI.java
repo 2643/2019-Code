@@ -61,9 +61,8 @@ public class OI {
   JoystickButton elevatorPreset = new JoystickButton(operatorBoard, RobotMap.elevatorPresetButtonNumber);
   JoystickButton elevatorUp = new JoystickButton(operatorBoard, RobotMap.elevatorUpButtonNumber);
   JoystickButton intake = new JoystickButton(operatorBoard, RobotMap.intakeButtonNumber);
-  JoystickButton hatchMechanismIn = new JoystickButton(operatorBoard, RobotMap.hatchMechanismInButton);
-  JoystickButton hatchMechanismOut = new JoystickButton(operatorBoard, RobotMap.hatchMechanismOutButton);
-  JoystickButton hatchRelease = new JoystickButton(operatorBoard, RobotMap.hatchReleaseButtonNumber);
+  JoystickButton hatchIn = new JoystickButton(operatorBoard, RobotMap.hatchInButton);
+  JoystickButton hatchOut = new JoystickButton(operatorBoard, RobotMap.hatchOutButton);
   JoystickButton calibrate = new JoystickButton(operatorBoard, RobotMap.calibrateButtonNumber);
   JoystickButton outtakeCargo = new JoystickButton(operatorBoard, RobotMap.outtakeCargoButtonNumber);
 
@@ -115,11 +114,8 @@ public class OI {
     outtakeCargo.whileHeld(new OuttakeCargo());
 
     // hatch buttons
-    hatchRelease.whenPressed(new ReleaseHatchPanel());
-    hatchRelease.whenReleased(new RetractHatchPanel());
-    hatchMechanismIn.whenPressed(new RetractHatch());
-    hatchMechanismOut.whenPressed(new ExtendHatch()); 
-
+    hatchIn.whileHeld(new HatchIn());
+    hatchOut.whileHeld(new HatchOut());
   }
 
   // Creating the joystick

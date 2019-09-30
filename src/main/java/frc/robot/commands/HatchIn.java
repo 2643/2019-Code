@@ -7,42 +7,44 @@
 
 package frc.robot.commands;
 
-
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-/**
- * Releases the hatch panel
- */
-public class ReleaseHatchPanel extends Command {
+import frc.robot.RobotMap;
 
-
-
-  public ReleaseHatchPanel() {
+public class HatchIn extends Command {
+  public HatchIn() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
     requires(Robot.hatch);
   }
 
+  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
   }
 
+  // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() { 
-    Robot.hatch.hatchPistonOut();
+  protected void execute() {
+    Robot.hatch.setSpeed(RobotMap.hatchInSpeed);
   }
 
+  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
 
+  // Called once after isFinished returns true
   @Override
   protected void end() {
-    //Robot.hatch.hatchPistonOff();
+    Robot.hatch.setSpeed(0);
   }
 
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
+    end(); 
   }
 }

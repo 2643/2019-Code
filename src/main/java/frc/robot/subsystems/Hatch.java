@@ -8,63 +8,27 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.*;
 
 /**
  * Add your docs here.
  */
 public class Hatch extends Subsystem {
-  DoubleSolenoid hatchMechanismSolenoid;
-  DoubleSolenoid releaseHatchSolenoid;
+private WPI_TalonSRX HatchMotor2;
 
-  public Hatch(DoubleSolenoid HatchMechanismSolenoid, DoubleSolenoid ReleaseHatchSolenoid){
-    hatchMechanismSolenoid = HatchMechanismSolenoid;
-    releaseHatchSolenoid = ReleaseHatchSolenoid;
+  public Hatch(WPI_TalonSRX HatchMotor1){
+    HatchMotor2 = HatchMotor1;
   }
  
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+  public void setSpeed(double speed){
+  
+    HatchMotor2.set(speed);
   }
   
-  /**
-   * This function will pull the hatch mechanism in.
-   */
-  public void mechanismPistonIn(){
-    hatchMechanismSolenoid.set(DoubleSolenoid.Value.kForward);
-  }
-  /**
-   * This function will push the hatch mechanism out.
-   */
-  public void mechanismPistonOut(){
-    hatchMechanismSolenoid.set(DoubleSolenoid.Value.kReverse);
-  }
+  public void initDefaultCommand(){
 
-  /**
-   * This function turn the hatch mechanism off
-   */
-  public void mechanismPistonOff(){
-    hatchMechanismSolenoid.set(DoubleSolenoid.Value.kOff);
-  }
-
-  /**
-   * Moves hatch pistons in
-   */
-  public void hatchPistonIn(){
-    releaseHatchSolenoid.set(DoubleSolenoid.Value.kForward);
-  }
-  /**
-   * Moves hatch pistons out
-   */
-  public void hatchPistonOut(){
-    releaseHatchSolenoid.set(DoubleSolenoid.Value.kReverse);
-  }
-
-  /**
-   * Turns the hatch pistons out
-   */
-  public void hatchPistonOff(){
-    releaseHatchSolenoid.set(DoubleSolenoid.Value.kOff);
   }
 }

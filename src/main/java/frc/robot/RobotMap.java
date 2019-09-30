@@ -66,11 +66,9 @@ public class RobotMap {
   public static int elevatorUpperLimitPort = 18;  //Given by Rushabh 2019-09-11
 
 
-  //solenoid ports
-  public static int hatchMechanismSolenoidPort1 = 7; 
-  public static int hatchMechanismSolenoidPort2 = 6;  
-  public static int releaseHatchSolenoidPort1 = 4;     
-  public static int releaseHatchSolenoidPort2 = 5;  
+  // Hatch Motor
+public static int HatchMotorPort = -1; //TODO Check hatch motor port
+ 
 
   // IR sensor ports Confirmed by rushabh 2019-03-22
   public static int irLeftPort1 = 0; 
@@ -103,10 +101,9 @@ public class RobotMap {
 
   //elevator motors
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
-
-  //hatch solenoids
-  public static DoubleSolenoid hatchMechanismSolenoid = new DoubleSolenoid(hatchMechanismSolenoidPort1, hatchMechanismSolenoidPort2);
-  public static DoubleSolenoid releaseHatchSolenoid = new DoubleSolenoid(releaseHatchSolenoidPort1, releaseHatchSolenoidPort2);
+//HatchMotor
+  public static WPI_TalonSRX HatchMotor = new WPI_TalonSRX(HatchMotorPort);
+ 
  
   //cargo intake motors
   public static WPI_TalonSRX cargoIntakeMotor1 = new WPI_TalonSRX(cargoIntakePort1);
@@ -162,6 +159,9 @@ public class RobotMap {
   public static double cargoOuttakeLeftSpeed = -1; 
   public static double cargoOuttakeRightSpeed = 1;
 
+  //hatch variables
+  public static double hatchInSpeed = -0.5;
+  public static double hatchOutSpeed = 0.5;
   //Line targets 
   public static int oneInchEncoder = 4; 
 
@@ -227,9 +227,8 @@ public class RobotMap {
   public static int elevatorPresetButtonNumber = 6; 
   public static int elevatorUpButtonNumber = 4; 
   public static int intakeButtonNumber = 14; 
-  public static int hatchReleaseButtonNumber = 7; 
-  public static int hatchMechanismInButton = 2;
-  public static int hatchMechanismOutButton = 3; 
+  public static int hatchInButton = 2;
+  public static int hatchOutButton = 3; 
   public static int outtakeCargoButtonNumber = 13; 
 
 

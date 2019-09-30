@@ -26,7 +26,7 @@ import edu.wpi.cscore.VideoSource;
    */
   public class Robot extends TimedRobot {
     public static OI oi;
-    public static Hatch hatch = new Hatch(RobotMap.hatchMechanismSolenoid, RobotMap.releaseHatchSolenoid);
+    public static Hatch hatch = new Hatch(RobotMap.HatchMotor);
     public static Elevator elevator = new Elevator(RobotMap.elevatorMotor);
     public static Drive drive = new Drive(RobotMap.LeftFrontMotor, RobotMap.LeftBackMotor, RobotMap.RightFrontMotor, RobotMap.RightBackMotor);
     public static DriverCamera driverCameras = new DriverCamera(RobotMap.frontCamera, RobotMap.leftCamera);
