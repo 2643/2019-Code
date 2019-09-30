@@ -67,7 +67,7 @@ public class RobotMap {
 
 
   // Hatch Motor
-public static int HatchMotorPort = -1; //TODO Check hatch motor port
+public static int HatchMotorPort = 12;
  
 
   // IR sensor ports Confirmed by rushabh 2019-03-22
