@@ -11,6 +11,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -100,9 +101,9 @@ public class Elevator extends Subsystem {
    */
   public void setElevatorPosition(double rotation){
      // read PID coefficients from SmartDashboard
-     double p = 0.03; //06 04 02
-     double i = 0.0015;
-     double d = 0.15; //18\
+     double p = 0.018; //0.018
+     double i = 0.00015; //0.00015 
+     double d = 0.05; //0.05
      double iz = 0.0;
      double ff = 0.0;
      double max = 0.6;
@@ -119,7 +120,7 @@ public class Elevator extends Subsystem {
       elevatorMotor.getPIDController().setOutputRange(min, max); 
        kMinOutput = min; kMaxOutput = max; 
      }
- 
+    
      /**
       * PIDController objects are commanded to a set point using the 
       * SetReference() method.
