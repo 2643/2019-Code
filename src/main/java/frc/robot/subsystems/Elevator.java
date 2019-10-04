@@ -79,6 +79,14 @@ public class Elevator extends Subsystem {
       elevatorMotor.getEncoder().setPosition(0);
     }
   }
+
+  public void stopElevatorPID(){
+    elevatorMotor.getPIDController().setReference(0, ControlType.kDutyCycle);
+  }
+
+  public double getElevatorCurrent(){
+    return elevatorMotor.getOutputCurrent();
+  }
   /** 
    * Gets the value of the bottom limit switch
    * @return boolean

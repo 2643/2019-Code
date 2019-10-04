@@ -48,7 +48,13 @@
     @Override
     protected void end() {
       Robot.elevator.setElevatorSpeed(0);
-      Robot.elevator.setElevatorPosition(Robot.elevator.getElevatorEncoder()+2.5);
+     
+      if (Robot.elevator.getElevatorBottomLimitSwitch()) {
+        Robot.elevator.stopElevatorPID();
+      }
+      else {
+        Robot.elevator.setElevatorPosition(Robot.elevator.getElevatorEncoder());
+      }
     }
 
     @Override

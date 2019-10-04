@@ -49,7 +49,14 @@ public class ElevatorUp extends Command {
   @Override
   protected void end() {
     Robot.elevator.setElevatorSpeed(0);
-    Robot.elevator.setElevatorPosition(Robot.elevator.getElevatorEncoder()-2.5);
+    Robot.elevator.setElevatorPosition(Robot.elevator.getElevatorEncoder());
+    // if (Robot.elevator.getElevatorUpperLimitSwitch()) {
+    //   Robot.elevator.stopElevatorPID();
+    // }
+    // else {
+     
+    // }
+    
   }
 
   @Override
