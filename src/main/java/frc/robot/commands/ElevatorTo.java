@@ -21,9 +21,8 @@ public class ElevatorTo extends Command {
    * Sets the elevator to a given height
    * @param elevatorLevelInTicks height above the ground in inches that the elevator needs to go to
    */
-  public ElevatorTo(int elevatorLevelInTicks) {
+  public ElevatorTo() {
     requires (Robot.elevator);
-    rotations = (elevatorLevelInTicks);
   }
 
   @Override
@@ -32,14 +31,14 @@ public class ElevatorTo extends Command {
 
   @Override
   protected void execute() {
-    Robot.elevator.setElevatorPosition(rotations);
+    Robot.elevator.setElevatorPosition(-58);
   }
 
   @Override
   protected boolean isFinished() {
     //Checks to see if the bottom limit switch or the top limit switch is hit
     //TODO check this end condition for the elevator please before using it
-    if(Robot.elevator.getElevatorBottomLimitSwitch() || Robot.elevator.getElevatorUpperLimitSwitch()){
+    if(Robot.elevator.getElevatorUpperLimitSwitch() || (Robot.elevator.getElevatorEncoder() <= -58)){
       return true;
     }else{
       return false;
@@ -54,7 +53,7 @@ public class ElevatorTo extends Command {
 
   @Override
   protected void interrupted() {
-    Robot.elevator.setElevatorPosition(Robot.elevator.getElevatorEncoder()-5);
+    Robot.elevator.setElevatorPosition(Robot.elevator.getElevatorEncoder());
 
   }
 }

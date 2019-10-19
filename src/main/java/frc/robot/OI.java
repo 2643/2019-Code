@@ -116,6 +116,9 @@ public class OI {
     // hatch buttons
     hatchIn.whileHeld(new HatchIn());
     hatchOut.whileHeld(new HatchOut());
+
+    //Elevator to top
+    elevatorPreset.whenPressed(new ElevatorTo());
   }
 
   // Creating the joystick

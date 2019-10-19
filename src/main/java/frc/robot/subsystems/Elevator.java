@@ -143,12 +143,12 @@ public class Elevator extends Subsystem {
   public void setElevatorPosition(double rotation){
      // read PID coefficients from SmartDashboard
      double p = 0.018; //0.018
-     double i = 0.00015; //0.00015 
-     double d = 0.05; //0.05
+     double i = 0.00; //0.00 
+     double d = 0.04; //0.05
      double iz = 0.0;
      double ff = 0.0;
-     double max = 0.6;
-     double min = -0.6;
+     double max = 0.9;
+     double min = -0.9;
      double rotations = rotation;
  
      // if PID coefficients on SmartDashboard have changed, write new values to controller

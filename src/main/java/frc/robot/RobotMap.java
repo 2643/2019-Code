@@ -142,14 +142,14 @@ public static WPI_TalonSRX HatchMotor = new WPI_TalonSRX(HatchMotorPort);
   public static int leftDriverAxis = 1; 
   public static double MotorCurrent = 0; //Use to work out if it is up agaisnt a wall.
   public static double MotorCurrentSum = 0;
-  public static double multiplier = 0.3;
+  public static double multiplier = 0.35;
   public static double rotations;
   public static boolean slowActivated = false; 
 
   //elevator variables
-  public static double elevatorSpeed = -0.5;
+  public static double elevatorSpeed = -0.55;
   //TODO check this value on the robot
-  public static int elevatorEncoderMaxLimit = -150; //Testing number, this is the maximum encoder ticks allowed from the bottom upwards.
+  public static int elevatorEncoderMaxLimit = -58; //Testing number, this is the maximum encoder ticks allowed from the bottom upwards.
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
 
   //cargo variables

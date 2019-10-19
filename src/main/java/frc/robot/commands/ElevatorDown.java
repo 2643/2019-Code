@@ -28,7 +28,7 @@
         Robot.elevator.setElevatorSpeed(0);
       }
       else{
-        Robot.elevator.setElevatorSpeed(-RobotMap.elevatorSpeed - 0.2);
+        Robot.elevator.setElevatorSpeed(-RobotMap.elevatorSpeed - 0.15);
       }
     }
 
