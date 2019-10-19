@@ -53,7 +53,7 @@ public class RobotMap {
   //drive ports
   public static int lFrontMotorPort = 29;   
   public static int lBackMotorPort = 21;    
-  public static int rFrontMotorPort = 26;   
+  public static int rFrontMotorPort = 12;   
   public static int rBackMotorPort = 28;    
   public static int rEncoderPort1 = 6;    
   public static int rEncoderPort2 = 7;    
@@ -102,7 +102,7 @@ public static int HatchMotorPort = 12;
   //elevator motors
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
 //HatchMotor
-  public static WPI_TalonSRX HatchMotor = new WPI_TalonSRX(HatchMotorPort);
+//public static WPI_TalonSRX HatchMotor = new WPI_TalonSRX(HatchMotorPort);
  
  
   //cargo intake motors

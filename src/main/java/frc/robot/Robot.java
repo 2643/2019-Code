@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
+import frc.robot.commands.ResetElevator;
 import frc.robot.RobotMap;
 
 // import com.revrobotics.ControlType;
@@ -26,7 +27,7 @@ import edu.wpi.cscore.VideoSource;
    */
   public class Robot extends TimedRobot {
     public static OI oi;
-    public static Hatch hatch = new Hatch(RobotMap.HatchMotor);
+    //public static Hatch hatch = new Hatch(RobotMap.HatchMotor);
     public static Elevator elevator = new Elevator(RobotMap.elevatorMotor);
     public static Drive drive = new Drive(RobotMap.LeftFrontMotor, RobotMap.LeftBackMotor, RobotMap.RightFrontMotor, RobotMap.RightBackMotor);
     public static DriverCamera driverCameras = new DriverCamera(RobotMap.frontCamera, RobotMap.leftCamera);
@@ -47,6 +48,7 @@ import edu.wpi.cscore.VideoSource;
     @Override
     public void robotInit() {
       oi = new OI();
+      elevator.resetElevatorEncoder();
       
       // -- gyroscope.setGyroDeclination();
       
@@ -156,6 +158,7 @@ import edu.wpi.cscore.VideoSource;
     @Override
     public void teleopInit() {
       drive.resetAllEncoders();
+      elevator.resetElevatorEncoder();
     }
 
     /**
@@ -164,6 +167,7 @@ import edu.wpi.cscore.VideoSource;
     @Override
     public void teleopPeriodic() {
       Scheduler.getInstance().run();
+      //System.out.println(elevator.getElevatorEncoder());
       //System.out.println(drive.getLeftEncoder() + " " + drive.getRightEncoder());
       //System.out.println(RobotMap.elevatorMotor.getOutputCurrent());
     }

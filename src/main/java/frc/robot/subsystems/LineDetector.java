@@ -267,7 +267,7 @@ public class LineDetector extends Subsystem {
     }
 
     if((getIRSensors() & LineDetector.SENSOR_L123) == LineDetector.SENSOR_L123) {
-      System.err.println("Drive Better. All Left IRs Active");
+      //System.err.println("Drive Better. All Left IRs Active");
     }
     else{
       if((getIRSensors() & LineDetector.SENSOR_L1) == LineDetector.SENSOR_L1) {
@@ -292,7 +292,7 @@ public class LineDetector extends Subsystem {
     }
 
     if((getIRSensors() & LineDetector.SENSOR_R123) == LineDetector.SENSOR_R123){
-      System.err.println("Drive Better. All Right IRs Active");
+      //System.err.println("Drive Better. All Right IRs Active");
     }
     else {
       if((getIRSensors() & LineDetector.SENSOR_R1) == LineDetector.SENSOR_R1) { 

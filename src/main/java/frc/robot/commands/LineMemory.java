@@ -26,7 +26,6 @@ public class LineMemory extends Command {
   @Override
   protected void execute() {
     Robot.lineDetector.lastLineDetected();
-    System.out.println(Robot.elevator.getElevatorCurrent());
   }
 
   // Make this return true when this Command no longer needs to run execute()

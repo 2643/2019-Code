@@ -12,6 +12,7 @@ import com.revrobotics.ControlType;
 
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -22,6 +23,9 @@ public class Elevator extends Subsystem {
   // here. Call these from Commands.
   private CANSparkMax elevatorMotor;
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
+  public static boolean CalibrateSparkMax = false;
+  public static int CalibrateNumber;
+  public static boolean atBottom = false; 
 
   /**
    * Setting Motors
@@ -60,7 +64,7 @@ public class Elevator extends Subsystem {
     //elevatorMotor.getPIDController().setReference(speed, ControlType.kDutyCycle);
 
     elevatorMotor.set(speed);
-    System.out.println("Ele Speed: " + speed);
+    //System.out.println("Ele Speed: " + speed);
   }
 
   /**
@@ -75,8 +79,37 @@ public class Elevator extends Subsystem {
    * Resets the encoder by subtracting the current value as an offset, but only when the limit switch is hit 
    */
   public void resetElevatorEncoder(){
+  //   if(RobotMap.elevatorBottomLimit.get() && !atBottom && !CalibrateSparkMax){
+  //     //This reduces the amount of times that this piece of code runs
+  //    if(CalibrateNumber % 10 == 0){
+  //      RobotMap.rotations = RobotMap.elevatorMotor.getEncoder().getPosition() - 1;
+  //      RobotMap.elevatorMotor.getPIDController().setReference(RobotMap.rotations, ControlType.kPosition);
+  //    }
+  //  }
+  //  else if(!RobotMap.elevatorBottomLimit.get() && !CalibrateSparkMax){
+  //    atBottom = true;
+  //  }
+  //  else if(!CalibrateSparkMax){
+  //      CalibrateNumber ++;
+  //      if(RobotMap.elevatorBottomLimit.get()){
+  //        if(CalibrateNumber % 25 == 0){
+  //          RobotMap.rotations = (RobotMap.elevatorMotor.getEncoder().getPosition() - 1);
+  //          RobotMap.elevatorMotor.getPIDController().setReference(RobotMap.rotations, ControlType.kPosition);
+  //          //System.out.println("Moving up");
+  //        }
+  //      }else if(!RobotMap.elevatorBottomLimit.get()){
+  //          RobotMap.rotations = 0;
+  //          RobotMap.elevatorMotor.getEncoder().setPosition(0);
+  //          CalibrateSparkMax = true;
+  //          //System.out.println("Zeroed");
+  //      }
+  //    }else{
+  //     Scheduler.getInstance().run();
+      //System.out.println(RobotMap.elevatorMotor.getEncoder().getPosition());
+    // }
     if(getElevatorBottomLimitSwitch()) {
       elevatorMotor.getEncoder().setPosition(0);
+      System.out.println("resetEnc");
     }
   }
 
