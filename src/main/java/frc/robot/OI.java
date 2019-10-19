@@ -114,8 +114,8 @@ public class OI {
     outtakeCargo.whileHeld(new OuttakeCargo());
 
     // hatch buttons
-    //hatchIn.whileHeld(new HatchIn());
-    //hatchOut.whileHeld(new HatchOut());
+    hatchIn.whileHeld(new HatchIn());
+    hatchOut.whileHeld(new HatchOut());
   }
 
   // Creating the joystick

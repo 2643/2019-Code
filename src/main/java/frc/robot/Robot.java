@@ -33,6 +33,7 @@ import edu.wpi.cscore.VideoSource;
     public static DriverCamera driverCameras = new DriverCamera(RobotMap.frontCamera, RobotMap.leftCamera);
     public static CargoIntake cargoIntake = new CargoIntake(RobotMap.cargoIntakeMotor1, RobotMap.cargoIntakeMotor2, RobotMap.cargoRetractMotor);
     public static CargoOuttake cargoOuttake = new CargoOuttake(RobotMap.cargoOuttakeMotor);
+    public static Hatch hatch = new Hatch(RobotMap.HatchMotor);
     // -- public static Gyroscope gyroscope = new Gyroscope();
     public static LineDetector lineDetector = new LineDetector();
 

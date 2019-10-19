@@ -53,7 +53,7 @@ public class RobotMap {
   //drive ports
   public static int lFrontMotorPort = 29;   
   public static int lBackMotorPort = 21;    
-  public static int rFrontMotorPort = 12;   
+  public static int rFrontMotorPort = 26;   
   public static int rBackMotorPort = 28;    
   public static int rEncoderPort1 = 6;    
   public static int rEncoderPort2 = 7;    
@@ -102,7 +102,7 @@ public static int HatchMotorPort = 12;
   //elevator motors
   public static CANSparkMax elevatorMotor = new CANSparkMax(elevatorPort, MotorType.kBrushless);
 //HatchMotor
-//public static WPI_TalonSRX HatchMotor = new WPI_TalonSRX(HatchMotorPort);
+public static WPI_TalonSRX HatchMotor = new WPI_TalonSRX(HatchMotorPort);
  
  
   //cargo intake motors
@@ -147,7 +147,7 @@ public static int HatchMotorPort = 12;
   public static boolean slowActivated = false; 
 
   //elevator variables
-  public static double elevatorSpeed = -0.6;
+  public static double elevatorSpeed = -0.5;
   //TODO check this value on the robot
   public static int elevatorEncoderMaxLimit = -150; //Testing number, this is the maximum encoder ticks allowed from the bottom upwards.
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
@@ -160,8 +160,8 @@ public static int HatchMotorPort = 12;
   public static double cargoOuttakeRightSpeed = 1;
 
   //hatch variables
-  public static double hatchInSpeed = -0.5;
-  public static double hatchOutSpeed = 0.5;
+  public static double hatchInSpeed = -0.7;
+  public static double hatchOutSpeed = 0.7;
   //Line targets 
   public static int oneInchEncoder = 4; 
 
