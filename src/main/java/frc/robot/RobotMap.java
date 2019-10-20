@@ -149,7 +149,7 @@ public static WPI_TalonSRX HatchMotor = new WPI_TalonSRX(HatchMotorPort);
   //elevator variables
   public static double elevatorSpeed = -0.55;
   //TODO check this value on the robot
-  public static int elevatorEncoderMaxLimit = -58; //Testing number, this is the maximum encoder ticks allowed from the bottom upwards.
+  public static int elevatorEncoderMaxLimit = -54; //Testing number, this is the maximum encoder ticks allowed from the bottom upwards.
   public static int elevatorTolerance; //TODO test the tolerance of the elevator
 
   //cargo variables
@@ -160,8 +160,8 @@ public static WPI_TalonSRX HatchMotor = new WPI_TalonSRX(HatchMotorPort);
   public static double cargoOuttakeRightSpeed = 1;
 
   //hatch variables
-  public static double hatchInSpeed = -0.7;
-  public static double hatchOutSpeed = 0.7;
+  public static double hatchInSpeed = 0.5;
+  public static double hatchOutSpeed = -1.0;
   //Line targets 
   public static int oneInchEncoder = 4; 
 
@@ -227,8 +227,8 @@ public static WPI_TalonSRX HatchMotor = new WPI_TalonSRX(HatchMotorPort);
   public static int elevatorPresetButtonNumber = 6; 
   public static int elevatorUpButtonNumber = 4; 
   public static int intakeButtonNumber = 14; 
-  public static int hatchInButton = 2;
-  public static int hatchOutButton = 3; 
+  public static int hatchInButton = 3;
+  public static int hatchOutButton = 2; 
   public static int outtakeCargoButtonNumber = 13; 
 
 
